@@ -210,10 +210,10 @@ Combine configuration actions into relatively few HTTP/HTTPS operations.</li><p>
 ssh -p 22 admin@sandbox-nxos-1.cisco.com
 </pre><p>Once connected, access the NX-OSv9k’s CLI and check if it’s nxapi feature is enabled.</p><pre class="brush: xml; title: ; notranslate" title="">
 show feature | include nxapi
-</pre><p>It should show as being enabled:</p><p><a href="/technical-recipes/wp-content/uploads/2022/04/nx1.jpg"><img fetchpriority="high" decoding="async" src="" alt="" width="602" height="410" class="alignnone size-full wp-image-9850" data-layzr="/wp-content/uploads/2022/04/nx1.jpg"></a></p><p>If the output indicates disabled, the feature is disabled. To enable it, enter global configuration mode and issue the feature nxapi command.</p><pre class="brush: xml; title: ; notranslate" title="">
+</pre><p>It should show as being enabled:</p><p><a href="/technical-recipes/wp-content/uploads/2022/04/nx1.jpg"><img fetchpriority="high" decoding="async" src="" alt="" width="602" height="410" class="alignnone size-full wp-image-9850" data-layzr="/technical-recipes/wp-content/uploads/2022/04/nx1.jpg" src="/technical-recipes/wp-content/uploads/2022/04/nx1.jpg"></a></p><p>If the output indicates disabled, the feature is disabled. To enable it, enter global configuration mode and issue the feature nxapi command.</p><pre class="brush: xml; title: ; notranslate" title="">
 configure terminal
 </pre><p>To confirm that it is enabled, use a web browser and navigate to an Open NX-OS address: https://sandbox-nxos-1.cisco.com<br>
-The Sandbox credentials are admin / Admin_1234!. Upon successful authentication, you should see the NX-API Developer Sandbox web page.</p><p><strong>CLI command: show version</strong></p><p>For an example CLI command,  type ‘show version’ in the main text area, ensure the ‘json’ message format is selected on the dropdown and click the Send button.</p><p><a href="/technical-recipes/wp-content/uploads/2022/04/nx2.jpg"><img decoding="async" src="" alt="" width="1014" height="743" class="alignnone size-full wp-image-9854" data-layzr="/wp-content/uploads/2022/04/nx2.jpg"></a></p><p>This will create the text response contained in the Response section of the window:</p><pre class="brush: xml; title: ; notranslate" title="">
+The Sandbox credentials are admin / Admin_1234!. Upon successful authentication, you should see the NX-API Developer Sandbox web page.</p><p><strong>CLI command: show version</strong></p><p>For an example CLI command,  type ‘show version’ in the main text area, ensure the ‘json’ message format is selected on the dropdown and click the Send button.</p><p><a href="/technical-recipes/wp-content/uploads/2022/04/nx2.jpg"><img decoding="async" src="" alt="" width="1014" height="743" class="alignnone size-full wp-image-9854" data-layzr="/technical-recipes/wp-content/uploads/2022/04/nx2.jpg" src="/technical-recipes/wp-content/uploads/2022/04/nx2.jpg"></a></p><p>This will create the text response contained in the Response section of the window:</p><pre class="brush: xml; title: ; notranslate" title="">
 {
   "ins_api": {
     "type": "cli_show",
@@ -262,7 +262,7 @@ The Sandbox credentials are admin / Admin_1234!. Upon successful authentication,
     }
   }
 }
-</pre><p>To generate the python, click the Python tab and press the Copy button to copy the python script to your clipboard.  This contains the code you need to get started, but as-is will not execute until the placeholders for username, password etc and other bits and pieces are filled in correctly.  </p><p><a href="/technical-recipes/wp-content/uploads/2022/04/nx3.jpg"><img decoding="async" src="" alt="" width="1014" height="742" class="alignnone size-full wp-image-9855" data-layzr="/wp-content/uploads/2022/04/nx3.jpg"></a></p><p>This is the raw python code taken from the Python tab:</p><pre class="brush: python; title: ; notranslate" title="">
+</pre><p>To generate the python, click the Python tab and press the Copy button to copy the python script to your clipboard.  This contains the code you need to get started, but as-is will not execute until the placeholders for username, password etc and other bits and pieces are filled in correctly.  </p><p><a href="/technical-recipes/wp-content/uploads/2022/04/nx3.jpg"><img decoding="async" src="" alt="" width="1014" height="742" class="alignnone size-full wp-image-9855" data-layzr="/technical-recipes/wp-content/uploads/2022/04/nx3.jpg" src="/technical-recipes/wp-content/uploads/2022/04/nx3.jpg"></a></p><p>This is the raw python code taken from the Python tab:</p><pre class="brush: python; title: ; notranslate" title="">
 import requests
 import json
 
@@ -320,7 +320,7 @@ vlan_list = response["ins_api"]["outputs"]["output"]["body"]["TABLE_package_list
 
 for vlan in vlan_list :
    print("Package ID: {}".format(vlan_list["package_id"]))
-</pre><p>Output as follows:</p><p><a href="/technical-recipes/wp-content/uploads/2022/04/nx4.jpg"><img decoding="async" src="" alt="" width="602" height="395" class="alignnone size-full wp-image-9858" data-layzr="/wp-content/uploads/2022/04/nx4.jpg"></a></p><p><strong>CLI command: show role name dev-ops </strong></p><p>Predefined system role for dev-ops access. This role cannot be modified.</p><p><strong>showRoleNameDevops.py</strong></p><p>(To use the pretty table print facility in this code you might have to first install it via: python -m pip install -U prettytable)</p><pre class="brush: python; title: ; notranslate" title="">
+</pre><p>Output as follows:</p><p><a href="/technical-recipes/wp-content/uploads/2022/04/nx4.jpg"><img decoding="async" src="" alt="" width="602" height="395" class="alignnone size-full wp-image-9858" data-layzr="/technical-recipes/wp-content/uploads/2022/04/nx4.jpg" src="/technical-recipes/wp-content/uploads/2022/04/nx4.jpg"></a></p><p><strong>CLI command: show role name dev-ops </strong></p><p>Predefined system role for dev-ops access. This role cannot be modified.</p><p><strong>showRoleNameDevops.py</strong></p><p>(To use the pretty table print facility in this code you might have to first install it via: python -m pip install -U prettytable)</p><pre class="brush: python; title: ; notranslate" title="">
 import requests
 import json
 from prettytable import PrettyTable
@@ -350,7 +350,7 @@ for rule in rules :
    
 table.align = "l"
 print(table)
-</pre><p>Giving the following output:</p><p><a href="/technical-recipes/wp-content/uploads/2022/04/nx5.jpg"><img decoding="async" src="" alt="" width="662" height="435" class="alignnone size-full wp-image-9870" data-layzr="/wp-content/uploads/2022/04/nx5.jpg"></a></p>
+</pre><p>Giving the following output:</p><p><a href="/technical-recipes/wp-content/uploads/2022/04/nx5.jpg"><img decoding="async" src="" alt="" width="662" height="435" class="alignnone size-full wp-image-9870" data-layzr="/technical-recipes/wp-content/uploads/2022/04/nx5.jpg" src="/technical-recipes/wp-content/uploads/2022/04/nx5.jpg"></a></p>
 
                 <script type="text/javascript">
                 jQuery(document).ready(function($) {

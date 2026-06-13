@@ -228,7 +228,7 @@ PersonDetails person1 = new PersonDetails
 };
 
 person1.PrintReport();
-</pre><p><a href="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_1.png"><img fetchpriority="high" decoding="async" class="alignnone size-full wp-image-9541" src="" alt="" width="448" height="284" data-layzr="/wp-content/uploads/2021/08/single_responsibility_1.png"></a></p><p>The problem is that this class has more than one responsibility. It is not just holding details of a person but printing it too.<br>
+</pre><p><a href="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_1.png"><img fetchpriority="high" decoding="async" class="alignnone size-full wp-image-9541" src="" alt="" width="448" height="284" data-layzr="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_1.png" src="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_1.png"></a></p><p>The problem is that this class has more than one responsibility. It is not just holding details of a person but printing it too.<br>
 More potential complexities will ensue if it is decided we want to add other unrelated functionality such save the person to disk too.</p><p>We overcome this by separating unrelated code.</p><pre class="brush: java; title: ; notranslate" title="">
 public class PersonDetails
 {
@@ -298,7 +298,7 @@ foreach (var monitor in lcdMonitors)
 {
     Console.WriteLine($"Name: {monitor.Name}, Type: {monitor.Type}, Screen: {monitor.Screen}");
 }
-</pre><p><a href="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_2.png"><img decoding="async" class="alignnone size-full wp-image-9545" src="" alt="" width="449" height="281" data-layzr="/wp-content/uploads/2021/08/single_responsibility_2.png"></a></p><p>Change MonitorFilter class:</p><pre class="brush: java; title: ; notranslate" title="">
+</pre><p><a href="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_2.png"><img decoding="async" class="alignnone size-full wp-image-9545" src="" alt="" width="449" height="281" data-layzr="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_2.png" src="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_2.png"></a></p><p>Change MonitorFilter class:</p><pre class="brush: java; title: ; notranslate" title="">
 public class MonitorFilter
 {
     public List&lt;ComputerMonitor&gt; FilterByType(IEnumerable&lt;ComputerMonitor&gt; monitors, MonitorType type) =&gt;
@@ -357,7 +357,7 @@ foreach (var monitor in wideScreenMonitors)
 {
     Console.WriteLine($"Name: {monitor.Name}, Type: {monitor.Type}, Screen: {monitor.Screen}");
 }
-</pre><p><a href="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_3.png"><img decoding="async" class="alignnone size-full wp-image-9547" src="" alt="" width="449" height="281" data-layzr="/wp-content/uploads/2021/08/single_responsibility_3.png"></a></p><p><strong>3. Liskov Substitution Principle</strong></p><p>A form of polymorphism. Functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it. Derived class objects should be able to replace base class objects without modifying it’s behaviour:</p><p>Example classes to calculate the sum of all numbers or just even numbers.</p><pre class="brush: java; title: ; notranslate" title="">
+</pre><p><a href="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_3.png"><img decoding="async" class="alignnone size-full wp-image-9547" src="" alt="" width="449" height="281" data-layzr="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_3.png" src="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_3.png"></a></p><p><strong>3. Liskov Substitution Principle</strong></p><p>A form of polymorphism. Functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it. Derived class objects should be able to replace base class objects without modifying it’s behaviour:</p><p>Example classes to calculate the sum of all numbers or just even numbers.</p><pre class="brush: java; title: ; notranslate" title="">
 public class SumCalculator
 {
     protected readonly int[] _numbers;
@@ -383,11 +383,11 @@ Console.WriteLine($"The sum of all the numbers: {sum.Calculate()}");
 Console.WriteLine();
 EvenNumbersSumCalculator evenSum = new EvenNumbersSumCalculator(numbers);
 Console.WriteLine($"The sum of all the even numbers: {evenSum.Calculate()}");
-</pre><p><a href="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_4.png"><img decoding="async" class="alignnone size-full wp-image-9549" src="" alt="" width="449" height="281" data-layzr="/wp-content/uploads/2021/08/single_responsibility_4.png"></a></p><p>Works fine. But of we try this:</p><pre class="brush: java; title: ; notranslate" title="">
+</pre><p><a href="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_4.png"><img decoding="async" class="alignnone size-full wp-image-9549" src="" alt="" width="449" height="281" data-layzr="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_4.png" src="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_4.png"></a></p><p>Works fine. But of we try this:</p><pre class="brush: java; title: ; notranslate" title="">
 var numbers = new int[] { 5, 7, 9, 8, 1, 6, 4 };
 SumCalculator evenSum = new EvenNumbersSumCalculator(numbers);
 Console.WriteLine($"The sum of all the even numbers: {evenSum.Calculate()}");
-</pre><p>We don’t get the result we desire:</p><p><a href="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_5.png"><img decoding="async" class="alignnone size-full wp-image-9551" src="" alt="" width="449" height="279" data-layzr="/wp-content/uploads/2021/08/single_responsibility_5.png"></a></p><p>We don’t get the expected result because our variable evenSum is of type SumCalculator which is the base class. This means that the Count method from the SumCalculator class will be executed, not the EvenNumbersSumCalculator class. Therefore our child class is not behaving as a substitute for the parent class, thereby violating the Liskov substitution principle.</p><p>We overcome this by using abstract base classes:</p><pre class="brush: java; title: ; notranslate" title="">
+</pre><p>We don’t get the result we desire:</p><p><a href="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_5.png"><img decoding="async" class="alignnone size-full wp-image-9551" src="" alt="" width="449" height="279" data-layzr="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_5.png" src="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_5.png"></a></p><p>We don’t get the expected result because our variable evenSum is of type SumCalculator which is the base class. This means that the Count method from the SumCalculator class will be executed, not the EvenNumbersSumCalculator class. Therefore our child class is not behaving as a substitute for the parent class, thereby violating the Liskov substitution principle.</p><p>We overcome this by using abstract base classes:</p><pre class="brush: java; title: ; notranslate" title="">
 public abstract class Calculator
 {
     protected readonly int[] _numbers;
@@ -595,7 +595,7 @@ empManager.AddEmployee(new Employee { Name = "Leen", Gender = Gender.Female, Pos
 empManager.AddEmployee(new Employee { Name = "Mike", Gender = Gender.Male, Position = Position.Administrator });
 var stats = new EmployeeStatistics(empManager);
 Console.WriteLine($"Number of female managers in our company is: {stats.CountFemaleManagers()}");
-</pre><p><a href="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_6.png"><img decoding="async" class="alignnone size-full wp-image-9553" src="" alt="" width="449" height="279" data-layzr="/wp-content/uploads/2021/08/single_responsibility_6.png"></a></p>
+</pre><p><a href="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_6.png"><img decoding="async" class="alignnone size-full wp-image-9553" src="" alt="" width="449" height="279" data-layzr="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_6.png" src="/technical-recipes/wp-content/uploads/2021/08/single_responsibility_6.png"></a></p>
 
                 <script type="text/javascript">
                 jQuery(document).ready(function($) {

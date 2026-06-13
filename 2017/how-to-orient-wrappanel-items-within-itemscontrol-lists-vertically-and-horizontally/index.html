@@ -207,7 +207,7 @@ h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00
 																														<div class="thecontent">
 											<p>Some prefer to display items contained inside a WPF WrapPanel so that they can be scrolled vertically, others prefer horizontal scrolling.</p><p>This post shows how to do both, by way of some simple tweaks.<br>
 <strong><br>
-Step 1: Create a new Visual Studio project</strong></p><p><a href="/technical-recipes/wp-content/uploads/2017/03/itemscontrol1.jpg"><img fetchpriority="high" decoding="async" src="" alt="" width="815" height="450" class="alignnone size-full wp-image-7666" data-layzr="/wp-content/uploads/2017/03/itemscontrol1.jpg"></a></p><p><strong>Step 2: Create a ViewModel</strong></p><p>Create a ViewModel class which we use to contain details about the items we wish to display in the WrapPanel.</p><p>This could include image data, text etc.  To keep things simple I’ll just maintain a list of strings representing the title text of each displayed item.</p><p>Right-click your project and select Add &gt; New Item.  Create our MainWindowViewModel.cs class:</p><p><a href="/technical-recipes/wp-content/uploads/2017/03/itemscontrol2.jpg"><img decoding="async" src="" alt="" width="800" height="450" class="alignnone size-full wp-image-7667" data-layzr="/wp-content/uploads/2017/03/itemscontrol2.jpg"></a></p><p><strong>MainWindowViewModel.cs</strong></p><pre class="brush: csharp; title: ; notranslate" title="">
+Step 1: Create a new Visual Studio project</strong></p><p><a href="/technical-recipes/wp-content/uploads/2017/03/itemscontrol1.jpg"><img fetchpriority="high" decoding="async" src="" alt="" width="815" height="450" class="alignnone size-full wp-image-7666" data-layzr="/technical-recipes/wp-content/uploads/2017/03/itemscontrol1.jpg" src="/technical-recipes/wp-content/uploads/2017/03/itemscontrol1.jpg"></a></p><p><strong>Step 2: Create a ViewModel</strong></p><p>Create a ViewModel class which we use to contain details about the items we wish to display in the WrapPanel.</p><p>This could include image data, text etc.  To keep things simple I’ll just maintain a list of strings representing the title text of each displayed item.</p><p>Right-click your project and select Add &gt; New Item.  Create our MainWindowViewModel.cs class:</p><p><a href="/technical-recipes/wp-content/uploads/2017/03/itemscontrol2.jpg"><img decoding="async" src="" alt="" width="800" height="450" class="alignnone size-full wp-image-7667" data-layzr="/technical-recipes/wp-content/uploads/2017/03/itemscontrol2.jpg" src="/technical-recipes/wp-content/uploads/2017/03/itemscontrol2.jpg"></a></p><p><strong>MainWindowViewModel.cs</strong></p><pre class="brush: csharp; title: ; notranslate" title="">
 using System.Collections.Generic;
 
 namespace ItemsControl
@@ -296,7 +296,7 @@ namespace ItemsControl
 
     &lt;/Grid&gt;
 &lt;/Window&gt;
-</pre><p>Running the program we can see that the items arranged that the overspill is handled via vertical scrolling:</p><p><a href="/technical-recipes/wp-content/uploads/2017/03/itemscontrol3.jpg"><img decoding="async" src="" alt="" width="400" height="400" class="alignnone size-full wp-image-7668" data-layzr="/wp-content/uploads/2017/03/itemscontrol3.jpg"></a></p><p><strong>Step 4: Update the MainWindow xaml (Horizontal scrolling) </strong> </p><p><strong>MainWindow.xaml</strong></p><pre class="brush: xml; title: ; notranslate" title="">
+</pre><p>Running the program we can see that the items arranged that the overspill is handled via vertical scrolling:</p><p><a href="/technical-recipes/wp-content/uploads/2017/03/itemscontrol3.jpg"><img decoding="async" src="" alt="" width="400" height="400" class="alignnone size-full wp-image-7668" data-layzr="/technical-recipes/wp-content/uploads/2017/03/itemscontrol3.jpg" src="/technical-recipes/wp-content/uploads/2017/03/itemscontrol3.jpg"></a></p><p><strong>Step 4: Update the MainWindow xaml (Horizontal scrolling) </strong> </p><p><strong>MainWindow.xaml</strong></p><pre class="brush: xml; title: ; notranslate" title="">
 &lt;Window x:Class="ItemsControl.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -351,7 +351,7 @@ namespace ItemsControl
 
     &lt;/Grid&gt;
 &lt;/Window&gt;
-</pre><p>This time the overspill is handled via horizontal scrolling:</p><p><a href="/technical-recipes/wp-content/uploads/2017/03/itemscontrol4.jpg"><img decoding="async" src="" alt="" width="400" height="400" class="alignnone size-full wp-image-7669" data-layzr="/wp-content/uploads/2017/03/itemscontrol4.jpg"></a></p>
+</pre><p>This time the overspill is handled via horizontal scrolling:</p><p><a href="/technical-recipes/wp-content/uploads/2017/03/itemscontrol4.jpg"><img decoding="async" src="" alt="" width="400" height="400" class="alignnone size-full wp-image-7669" data-layzr="/technical-recipes/wp-content/uploads/2017/03/itemscontrol4.jpg" src="/technical-recipes/wp-content/uploads/2017/03/itemscontrol4.jpg"></a></p>
 
                 <script type="text/javascript">
                 jQuery(document).ready(function($) {

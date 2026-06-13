@@ -205,7 +205,7 @@ h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00
 											</header><!--.headline_area-->
 									<div class="post-single-content box mark-links entry-content">
 																														<div class="thecontent">
-											<p>A post describing how to bind an image such as a bitmap or png file to your viewmodel.  </p><p>In Visual Studio create a new WPF project:</p><p><a href="/technical-recipes/wp-content/uploads/2015/11/mvvm2.jpg"><img fetchpriority="high" decoding="async" src="" alt="mvvm2" width="800" height="473" class="alignnone size-full wp-image-6484" data-layzr="/wp-content/uploads/2015/11/mvvm2.jpg"></a><br>
+											<p>A post describing how to bind an image such as a bitmap or png file to your viewmodel.  </p><p>In Visual Studio create a new WPF project:</p><p><a href="/technical-recipes/wp-content/uploads/2015/11/mvvm2.jpg"><img fetchpriority="high" decoding="async" src="" alt="mvvm2" width="800" height="473" class="alignnone size-full wp-image-6484" data-layzr="/technical-recipes/wp-content/uploads/2015/11/mvvm2.jpg" src="/technical-recipes/wp-content/uploads/2015/11/mvvm2.jpg"></a><br>
 <span id="more-6479"></span><br>
 Observe that this creates the initial default XAML for the main window as shown:</p><p><strong>MainWindow.xaml</strong></p><pre class="brush: xml; title: ; notranslate" title="">
 &lt;Window x:Class="MVVM.MainWindow"
@@ -216,7 +216,7 @@ Observe that this creates the initial default XAML for the main window as shown:
         
     &lt;/Grid&gt;
 &lt;/Window&gt;
-</pre><p>Which when running the program produces the following blank window:</p><p><strong>Initial Window</strong></p><p><a href="/technical-recipes/wp-content/uploads/2015/11/mvvm1.jpg"><img decoding="async" src="" alt="mvvm1" width="326" height="234" class="alignnone size-full wp-image-6483" data-layzr="/wp-content/uploads/2015/11/mvvm1.jpg"></a></p><p>Now we need to add the ViewModel class, as is used in the Model-View ViewModel pattern. In Visual Studio add a new class representing the ViewModel for our main window XAML and call it MainWindowViewModel.cs:</p><p><a href="/technical-recipes/wp-content/uploads/2015/11/mvvm3.png"><img decoding="async" src="" alt="mvvm3" width="800" height="450" class="alignnone size-full wp-image-6487" data-layzr="/wp-content/uploads/2015/11/mvvm3.png"></a></p><p>And configure the code so we have a property for returning the bitmap image in a format that is suitable for our WPF.  Also in this class is a static method for converting a general bitmap format into a BitmapSource type:</p><pre class="brush: csharp; title: ; notranslate" title="">
+</pre><p>Which when running the program produces the following blank window:</p><p><strong>Initial Window</strong></p><p><a href="/technical-recipes/wp-content/uploads/2015/11/mvvm1.jpg"><img decoding="async" src="" alt="mvvm1" width="326" height="234" class="alignnone size-full wp-image-6483" data-layzr="/technical-recipes/wp-content/uploads/2015/11/mvvm1.jpg" src="/technical-recipes/wp-content/uploads/2015/11/mvvm1.jpg"></a></p><p>Now we need to add the ViewModel class, as is used in the Model-View ViewModel pattern. In Visual Studio add a new class representing the ViewModel for our main window XAML and call it MainWindowViewModel.cs:</p><p><a href="/technical-recipes/wp-content/uploads/2015/11/mvvm3.png"><img decoding="async" src="" alt="mvvm3" width="800" height="450" class="alignnone size-full wp-image-6487" data-layzr="/technical-recipes/wp-content/uploads/2015/11/mvvm3.png" src="/technical-recipes/wp-content/uploads/2015/11/mvvm3.png"></a></p><p>And configure the code so we have a property for returning the bitmap image in a format that is suitable for our WPF.  Also in this class is a static method for converting a general bitmap format into a BitmapSource type:</p><pre class="brush: csharp; title: ; notranslate" title="">
 using System;
 using System.Drawing.Imaging;
 using System.Drawing;
@@ -253,7 +253,7 @@ namespace MVVM
       }
    }
 }
-</pre><p>If you have trouble compiling the source make sure all the references are installed, particularly System.Drawing:</p><p><a href="/technical-recipes/wp-content/uploads/2015/11/mvvm4.jpg"><img decoding="async" src="" alt="mvvm4" width="467" height="390" class="alignnone size-full wp-image-6489" data-layzr="/wp-content/uploads/2015/11/mvvm4.jpg"></a></p><p>And of course be sure that your program is able to find the location of the image file that we are binding to, in my example it is “C:\dump\bulb.png”:</p><pre class="brush: csharp; title: ; notranslate" title="">
+</pre><p>If you have trouble compiling the source make sure all the references are installed, particularly System.Drawing:</p><p><a href="/technical-recipes/wp-content/uploads/2015/11/mvvm4.jpg"><img decoding="async" src="" alt="mvvm4" width="467" height="390" class="alignnone size-full wp-image-6489" data-layzr="/technical-recipes/wp-content/uploads/2015/11/mvvm4.jpg" src="/technical-recipes/wp-content/uploads/2015/11/mvvm4.jpg"></a></p><p>And of course be sure that your program is able to find the location of the image file that we are binding to, in my example it is “C:\dump\bulb.png”:</p><pre class="brush: csharp; title: ; notranslate" title="">
 public MainWindowViewModel()
 {  
     Bitmap bitmap = (Bitmap) Bitmap.FromFile(@"c:\dump\bulb.png", true);
@@ -281,7 +281,7 @@ public MainWindowViewModel()
         &lt;/Button&gt;
     &lt;/Grid&gt;
 &lt;/Window&gt;
-</pre><p>Compiling and running this gives the following Window, this time with button containing the XAML-bounded image:</p><p><a href="/technical-recipes/wp-content/uploads/2015/11/mvvm5.jpg"><img decoding="async" src="" alt="mvvm5" width="326" height="234" class="alignnone size-full wp-image-6493" data-layzr="/wp-content/uploads/2015/11/mvvm5.jpg"></a></p><p>Download Visual Studio 2010 project from here:</p><p><a href="/Downloads/MVVM.zip">/Downloads/MVVM.zip</a></p>
+</pre><p>Compiling and running this gives the following Window, this time with button containing the XAML-bounded image:</p><p><a href="/technical-recipes/wp-content/uploads/2015/11/mvvm5.jpg"><img decoding="async" src="" alt="mvvm5" width="326" height="234" class="alignnone size-full wp-image-6493" data-layzr="/technical-recipes/wp-content/uploads/2015/11/mvvm5.jpg" src="/technical-recipes/wp-content/uploads/2015/11/mvvm5.jpg"></a></p><p>Download Visual Studio 2010 project from here:</p><p><a href="/Downloads/MVVM.zip">/Downloads/MVVM.zip</a></p>
 
                 <script type="text/javascript">
                 jQuery(document).ready(function($) {

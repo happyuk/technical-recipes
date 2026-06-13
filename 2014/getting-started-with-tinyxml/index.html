@@ -206,7 +206,7 @@ h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00
 									<div class="post-single-content box mark-links entry-content">
 																														<div class="thecontent">
 											<p><strong>Step 1: Download and install TinyXML</strong></p><p>Download and extract the library from</p><p><a href="http://www.grinninglizard.com/tinyxml/">http://www.grinninglizard.com/tinyxml/</a></p><p>TinyXML source files as shown:<br>
-<span id="more-4804"></span></p><p><a href="/technical-recipes/wp-content/uploads/2014/05/TinyXml1.jpg"><img fetchpriority="high" decoding="async" src="" alt="TinyXml1" width="617" height="477" class="alignnone size-full wp-image-4805" data-layzr="/wp-content/uploads/2014/05/TinyXml1.jpg"></a></p><p><strong>Step 2: Configure Visual Studio</strong></p><p>In Visual Studio select File &gt; New &gt; Project.  Select Empty Project:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/TinyXml2.jpg"><img decoding="async" src="" alt="TinyXml2" width="955" height="616" class="alignnone size-full wp-image-4806" data-layzr="/wp-content/uploads/2014/05/TinyXml2.jpg"></a></p><p>Then copy the following files to your project folder</p><p><code>•	tinystr.h<br>
+<span id="more-4804"></span></p><p><a href="/technical-recipes/wp-content/uploads/2014/05/TinyXml1.jpg"><img fetchpriority="high" decoding="async" src="" alt="TinyXml1" width="617" height="477" class="alignnone size-full wp-image-4805" data-layzr="/technical-recipes/wp-content/uploads/2014/05/TinyXml1.jpg" src="/technical-recipes/wp-content/uploads/2014/05/TinyXml1.jpg"></a></p><p><strong>Step 2: Configure Visual Studio</strong></p><p>In Visual Studio select File &gt; New &gt; Project.  Select Empty Project:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/TinyXml2.jpg"><img decoding="async" src="" alt="TinyXml2" width="955" height="616" class="alignnone size-full wp-image-4806" data-layzr="/technical-recipes/wp-content/uploads/2014/05/TinyXml2.jpg" src="/technical-recipes/wp-content/uploads/2014/05/TinyXml2.jpg"></a></p><p>Then copy the following files to your project folder</p><p><code>•	tinystr.h<br>
 •	tinyxml.h<br>
 •	tinyxmlparser.cpp<br>
 •	tinystr.cpp<br>
@@ -266,7 +266,7 @@ if( NULL != l_pRootElement )
 		}
 	}
 }
-</pre><p>Giving the following output:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/TinyXml3.jpg"><img decoding="async" src="" alt="TinyXml3" width="293" height="163" class="alignnone size-full wp-image-4814" data-layzr="/wp-content/uploads/2014/05/TinyXml3.jpg"></a></p><p>As an alternative, handles have been introduced to make the reading of XML values little cleaner.  </p><p>Thus our code for reading the set of persons reduces to:</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>Giving the following output:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/TinyXml3.jpg"><img decoding="async" src="" alt="TinyXml3" width="293" height="163" class="alignnone size-full wp-image-4814" data-layzr="/technical-recipes/wp-content/uploads/2014/05/TinyXml3.jpg" src="/technical-recipes/wp-content/uploads/2014/05/TinyXml3.jpg"></a></p><p>As an alternative, handles have been introduced to make the reading of XML values little cleaner.  </p><p>Thus our code for reading the set of persons reduces to:</p><pre class="brush: cpp; title: ; notranslate" title="">
 TiXmlDocument doc( "test1.xml" );
 doc.LoadFile();
 	
@@ -294,7 +294,7 @@ while( l_pPerson )
 
 	l_pPerson = l_pPerson-&gt;NextSiblingElement( "person" );
 }
-</pre><p>That gives us exactly the same result but with using less code:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/TinyXml4.jpg"><img decoding="async" src="" alt="TinyXml4" width="301" height="163" class="alignnone size-full wp-image-4815" data-layzr="/wp-content/uploads/2014/05/TinyXml4.jpg"></a></p><p><a href="/Downloads/TinyXML.zip">Download the Visual Studio 2010 project from here</a>.<br>
+</pre><p>That gives us exactly the same result but with using less code:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/TinyXml4.jpg"><img decoding="async" src="" alt="TinyXml4" width="301" height="163" class="alignnone size-full wp-image-4815" data-layzr="/technical-recipes/wp-content/uploads/2014/05/TinyXml4.jpg" src="/technical-recipes/wp-content/uploads/2014/05/TinyXml4.jpg"></a></p><p><a href="/Downloads/TinyXML.zip">Download the Visual Studio 2010 project from here</a>.<br>
 <strong><br>
 Programmatically create and save an XML</strong></p><p>Same example as given at the <a href="http://www.grinninglizard.com/tinyxmldocs/tutorial0.html">Grinning Lizard</a> site, “Writing a document to a file”:</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include "tinyxml.h"	
@@ -445,7 +445,7 @@ int main(void)
                 </article><!--.post.excerpt-->
     			    			<article class="latestPost excerpt  ">
 					<a href="/2012/applying-c-implementations-of-2-opt-to-travelling-salesman-problems/" title="C++ Implementation of 2-opt to the “Att48” Travelling Salesman Problem" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img width="130" height="120" src="" class="attachment-truepixel-related size-truepixel-related wp-post-image" alt="C++ Implementation of 2-opt to the “Att48” Travelling Salesman Problem" title="C++ Implementation of 2-opt to the “Att48” Travelling Salesman Problem" decoding="async" srcset="/wp-content/uploads/2012/04/Att48_nn2.jpg 642w, /wp-content/uploads/2012/04/Att48_nn2-300x277.jpg 300w" sizes="(max-width: 130px) 100vw, 130px" data-layzr="/wp-content/uploads/2012/04/Att48_nn2.jpg"></div>                                                <h4 class="title front-view-title">C++ Implementation of 2-opt to the “Att48” Travelling Salesman Problem</h4>
+                                                    <div class="featured-thumbnail"><img width="130" height="120" src="" class="attachment-truepixel-related size-truepixel-related wp-post-image" alt="C++ Implementation of 2-opt to the “Att48” Travelling Salesman Problem" title="C++ Implementation of 2-opt to the “Att48” Travelling Salesman Problem" decoding="async" srcset="/wp-content/uploads/2012/04/Att48_nn2.jpg 642w, /wp-content/uploads/2012/04/Att48_nn2-300x277.jpg 300w" sizes="(max-width: 130px) 100vw, 130px" data-layzr="/technical-recipes/wp-content/uploads/2012/04/Att48_nn2.jpg" src="/technical-recipes/wp-content/uploads/2012/04/Att48_nn2.jpg"></div>                                                <h4 class="title front-view-title">C++ Implementation of 2-opt to the “Att48” Travelling Salesman Problem</h4>
 					</a>
                 </article><!--.post.excerpt-->
     			    			<article class="latestPost excerpt  last">

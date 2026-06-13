@@ -271,7 +271,7 @@ int main()
 
 	return 0;
 }
-</pre><p>All three techniques giving exactly the same output as shown:</p><p><a href="/technical-recipes/wp-content/uploads/2014/06/SystemTime.jpg"><img fetchpriority="high" decoding="async" src="" alt="SystemTime" width="453" height="163" class="alignnone size-full wp-image-4955" data-layzr="/wp-content/uploads/2014/06/SystemTime.jpg"></a></p><p>Here is another example whereby I take a <code>SYSTEMTIME</code> as input and output it to a stream in a given date/time format such as “Mon Oct 13 22:21:12 2014”.  I create a class called <code>TimeFormat </code>which is constructed from the format string and SYSTEMTIME, and outputs the desired output time format via an overloaded insertion (<code>) operator that can recognize an <code>ostream</code> object on the left and a <code>TimeFormat</code> object on the right.  The overloaded TimeFormat</code> so it can access the private data within the <code>TimeFormat</code>object:</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>All three techniques giving exactly the same output as shown:</p><p><a href="/technical-recipes/wp-content/uploads/2014/06/SystemTime.jpg"><img fetchpriority="high" decoding="async" src="" alt="SystemTime" width="453" height="163" class="alignnone size-full wp-image-4955" data-layzr="/technical-recipes/wp-content/uploads/2014/06/SystemTime.jpg" src="/technical-recipes/wp-content/uploads/2014/06/SystemTime.jpg"></a></p><p>Here is another example whereby I take a <code>SYSTEMTIME</code> as input and output it to a stream in a given date/time format such as “Mon Oct 13 22:21:12 2014”.  I create a class called <code>TimeFormat </code>which is constructed from the format string and SYSTEMTIME, and outputs the desired output time format via an overloaded insertion (<code>) operator that can recognize an <code>ostream</code> object on the left and a <code>TimeFormat</code> object on the right.  The overloaded TimeFormat</code> so it can access the private data within the <code>TimeFormat</code>object:</p><pre class="brush: cpp; title: ; notranslate" title="">
 friend std::ostream&amp; operator &lt;&lt;( std::ostream&amp;, TimeFormat const &amp; );
 </pre><p>Full code listing as follows:</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include &lt;iostream&gt;
@@ -335,7 +335,7 @@ int main()
 	GetSystemTime( &amp;stSystemDate );
 	std::cout &lt;&lt; TimeFormat( TIME_PATTERN, stSystemDate );
 }
-</pre><p>Which will give the following output:</p><p><a href="/technical-recipes/wp-content/uploads/2014/06/systemtime21.jpg"><img decoding="async" src="" alt="systemtime2" width="501" height="211" class="alignnone size-full wp-image-5346" data-layzr="/wp-content/uploads/2014/06/systemtime21.jpg"></a></p>
+</pre><p>Which will give the following output:</p><p><a href="/technical-recipes/wp-content/uploads/2014/06/systemtime21.jpg"><img decoding="async" src="" alt="systemtime2" width="501" height="211" class="alignnone size-full wp-image-5346" data-layzr="/technical-recipes/wp-content/uploads/2014/06/systemtime21.jpg" src="/technical-recipes/wp-content/uploads/2014/06/systemtime21.jpg"></a></p>
 
                 <script type="text/javascript">
                 jQuery(document).ready(function($) {
@@ -380,7 +380,7 @@ int main()
                 </article><!--.post.excerpt-->
     			    			<article class="latestPost excerpt  last">
 					<a href="/2014/making-an-editable-mfc-list-control/" title="An editable MFC List Control" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img width="163" height="120" src="" class="attachment-truepixel-related size-truepixel-related wp-post-image" alt="An editable MFC List Control" title="An editable MFC List Control" decoding="async" srcset="/wp-content/uploads/2014/05/editableList12.jpg 486w, /wp-content/uploads/2014/05/editableList12-300x220.jpg 300w" sizes="(max-width: 163px) 100vw, 163px" data-layzr="/wp-content/uploads/2014/05/editableList12.jpg"></div>                                                <h4 class="title front-view-title">An editable MFC List Control</h4>
+                                                    <div class="featured-thumbnail"><img width="163" height="120" src="" class="attachment-truepixel-related size-truepixel-related wp-post-image" alt="An editable MFC List Control" title="An editable MFC List Control" decoding="async" srcset="/wp-content/uploads/2014/05/editableList12.jpg 486w, /wp-content/uploads/2014/05/editableList12-300x220.jpg 300w" sizes="(max-width: 163px) 100vw, 163px" data-layzr="/technical-recipes/wp-content/uploads/2014/05/editableList12.jpg" src="/technical-recipes/wp-content/uploads/2014/05/editableList12.jpg"></div>                                                <h4 class="title front-view-title">An editable MFC List Control</h4>
 					</a>
                 </article><!--.post.excerpt-->
     			</div></div>    		<!-- .related-posts -->

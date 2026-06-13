@@ -349,7 +349,7 @@ int main()
       
         return 0;    
     }  
-</pre><p>So that the string <code>txt</code> initialized to ” The  quick brown fox         ” will be tokenized as follows:</p><p><a href="/technical-recipes/wp-content/uploads/2011/08/tokenize.jpg"><img decoding="async" src="" alt="" title="tokenize" width="245" height="155" class="alignnone size-full wp-image-2519" data-layzr="/wp-content/uploads/2011/08/tokenize.jpg"></a></p><p><strong>Extracting a filename/directory from a Windows Path<br>
+</pre><p>So that the string <code>txt</code> initialized to ” The  quick brown fox         ” will be tokenized as follows:</p><p><a href="/technical-recipes/wp-content/uploads/2011/08/tokenize.jpg"><img decoding="async" src="" alt="" title="tokenize" width="245" height="155" class="alignnone size-full wp-image-2519" data-layzr="/technical-recipes/wp-content/uploads/2011/08/tokenize.jpg" src="/technical-recipes/wp-content/uploads/2011/08/tokenize.jpg"></a></p><p><strong>Extracting a filename/directory from a Windows Path<br>
 </strong></p><pre class="brush: cpp; title: ; notranslate" title="">
 // Example Windows file path  
 string fullPath = "C:\\MyFolder\\MyFile.txt";    
@@ -391,7 +391,7 @@ int main()
   
     return 0;    
 } 
-</pre><p>Which produces the output:</p><p><a href="/technical-recipes/wp-content/uploads/2011/08/NeatStrings1.jpg"><img decoding="async" src="" alt="NeatStrings1" width="213" height="155" class="aligncenter size-full wp-image-5904" data-layzr="/wp-content/uploads/2011/08/NeatStrings1.jpg"></a></p><p><strong>Using ‘find_first_not_of’ to detect string characteristics</strong></p><p>A nifty use of the <code>find_first_not_of</code> algorithm to detect certain characteristics within strings.  Suppose we want to quickly and easily check if a string only contains ‘0’ or ‘1’ for example, then <a href="http://advancedcppwithexamples.blogspot.co.uk/2009/11/creating-specialised-strings-using.html">this blog</a> shows you how.  A cut-down version is shown here:</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>Which produces the output:</p><p><a href="/technical-recipes/wp-content/uploads/2011/08/NeatStrings1.jpg"><img decoding="async" src="" alt="NeatStrings1" width="213" height="155" class="aligncenter size-full wp-image-5904" data-layzr="/technical-recipes/wp-content/uploads/2011/08/NeatStrings1.jpg" src="/technical-recipes/wp-content/uploads/2011/08/NeatStrings1.jpg"></a></p><p><strong>Using ‘find_first_not_of’ to detect string characteristics</strong></p><p>A nifty use of the <code>find_first_not_of</code> algorithm to detect certain characteristics within strings.  Suppose we want to quickly and easily check if a string only contains ‘0’ or ‘1’ for example, then <a href="http://advancedcppwithexamples.blogspot.co.uk/2009/11/creating-specialised-strings-using.html">this blog</a> shows you how.  A cut-down version is shown here:</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include &lt;iostream&gt;  
 #include &lt;string&gt;  
   

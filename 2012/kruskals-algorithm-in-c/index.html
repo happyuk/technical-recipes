@@ -336,7 +336,7 @@ public:
     bool end() const { return i &gt;= G.V(); }
 };
 </pre><p><strong><br>
-Example</strong></p><p>Consider the following 11-node network showing the network nodes and the weight values of the links connecting them:</p><p><a href="/technical-recipes/wp-content/uploads/2012/07/Kruskal2.jpg"><img fetchpriority="high" decoding="async" src="" alt="" title="Kruskal" width="542" height="320" class="alignnone size-full wp-image-2865" data-layzr="/wp-content/uploads/2012/07/Kruskal2.jpg"></a></p><p>Which is built using multiple calls to the <code>insert </code>API as follows:</p><pre class="brush: cpp; title: ; notranslate" title="">
+Example</strong></p><p>Consider the following 11-node network showing the network nodes and the weight values of the links connecting them:</p><p><a href="/technical-recipes/wp-content/uploads/2012/07/Kruskal2.jpg"><img fetchpriority="high" decoding="async" src="" alt="" title="Kruskal" width="542" height="320" class="alignnone size-full wp-image-2865" data-layzr="/technical-recipes/wp-content/uploads/2012/07/Kruskal2.jpg" src="/technical-recipes/wp-content/uploads/2012/07/Kruskal2.jpg"></a></p><p>Which is built using multiple calls to the <code>insert </code>API as follows:</p><pre class="brush: cpp; title: ; notranslate" title="">
 DenseGRAPH&lt;Edge&gt;* graph = new DenseGRAPH&lt;Edge&gt;( 11, true ); 
 
 graph-&gt;insert( EdgePtr( new Edge( 0, 1, 1.0 ) ) );    
@@ -395,7 +395,7 @@ void KruskalMST( DenseGRAPH&lt;Edge&gt;* graph, std::vector&lt;EdgePtr&gt;&amp; 
 		}
 	}
 }
-</pre><p>Applying Kruskal then results in the following minimal spanning tree:</p><p><a href="/technical-recipes/wp-content/uploads/2012/07/Kruskal11.jpg"><img decoding="async" src="" alt="" title="Kruskal1" width="545" height="327" class="alignnone size-full wp-image-2866" data-layzr="/wp-content/uploads/2012/07/Kruskal11.jpg"></a></p><p>Console output as follows:</p><p><a href="/technical-recipes/wp-content/uploads/2012/07/Kruskal3.jpg"><img decoding="async" src="" alt="Kruskal" width="365" height="259" class="alignnone size-full wp-image-5622" data-layzr="/wp-content/uploads/2012/07/Kruskal3.jpg"></a></p><p>C++ source code downloadable from <a href="/Downloads/Kruskal.zip">here</a>.</p>
+</pre><p>Applying Kruskal then results in the following minimal spanning tree:</p><p><a href="/technical-recipes/wp-content/uploads/2012/07/Kruskal11.jpg"><img decoding="async" src="" alt="" title="Kruskal1" width="545" height="327" class="alignnone size-full wp-image-2866" data-layzr="/technical-recipes/wp-content/uploads/2012/07/Kruskal11.jpg" src="/technical-recipes/wp-content/uploads/2012/07/Kruskal11.jpg"></a></p><p>Console output as follows:</p><p><a href="/technical-recipes/wp-content/uploads/2012/07/Kruskal3.jpg"><img decoding="async" src="" alt="Kruskal" width="365" height="259" class="alignnone size-full wp-image-5622" data-layzr="/technical-recipes/wp-content/uploads/2012/07/Kruskal3.jpg" src="/technical-recipes/wp-content/uploads/2012/07/Kruskal3.jpg"></a></p><p>C++ source code downloadable from <a href="/Downloads/Kruskal.zip">here</a>.</p>
 
                 <script type="text/javascript">
                 jQuery(document).ready(function($) {

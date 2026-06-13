@@ -205,7 +205,7 @@ h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00
 											</header><!--.headline_area-->
 									<div class="post-single-content box mark-links entry-content">
 																														<div class="thecontent">
-											<p>A simple console app to demonstrate this.</p><p>After creating your Visual Studio application, console or otherwise, make sure the System.Web.Extension reference is added:</p><p><a href="/technical-recipes/wp-content/uploads/2018/03/json1.png"><img fetchpriority="high" decoding="async" src="" alt="" width="700" height="350" class="alignnone size-full wp-image-8269" data-layzr="/wp-content/uploads/2018/03/json1.png"></a></p><p>Suppose we have an object we wish to serialize/deserialize, such as an instance of this class:</p><pre class="brush: csharp; title: ; notranslate" title="">
+											<p>A simple console app to demonstrate this.</p><p>After creating your Visual Studio application, console or otherwise, make sure the System.Web.Extension reference is added:</p><p><a href="/technical-recipes/wp-content/uploads/2018/03/json1.png"><img fetchpriority="high" decoding="async" src="" alt="" width="700" height="350" class="alignnone size-full wp-image-8269" data-layzr="/technical-recipes/wp-content/uploads/2018/03/json1.png" src="/technical-recipes/wp-content/uploads/2018/03/json1.png"></a></p><p>Suppose we have an object we wish to serialize/deserialize, such as an instance of this class:</p><pre class="brush: csharp; title: ; notranslate" title="">
 public class Shared
 {
    public List&lt;string&gt; Emails { get; set; }
@@ -242,7 +242,7 @@ namespace Json
 }
 </pre><p>On debugging and inspecting the text outputs, see that the object is serialized as follows, by inspecting the string returned by the serializer in the text viewer.</p><p>This is by inspecting the value returned by the following line during debugging:</p><pre class="brush: csharp; title: ; notranslate" title="">
 var str = serializer.Serialize(shared);
-</pre><p><a href="/technical-recipes/wp-content/uploads/2018/03/json2-1.png"><img decoding="async" src="" alt="" width="640" height="600" class="alignnone size-full wp-image-8274" data-layzr="/wp-content/uploads/2018/03/json2-1.png"></a></p><p>And on deserialization, by stepping through the last line of the code, see that an instance of the original Shared object is returned, as shown:</p><p><a href="/technical-recipes/wp-content/uploads/2018/03/json3.png"><img decoding="async" src="" alt="" width="661" height="278" class="alignnone size-full wp-image-8275" data-layzr="/wp-content/uploads/2018/03/json3.png"></a></p>
+</pre><p><a href="/technical-recipes/wp-content/uploads/2018/03/json2-1.png"><img decoding="async" src="" alt="" width="640" height="600" class="alignnone size-full wp-image-8274" data-layzr="/technical-recipes/wp-content/uploads/2018/03/json2-1.png" src="/technical-recipes/wp-content/uploads/2018/03/json2-1.png"></a></p><p>And on deserialization, by stepping through the last line of the code, see that an instance of the original Shared object is returned, as shown:</p><p><a href="/technical-recipes/wp-content/uploads/2018/03/json3.png"><img decoding="async" src="" alt="" width="661" height="278" class="alignnone size-full wp-image-8275" data-layzr="/technical-recipes/wp-content/uploads/2018/03/json3.png" src="/technical-recipes/wp-content/uploads/2018/03/json3.png"></a></p>
 
                 <script type="text/javascript">
                 jQuery(document).ready(function($) {
