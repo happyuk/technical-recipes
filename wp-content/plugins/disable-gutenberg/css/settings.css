@@ -18,7 +18,7 @@
 .wp-admin .disable-gutenberg-dismiss-notice { float: right; }
 
 .wp-admin .notice-lh p { line-height: 1.8; }
-.wp-admin .notice-custom { background-image: url(/wp-content/plugins/disable-gutenberg/img/sun-icon.png); background-repeat: no-repeat; background-position: left 5px center; background-size: 60px 40px; }
+.wp-admin .notice-custom { background-image: url(/technical-recipes/wp-content/plugins/disable-gutenberg/img/sun-icon.png); background-repeat: no-repeat; background-position: left 5px center; background-size: 60px 40px; }
 .wp-admin .notice-custom p { margin: 15px 0; padding-left: 60px; line-height: 1.6; }
 .wp-admin .notice-link { display: inline-block; margin-right: 5px; }
 @media (max-width: 782px) {

@@ -39,17 +39,17 @@
  */
 
 .ws_edit_link {
-	background: transparent url(/wp-content/plugins/admin-menu-editor/images/arrows.png) no-repeat center 3px;
+	background: transparent url(/technical-recipes/wp-content/plugins/admin-menu-editor/images/arrows.png) no-repeat center 3px;
 	overflow: hidden;
 	text-indent:-999em;
 }
 
 a.ws_edit_link:hover {
-	background-image: url(/wp-content/plugins/admin-menu-editor/images/arrows-dark.png);
+	background-image: url(/technical-recipes/wp-content/plugins/admin-menu-editor/images/arrows-dark.png);
 }
 
 .ws_edit_link:active {
-	background-image: url(/wp-content/plugins/admin-menu-editor/images/arrows-dark.png);
+	background-image: url(/technical-recipes/wp-content/plugins/admin-menu-editor/images/arrows-dark.png);
 }
 
 .ws_edit_link_expanded {
@@ -78,11 +78,11 @@ a.ws_edit_link:hover {
 
 .ws_menu_separator .ws_item_head {
 	min-height: 22px;
-	background: #F9F9F9 url("/wp-content/plugins/admin-menu-editor/images/menu-arrows.png") no-repeat 4px 8px;
+	background: #F9F9F9 url("/technical-recipes/wp-content/plugins/admin-menu-editor/images/menu-arrows.png") no-repeat 4px 8px;
 }
 
 .ws_menu_separator.ws_active .ws_item_head {
-	background: #999 url("/wp-content/plugins/admin-menu-editor/images/menu-arrows.png") no-repeat 4px 8px;
+	background: #999 url("/technical-recipes/wp-content/plugins/admin-menu-editor/images/menu-arrows.png") no-repeat 4px 8px;
 }
 
 /* Offset the separator image in actor view to prevent it from overlapping the checkbox.  */
@@ -129,11 +129,11 @@ a.ws_edit_link:hover {
 /* hidden separators */
 .ws_is_actor_view .ws_menu_separator.ws_is_hidden_for_actor .ws_item_head {
 	/* Override gradient with the separator image. */
-	background: url("/wp-content/plugins/admin-menu-editor/images/menu-arrows.png") no-repeat 25px 8px;
+	background: url("/technical-recipes/wp-content/plugins/admin-menu-editor/images/menu-arrows.png") no-repeat 25px 8px;
 }
 /* selected hidden separators */
 .ws_menu_separator.ws_is_hidden_for_actor.ws_active .ws_item_head {
-	background: #aaa url("/wp-content/plugins/admin-menu-editor/images/menu-arrows.png") no-repeat 25px 8px;
+	background: #aaa url("/technical-recipes/wp-content/plugins/admin-menu-editor/images/menu-arrows.png") no-repeat 25px 8px;
 }
 
 

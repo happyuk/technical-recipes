@@ -366,7 +366,7 @@ body.rtl .ws_container {
   top: -1px;
   width: 19px;
   height: 30px;
-  background: transparent url("/wp-content/plugins/admin-menu-editor/images/submenu-tip.png") no-repeat center;
+  background: transparent url("/technical-recipes/wp-content/plugins/admin-menu-editor/images/submenu-tip.png") no-repeat center;
 }
 
 .ws_container.ws_menu_separator.ws_active::after,
@@ -444,14 +444,14 @@ body.rtl .ws_container {
   width: 16px;
   height: 16px;
   vertical-align: top;
-  background: url("/wp-content/plugins/admin-menu-editor/images/pencil_delete_gray.png") no-repeat center;
+  background: url("/technical-recipes/wp-content/plugins/admin-menu-editor/images/pencil_delete_gray.png") no-repeat center;
 }
 .ame-is-wp53-plus .ws_reset_button {
   margin-top: 6px;
 }
 
 .ws_reset_button:hover {
-  background-image: url("/wp-content/plugins/admin-menu-editor/images/pencil_delete.png");
+  background-image: url("/technical-recipes/wp-content/plugins/admin-menu-editor/images/pencil_delete.png");
 }
 
 .ws_input_default input,
@@ -631,18 +631,18 @@ to accommodate the drop-down button.
 
 /* user-created items */
 .ws_custom_flag {
-  background-image: url("/wp-content/plugins/admin-menu-editor/images/page-add.png");
+  background-image: url("/technical-recipes/wp-content/plugins/admin-menu-editor/images/page-add.png");
 }
 
 /* unused items - those that are in the default menu but not in the custom one */
 .ws_unused_flag {
-  background-image: url("/wp-content/plugins/admin-menu-editor/images/new-menu-badge.png");
+  background-image: url("/technical-recipes/wp-content/plugins/admin-menu-editor/images/new-menu-badge.png");
   width: 31px;
 }
 
 /* hidden items */
 .ws_hidden_flag {
-  background-image: url("/wp-content/plugins/admin-menu-editor/images/page-invisible.png");
+  background-image: url("/technical-recipes/wp-content/plugins/admin-menu-editor/images/page-invisible.png");
 }
 
 /* items with custom permissions for the selected actor */
@@ -660,7 +660,7 @@ to accommodate the drop-down button.
 
 /* Hidden from everyone except the current user and Super Admin. */
 .ws_hidden_from_others_flag {
-  background-image: url("/wp-content/plugins/admin-menu-editor/images/font-awesome/eye-slash.png");
+  background-image: url("/technical-recipes/wp-content/plugins/admin-menu-editor/images/font-awesome/eye-slash.png");
 }
 
 /* Item visibility can't be determined because it depends on a meta capability. */
@@ -1143,7 +1143,7 @@ A "wp" prefix has been added to avoid name conflicts with other code in this plu
   font-weight: bold;
 }
 .settings_page_menu_editor .ui-button.ui-dialog-titlebar-close {
-  background: #86A7E3 url(/wp-content/plugins/admin-menu-editor/images/x.png) no-repeat center;
+  background: #86A7E3 url(/technical-recipes/wp-content/plugins/admin-menu-editor/images/x.png) no-repeat center;
   width: 22px;
   height: 22px;
   display: block;
@@ -1154,7 +1154,7 @@ A "wp" prefix has been added to avoid name conflicts with other code in this plu
   -webkit-border-radius: 3px;
 }
 .settings_page_menu_editor .ui-dialog-titlebar-close:hover {
-  /*background-image: url(/wp-content/plugins/admin-menu-editor/images/x-light.png);*/
+  /*background-image: url(/technical-recipes/wp-content/plugins/admin-menu-editor/images/x-light.png);*/
   background-color: #a6c2f5;
 }
 #export_dialog .ws_dialog_panel {

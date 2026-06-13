@@ -16,19 +16,19 @@
 }
 
 .ws_menu_separator {
-  background: #F9F9F9 url("/wp-content/plugins/admin-menu-editor/images/menu-arrows.png") no-repeat 4px 8px;
+  background: #F9F9F9 url("/technical-recipes/wp-content/plugins/admin-menu-editor/images/menu-arrows.png") no-repeat 4px 8px;
   border-color: #d9d9d9;
 }
 
 .ws_edit_link {
-  background-image: url("/wp-content/plugins/admin-menu-editor/images/bullet_arrow_down2.png");
+  background-image: url("/technical-recipes/wp-content/plugins/admin-menu-editor/images/bullet_arrow_down2.png");
   background-repeat: no-repeat;
   background-position: center 3px;
 }
 
 a.ws_edit_link:hover {
   background-color: #ffffd0;
-  background-image: url("/wp-content/plugins/admin-menu-editor/images/bullet_arrow_down2.png");
+  background-image: url("/technical-recipes/wp-content/plugins/admin-menu-editor/images/bullet_arrow_down2.png");
 }
 
 .ws_edit_link:active {
