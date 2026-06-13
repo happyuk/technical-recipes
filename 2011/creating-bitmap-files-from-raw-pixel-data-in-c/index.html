@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>Creating Bitmap Files from Raw Pixel Data in C++ – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Creating Bitmap Files from Raw Pixel Data in C++ Comments Feed" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2011%2Fcreating-bitmap-files-from-raw-pixel-data-in-c%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2011%2Fcreating-bitmap-files-from-raw-pixel-data-in-c%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/139"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/">
+<link rel="shortlink" href="/?p=139">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-139 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-139" class="g post post-139 type-post status-publish format-standard hentry category-c-mfc tag-bitmaps tag-c-mfc tag-microsoft-foundation-classes tag-raw-bitmap">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/c-mfc/" itemprop="item"><span itemprop="name">C++ / MFC / STL</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Creating Bitmap Files from Raw Pixel Data in C++</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">Creating Bitmap Files from Raw Pixel Data in C++</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>20 August 2011</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/c-mfc/" title="View all posts in C++ / MFC / STL">C++ / MFC / STL</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/#comments" itemprop="interactionCount">15 Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p><strong>Creating the byte array</strong></p><p>This post describes a means of taking data in the form of raw pixels containing RGB values as well as the image height, width and the number of bits per pixel (24 in this case) and converting this into a bitmap (BMP) file.</p><p>Example Visual Studio 2010 project is downloadable from here:</p><p><a href="/Downloads/BitmapRawPixels.zip">www.technical-recipes.com/Downloads/BitmapRawPixels.zip</a></p><p>In this this post I originally described how I needed a means of representing binary array values (inkjet printhead nozzles turned ON/OFF) as a set of colored ‘squares’ or pixels, so that nozzles switched ON/OFF could be represented by two different colours – black or white.  The bitmap width was always going to be 128, while the bitmap length (“SizeValue”) was one of a set of discrete set of values in the range { 1000, 1250, 1251, 1350 }. For this example I did not have to worry about padding additional values<span id="more-139"></span></p><p>Since then I have made some improvements to the original code sample, specifically if the image data happens to be not DWORD-aligned, then a new data array is created and padded such that there will be enough bytes to reach the next DWORD.</p><p>The original task was to create a one-dimensional array of bytes representing pixel colour data from the two-dimensional adjacency matrix provided.  Each pixel value was then set to black or white, depending on the matrix array value:</p><pre class="brush: cpp; title: ; notranslate" title="">
+BYTE* buf = new BYTE[ 128 * 3 * SizeValue ];
+
+int c = 0;
+
+for ( int i = 0; i &lt;; SizeValue; i++ )
+{
+    for ( int j = 0; j &lt;; 128; j++ )
+    {
+        unsigned char val = pmatrix[ i ][ j ] == 0 ? 0xFF : 0x00;                       
+
+        buf[ c + 0 ] = (BYTE) val;
+        buf[ c + 1 ] = (BYTE) val;
+        buf[ c + 2 ] = (BYTE) val;
+
+        c += 3;
+    }
+}
+
+SaveBitmapToFile( (BYTE*) buf,
+                            128,
+                            SizeValue,
+                            24,
+                            "C:\\MyFolder\\image_created.bmp" );
+
+delete [] buf;
+</pre><p><strong>Saving the byte data as a bitmap file</strong></p><p>Writing the array data as a bitmap file is accomplished by the SaveBitmapToFile module. This module essentially:</p><p>i. initializes a BITMAPINFOHEADER data structure with bitmap parameters (header size, padding, height, width, etc)</p><p>ii. initializes a BITMAPFILEHEADER structure in the appropriate way</p><p>iii. Creates a file handler and writes the file, bitmap info and pixel data into it to create the new bitmap file representation:</p><p><strong>Complete code listing</strong></p><p>Here is the complete code listing to enable the user to:</p><p>1. Open an input bitmap file<br>
+2. Obtain the raw BYTE array, image height and image width from the input bitmap file<br>
+3. Create a new raw BYTE array, which will have space for additional padding if required<br>
+4. Save the new raw BYTE array to the new bitmap file.</p><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;Windows.h&gt;
+#include &lt;algorithm&gt;
+#include &lt;memory&gt;
+
+// Save the bitmap to a bmp file  
+void SaveBitmapToFile( BYTE* pBitmapBits,  
+                       LONG lWidth,  
+                       LONG lHeight,  
+                       WORD wBitsPerPixel, 
+					   const unsigned long&amp; padding_size,
+                       LPCTSTR lpszFileName )  
+{  
+    // Some basic bitmap parameters  
+    unsigned long headers_size = sizeof( BITMAPFILEHEADER ) +  
+                                 sizeof( BITMAPINFOHEADER );  
+
+    unsigned long pixel_data_size = lHeight * ( ( lWidth * ( wBitsPerPixel / 8 ) ) + padding_size );  
+      
+    BITMAPINFOHEADER bmpInfoHeader = {0};  
+      
+    // Set the size  
+    bmpInfoHeader.biSize = sizeof(BITMAPINFOHEADER);  
+      
+    // Bit count  
+    bmpInfoHeader.biBitCount = wBitsPerPixel;  
+      
+    // Use all colors  
+    bmpInfoHeader.biClrImportant = 0;  
+      
+    // Use as many colors according to bits per pixel  
+    bmpInfoHeader.biClrUsed = 0;  
+      
+    // Store as un Compressed  
+    bmpInfoHeader.biCompression = BI_RGB;  
+      
+    // Set the height in pixels  
+    bmpInfoHeader.biHeight = lHeight;  
+      
+    // Width of the Image in pixels  
+    bmpInfoHeader.biWidth = lWidth;  
+      
+    // Default number of planes  
+    bmpInfoHeader.biPlanes = 1;  
+      
+    // Calculate the image size in bytes  
+    bmpInfoHeader.biSizeImage = pixel_data_size;  
+      
+    BITMAPFILEHEADER bfh = {0};  
+      
+    // This value should be values of BM letters i.e 0x4D42  
+    // 0x4D = M 0×42 = B storing in reverse order to match with endian  
+    bfh.bfType = 0x4D42;  
+    //bfh.bfType = 'B'+('M' &lt;&lt; 8); 
+	
+    // &lt;&lt;8 used to shift ‘M’ to end  */  
+      
+    // Offset to the RGBQUAD  
+    bfh.bfOffBits = headers_size;  
+      
+    // Total size of image including size of headers  
+    bfh.bfSize =  headers_size + pixel_data_size;  
+      
+    // Create the file in disk to write  
+    HANDLE hFile = CreateFile( lpszFileName,  
+                                GENERIC_WRITE,  
+                                0,  
+                                NULL,  
+                                CREATE_ALWAYS,  
+                                FILE_ATTRIBUTE_NORMAL,  
+                                NULL );  
+      
+    // Return if error opening file  
+    if( !hFile ) return;  
+      
+    DWORD dwWritten = 0;  
+      
+    // Write the File header  
+    WriteFile( hFile,  
+                &amp;bfh,  
+                sizeof(bfh),  
+                &amp;dwWritten ,  
+                NULL );  
+      
+    // Write the bitmap info header  
+    WriteFile( hFile,  
+                &amp;bmpInfoHeader,  
+                sizeof(bmpInfoHeader),  
+                &amp;dwWritten,  
+                NULL );  
+      
+    // Write the RGB Data  
+    WriteFile( hFile,  
+                pBitmapBits,  
+                bmpInfoHeader.biSizeImage,  
+                &amp;dwWritten,  
+                NULL );  
+      
+    // Close the file handle  
+    CloseHandle( hFile );  
+}  
+
+BYTE* LoadBMP ( int* width, int* height, unsigned long* size, LPCTSTR bmpfile )
+{
+	BITMAPFILEHEADER bmpheader;
+	BITMAPINFOHEADER bmpinfo;
+	// value to be used in ReadFile funcs
+	DWORD bytesread;
+	// open file to read from
+	HANDLE file = CreateFile ( bmpfile , 
+		                       GENERIC_READ, 
+							   FILE_SHARE_READ,
+							   NULL, 
+							   OPEN_EXISTING, 
+							   FILE_FLAG_SEQUENTIAL_SCAN, 
+							   NULL );
+	if ( NULL == file )
+		return NULL;
+	
+	if ( ReadFile ( file, &amp;bmpheader, sizeof ( BITMAPFILEHEADER ), &amp;bytesread, NULL ) == false )
+	{
+		CloseHandle ( file );
+		return NULL;
+	}
+
+	// Read bitmap info
+	if ( ReadFile ( file, &amp;bmpinfo, sizeof ( BITMAPINFOHEADER ), &amp;bytesread, NULL ) == false )
+	{
+		CloseHandle ( file );
+		return NULL;
+	}
+	
+	// check if file is actually a bmp
+	if ( bmpheader.bfType != 'MB' )
+	{
+		CloseHandle ( file );
+		return NULL;
+	}
+
+	// get image measurements
+	*width   = bmpinfo.biWidth;
+	*height  = abs ( bmpinfo.biHeight );
+
+	// Check if bmp iuncompressed
+	if ( bmpinfo.biCompression != BI_RGB )
+	{
+		CloseHandle ( file );
+		return NULL;
+	}
+
+	// Check if we have 24 bit bmp
+	if ( bmpinfo.biBitCount != 24 )
+	{
+		CloseHandle ( file );
+		return NULL;
+	}
+	
+	// create buffer to hold the data
+	*size = bmpheader.bfSize - bmpheader.bfOffBits;
+	BYTE* Buffer = new BYTE[ *size ];
+	// move file pointer to start of bitmap data
+	SetFilePointer ( file, bmpheader.bfOffBits, NULL, FILE_BEGIN );
+	// read bmp data
+	if ( ReadFile ( file, Buffer, *size, &amp;bytesread, NULL ) == false )
+	{
+		delete [] Buffer;
+		CloseHandle ( file );
+		return NULL;
+	}
+
+	// everything successful here: close file and return buffer
+	
+	CloseHandle ( file );
+
+	return Buffer;
+}
+
+std::unique_ptr&lt;BYTE[]&gt; CreateNewBuffer( unsigned long&amp; padding,
+										 BYTE* pmatrix, 
+										 const int&amp; width,
+									     const int&amp; height )
+{
+	padding = ( 4 - ( ( width * 3 ) % 4 ) ) % 4;  
+	int scanlinebytes = width * 3;
+	int total_scanlinebytes = scanlinebytes + padding;
+	long newsize = height * total_scanlinebytes;
+	std::unique_ptr&lt;BYTE[]&gt; newbuf( new BYTE[ newsize ] );
+
+	// Fill new array with original buffer, pad remaining with zeros
+	std::fill( &amp;newbuf[ 0 ], &amp;newbuf[ newsize ], 0 );
+	long bufpos = 0;   
+	long newpos = 0;
+	for ( int y = 0; y &lt; height; y++ )
+	{
+		for ( int x = 0; x &lt; 3 * width; x+=3 )
+		{
+			// Determine positions in original and padded buffers
+			bufpos = y * 3 * width + ( 3 * width - x );     
+			newpos = ( height - y - 1 ) * total_scanlinebytes + x; 
+			
+			// Swap R&amp;B, G remains, swap B&amp;R
+			newbuf[ newpos ] = pmatrix[ bufpos + 2 ]; 
+			newbuf[ newpos + 1 ] = pmatrix[ bufpos + 1 ];  
+			newbuf[ newpos + 2 ] = pmatrix[ bufpos ];       
+		}
+	}
+
+	return newbuf;
+}
+
+int main()
+{
+	int imageWidth = 0;
+	int imageHeight = 0;
+	unsigned long imageSize = 0;
+	unsigned long padding = 0;
+	
+	// Load the bitmap file, amd put its data part into the BYTE array
+	BYTE* bytes = LoadBMP( &amp;imageWidth, &amp;imageHeight, &amp;imageSize, "C:\\MyStuff\\shaunak.BMP" );
+	std::reverse( bytes, bytes + imageSize );
+
+	// Determine amount of padding required, if any, and create a new BYTE array from this
+	std::unique_ptr&lt;BYTE[]&gt; newbuf2 = CreateNewBuffer( padding, bytes, imageWidth, imageHeight );
+	
+	// Use the new array data to create the new bitmap file
+	SaveBitmapToFile( (BYTE*) &amp;newbuf2[ 0 ],  
+					  imageWidth,  
+					  imageHeight,  
+					  24,  
+					  padding,
+					  "C:\\MyStuff\\new_image.bmp" );  
+
+	return 0;
+}
+</pre><p><strong>Example Usage</strong></p><p>The program works by first loading the bitmap data from the bitmap file provided eg shaunak.BMP:</p><p><a href="/wp-content/uploads/2011/08/shaunak.bmp"><img decoding="async" src="" alt="shaunak" width="256" height="86" class="alignnone size-full wp-image-5413" data-layzr="/wp-content/uploads/2011/08/shaunak.bmp"></a></p><p>The program extracts the raw data from this and puts it into the buffer, example output of this buffer data:</p><p><a href="/wp-content/uploads/2011/08/Buffer.jpg"><img fetchpriority="high" decoding="async" src="" alt="Buffer" width="669" height="338" class="alignnone size-full wp-image-5415" data-layzr="/wp-content/uploads/2011/08/Buffer.jpg"></a></p><p>It then creates the new BYTE array with any additional padding, if necessary, and the BYTE data is saved as a new bitmap file, as mentioned previously.  Here it is saved as “new_image.bmp” and as expected is a duplicate of the original bitmap file:</p><p><a href="/wp-content/uploads/2011/08/new_image.bmp"><img decoding="async" src="" alt="new_image" width="256" height="86" class="alignnone size-full wp-image-5416" data-layzr="/wp-content/uploads/2011/08/new_image.bmp"></a> </p><p>Here is another example of its usage.  Instead of obtaining raw bitmap data from an existing bitmap file, I create my own bitmap, which in this case is a simple blue square.  I then call </p><pre class="brush: cpp; title: ; notranslate" title="">SaveBitmapToFile</pre><p> to convert this raw data to the bitmap file:</p><pre class="brush: cpp; title: ; notranslate" title="">
+int main()
+{
+	BYTE* buf = new BYTE[ 128 * 3 * 128 ];
+	int c = 0;
+ 
+	for ( int i = 0; i &lt; 128; i++ )
+	{
+		for ( int j = 0; j &lt; 128; j++ )
+		{
+			buf[ c + 0 ] = (BYTE) 255;
+			buf[ c + 1 ] = (BYTE) 0;
+			buf[ c + 2 ] = (BYTE) 0;
+ 
+			c += 3;
+		}
+	}
+ 
+	SaveBitmapToFile( (BYTE*) buf,
+					128,
+					128,
+					24,
+					0,
+					"C:\\MyFolder\\bluesquare.bmp" );
+ 
+	delete [] buf;
+	return 0;
+}
+</pre><p>And this is the bitmap image “bluesquare.bmp” created from the raw data:</p><p><a href="/wp-content/uploads/2011/08/bluesquare.bmp"><img decoding="async" src="" alt="bluesquare" width="128" height="128" class="alignnone size-full wp-image-5422" data-layzr="/wp-content/uploads/2011/08/bluesquare.bmp"></a></p>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '139'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2011/creating-bitmap-files-from-raw-pixel-data-in-c/&amp;media=&amp;description=Creating%20Bitmap%20Files%20from%20Raw%20Pixel%20Data%20in%20C++" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2013/using-win32-static-libraries-in-visual-studio-projects/" title="Using Win32 static libraries in Visual Studio projects" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using Win32 static libraries in Visual Studio projects"></div>
+                                                                        <h4 class="title front-view-title">Using Win32 static libraries in Visual Studio projects</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2012/applying-c-implementations-of-2-opt-to-travelling-salesman-problems/" title="C++ Implementation of 2-opt to the “Att48” Travelling Salesman Problem" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img width="130" height="120" src="" class="attachment-truepixel-related size-truepixel-related wp-post-image" alt="C++ Implementation of 2-opt to the “Att48” Travelling Salesman Problem" title="C++ Implementation of 2-opt to the “Att48” Travelling Salesman Problem" decoding="async" srcset="/wp-content/uploads/2012/04/Att48_nn2.jpg 642w, /wp-content/uploads/2012/04/Att48_nn2-300x277.jpg 300w" sizes="(max-width: 130px) 100vw, 130px" data-layzr="/wp-content/uploads/2012/04/Att48_nn2.jpg"></div>                                                <h4 class="title front-view-title">C++ Implementation of 2-opt to the “Att48” Travelling Salesman Problem</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2012/converting-between-binary-and-decimal-representations-of-ieee-754-floating-point-numbers-in-c/" title="Converting between binary and decimal representations of IEEE 754 floating-point numbers in C++, Java and Python" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Converting between binary and decimal representations of IEEE 754 floating-point numbers in C++, Java and Python"></div>
+                                                                        <h4 class="title front-view-title">Converting between binary and decimal representations of IEEE 754 floating-point numbers in C++, Java and Python</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-2316">
+    		                    <div id="comment-2316" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/a2bc93711420421b5c7d7f4cfbbf28e48d648546f24896aa14ed48d98a4f24d2?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/a2bc93711420421b5c7d7f4cfbbf28e48d648546f24896aa14ed48d98a4f24d2?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="http://shaunak.ws/" class="url" rel="ugc external nofollow">Shaunak De</a></span></span>                                                            <span class="ago">11 October 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hey,<br>
+Thank you for sharing this. I was looking to store some results as a bitmap, but having to write the header was putting me off. This code helps explain the header structure a lot. </p>
+<p>Thank you!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/?replytocom=2316#respond" data-commentid="2316" data-postid="139" data-belowelement="comment-2316" data-respondelement="respond" data-replyto="Reply to Shaunak De" aria-label="Reply to Shaunak De">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    </ol><ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-2318">
+    		                    <div id="comment-2318" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">11 October 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>You’re welcome!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/?replytocom=2318#respond" data-commentid="2318" data-postid="139" data-belowelement="comment-2318" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-2317">
+    		                    <div id="comment-2317" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/a2bc93711420421b5c7d7f4cfbbf28e48d648546f24896aa14ed48d98a4f24d2?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/a2bc93711420421b5c7d7f4cfbbf28e48d648546f24896aa14ed48d98a4f24d2?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="http://shaunak.ws/" class="url" rel="ugc external nofollow">Shaunak De</a></span></span>                                                            <span class="ago">11 October 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>PS: Here is a little test pattern I made using your code 🙂<br>
+<a href="http://imageshack.us/photo/my-images/401/shaunak.png/" rel="nofollow ugc">http://imageshack.us/photo/my-images/401/shaunak.png/</a></p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/?replytocom=2317#respond" data-commentid="2317" data-postid="139" data-belowelement="comment-2317" data-respondelement="respond" data-replyto="Reply to Shaunak De" aria-label="Reply to Shaunak De">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-2319">
+    		                    <div id="comment-2319" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">11 October 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Nice one.  I might create a small Visual Studio project using this bitmap as an example.  Andy.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/?replytocom=2319#respond" data-commentid="2319" data-postid="139" data-belowelement="comment-2319" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-4895">
+    		                    <div id="comment-4895" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/18e3bc6995fcf43c01326c9cb62e0ff6284bff53316bc463aa01281e974d8807?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/18e3bc6995fcf43c01326c9cb62e0ff6284bff53316bc463aa01281e974d8807?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Vil</span></span>                                                            <span class="ago">27 August 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks! I have found this quite useful.</p>
+<p>In your case you never actually need to add the padding since your width is 128 so the padding is 0.<br>
+However, if you try with other widths, there can be a shift in the byte array on each row, resulting in a degenerate picture.<br>
+This can however be fixed by adding the padding after c+=3; like this</p>
+<p>if(x==nScreenWidth-1){<br>
+		        	int paddingsize=( 4 – ( ( nScreenWidth * 3 ) % 4 ) ) % 4;<br>
+		        	for (int i = 0; i &lt; paddingsize; ++i) {<br>
+			        	buf=(BYTE) 0;<br>
+					}<br>
+		        	c+=paddingsize;<br>
+		        }</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/?replytocom=4895#respond" data-commentid="4895" data-postid="139" data-belowelement="comment-4895" data-respondelement="respond" data-replyto="Reply to Vil" aria-label="Reply to Vil">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-4896">
+    		                    <div id="comment-4896" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/18e3bc6995fcf43c01326c9cb62e0ff6284bff53316bc463aa01281e974d8807?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/18e3bc6995fcf43c01326c9cb62e0ff6284bff53316bc463aa01281e974d8807?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Vil</span></span>                                                            <span class="ago">27 August 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>There was a pasting error, it’s supposed to be buf\ = and not just buf=</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/?replytocom=4896#respond" data-commentid="4896" data-postid="139" data-belowelement="comment-4896" data-respondelement="respond" data-replyto="Reply to Vil" aria-label="Reply to Vil">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-3" id="li-comment-4897">
+    		                    <div id="comment-4897" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/18e3bc6995fcf43c01326c9cb62e0ff6284bff53316bc463aa01281e974d8807?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/18e3bc6995fcf43c01326c9cb62e0ff6284bff53316bc463aa01281e974d8807?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Vil</span></span>                                                            <span class="ago">27 August 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>buf *open bracket* c+i *close bracket*</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/?replytocom=4897#respond" data-commentid="4897" data-postid="139" data-belowelement="comment-4897" data-respondelement="respond" data-replyto="Reply to Vil" aria-label="Reply to Vil">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-4" id="li-comment-4900">
+    		                    <div id="comment-4900" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">28 August 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks for the very useful feedback!<br>
+Kind regards<br>
+Andy</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/?replytocom=4900#respond" data-commentid="4900" data-postid="139" data-belowelement="comment-4900" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-12839">
+    		                    <div id="comment-12839" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/18e03edb117f8f5eb0602c62eb27d35eef6eef78ebbea6ded492d82b51abe62d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/18e03edb117f8f5eb0602c62eb27d35eef6eef78ebbea6ded492d82b51abe62d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Terry</span></span>                                                            <span class="ago">11 September 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>how do i use this?<br>
+i’m a rookie<br>
+i got a question that how should i read a bmp file without using the tools in C#<br>
+my boss told me that build bmp header and use bytearray<br>
+thanks for you reply</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/?replytocom=12839#respond" data-commentid="12839" data-postid="139" data-belowelement="comment-12839" data-respondelement="respond" data-replyto="Reply to Terry" aria-label="Reply to Terry">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-23166">
+    		                    <div id="comment-23166" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4ac7aea6914e3fd0d01c57fe0d5a19be2e2e4fefdf646ab93f68e4a71a7c097e?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4ac7aea6914e3fd0d01c57fe0d5a19be2e2e4fefdf646ab93f68e4a71a7c097e?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Claude</span></span>                                                            <span class="ago">24 February 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Very useful, and easily pasteable, thanks. I have noticed a small potential bug however.  In the save function this line:</p>
+<p><code>unsigned long pixel_data_size = lHeight * ( ( lWidth * 3 ) + padding_size );</code></p>
+<p>the hard coded 3 implies 24 bits per pixels and is incorrect otherwise. Replace with wBitsPerPixel / 8 and you are good.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/?replytocom=23166#respond" data-commentid="23166" data-postid="139" data-belowelement="comment-23166" data-respondelement="respond" data-replyto="Reply to Claude" aria-label="Reply to Claude">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-23184">
+    		                    <div id="comment-23184" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">24 February 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Lovely stuff.<br>
+Code duly updated.<br>
+Thanks for the feedback!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/?replytocom=23184#respond" data-commentid="23184" data-postid="139" data-belowelement="comment-23184" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-30984">
+    		                    <div id="comment-30984" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/a0e52745afe87c5fb9d958da4a2bf9ebf11e10771752d970f2b4edb132b77372?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/a0e52745afe87c5fb9d958da4a2bf9ebf11e10771752d970f2b4edb132b77372?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Davidson</span></span>                                                            <span class="ago">12 October 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I try compiling but receive the following errors. </p>
+<p>&gt;createbitmap.cpp(217): error C2664: ‘LoadBMP’ : cannot convert parameter 4 from ‘const char [10]’ to ‘LPCTSTR’</p>
+<p>1&gt;createbitmap.cpp(229): error C2664: ‘SaveBitmapToFile’ : cannot convert parameter 6 from ‘const char [14]’ to ‘LPCTSTR’</p>
+<p>Would really like to run this program. Thanks.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/?replytocom=30984#respond" data-commentid="30984" data-postid="139" data-belowelement="comment-30984" data-respondelement="respond" data-replyto="Reply to Davidson" aria-label="Reply to Davidson">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-48798">
+    		                    <div id="comment-48798" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/049fa69a16613e10038fbbee8737ffbbcb04ff27c2f7b5a98ab3f4ff3bb20dfd?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/049fa69a16613e10038fbbee8737ffbbcb04ff27c2f7b5a98ab3f4ff3bb20dfd?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">M</span></span>                                                            <span class="ago">19 March 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I know you probably won’t need this anymore but I’m replying for others to see this in the future.<br>
+<a href="https://social.msdn.microsoft.com/Forums/vstudio/en-US/c1b08c0a-a803-41c3-ac8c-84eba3be1ddb/faq-cannot-convert-from-const-char-to-lpctstr?forum=vclanguage" rel="nofollow ugc">https://social.msdn.microsoft.com/Forums/vstudio/en-US/c1b08c0a-a803-41c3-ac8c-84eba3be1ddb/faq-cannot-convert-from-const-char-to-lpctstr?forum=vclanguage</a></p>
+<p>TL;DR:<br>
+Alt + F7, Change Character Set to use “Multiple-Byte Character Set”<br>
+Surround the string with _T(” “)</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/?replytocom=48798#respond" data-commentid="48798" data-postid="139" data-belowelement="comment-48798" data-respondelement="respond" data-replyto="Reply to M" aria-label="Reply to M">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-48571">
+    		                    <div id="comment-48571" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/b6cbb4eb73bcef6f515100b6be562a120005d6a86db04477241e1e5485bb2b06?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/b6cbb4eb73bcef6f515100b6be562a120005d6a86db04477241e1e5485bb2b06?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">luigi</span></span>                                                            <span class="ago">7 February 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>can someone please give me a place where I can put in my binary code and it will make me a bitmap</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/?replytocom=48571#respond" data-commentid="48571" data-postid="139" data-belowelement="comment-48571" data-respondelement="respond" data-replyto="Reply to luigi" aria-label="Reply to luigi">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-48744">
+    		                    <div id="comment-48744" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/c44cce5ac207dc21d4408a4277ad709f8672231deb178dedec3c785c9f8a6996?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/c44cce5ac207dc21d4408a4277ad709f8672231deb178dedec3c785c9f8a6996?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Pulkit</span></span>                                                            <span class="ago">9 March 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hello,</p>
+<p>BMP image created is distorted if width is not multiple of 4 say if width is 254. How to fix this ?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/?replytocom=48744#respond" data-commentid="48744" data-postid="139" data-belowelement="comment-48744" data-respondelement="respond" data-replyto="Reply to Pulkit" aria-label="Reply to Pulkit">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			
+		</div>
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="139" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-cpp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>Sorting Objects Using STL – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Sorting Objects Using STL Comments Feed" href="/2011/sorting-objects-using-stl/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2011%2Fsorting-objects-using-stl%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2011%2Fsorting-objects-using-stl%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/165"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2011/sorting-objects-using-stl/">
+<link rel="shortlink" href="/?p=165">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-165 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-165" class="g post post-165 type-post status-publish format-standard hentry category-c-mfc tag-algorithm tag-c-mfc tag-sort tag-stl">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/c-mfc/" itemprop="item"><span itemprop="name">C++ / MFC / STL</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Sorting Objects Using STL</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">Sorting Objects Using STL</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>20 August 2011</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/c-mfc/" title="View all posts in C++ / MFC / STL">C++ / MFC / STL</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2011/sorting-objects-using-stl/#comments" itemprop="interactionCount">2 Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p>Here’s an example of how using objects (hat-tip: <a href="http://www.codeproject.com/script/Articles/MemberArticles.aspx?amid=173">Paul Wolfensberger</a>)<br>
+<span id="more-165"></span></p><pre name="code" class="cpp:nocontrols:nogutter">
+#include &lt;iostream&gt;
+#include &lt;ostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+// A base class to hold, return and output a value
+class Item
+{
+private:
+      int val;
+
+public:
+      Item( int x )
+      {
+            val =  x;
+      }
+
+      // Indicate the item type as a string
+      virtual   char* ItemName() = 0;
+
+      int GetVal() { return val; }
+      void OutputToStream( std::ostream&amp; os )
+      {
+          os &lt;&lt; ItemName() &lt;&lt; "\t" &lt;&lt; val &lt;&lt; "\n";
+      }
+};
+
+// Derived class - "old"
+class OldItem : public Item
+{
+      public:
+      OldItem( int val )
+          : Item( val )  { }
+
+      char* ItemName()    {    return "Old: ";  }
+};
+
+// Derived class - "new"
+class NewItem : public Item
+{
+public:
+      NewItem( int val )
+          : Item( val )  { }
+
+      char* ItemName()    {    return "New: ";  }
+};
+
+// Item vector class definition. This class de-allocates
+// objects in case you are forgetful.
+class ItemVector : public std::vector&lt; Item* &gt;
+{
+public:
+
+      // Avoid leaks by ensuring items are de-allocated
+      ~ItemVector()
+      {
+          for ( iterator it = begin();
+                it != end();
+                ++ it )
+          {
+              delete *it;
+          }
+      }
+};
+
+// Define means of specifying how we want to sort the data:
+// Ascending order in this example
+struct Ascending
+{
+      bool operator() ( Item*&amp; start, Item*&amp; end )
+      {
+            return start-&gt;GetVal() &lt; end-&gt;GetVal();
+      }
+};
+
+void main()
+{
+      ItemVector itvect;
+
+      // Insert some values...
+      itvect.push_back( new OldItem( 43 ) );
+      itvect.push_back( new NewItem( 34 ) );
+      itvect.push_back( new NewItem( 443 ) );
+      itvect.push_back( new OldItem( 433 ) );
+      itvect.push_back( new OldItem( 343 ) );
+
+      // Sort values in ascending order...
+      std::sort( itvect.begin(),
+                 itvect.end(),
+                 Ascending() );
+
+      // Show the results!
+      for ( int i = 0; i &lt; (int) itvect.size(); ++i )
+      {
+            itvect[ i ]-&gt;OutputToStream( std::cout );
+      }
+
+      // Pause for a response
+      getchar();
+}
+</pre><p>And here is the output when it is run:</p><p><img decoding="async" src="" alt="" data-layzr="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP0AAACbCAIAAAAm+grsAAAgAElEQVR4nOy9d3Qb1534O5vEzjvvvZPEdjbZxN5sbDllY1uxbFVLsSTLcSSrWqQq1QslsaGwgQUEewUJEr2SIEiQIEiwV5BEJXoZdAJgbxKLJKvaSrLnvPfHDECwiJb5SyIly+/5HJw7BcCA/Nx7v/fODAAQWYIsPD0+JfcGAnPyXOjLr74dyEuvrnt2Xg7g2+7/8rd9+it+3nrplbe+F8iP3vreK2+9BLPupVee6RVe8j/3R/DrvBT4In+Lz7vsKzzlkJZjxT/jkpVvP5XXlln50vKs9D/6e/D3e8cjwSEnTp+7Fo5AxSYmpmQCmXh6dGJmaETcy6+9/eM3fptWwBi59XDk1sOJ2cfjz8ZEIHMwk/N8NTn31eQya57C7RW3Lnw1+O1mH0/MPhqffTQ++2hsZgUeBwCvHJ15NDoN8XAJj+aZCSgseNYCRgIYnn40fOvh8K2HQ4HcXMqDoZsPhm8+hIBWDgdy6+HDr/5y6szF//lbR3EJ+W/7gtSoq3/bF/w/iZA/7Xn89V9Gbj0YufUgrYDx4zd++/Jrb1+4FBqfiMvJLwbisLmhEXHf/8FPswkslWOmsNYZwzDG0I0oqgFJNSAoy0GG0CMoBgTVgKIaUFQjimaMphtj6KZYhimWYY5jmeNY5ni2GcO2YNjWBI41odSCKbUklFoSSq2JSymzJpbZEstsiaW+gp9SH2W2xDJbQqkVw7Fg2BYMG4xjmWOZphiGMZpmQFH1CIouiqyNJGnCiZpwojacqAsj6cJJ+nCSIZxkCCcZw0imMJLxBtF4g2i4UaK/UaK/Xqy9TtBcI2hCC1VXC1VX8X1XYFShherQIk1okTaUoA0l6K4V60OL9ddLDNdLDNeKDaEEQyjBEFpsCC3WhxbrrxD0Vwj6ywT9pSLdxULdebz2HF4Tkq8OyVOdyus7ldt3KrfvRJbyZLbyZJbyRKbiRKb8RIb8ZKbiZKbidJb8dJbiVCb8eCpTcSpTcSpDfjpTcSpLcTpboXbOvL35kHVwrlU9AtGmWYZ2P9qRDu0oRKd2tFM32qkb69SNdenGuvRjYv2YWD9uHbwdg80fvfWwxzQJ0WuagpCYnwIII10Ox/Ad4rULXp3FXFFtrqi2Vlbb+NU2frWTX+3iV7uqqrxVVd6qqkF+1TC/aphfOcqvHONXjj+dMX7leJV/sWKMXzHKrxjiVwxV8gcr+QOVlZ7KSndlpbOy0lnJt1fyrZV8ayUfrOAbeXyXTHVyz06zdy6Gpo+h6wtrHSrHdDaB9f0f/PT8xatxCSkA1NLnEFgC6QiKZoChGua9J+v9RMEYfOgRFAOSokdRDGiaMZpu9EsfzwIxHDCBAyaWgoml1qQyW3KZLZlrw3JtKeXWlHJbSnlgAcIeULCnlNux5Xasr5xSbk+G19iSudbkMmtiqSWx1IzhmDAsUzzTEMcwxNAN0TQ9iqJDUrQIsh5JgWsmkmpEUo0IqglBNUVRTVEUUyTZGEk2RJANEUR9OFEXVqy9Uay5TlBfL1LBENTXCeqwYm1YsT6sRB9GNISRDGEkYzjJEEY0hBGNYUTjDaIhjGi4XmK4ToQJLTFcLTFcKTZcJhguEfQXCnUXCrXn8JozBeozBaozeaozeaozuX0hucrTOcrT2cqQnL6zucqzucpzucpzecpzuX1nc/rO5ijP5CjPZCtCchRnspVncpUa18yvNh+yDs21BHq/nP1+9TsgIPV1AerD3o9ZBuaik/NGbz3sNk761J/q9dn/VPUX1oFF3pdcOe/VmM1lPAhLGc/G5dm4XCeX6+Jy3eVcL4/r5XGHyrnD5dzhcu7os8CDCmWj5WXD5WVD5WVD3LJBbpmHW+rmlvaXlTrLSm1lpZayUrCUay7lGku5xlKuo0cRvHun2TuHouhQVBiBZDiHwPr+a2+fv3gVOBwc8uM3fqNyzAQaD0mPpMLtetTyGBBkA4KiR1L1aKoRTTfFMEyxTFM804xhg4kcS1KZJZlrxZZbU3m2VJ49rcKRXunIqHRk8h2ZfEcG3+7HtwYmk+/IrHJm8GEy+c5MvjOD70znO9P5jnS+I73SnlZhS+VZU3nWFK4lpQzElpqTOaYkjimBbcSwjHEsYzzLGMc0Qt1OLAuMZYGxLEsMEwKMZoDRdHM0zYSiGVFUA4qiR5C1CLIWQdJEkTQIkgZB1iLIOgRZh6QYUFQjimpC0c0IqhlFN6NoZhQNRNLMCCpMFM2MoJkjqaZIqimcYgojG8Moxutk43WS4SpRf7lEd6VYd4mguUzQXCxUX8CrL+LVFwrUF/LVFwvUl/DqS3j1Fbz6aqH6SqHqCl59Ca++VKC6hO+7UNB3vqDvXL5S65r99ZZDtqHbrZqRVs1TpFcvafX93msXeA9hGZiLwmSP3HrQbZyEWNDqLxZ9MqCwACk46feecOG0W2XUM9h6BtvEYJsZbAuLbWWxbSy2k8V2sVluNsvLZnnZrCEOa5jDGuYwR5/OyMLFYQ5jmMMc5DAH2EwPi+FmMZwshpPFcDCZFiYTZDLNdKaRzjTQmVo609EpCdq53eydQ1K0fu9RVJ3KMf3jN3776Wf7gF//9p20Ajq+1hkofUCSAymuCwD2HkHWIyh6JMWAohrQNEMMwxjHNMezTIkcMLnMksK1pvJsaRX2jEp7Nt+RU+XMEbjyBK58oStf2J9f48qvceUJXXChxpUv7PdTIOzPF7qXkid05wn782r682qceQJnbrUjt9qeXWXP5tuyKq2ZFZYMniWdB6aVg6nlIK7cgiu3ppRbU7g2bLktpdyG5cIkl9mSymxJpZYEjiWBbU5gmzEsYzzLEM+EiYMKLGM8yxTPMiewQQzbgmFbEjhWDMeawLHGsxcQx7LEsS2xLEssyxLDAqNZIJoFohhmBMMcRTdG0gwRVEM4RR9O1oeT9WFE3Q2i7kaJLqxEG1aiCyfqwom6cJI2gqSNIOrCidpwkjasRHu9WBNKUIcWqa8UqXTu2d9sPQwOzDYoBmHkfgZ8jz4UAw2KgUbFoI+hJuVQk3KouQ9iuKVvuEU1bOifDovN9E582aoebVOPtmlG2zRj7dqxdu14cjY96HjoCmCz6f764wccmCOcCXbJtWoSWUsi60lkPZlsIpPNZLKFQrZRyDYK2UUhuyhkD4XspZAGKaQhCnGYQhymEPHIeP+L45GYYQoJj8QsWjNMIQ5SiF4K0UMh9ZNJTjLRQSZayUQLmWgmE40kop5E1JKIWiJRTSRaWsVf7Ni61Hu80J5WwPjdO+8CL726zjxwJ5puDJR+UZKz1PtA6aMh6VkmDNucxAFTuGAaz5pRYc+ucuRUO/NqXPja/qI6N0HkLm5wlzS4iQ0ePyR/odFDavSSGr3ERi+x0UvyEbhIbPQSG7zEBg+xwV3S4C6u7yeI+gl1LkKtq6jWUSh04IUOfI29oMaeX23PEzjyqh25AmeOwJlT7cqpduZUu7KrXdnVzqwqZ2aVI6PSnlFpz6iwZVRY0yusaTxLGg9MLTfjys2p5WAqz5LGs6TxrGkVtrQKW3qFPaPCkV7pSK90pFXY0yocaRWO1ApHWoUDV2HH8ewpPDuuwp7Cs6XwbEnltiSuLYlrSyizJpRZ4kvNsWxzLMscwzTFsEwxDGMMw4SmG6Pphhi6IZZhjGUY45jGWKYxlmmMZhiiGQY03YCk6hEUfThJG0bUGD1z//3RYaP7Vk2vu6bXLejpr+npF/S4Bd39gp7+6u5+QU+/oLu/GsYl6OmH9qnpcUMIeyE8tb2eWomnVuLROG5eRaW5x+6KZF6RbKBeNlgvH2yQDzYqBoOOh/5/K0bQ8dAm5WCTctBXl4aa+4YM7pmi44edvco+fIEKX6DG49V4vL4Qry/Emwrx5kK8tRBvK8Q7CvGuwgJ3YYGnMN9bmAcR+I5Bx0MLImMWrfHCO+e7C/OdhfkOfL4Vn2/F54P4fBM+X4/P1+LzNfn5ffn5fQX5yoJ8sLHt8JaNZu8ckqwNTHWiaXrzwJ2XX10HvPTqWxOzj1A0PYqqX7a9X+o9LD0Vkt4YyzBiWKYEtjm5DMRxLekVtqwqe261o6DGWVTXX1zvJjZ6KE1eassAvXWA0TrAbBsMYIDZNsBsG2S1DbLaB5kBsNoHme1DfljtC55Fbx2gt3rpLR56i4fW5KE2ualN/ZSmfkpjP7mxn9TQT2roJza44RrS4Cmu9xQ3eAj1boLIXVjnLqzrL6x14YUuvNCJFzoKoNoisOcLbPkCe34NhCO/xpFf48wXuvKFrgKomxL6uqaa/rwaF0RujSu3xpVT48oRuLIFrqxqZ2a1M7PKkc63p/PtaZU2XIUVx7OmlFtTyi3JXEtyGZhcZkkus2DLwBQuiONacOUWXLklhQtiy8DkMnMCx4RhG+OYxmiGAUXTmbxz72w/orZNlLaApc0gp9nMbjKzm0BWI8hqNDMbzcwGM7PBzGowMxvMzEYzs9HEajSzGs3sJjAQTjPIaQZLmy2lzRaJcfRsWLLFO13WauW22rht9vJ2O6/dUdHheBbv+V0OH86qLmdVl1Npmcg79EdrZ28PDifB4aSpOFkqTpmG60vDqdNw2rQUQ3qKMT0FTE+xpGPt6VhHOtaRnuxKT3alJ+fdiFokemA5/0aUKz3ZmZ7sSMfa07GWNKwlDWtKwxpSsbrUZA0uuQ+HVeCw8pQUaUqKJCWlB5tiqBHt3/DeUu9RVN3E7KOF3tMMgeojA9Wn6KFkF8r1EdBAlmqIoRljmcZ4limRY0ouA1PLrRkVtuwqe36NA1/rKhb1kxrc1GYvvXWA1T7I6Rwq6xriiofLu30ElruHy7tHlmPUh3/NMFc8XC4e5nYNcbuGyroGyzoHyjoGSn1wOgbY7QOs9gFW+wCzbYAB0TpAbx2gtQ5QmyG8lGYPpclDbnSTG93kxn5SI1RV/HWmn9ToJjW6SY3+vshDavQQGz3ERi8RKjR4iA2eEqhS+SiqdxeJ3IWifnxdP77OVSB05gmduTWOHIEjp9oOkVUFk11lz6my51Tbc6vtudX2nGpbdpUtk29Nq7CkloPYMlMSx4RhGsDB2+t3HOmzjLEajcwGI6PeQBcZaHUGWp2BUqun1OrJtXqyUE8W6shCPVmoJ9fqyLV6aBO11kCtNVDrYGh1BlqdkSYyirVDp68lmNw3GfUmRoOZ2WhmNYKsJpDTbPFrtzTD8a8va7X4sHJbrdxWq9Q0lvv5bkubWJyQKE5I7ElIlCQkypISFUkYRRJGnYTRJmP0yRgjFmPGYqxYjA0bb8PGO3zkhkYsrW9Bx0NzQyMcWIwDi7FhMTZsvBUbb8LGm7DxuuR4XVKcJimuLzFOlhgnTYyTYDA9GIwYg+nEYLRVws/X/+6ZvV+S4scXtyQU1iQU1mDwMAkQhTWJRcIkgjCZUIstrsWV1KZR29IrwJwqe36No6jOWVLfT2ny0Fu9rLaB0s6hcvFwRe8IXzJaLR2tkY3VyMYEstEa6ViNdEwgG6uRjdVIx2rkAch8yMfny9ATpWMC6ahAOlotHamW+Bmu6p2nsneksmekomeY1zPM6x7hiochyrqGyzqHyzqHSzuHSjsHOR2DnI4BdrsXggXRBhUGWO0DrI5BVvsCmG1DzPZBhq/nYbQNMtoG6W2D9FYYWouX2uKlNHvJTR5yE1RV3CUN/SX1/cX1LoLIRahzFdU5i+qcRXUuQp2LUOck1LmKRa6SelexyFlY68ALHXkCW3aVLaMStt86dOf9j79QgqN0kY5Wp6PW6ihCHUmgLRFoi6u1xVUaAoy6iK8uqlIXVakJ82gI1ZqSam1xtbbEj0DbpvKeuBKvd06RhDqSUE+u1VPqDNQ6I1VkDDoeeu/evXv37gUdD2X6+5AG84L1UD/TaGb56NGPZH/2B3NzR0dMTEdMTFdMTHdMTG9cjDQOLYtD98Wh1fFobTxaj0EbMWgQg7Zg0BYMyhZAzpUw/1tA75JzJcyGQUNYMGgLBg1iUMZ4lDEepYlHaeJQqjikIhYpiUH2xiB70GgxGt2JRrej0Rpe9d53f2P2ziHJuqXev7SM9wvVr61vMVqcRotjCU6T1WmyOpu7FM2d8uZOeZWwHsvqyxc4i2pdxIZ+arOH2erldAyWdQ3xeoarJKMC2ZhQMV6nGBcpx0TKcZESKvjLEyLlhKhvYsHi8oyLlGN1yrE6hQ/5KIxitFY+KpSPCuWjNbLRGtmYQDZWLR2tkoxWSUarekcre0cqe0cqeoYheN1DPPFQuRh+XAoXZhh+7Bou6xouhRmC6Rwq7RzidA5xOoY4HYPsDihDG2C2DTBavYwWL73FQ2vxUJs91CY3pamfDGVijf2kRrhMaeqnNPVTm9yUxn5Sg6uk3kWodeKF9rxqWzbfklFhsQ/f+WDnUX6b8Wqa4BKu+jy2+mwSPySx6mR85Ym4yuBzcSsPQ4PPxR2LrTgeV3k8rvKE77GwQrHxT5caJI5TmKrTCVUhidVnkgTnsDXnU4RBx0Onp6enp6eDjodeThddTq+/nC66ki4KXH8lXQRxNaMeglanjf/FK3Iqg/7RJtZHm9jbN5Vt38Tbvqly+0bBHzbW/uHDhj980PLxB607P+jY+UHPzg8kOz+Q7vxA9vEG6ccbZDs3yHZuSD142P8W0LukHjwi2/mBH+nOD3p2bhB/vKHj4w0tH29o+MMG0Y4Nwh0fVG//sGLbh2XbNnK2bWRt28jcurEdl7bllf/b7L2Nouhgvtn7APt7pMonf/7z10++gSd//nO3RJ5Ek+KFzhJRP7nJQ2/xsNoHyroGed3DfCYWgGJ3OadvolE13qiaaFKZsJ8A2/HGRtVEo2qySTXZpJpsVJmwnwD+2I43N6kmm9TQJgjxZQC4VD7RoBqH6TNid/ueENnV0DdeD6EcFynH6xRjtYoxoXxMuLCvqJKMVklGqiQjVZJhfu8wv3eY3+Mr9A7ze4cre4Yp2Z8DO8vIPVA9GanoHqnoHuF1j/B6Rni+3IzXPczrbjsNAKfpw1xf6lXaORjQmQyw2weY7V5mm5fR6mG0eugtHnqLm9bspja7ac0eeoub3uLxbXJTm9zkpn5ivZNQ58AL7bnVtqxKi2Pk7ge7jla0GC6lVJ3HVp1N5J/CVJyM4wXHlAdFlz9LOn4EWXYEWXYEyT2C4h5BlR9BcfPLpBs+vVDXYwuKLg+O4UEV4ySGfwpTFXQ8dGJiYmJiYmkV8q8/nyL0cwEnvIgTkmvUsa//vzISjbrxfcbG95mb3udsep+76X3ept9Xbfl9zZb1oi3vNm19t3nbu+3b3hVve7dn27uSAHCfH/S/vj+CjofiPj/o36d327vibe92bnunfds7zdveEW19p3bzO4LN7/I3v1e+8T3OxvXMjevpG9fTPlzfmpyy+QffX+A9ZXGes25i9pFfdzTNiA6wXyrvc3sncjmSvLLe/PKegsruwmqxyzV8987t8bGx8bGxO3duM5sMzCZDt0SeTJdCGQ61ycNo9bI7BrjiQVL25wAAnC8dq1OMl+IPAMABXOtks2ayWTPZzMMBn/DKNb5FjfgyAACf8Hi+xSsAACDELdrJFo0Z9wmwo8jcopksLzoAIMS+p0yUIADgE165eqJZPVGCOJDSPNGkmmhSTTSqJhpUEw19E/V9EyLleJ1yvE4xXqsYF8JJ1GiNdLRGOgqnTJIRgXREIB2p9qdP0lFazn5gJ5cqGa2SjPIlI3zJCF8yyu8dgZIoqOuo7B2p6BkhZe8HbrTzekbKxcPl4uFy8VB511AZPPYYLO0c4MCjDi+7bb4CMHy6M1u9rDYvq83LbIPU7yc3uopFzqJaR77AlsO3OkfufrjraGWb8Upq9UVs1fnkqjNJVacwFcdjKyDv764YQcdDD6Mg47lHUNwj6PIj6PJ8rux9n/dBkPfxlSfj+acSqoKOhw6vGEHHQy/ghBdwwgu42gu42ou42ou4WkqNJvb1H8jINNqmDxibPmBt3sDZsoG7ZQNv64aqrRtqtv5e9NH6pu3rW7av79ixXrxjfc+O9ZId70HgDhwKfNNFZdyBQ5Id6yU71vfuWC/esb5zx/r27eubt68XfbS+dut7gq3r+Vt/X77596Wb32dvfp+56X36h++3Y1M2//D/Wuw9ZbH3j33SQ94b/U2+VK70DNy8XtR8g9gUQa+P4tSheEKrdeDu7dlA7zkdum6JHMuQEkQuki/JKe0Y5AlKtwDAOfaoUD4qUo43qiaa1RMt2skW7WSLdqpV230VOJDaNtmqnWzVTlYUHQSAVJJ2qtVPW8UO4GBq21SrFkzdA+woAn0rcSQt9Cxz6h5gR5G5VTPZqpls0U62aGCaNZNNmslG1WSDaqJ+of11ivFa+ZgQQgZlRIsRyEYZefuBXVyadLQaQjJaLfGlTJLRqt5Rfu8IRGVt2WYAm9UDdQjQkN2XKfnt9zX/rPYBVtsAZDmzDTae3T7Abvey2ryMFje1uZ/U6CLWuwh1joIae06V1Tlyd+OuoKo20/WM2iupNZdwggvJgrNJ1SGJVSfj+UHHQydXjKDjoUdjKoKiK4KiK4JjYAp48g8/u1wvcRyPqzgRV3EivvI0pvp0QvWZJEHQ8VDvihF0PPRyWv2VtPor6fNQa7Ux//WKnM5m/mErc+dWzs6tpTu38nZt5e/eKti9Vbh7a/3urc27t7bu3tq+Z6t4z5aeT7dIPt0MEfiOQcdDcYe/WLQG2q330y3iT7d07tnavmdr8+4tjbu31O3eUrNrC3/XlopdW8p3buZ8vJn98Wb6x5s7MtI3v/L/PJP3kPE+oJOURnGP1DNwE8vrCqPXnSVxT1EYpxhkq3Xg7u25sbGxsbHRO3du8xTKaoOkWyJPYciKRS5SQz+txcNqGyjrHOQxkgAgOV82Wisfq1eON6onWjSTrbpJEhIAkN1tuimyr7Co7KP7KgDsIHSn7/HnPqlkHZi2B9hBANt0U63aqbbKVAAArlZOteqm2nRTrTqoOvkDV6yZbFKJLwHApUgctOqjAqOosXwbAAAAcL50vFYxXhABABEp533POV86ViMfg7xnyMYEMgNml2/bLi5NOlYtHcsNg1dsydHzJfq4ncCWbH1lz0hlzzCvWxf9sW//jzkl4qGyas4m4POT1z6H1p2kDLApiQAAAMA+BN/LaYc7BFabl9HioTW7yY39xAYXoc6JFzpyq2yQ98Iua0ROw7XM+tB00WWc6CKu9lyy8Gyy8NgFzNKEJJBjF+JPxFf7OYmpPompLqrs27z3SqPUeTpBcDpBEJJUczZJeA5bex5Xd+pa+sovGBKWeS2r+Vr2AhgiQ8xbP1FwuJy9n5bu+5S771Pevk/5+z6t2rdHuG+P6MAn9Qd3NR/c1XZwV9fhXeLDu3oO75L4wAUf8784LvjYsmskh3f1Ht4lPrxLfHhX+8FdrQd3NR3cWX9gZ+3+3YK9n/D3flKx95PyvZ+U7f2Es/eTztz8ra/9cBnvKQu9j14gvRFFMwZ6H1TA2ZdLOkgoPkLBBzFzofZ+bGwUau9F9o6m/uZuiTyFKSsWuUiNbnqzh9U+UNo5SMr6HNhZxpSN1ipGG/rGm9QTLZrJNt3kvOLtFTuAVLJuql0Hpu8BdhSD7fopiDbdVLseTN8D/KEYDChMteun2vmpwJ4Kvm6qHaIyFQAAYE9FZUCdadVNtmjFlwFge5G5Sd11CQAAAFfUN8HBHwAAAAAOJDWOs/MPALvL2YpxfISvDsjH8BEAAKQUBHifHw4A4Z0C2ahAZojfBWzNNdBy9wM7uVTpKF8yyu8d5feOVjKxvsHASNZ1ALjexuseLhfroj8GNmXqyqo5mwAA+AOH0DmUGgrJn4hr8+KuAkBoMzSbxOnwstu9UJYPDXAJdc4CoSO32uYcubv1sxBRFxhT1IHIbY3IabmR3Rya2XQlvfFyasPF1Prz2PozSaKQJFFIUl3IfKHuTJLoTLLoHHYB57Gi81gRSaDdeuBai9x9ESe6iKu/lFp/ObXhSnrD1Yym0Mzm69mtN7LbbuS0hee2hee2R+S1R+S1R+R3QETmd0JEFczDaQIxv35DWVFVfuwI79iRymNHqo4dEZ44Ijx5pP7kkcZTh5tPHW47dbjzzGHxmUOSMwckZw/Izh5QPB35kkXJ2QOSswfEZw6JzxxqDznceupQ86lDolOH6k4erjlxWHD8cGXwoYrgQxUnj4pJ5B0/+bHZexuez1nq/csLvUf5CfB+fwHxUEnRF7SCYHbOSV461N778xznLafzlnO+vV/iPcPnfaMK9j6gRQfT9gBXK+ECgOr2Sw9tTfdtXeC9vjsUOJjePtXue5123VQl4SAApJL9XYd/cFxoblKLLwHAR3hTQ9+EqLH8I+BAUuN4nXK8rjQFAFLwkPcRXXDy08DdBuzHNMDe02Wd54CFEd5RJRml5uwHwjr4vaOV0DRRT3sIsD+mZoTX3X560f7X2sqqSzcBwEnqEKdziENJAoBEXLuX2eYtSNsH7GDh23wTqQva+35CrbOgxpFbZXeO3N39xfWGbmMmSx5bLI4uEiMLuxAFnZF5nWE5HTdy2kKz2q6kt15Jb72c1nI5veVyessViIyWqxmtVzNar2a2hGa1QlzLar2W1UoXGXcciehQDd7IbruR3RaeA/ndEZnXGVXQicSLkYXd6KKeaEJvNKE3pqQ3tqQ3tkQSgBQijgjDa3MkvLNOU1NffflCzeULwisXhFcu1F8933j1fPPV863XznXeOCe+ca73xhlJ+Bl5xBlFxBlF5BnV0+lbsqiIPKOIOCMJPyMJP9Nz45z4xrnOG2dbr51tunpOdPWc6Mq5msvnay6fq4sI62TzPl/3X5D3EE/1PjpQep/6kPeHyYVBjLzjpVmnKtLOCpKt1oE7Afn9n598/ecnX3dL5Fi6jFDny+/bvJyOQZ6AswUAzrJHhLJRkWKsoW/cn9+3aidbtVOtuqkKwkFgT0UFVABSSVCuAntbNBQAACAASURBVNFesQM4mNo+1RqQ20DJDNRjtAburIPHANA4gaidatGacZ9A7b34EgBcKp+s93mf2DBeqxgXlqYAQEqBfLwgAgDCO+HzA/XcrcB+TP0YHc7vO88CwFk2PAXEl4z40/rsGwAAAJuz9bzuEV73SOZ1ALjeVi5uOwUAp+jDZfDQdqisa6i0irMR+BxZNcTuGGRRkgAgEdvqZbR483D7gB2s/FYvNLSFpKc09RMbXMUiF17oyBPYs/k2uXX6clzJ9ZhsYXd/brkmma7AkGVxRGl0iQRV1Iso7InEd4fnd4fli8PyxGF54rB8mPB8cXh+d0SBOLKgO7KgOxIvjsJ3Q5Q1Wz8JRop1o4jCHlRRD6qoB03oQRf3RpdIYkukcSR5PFmOoSgSqMpEWl8irS+J3pdM70umq5IZMFg/TBWWqarpdmM/+K2uoVWEiBIhoxqQEc2oiFZURHt0RFd0hDgmQhIbIYsNV8SH92HC1Qlh6oQwXcJ1/bdBnXBdnRDWhwlTYMLlseGS2HBJbIQ4JrwzOrwNFd6EDG+KRrQmYmQ0BjmnJPrw0UDv/epPzD56+dW3gZdffXv59j7A+2BWzonyjBA+7rww8VJ9nNU6cHvO5/3t248ePbz35ZfdEjmWLi2qcxHr+ylNbnqrl90+wO0ayr4BAMB+TD2c4hcjDuBaJ0sQAIAQt8Aj0e4rwEFc21SLtvsKAAB7KnjaqRbtVEtbxQ4AAJDdLdqpFi2I2wPsKAJboE3w1lSiFsR9chDXOtWinWpprdgBAFd4U0QEACDETZrJphbedgDYjjc3qrouAcBF7oRIOVHXUL4NOJDQMF4jH68pTQGAlDzZWF44AAD740Vj1ZKx3DAAmsah+uZzcsIAABq29oxU9EDzmDDEzP3Ax6Ul0Hmx6tJNQHJ613DaNQAAknAdQ5yOITY0o8/nfAh8HlU5yGgdYJASASAxqcVLbfbk4vYB21m5zU3BAHCM6KGWJABAQnxDf+xFALhQn19jz6myZVZama3ebo1786cnzkekNnYbeowTberRVtVIS99Ik3K4UTHcoBiql8GIfIV6+VC9fKgBQjHUGIhyuFE5/HlInGfsyyblcDMEfMnaSKtqpE092qYZa9eMdWjHO7TjnboJiC79UxHrJ7K3re832HWCWoOg1igQmmqE5hqhpUZorRHaaoW2WqFLJHCJBG6RwCMSeEQC77fHIxK4RQLodZx1Alut0FYjtNTUmCDqGroqawhpeZ//7jftff3Eeleg95D6C72nG/2g6UY0HVZf3CuzOYbyG4QFTYLCFj6hraKko1yvt/m9vz039+D+vTt37kDzmIW1rpL6fnKjm97iYbd5yzoHed1DlJzP5zv9yK4m1UQxpKYansEsQQDbi8zNmslmjRkXOH8Pr/RNegIAAOBK4DVm3CfAZd5kcytve8D+TZrJJrU5JeBFPsKb6vu6LgLAhbKJOsW4sKF8G3AAUz8mkI4J2FgAwOZKRnPDAGDn/i3wM7DZvSOVvSPknP3AzjJSz0hFz4LU5RR9uCTT/4mS0zqHSzuHSzuHOZ1a5B+AE5QhdkfriYD9j5EH6RWcD4F9ERUDtJYBakkiACQmNHnITZ5s7F5gOzO7qTEIAIKK3eTiBADAxIlcMRcA4Lwot9qRxbel86wpXLCkzi4xjl2Io24/dP2dj478btvh3249/Jsth369+dCvNh18e9PBtzcdXLfx4LqNB9ZtPLBu48F1G+GVEL/aPM+vYQ5t+PgLPx/shPlw59EPdx3duOvopl1Bm3YHbdodvPkTiGNb9nwD597++cE3YQ699fND614/su6NI2//5xe/+s+jv/7F0d/+Mui3bwb/95vBv1t37J11J955+8R7vzrx3q9OvPfrk+/9+sQSji9cPPber4+99+vg934V9O6vjr7z9he/W3fkv988/N9vHvrNLw/+6r/2v/2Lz9e98fm6Ny78/tfpwUE9hlF8jQVB0S3yHknRja/gvb/J7+yW/vWvf3lw/+6De3cf3Lv78MGDhw/uPbz/5ddfPX7y9VePHj28f//+l1/e/fLLu90SeSJVWiB0Euqg87VuRquH0zHA7Rqs6B6q6h0RSEeF8tE6xVi90ndqqW+8oW+iQTXR0Mz7CMARVJMNMBOl+AMAAFwqn2xQTTaoJxvV/k2TDdDEvGqioRwHfMIrVU029EHMT9j7EfmmL2sV40LFuO8M7hg0F8nvHa3sGa3sGcm6AQA32nnd8yekIOCrG8TDZb6zs5zOIU7nELsDhtU+xGofgi6kY7QNMshJwA5OXssArWWA1jJAbR6gwHjJTV5Sk4fU5CE2Qpf0uItF/cWi/uL6/mJRf0l9f0l9f7HIRahzFtY6C2ocOdX2LL4tvcKawgWTOOZ4pqmk3tVrvmn0zhk8c3r3rK5/Vuua0Thn1M4ZtWNG5ZheyIzaMaN2wmj8uGY0zhmtawE6iP4ZXf+svn9W7541uOcMnjmj57bRe9vkvW0auGOGGLwLfnssg3ctSxZhhv4WwK9/Bxy4Aw7cMQ/cJjf2oyjQHUg66NHPIu9NMDQTGsaIphmZvLpuiXwpvTKlVKHqlSr8a9g8YQJFmidwFgpdxaJ+cqOb1uxhtXo57YPcziFe9zC/d6RaOlojG62Vj0HUKSbqFBN1ymUQKSdEZfC0IxDRVaeAL1KoU84X6pQT8CssoVY+XisfF8LAZ2oh3aGRaEXPKK97pFw8Al19kH4NAK61lXUNczqHOZ3DnI4hNpylDLE7htj+y0LbBhmtgwz4OhwYavMgtXmA0jRAbhogN3nJAZdMlzR4ixs80NWgBJGHIPIU1bkL69z4WugeA1dBjaugxlUAXxbqKqhx5gucudWOLL49o8KWWm7FllkS2eZ4pimaZkSQ9eFE3XWC5gpefTG/71yuMiRLcSpTfiJDdixNdjxNeixVdixVeixNejxNeiJdeiJdejJDdipDdjpTdjpTFpIlD8mSnc2Wn82Wn8uWn8uWn89RnM9RXMxVXMxVXMxTXspXXs5XXinou4pXXStUXydowkp04UR9JNkQRTEiqUYU3Yyig2gGGB0IE8Z3T48lhgnfirCIuIXledjWeVjWBYvsxbc6YBYSz7bGsy1xbEscyxLLBGMYZrj5pkIXWc7rvnBcC3k/9ziaYZpXn25C001QthNFUoXmdYXmdvq5ltd5LbfzWl7n9fyuG/ld4QVdUYViJKE7mtiL5Riyq+x5Agfc6vsSHmbbAKdjkNs1xOsequwdhs/7SEerpWNV0rFq2Zjg21AdUJhHOla1CMlYlWSMLxmrlMCiV/SMlnePlotHysQjpV3D7M5hdscwJDT2KgBcbYUuL6P5oLQMUFsGqC0DlOYBcvMAuWmA1DQA3Q9QAjvtLW7wEkSeIpGnSOQpFHkK6zyFdW58rbug1l0g7Ifuksn1AV2lnF3tyqpyZlY5MxbdYsa3Z1Ta0itsqTwrtsySVApi2OZYpimabkRQ9RFE3fVibWih5lKB6nxu39kc5eksxclM+bE0WXCaLDhNGpQqDcJJgnGSoFTpsTTpsTTp8XTpiQzpyQzZqUzZqUzZ6SxZSJY8JNunfo78XI78fK7ifK7iYp7iYp7iYr7yUr7yckHfFXzf1ULVNYL6erEmnKiLIBmiKEYE1YSkmVE0M5q+0Pun2P809eOWVT/Q/m9SP55tWei9T30mGMM0x9BN0TRjNN2Ahq4vDmjvA65T8Hkfs9B72P5FM/o0+N4UNM0QTTPG0I1x0I2FLDN0jxWu3JpeYcuqtOVU2fMFjkKhs9g3zKU2exitXmbbALt9sLRzsLRzqKxruKxrmAsBtbviET/lYqgxXqbADSjAT+wa8VO24NKx4dLOYU7HMKdjmN0xzG4fYrYNMdoGaS2DlJZBStMAqQlulSGJCfUeQr2HAEsMXaYPSdyfX9ufX+vzWNCfI3Dl+AzOrnJlVvnuhKx0plc64btSeA7ofpT5+4O59iSuLQm+Ux6+dSuBY0ngWBI4YCIHxLDAeJY5jmGKoRvRNAOCYogk6cNKtNcImqt4zaV81YW8vrM5ypAsxYkM+Yl02bE0WTBOGoSTHMVJj+KkR3GSoymSIJwkOFV6LFUS0OpLIfVDsmQhWbIzWbIzWTJI/fML1Yea/Mv5yqv4vtBC1XWCJqxEG0HSR5ENCIoRQXs29RkWiFioAkB8Y6vvV5+1rPqWRQSob4ljg3CNYoIxDHMM3RRNN6JpejQVuqtEj6IuOl/7NvDya1B7b35akw8TMM+DphnRdCO0WwzDHMs0xbPNCRwwqRTElllSIfv59uxqR16Ns0DoLKpzEUT9JfX9xAYPpclDbfZQm71UKAmGLt/1XdC7HEMBLNjkv/qX1rqgnaZCtAxSIb+bB8nNg+TmAVLTAKQ4od5TJPLg6zzQvYtQY5xd3Z9V3Z9V3Z9Z5YLIqHRmVDrTKp1plc7UCkdqhQPHc6TwHNhyB7bcnlxuT+LaE8vsiWX2hFIbhmOLL7XFc+D/UyzLGsuyxjCt0QwLmmFBMywoBoikg0g6iKCZEVRzFNUcQTFFUsyRFGMkxRRFMUZRjBFkQzhRH0bU3yjRXSvWhRK0lws1FwvU5/L7zub0hWQrT2YqTmQojqXLg1NlR1OlR3HSIymSIymSIynSL3CSL1IkR1LgOhCcJg1Okx5Ph1p92clM2alM2akseUi2LCRLdiZbfiZbfjZHcTZHAXl/PldxIU95MV95MV95uUB5GW7yNTdKNGFEHaw+1YigmZE0M4puRtHNUMKDXqT+wsoQw4TwdQJMSywTjGGCSzsBn/o+Fi2yLXFPUR8qx7HAOBYYxwRjmWYo20HTDGiaHk0zoP3e+9v713zexzDMMQxTzOImP2Cwu3CKE+oEommmGLophmGMZZrimCYMy5zAhu3HlVvTeLaMSltWpS27yp5b7cgTOPNrXPhaV2Gdq6iuv0jkJojcxSLfHRsN3uKApjcwkfAXihu8xfULyz4I9Z7iei9BBDOfeMC5h6eg1p0vdOfV9OdCt0RVuTL4sNApPAe23I7l2pO59iT4q0psCRxbAscWz7Zh2H6VLbEsSzTTgmaAKDqIooNIOhhFBRFUMIoCRpLBCLI5nGwOI5nCSKYwoul6ifF6iTG02BhabLhKMIQWG64QDFeKDJcLDZcK9ZcK9RfxOh/aS3jNJbzmYoHmfJ76fJ76XK7qTI4qJKfvdHbfqSzl8XTFsTRFcKrsKE72RYr0CFZ6KLn3MFZyKLn3ULLkYLLkMLb3CFZyBCs5kiL9IkVyFCcJwkmDUyXzuf58tiM/Dbf6cl/Cozifozifq7iQq7iQq7iUr7xcoLyC77uM77tapL5G0Nwo0YYT9REkfWC2g6KbUQwzmg6iGTDRcDUwL+0KfPb7K8DfX33IW5oBtajVX85783LZzpLrF3ynctFUWH0oI4qmG2N8aQ+GbU7kgMmlFmyZBVtmwXHhTiC9wpZRac/i27P59uwqR3aVI7vamVPtgtKGHAGUBPuy4ZolBQG8NcdXhsiuhvLm/uzq/uxqV3aVK7valVXtyqqeb7mh9CO1woHj2VPK7Ull9sRSO4Zjg9rmGIYFTQeRNBBJAxE0MIpqjqSYIynmcLIpgmwKJ5nCSKYbRNP1EuO1EuO1EuPVYsNVguFyEWzwJbz+YoH+QoH+fIHubL7uTL72TJ72TJ42JEdzOkdzKltzMltzIktzIltzPEt9PFN9PFMdnKEOTlcFp6uOZaiCM/qC0/uOpSuD05RBafKgVHlQquILnPwLnOxIiuwIVnoIKz2YLDmYJNmf2AvxeULP/oQeqHwgqedgYu/BpN5DyZLDWMkRbO8XKZIvUiRBOCjnkRyHcn2f/aezoGGubH6Yu1D9i3mw+lfxqtAi9fVibRhRF07UByb68/b71aeDaIYZIprugwETs8D+xf3A0vFAQE0AV1Af2gfOdgK996kPt/c0PYoKVYDlvI+mm1dI8QOv2/GrP18TAvIfqALEMc1xTDNUDRLYYCLHnMQBk0styVwrlmvFcm0pXBuu3JZSbsPxbKk8eyrPAQEJmurLkqGyfysEDqLcDuHPoVO4diwXbrzhfJprSyqzJZTaMKU2DMcWx7LFMq3RDAuSBiKoYCTFHEE23SCZbhBN10qMVwmGqwTDlSLDlSJY6At43UW87jxed75AezZfeyZPG5KrPZ2rhYQ+kaU5kak+lqk+lqEOTlcHpauPpqu+SFcdSVMdSe07jOs7lKI8lKI8iFUeSFbuT1bsT1bsS1LsS5LvTZT/KVG+N0G+N1G2N0G2L0G6L0G6L1G6L0G6N0GyF9O7FyP5E6b3T/E9f4rv/Sy+57P43j/Fd38W2/OnuO4/xXV/Ft+zN75nL6ZnX0L355iezxN6DsDq9x7C9h5O7j2ClfgafslyDb/UN8mzuOGH1c9XXi7ou1zQd7XQp36JLoKkjyAboyhGJNWEDGz4IfvpIIpuRjPMaPoC/OpHw20r+JQ6AHUC88Qtgu2rBiwwjgXGs5ZV3xLHAmNZYAzDFMMwQU0+mray9/46Oi/9/IQm7D11AdD3MfkK8C2583WANt8hRNON0PcIxDFNcdAjy4xhgRg2iGFDAzvoi9MWfDXa/KKPhEDgcaFvfMOZH+BDYyP4iz2YlmiGJZphQdNBFA1E0MxRVHM4GUpFTKHFxstFhsuFhot4/bkC3bl83Zk87elc7elc7akcLdROH89UH8tQH8tUB2eogtNVR9NUX6T2HUntO5yiPJiiPIhV7scq9mOVnycr9iUp9iYq/pQo/yxB/lmC/I8Y2Z542Z442e446e5YCMmuGMnOGMnOaMnH0b070ZKPo3t3RvfujO7ZGd2zE929E9W9Cy3eiRbvRIl3osW70OJd0eLd0eJdaPEn0eJP0OI90eI9MeJPY8R/jBV/Ftf9WVz33vjufT71YfuTIPV7v0jp/SKl9yhOEpwKN/wB85tPVX9+mOtL9P2tfgTJEEkxBiY8yAD14QLNjIYGAMupv7AO+GAuQyzTHMcEYwNYVBMg9f09g2+AC8axoCzfFMMwxfjUR/vU/wbv0bRAFl+v5pfeD4JiQPoI/FJBJMUIl+GKAVUGaNgADYvNsUzQ37X56vGS76hZNNiHOkTfdAHUV0YzF1iO9g0lkZDuFHMkxRRJNoWTTDdKjKHFxisEw6VC/YUC/fl83Zk83ekc7WmoCc/SHINSkQz10XTV0TTVkVTVkbS+Q7i+QzjlAazyAFa5P1mxL1mxN0kOWf5HjOyPGPmeONkncbLdcbJdsdKdMdKd0dKPoyUfoyV/QEt2oCTbkb0fIXu3I3s/QvZsQ/RsjerZhuj5CNnzEaLnI0T3R1Hi7QjxlqjOrZGd2yI7t0V2fhTVtT2qa3tU1w5E5w5k58eorp3ozl3ort3ort1o8Z5o2P4/xor/FN+9N7778wSf/Uk9fvv96s/nPGnSE+nSk+nSUxlSaHY/JCDjh9XPUVzMU1zIU14qUF4p6AstVF0r0lwv1oYR9RFkQxTZpz7VDOU8C9r+Bf0ANEFiQtNNizKfxdVgOfV9FQDyHqoJPmD759UPqANgLAuM9XtPh2YgDZD6T/UePlCaqV03JbdOL0W2FMs80sXcmge85V8P72+dllmn5dYZuXVGbpuR22YUthm5bVZum1HYZuW2WYVtVmGblcMr/czIbTMy6/JILQuQWKYllmkJON0LTveC0z3gdI95uts0LTbd6jLe6jTc6jDcbNffhK94gy7+0Uw1a6aa1JMQ0C2O8Kli/5lg5cT8XSzwnVzjQvl4jWwege98WfX8KYX5O1f4vaOBiwG3Ps7fLy+QjAikIzU+hLIRoWykVjZa67ufWKQYFSlG6xWj9cqxBuVYQ99YY99Yo2qsSTXWpBprVo03q8Za1OMwmvFWzXibdrxNO97uRzfR4aNTN9Gpn+jUT3TpJ7sMk12GSbFxUmyc7DZO9Zimesw3e8FbksB/onVGZp0O/OPLbTPwf9P3D5Xbpv0obDNLmA5g6dZlUELY/cwux0yn4WYM0xzDMKHphmia8eneM8wxfunppnbdVHw2+43NIWv8r+V1P5sCOf36ptM/h9i4iFOB/Gyekz/78G8O/OK+tws4jE2nf77pdEIup9NwM4ZhimEY/e39cnkOwxzNmO+V5NbpNzaHAGuxFi9APHnyZGJi4tatW3fu3PkyIO7duwc9+uP+/fsPHjyYnZ19fdNppX0GSvShiR1I/UXem6Ih/N7bpt/YHCKTyWQymf/tFy3+U4QsIFbY4R96TGvxLWPV3sf5En3fmSzDU7z3qf+v4X3gAS978CtXibV4QWIV3v9802mlfTaWBcYxQUjvZbyHjEdD+Lx/3ef9yuo8ezxfyZa+9Td2BWvxgsRqvZ+JY4FxTLMv24G8f/zyawuvQ/Yn92iaSW6dfn1TyCIzltaBlTuEZRdfEO+X/VBr8WLGqtt7+DRWQJa/4HpMv/EoiOW8X7kCLC0vXXxesXL9fEEOci1WiNV4vxH2Po5pjmWYYxhmNN0Et/cB1yGbF16eYJJbp3++6fQi0ZddXNahF7ApXXqcy36EtXgB42neP3z48PHjxw8fPlzW+z77bDzLgmFZ4uEs3xxDN/q9XweNa2PoRgjoVkO5dfrnG08v6wrwdKFX9v75GvaNx7wWL2ws6/2DBw8eP3783nvvBaof4P2pPvssfAUbC4xnmmOZ5lgG5D30vVFzj2OZplimyW9/NN2osE3/bOOpZcUFni23WerTP977FY5z2X3W4sWMpd5D0v/iF7/YtGlTSEiIX32/9z/78JTKMZvAsSSwLRiW754epmli7vFLr64DXnpl3eTc4ziGKTagyY+hGxW26f/48OTTnAaWZD5L93lBfHracT7L1rV4QWKR95D0b7755r59+xISEvB4fHZ2NqS+3/v/+PCkyjGbWGpJhO5oY4MYFohhmSfnHr/0yjrge6+8NTn3OJ5limPO/8pSLMOosE3/dMPJ5/1512ItAGCJ948fPz527Fh8fDyHw6mvr+/o6JBKpe3t7Y8fP/Z7/9MNJ1WO2aRSa1KpJYljSeJYEthgAts8Off4e6+8BXzvR29Nzj1OYBn9YFiGeKZBaZv+yYbjz/vzrsVaAMBT2vulEdje/2TDcbVzFrrzCcsFsaVgcqk5qdQ8Off4ez96C/juj96cmnucxDFBJHKMSRxjEseosk//+++PPe/PuxZrAQCrmsf8998f0zhnoR/Mw3EhwBQuOHX78Xd/9Cbw3R++efP247RycyrXnMo147gmCLVz+sfrYe9XyOO/MW/+u/9JnjmWHau8aAe5FsvGKrz/8fpjOtdsZqU1s9KaUWnNqLCm86zpPMvN219994dvAt/94Zu37nyVVQn6yawEM3mgzjXz4/XBwDeNU1fw5oVSapHiTyuvxYsZq/D+tfXBBvdcbpUtt8qeW2XPrbLlVFlz+NZbd776zg/fBL77ozen736Fr7EXCGx+8qutRvfsa+uDl20jAw/oW3n/vNrXZ+ma/sGHtBbfKlbh/avvBZk8c3ihfZ4aO77GPn33q+/84JfAd3/05syXX5MaXMR6F7HeSax3EkXOEpHD7J378aq8ly2MZTf9vf48y8XK/dUK69fixYlVeP/Ku0HgwG1ig5PY4ITFrncS650zX371nR/8Evjej96au/c1u83DavMwWz3MFjezxU1vcduG7vz498e+rfcvWv6w8vE8r/5nLb5trMr7o7ahO/RmN6PFzWhx05vd9GY3vcU9d+/rf/vBL4GXXnnrzv0nFd2DvO5BnniQ1zVQ3jXA7Rxwjtz99/f/RbxfoQsCXozjXIuV48mTJwaDoa6ujrEwmEwm9OgPoVBoNpsh750jd8s6vGUd3rJOL1zo8Ny+//W//eCXwMuvrrv78M91itE6+WitbKRWNiKUj9RIRzzj936y4fjf1vvn274+7a3XvH/x48mTJ3V1dZOTk1/5Apqwv3PnztzcndnZuZmZ2Zs3b42OjlksNpFIBHnvHv+yuncIospXuPPgCez9/Ud/6dBPtutg2rSTrdqJoan7P91wHPiW8zn/LN6/aP3SWqwcT548odFofuMfPHh47/79L7+8NzExNTo6PjQ86vUOWW0OZZ/GbndSqBTI+8Gp+/6vlmhSwV8z8eXDP//bD34JfP+1dQ8e/0UC3pKAN3vBm73mm73mmz3mqbHpB//xAfyzHcv6+rT8IXDxxVFqheN8QY5wLVYIyHv/Sdl79+7fvfvl7dt3hoZGPZ5BV7/HbndpdUa5XGWx2Pzej9x64PtalHnuP/J5/+jrv2pcsxrnrDrgxzOm5h75vV+LtXi+4ff+0aNH9+8/gKSfmZnzeAedTrfV6jCZrBqNQSbrA0Gr3/uJ2Ydy600IhfWmwnpTbr358Ku/wN4/fvJX08Btk3ceo2du+s7jn615vxYvRqzO+1u3H+v8v2IE/5DRzKOv/wp7/9Wf/8c+fDcQ29Cd2S+/+tmHa96vxQsRq/N+5u5X4MDtRTx+4vP+6z//j3v8S/f4l+7xe1Chf+zL2/e/9nv/jfn90gN9cVLnb8zjF21ay/tfwFid93P3vnaM3IVw+vj6z//zbz/4JfD9V9968pf/GZx6EMjA1P27D5787INvPZ/zjJv+YbF0ILvsDsvu8yIc/1pAsTrv7z544pm4t4h57+fufc1uc7PbPOw2D7PVzWx1M1v7bUN3fvbBt56/X3nT821HV9dl/UMObS2+IVbnPThwm+S7PIFU7yTVO8n1ztkv4fNWb03MPoplaOMY2li6LoaujaHr0DSNzDq1Ou9lC2PZTX+vP8+K8bTPsub9ix+r877HNHW9qO8GQQURVqwKL1aNzTyc9z6apommatBUDZqqQVE0CLJGCk797IN/+usUoFha31Y+zudbP9diafi9hybvb9++Mzs7Nz0909/vtdtdIGgzGMwqtU4iVSzw3jh1Fd93Fa8MLeyDuFbY5eQFSAAAHslJREFUNzb9EMpz3pyYfRRNU0fT1GiqBkXVoKhqJFn9r+Q9FEuPbYWuCXjxjv9/c0DeP3r0CJJ+Zmb21q2ZqalbdrsTBK0Go1mj0SuU6l6JfFnvA9Vf5L0mmqqOpqpRVA2Kokb8fbx/vu3o0976265fi398PHnyRCAQTE5O3r8Pnam9PTd3e3Z2bmho2Osd9HgH3G6Py+V2OFw6nYHP5y/0fp7Qwr5Rn/e+PIemjqapURQ1iqJGUlSQ98A/+fU5z9L/PG2fNe9fnHjy5IlGoxEIBBQqZWX4fH53d/e894V9EIHt/Xf83sfQNJD6aKoaRZ1v76F3XdZX2ZJYuvOLoM7SI1x568r7r8VziVXdb3W0xzQVaPw1X37/nR/8Evj+a29NzD6KpQd4T1EjKWopOPXzD9e+T2EtXohYzf217wX1mKau+XS/VtR3rajvepFqbPrhd34IeT/3KJahgZp8NE2NoqgRZNWa92vx4sSqvk8hqMc0da1I5ec6QXWdoBqbefjdQO+j6T7vffM5a96vxQsSq/r+nOBe85Rv8l4NEVasHpt59N0fvgnnOTF0bTRNG71wHvP1jf8bvz9nLb9/AWMV3v/k/WCJeSqsWB1esoCxmUff+5Hfe5oWTYPPWyEpagQF8v6f/vocfyw7eH328lo831iF9z/dcEwCTkUQ1RFEdSRRA0PSjMPev/rWxOwjNFULn7SiaBC+/P71jf8i1+c8S9f07OvX4h8fq/D+Zx8ck4I3I0maKLIWAkHWIsja8dlHL73i8x5F1aKoWhRFg6RoEBRNFFmzau9lC2PZTX+vP89y4X/HNe//eWM1v/Pz4XGp5SbCpzuCokVQtEiKbnz20UuvvAVfn4OiapFULYKiQZA1UWRNFEkjBW++vvHEt/X+RcsTVj6ep9XD59UvrcXTYlW/b3VCZrmFoOgQFD2CokNQdAiqDkHVjc8+evlVn/dIaIOvR4giaaXgzdc3rvS7D8uueTG9X6ELAtba+3+GWJX3J2WWW0iqAUk1IKl6BFWPoOqRNL3f+3UTs48RFD2Coo+i6KLIuiiyLpKsk4K3/ubeP9929Nv6veb9ixOr+b3yjSdllmmf9xBGJNX3+1Yvv7pufPYxgmpEUAwIiiGKoo8i6yPIeil46/VNp4B/8utzlr776spr8XxjNd5vOiWzTiOpRiTNiKQZUTQTkmpC0UwLvEdSTUiqMYpiiKIYosiGSLJBCt56Y9Np6F2X9VW2JJbu/OKos8JxrvC5/uGHuRbLxyq8f2PzaZl1GkkzIWlmFN2MopvRdDOKbp7/vfLx2cdImglBNSGoJgTFGEU2RpKNUsv0G5tDnvfnXYu1AIBVeh8is84gaWYkJD0DRDNAFB2cmH38/dfeBl5+DfLejKSaEFRTFMUURTFFrHm/Fi9SrML7/9wSIrPNIOkgig6i6CCaYYGYmPvq+/72HkE1I6lmSPpIinHN+7V4oWJV3p+R2WZRdAuKbkExLCiGBc20oJmLvTdFUU2RFFMkxRhJMUaQDRJw+o3NISsMW//p4mkHv+xn/Kf+pP96sUrvrTOw93QLmmGJZliiA7xfNz77OIpqiiSbIsnGCLIxgmwIJxkk4K03Np3+l/H+aSovO9hdWl6L5xurbe+hPMfX3i/1PoJsiCAbw0mGCJIhnKgPK9H3grde93n/t1LhebWjq5u6WfP+xYnVtvezSLoF6WvyIfsn5r76/mu/Al5+dd34zOMIkj6cpA/zSX+jWNdrvvXzjacWmbG0DqzcISy7+A+WadmDX2H90h3W4rnHqr1H0CyL1A/0/lEYUR8GGV+iu1Gsu16s7THf/LnvfO2iAJ75XM9zV+dZjnPpQT6X+rkWK8TqvJdaZ6JoIIJmgeyH1J/3fmzmUbhf+hLdtWLdNYK2xzTvPbCkdV+2MgALG1HghfH+afV22Y+w6Ln/8ENei2Vi9d5TwUD1kXTLxOxC72+U6G+U6K4Xa68RtKFLvAee7UTsyt4/33b0G4/5GdevxT8+Vum9ZSaSCkb61Ie8Hw/0Poyov1Gsu16su0bQXSPoQouW8R54Sk78LPsEbnqRvV/hc63Fc4zVe08xR1LNkVRzFA2MooFIOjgOn699dd3YzKMbJfobJfprxTqIq3B7f+ppTgNLMp+l+7xQ3qx8tM/yudbiOcaqvY8gmyMpMFFUMIq6wPvHYUTDjRL9/9/OmQY1de993Fetr+6L1ufemedWRshCAFGQJVix4opLbWurliX7TlhVdre6WxUIXlun9d5nWistOyE72RPClgXqUrXKFgQCVCIkcOd5d58X/5PkZCna2JY8M+c7n8n8Dc7hnP/5/H/nl+QEDij5vD5WTZ/CMvnfiZnLfbxIkKxYEaz36oGp3Bv9uTf6877oz/uiP9/f+5zrJk6tiVNrYvOMLF4fs6ZPYbH9HfEeSWgkuPtzVANTOdct3H9YuDcsuTcsuTcseV/0e9f7WhOn1sipNXJ4RlaNkVndp7DY/u66DxkJkuVNcPdjKgemOLXmnOvmnOtm7j8sALf3aFDvc0C9rzUxEe+RhFiC9L5/is0zsXkmTq2Jcx1aANZp1/331ulFTq2JwzOxeEB6I72qV2GZRLxHEiIJ6vtW2cr+KWaNic0zsnlGdi3UyVunF994C+Y9u9bEqjEya4yMaiOjqlduRrxHEioJyvsshcXGrDEya4xsnpHlUt/Pe56RzYO8pyPeIwmlBO09o7rPR32X92+7vTexakwu7/vkZts7yYj3SEIiwfX3CouNUW1kVBtZNUZWjYnFM0Hev41e8ebbaOv0IrvWzK41s3gmZo2JUW2kVxnlFhvyfSskIZLX9J4JSW9m15qt04tvur3nQN6bmTUmRo2JXm2Um22r8Yj3SEIiwb1/L7fYGNUmZo2JWWNi8cwBvbe4vDcza8z0apPcYluNJyz38SJBsmJFsJ/Xyi1T9GoTUBp4z6m1eHmfc93MrjUzeWYmz8yoMdGrTXKzLQzxHkloJAjvw/AEucVGrzYxakxAbHatmXPdVe9XrsLA6z2LZ2bUmGnVJrnFFpaCeI8kJBKM9ylQvWfUQGKzas3sWot1enHlKozL++sWFlTszfRqE63KJLdMId4jCZEE7T2tygTUZ/JAq+PtPeu6hcWz0GvM9BozrdpMrTZ1mJF6jyRUEpT3xA7zFLXaRKs2A7GZPAsL7v3o9CKr1sLgeaSnVCHeIwmhBO09pcrko/4o3Hsmz0znmWk1kPTkayYZ4j2SkElw3svMNvI1E1x9Bs/s5T0o9tRqE7XKRL5mIl01ykyI90hCJUF7T7pqBOpTqiD1vbyn15hpQPoqE/mqkXjVKEW8RxIyCc57qclGvGp0qw+qvpf3tGoT6HBI14zEq0bCFaPUNIl4jyREErT3hCtGwhUjEab+6BTMe7f0pKtGwpW+7Mt9EiPiPZJQSXDeS0y2rMt92Z/3Ea961Pd4PzK1SKkykSHpjdlX+rIQ75GEUoL03jiZebkv6/M+UPJBwzPi5T1c+s/7Mi/3It4jCZ0E573YOJlxqddHfS/vSVdNxCt9BJf0GZd6xX2I90hCJcF9Xivum/z0Yi9QP/tzqOEZmVrweE+8YvRIf7n38IVecd8E4j2SEElw3ov6Jg5f6Pn0Yk/GRU/V9/KecMWY/Xlf1uW+jEu9hy/2HrrQI0K8RxIyCdr7g+e7D1/o+fRCT+al3sxLvVmXe4dtLu+HpxayPzdmXe7LuNQHpD94HvEeSQgluPuQhb0TH5/tOni++9CFnsMXejJ8vbctAOk/dUn/ybluYe8Ecv89khCJj/cOh2MxUJxOJ/z7VoKeiY/OdH18tuuTc92HzncfvtCdcbFn2LYA3X8/bFvIvNz36cXeTy/0Hj7fe/Bcz8dnu4U9iPdIQiU+3i8uLsbFxWEwGAwGg8PhUlNTWSzWtWvXFhcXvbzvHv/odOeBM4aPz3Z9crbr4Lmuw+e7h+DeQ8XeJf2BM92Cngnke4ZIQiQB6/2hQ4fIZHJFRUVdXZ1Go/Gp9+8kZ/O7nu0/qfvglP6j0/oDn3V+ctZw6FzX0KTT4/2nF3sPXeg9eK73k7M9B850f/hZVzviPZKQiX9/D9QvKSlpaGgwm81Aenh//05SVlvXs73HtftO6Paf1H14Sv/Raf3Hn+k93g/ZFg5f6D14vveTsz0fn+356LPuD0538bsR75GESoD3U1NTdrvd/RLW6XQuLi42Nze7pZ/z+rtRmW2Gsd0Vmj2Vmn0ntO+f0H1wSv/haf3gpPONt1CQ9wfP935yrudjUOxPd+8/1cXvGke8RxIiAd7/8ssvL168mIdlYWHh3//+98LCgvsZh8PhdDpnZmb+npjZ2jm2q1yVXq7eU6nZe1yz74Rm/wnt4ITD5f3kglt6UOzfP9nF70LqPZJQCfDebrcDs5eI0+l0e9+it+4sU+0qV6VXqHdXqPdUqvcd1zz18f7AWSB99/5TXftOdLUh9R5JyAR4Pzc352+523V4gPfNeuuOEuXOMtWuMlV6uWp3hXpvpfrpOMz7A2d7PjoDSf/+ya49xw1tBqTeIwmVAO/9FV9YWACPPgH9fbPeurVYsb1U5VZ/TwXM+8HJhY/OdH/wGST9vhOGPScQ75GEUID3/n7/WsDfQ27WW7cVK3eUKHeUqXeWqdLL1ekV6idw7z/8rPuD0137T3XtO2HYe8Kw57ihzYD0OUhCJcD7md+Sd5KzmvSjaceU20tUO0tVu8rV6eXq3RUaL+8/ON21/3TX+ye7gPTplZ2thvHVeML/IkESApn77VmdnN2kt6YVq7aVqnaUqneVq9PLNbsrNLA+Z8K5/3TX+6e69p407Dlu2F1p2FXR2WoYD8MThl85Q65YrdbOzs66urobN27cuHHjC1j8n/nzc8M7dXV1nZ2dViTLl7FXSDDe47ObdNatxcrtpeod5Zqd5Zr0cs3uCu3TcQf0udXTCSeQfu9Jw+5KQ3pF566KzlbDszA84VX2yScTExN1dXXj4+PgNUeIZ2xsrK6ubgLJ8mXSO1NTUzMzM7Ozs+DdG9CsB+19WrFqW6lmR5lmV4U2vUK3u1L3dMLp8X4fkP64Ib2yc1dl587yzpbOZ2EpBNsrx73fMzMzX3755eLiotO54HQ6HQ4P8/MO8MHCMgL2YX7eMTc3b7fb7fYXX3311W9qHJG8Zn4JlOeuzM7Ogg9lwbs3QXsfhic0Au9L1NvLNDsrdOmVuvTjei/v95407DlhSD/euauyc2dF544yHfB+2jszMzNgAD5BsNvt036ZnZ29efPmwgJ0k1AQe+yOw+FcWFhcWFgMOHidLc/NzdntL2Zmnj9/Pnvr1q1ZJMsXu90O6rrD4bDb7eB+evcnr8F7n0Jo1FnfO6ZKK9FsL9XsKNftqtSnH9c/mXC+Ce6/fzrhdEu/q7JzZ4V+e5mu+de9B9IfOnRofn7+17x3Ohfm5ubt9hfPn88GjcPh3PTuuywm02dw9swZh8P5Olt+/nx2Zua5bWp6ZmYG8X55Y7fbFxYW4uLigPq/o/cN2tHNRxRpx0Cro91VoU+v1D+ZcK50e7/7uMEjfflS3gPpw8PDy8rKlvTeaX8x9/z57MzML0EzP++g02jffvONz4Df1jY/73idLc/M/DI1PTMxaUO8X/YA7zEYzKFDh4D6v5v3mtFNRfL3jiq3gpJfpt1VoX8y7vL+yYQz3SX9jnL99jL9tlJts/5ZGN7XeyB9WFjYnj17/vWvfy3hvcPhnJ21z8z8MjU1HTRzc3PlZWXt7e0+A7VaPTc39zpbnpqanpy0jY9PTE9PI94vb9zek8nkkpIS+G30v8n7//znPwMDAzDvifWa0Y2F8tSjyi0l6q2l2u3lup0VOi/vobYeSF+m21oS2HuHwxEbG5uUlFRRUdHa2rqE99PTM6Oj1idPBh8+fBw04+MTQHefgVqtHh+feJ0tP3z4+MGDhwM/3vv5yRPE++UN8B6Hw1VUVDQ0NID7ioPw3maztbW1wb3/Xj2CL+jYVKTYDFMf5v2400f6tBJtk37s1+p9dnb2tWvXpFLpEt5PTU0PDY08evTzvXs/BY3V+gzo7jNQq9VW67PX2fK9ez/9+ON9s7n/0aOfEe+XN8D71NTUuro69zdIfo8+h/i9ajg5T5ZSKE89otx8TJVWot5W5u39jnL99nL9tjL9tlJtWol2S3Fg7939/cWLFzUazRLe22xTT54M3r//sL//btAMD4/W8ngqlcpn0NPTMzw8+jpb7u+/azIP9PaaHj58hHi/vAHes1gsjUYTRH/vbm/8+5w61XAiV4LPl71bpEg9otxSrE4r1fwM9347VOy1aSXatGLtlmJto24sDJ/t77276kskkiW8n5y0PXr0ZGDgntFoCZrBwWF+W5vRaPQZ3L17d3Bw+HW2bDRaentNBkPPgwcPEe+XN8D7a9euBfd+jru98e9z6pRDCTnipDxpSkHHJlDyi9U/jztg3pfpt5Xp0koh6d87plnC++lXeP9+7Nl4f//drq4+g6EnaAYG7j1+/PTx46cBB6+zZYOhR6/v1mg6791/gHi/vPnD3r8n3lEOxXNEiVxJcr5sY6E89YjyPbj3P487t5Xptpbq0kq1W4q1W4q1m1/m/RKZnZ29efPm4OCwVmtQq3VKlTYUUWoVCo1crr579x7i/fLG7p1X9N6/vfHvc75TDK5nCeM5okSuFJ/f8W6RIvWo6udnMO+3lurSSnVbSqBiv/mYpkE3FoYnPH/luD9wfvHiRVNTk9Fo+vHH+xbLj2ZzfyjT3d17+/btF0hCJnDpl/De3dWMjY01NjYG7HO+UwyuYwri2aIEriQ5T7axUL6pSPkY7n1aqS6tROeWfvNRyHv/tWh/Webm5gYGBlpbW//n/0Pu3LnT0dERxGUUSdCZf1ng0r9On/OdfHAtg7+eJYzniKGSXyj39r5Et6VE916xdnOxZvNRTarL+z/zdqXlzUv7NyS/V4I4O8F5f1v+dC2dH8tsX88SbeCIk3Kl+IKOx2Nu7585t4BiX6zdfEybekyTekTztXiIUvplGJ6wGp8NkZy9Otk1xhNW4wlheEJYCoCIsNwQAvFHb/838adOSEYRj9fyMJratpbGX8dsj2cLE3LEyXmyR2PzMO890mtTj2o3HVHnfzHwlXioQTtWrx2r11h/gBj9wTO21mvG6jXWeo21XjtWrx37wY3GB+v3AVFb69SjXqhG76hG76hGPChHvvsVbiuGfZEPfxuYoW986PB7BjwZmEEYQ9/Ih76VD4Et31YMu/fnjnLkjmr0jmq0DqC2fq8OeOBjAJ8p8kU79gOYfBjuuf1eMwZNoGr0O+Xod8rR28qRbxUevpF7oxj5RuH1H16R2wFRuoA9+a1iBMyJ30wOBsXTpZDBgJ58AgbfQjzhNT8gX9ZHUVpjaG2xdP46pmADR5TIlXq8fzAyt61Mt9nb+01H1O8WqTcWqVIKVSkFKny+MjlfmZSvSM5XJBcok/OV+HwlvkCVUqBKKVDiC1XJMJIKvMlXJsJIyFMANuQqNuQq4nPl8Vx5PFcex5XH5XSsB3Bk6wBsWSxLGsuSrmVK1zIlMQwP0XRJNF0cTRdHAWjiKJoYRxNBUEWRXggjKULsy8CQhRiywANFgKEIMOR2DxQBltKOpbRHUgSRVGEUTRTNEMcwJWuZkli2bD2nY31OR1wOdETxXOgYN+QqEgB5isQ8pZuk/AAk5yuTCyDwBSqIQjW+UI0vVIHJT8pXJuYpN+Qq4nLk6zjyWHZHDLMjiiGLpMuwdGkkXYqlBSCS/nJwdCmOLsPRZTgGRJQ3OIYsigmDIYtiyKIZ0iiGFEeX4GjiSKoIQxViKEI0WYCGZhI2gSQ+hsR3/xMNwUeT29CkNjTRTSua1Oai1Q2G2AJBaMEQmjGEZgwRAusikgSBI7dEUVqjqa2g5MexhO8WyPqfzkLe9w/at5bpPNIf1QDp3y1SbyxSpxSpUwpUKQUqz8lwSe/y3kv65EJVcsFS6ifkQepvgNSXA/WB93Fu79kQsSyZ23u4+tEMyHugPo4GEUkTQfio/yreU7y99+A+c3wMuR1LhrzH0YRRdFEMQxzNlKxlSWPZsnUcsHTlwP4NXF/v4eoD0RO9ScpXJhUEUh9CmVwAeZ+Qq4jnKtbnyGM58himLIohxdGlkTQplibBUiUYqhRDgwDeY2hSLF2KpUuwdAmW5gddivUsAFkkwwO0BqBVIcXRpVEMF3QIHF2Co0kiaWIsVQSmEU1uR5Pa0aR2NFmADqw+H0Pio0l8mOLe6ntocQPz3kf9Jrj3WFIzltQSSWqOIrcA9WOZ7Sn5UuPj2ZWrMCsSEhIuVH9NuWbySH9Us+moBki/sUi9sVCdUqjGFygh8j1nAkiP9/f+VdVXusqhX8nndKxnw9WXrmVKY5jSGKY0miGJZkqj6ZJouiSKLnGVeTGOKsZRxZFUcSRVjIVEF2EpIiwVApR8zMsAVQodWH3ohGHJ7ViKAEsVRFKFOFD16aIYhngtSxrLlq5jy9ZzZOs5HXGg9ufI43MV8bmw2g+ueLmKhFxFYl4AkvIUSfmKpAJlEjTtXuqDkg+unBu48rgc+TpORwwLeC/B0iQYqhhDFaOpEgAGBpYqwdAkGJoYhsQHLE0aCfC6CEgj6dJImgSCLsF5IcXRJZF0SSRdArxHUwRosgBFakcB9Ul8UNp97ScB9QN6H1h9lHsNEFrQhBZ0djM6uxlNaEYTm9GERgyhCUNowhJdkJqxpCYcqSWK2rqW1nbwjOZC1dcJCQkr6HT6X8OiWg3jXtIf0bilB6QUqvCFXrq7pQeX4Jd7X6DyKmx5Sn/v47nyuBx5XE5HHKdjPbtjPVsWy5bFsmRrmdK1TOlahjSGIYmiw6BJomgSYDyOKsZS4IgAGNcASxG5OhkP6ICQBBDQAmiHA67L0AKgtGOp7ZFUAY4qjKKLohnitaDws9z2y+Jy5HE58jiuPA4cY648PlcOHThXnpAbgMRceWK+IilfkQT1PKpkj/Qq0HAm5SkS8xTxXHlcTsc6tiyGJY2ig3IrxlDEaIoIRRajKGIURYz2gSpCU/ygit24VwiW6rkaRIIBVQwnkiaOpIkj6RIcDcKr3pPaUSQ+ishHEfkooD4Jpj7MewyJjyK1oUhtKGIritSGIrahAnmPIragCM0AtGuAym6CIDShCE3o7EYAhtCIIYBBE5bYFElqiaK0/KAa+mtY1N69e1ccO3Zs5SrMZd4/L9U/9kgPcBnvwV/6X/M+kPqJAbsdn5KfI4+D1ftYFvBeFsOQxtCl0XRJFF0aRZfgqB4igehkMZYsxgBIYjRZhCGLMGSRe4AhizBkIYbkAeUPETwKUEQBiiRAkQTwU4Umg5PnvjTzMWQ+hszHktuxFLf9QqjjZ0nXgdoPAGuAIwO9XDyMDdyOeK4snivbwO0AJHA7EnLliXmQ/cmg6YeRmC9PzJMn5MrjczriOLJYtjSGKYmiQ86hKKIIshBFFqJIwggAWRRBFoExiiREkZcCTRahySLYOgGLQYShijAUL6BrKQ26zIIrLZYiwlCEoMNBEfkRxLYIoD6xHQWmDuY9NJPENhSxFUVsjSC2RhBbUcRWoD7K9TyK2IoitKAIzRHZTYDw7KaIrKaIrMaIrMaIzMaIzAZonNUYkdWIgmgAYAiNWELz8X+aL/NurVyFzsjIWFFVVcXlclf+5W+Xef9sMYxTq8we74s0G4s0KUWBpU/xvNhyveR6hZLv1+0oPS9wQTl01ft1nI517A5IeqYsmi6LBn0kFSDBUiVYMgSGJMaQxGiSGAUgitFEMYokQpNEaKIIGpBEaJIQDeQmClEEYcSvQRRGEAQRkP2gQ/VID8pShPt8EKELNIbMx1LacVRBFE0YTXd3PlD5j2VL17Gl6wHuNQCtBGkcRxrHkcZDyOJzZBvc6ucp3K93k/KVSXlQpU/IlSdwO+JzZOs50liWJJopwdFEWKoQTRFGkAQRREE4sT2c0L6GKFhDFIQTBeFEwRqiYA2xPZzQHk70hiQARLjwqgXQYggA1By6OkksRQSWB5oiRJEFKFJ7BJEfTmyLILRFEPiQ/TD10SS+u6VBEVtRhNYIQksEocVbfWB8C4rQEpHdFJ7VGJ7VuCazYU1mQ3hmQ3hmAxivyahfk1HvHodn1Idn1EdkgsEP+8pkd+RPL/FurfzL3w4cOHDs2LEVt27dunTpEpfLXbkK89ewqHNVXz965nj0zPFo7I/ioRfz0KPVl58Ao/M/jc4/cDMy/2BkzvU492Bk7r6b4UAs8aNA3AuwhRcBGH5xf9h+f/iFF66fQvs2CvFTQNwHaJ2D4z8PD8fmH47NP3LhP1c/WaFtPhgFEwLt4b0gGPGM/Y5r7lXwOiPuuRrxnSK/yfQjwGzb7w/b77kZAsy+CmevfvVfq3Fvvo0+cOBAUVHRqVOnVtTX19+8efPSpUscDiczM3PlKkwo8OYqzJtvB+CNt/4kAv12tD9vvIX6owj06/z4w377H7K3vw/B7WHC7t2HDx8+evToqVOnrly58n+kM/8KYipHNQAAAABJRU5ErkJggg=="></p><p>A simpler demonstration using integer arrays:</p><pre name="code" class="cpp:nocontrols:nogutter:firstline[1]">
+class descending
+{
+public:
+    bool operator()( int x, int y ) const
+    {
+        return x &gt; y;
+    }
+};
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+    int a[] = { 100, 101, -2, 23, 1010, 44, 55, 3 };
+    vector&lt;int&gt; v( a, a + 8 );
+
+    sort( v.begin(), v.end(), descending() );  
+
+    copy( v.begin(),
+          v.end(),
+          ostream_iterator&lt;int&gt;( cout, " " ) );
+
+    return 0;
+}
+</pre><link type="text/css" rel="stylesheet" href="/2011/sorting-objects-using-stl/css/SyntaxHighlighter.css"><script language="javascript" src="/2011/sorting-objects-using-stl/js/shCore.js"></script><br><script language="javascript" src="/2011/sorting-objects-using-stl/js/shBrushCSharp.js"></script><br><script language="javascript" src="/2011/sorting-objects-using-stl/js/shBrushXml.js"></script><br><script language="javascript">
+dp.SyntaxHighlighter.ClipboardSwf = '/flash/clipboard.swf';
+dp.SyntaxHighlighter.HighlightAll('code');
+</script>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '165'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2011/sorting-objects-using-stl/&amp;media=&amp;description=Sorting%20Objects%20Using%20STL" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2015/implementation-of-the-simplex-algorithm-in-visual-c/" title="Implementation of the Simplex algorithm in Visual C++" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Implementation of the Simplex algorithm in Visual C++"></div>
+                                                                        <h4 class="title front-view-title">Implementation of the Simplex algorithm in Visual C++</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2016/using-posix-threads-in-microsoft-visual-studio/" title="Using POSIX threads in Microsoft Visual Studio" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using POSIX threads in Microsoft Visual Studio"></div>
+                                                                        <h4 class="title front-view-title">Using POSIX threads in Microsoft Visual Studio</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2011/creating-bitmap-files-from-raw-pixel-data-in-c/" title="Creating Bitmap Files from Raw Pixel Data in C++" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Creating Bitmap Files from Raw Pixel Data in C++"></div>
+                                                                        <h4 class="title front-view-title">Creating Bitmap Files from Raw Pixel Data in C++</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-1029">
+    		                    <div id="comment-1029" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/774aadda4d214f2712458f43659f5d7d08b638e9c0e9cf5d2ac4cbcf573ae9a3?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/774aadda4d214f2712458f43659f5d7d08b638e9c0e9cf5d2ac4cbcf573ae9a3?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Tony Liuh</span></span>                                                            <span class="ago">21 April 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks a lot for posting your tips to the world.<br>
+ I tried your “struct Ascending” on g++. I failed in compiling. I modified it as following and it works.<br>
+ struct Ascending<br>
+    {<br>
+          bool operator() (  Item *start,  Item *end )<br>
+          {<br>
+                return ( (*start).GetVal() &lt; (*end).GetVal() );<br>
+          }<br>
+    };</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/sorting-objects-using-stl/?replytocom=1029#respond" data-commentid="1029" data-postid="165" data-belowelement="comment-1029" data-respondelement="respond" data-replyto="Reply to Tony Liuh" aria-label="Reply to Tony Liuh">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    </ol><ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-1030">
+    		                    <div id="comment-1030" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">22 April 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks for the feedback Tony.  I’m not sure why g++ would complain, but you’ve given us a valid alternative.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/sorting-objects-using-stl/?replytocom=1030#respond" data-commentid="1030" data-postid="165" data-belowelement="comment-1030" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			
+		</div>
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2011/sorting-objects-using-stl/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="165" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

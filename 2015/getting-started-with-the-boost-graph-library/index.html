@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>Getting started with the Boost Graph Library – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Getting started with the Boost Graph Library Comments Feed" href="/2015/getting-started-with-the-boost-graph-library/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2015%2Fgetting-started-with-the-boost-graph-library%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2015%2Fgetting-started-with-the-boost-graph-library%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/6351"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2015/getting-started-with-the-boost-graph-library/">
+<link rel="shortlink" href="/?p=6351">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-6351 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-6351" class="g post post-6351 type-post status-publish format-standard hentry category-c-mfc tag-adjacency_list tag-bgl tag-boost-graph-lirary-tutorial tag-dijkstra_shortest_paths">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/c-mfc/" itemprop="item"><span itemprop="name">C++ / MFC / STL</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Getting started with the Boost Graph Library</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">Getting started with the Boost Graph Library</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>1 November 2015</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/c-mfc/" title="View all posts in C++ / MFC / STL">C++ / MFC / STL</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2015/getting-started-with-the-boost-graph-library/#comments" itemprop="interactionCount">5 Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p><strong>Introduction</strong></p><p>Some simple walk-throughs on how to use the Boost Graph Library. I find much of the documentation, both online and printed, to be a bit impenetrable. I am sure I am not alone, so I thought it might be worthwhile to post a few examples of its usage that actually compile and work (for me anyway, let me know if you see any problems) as well as being reasonably up to date.</p><p>Boost Graph Library is a header-only library that requires no separate compilation.</p><p>All that is usually required is to set the location of the additional include directories in your integrated development environment (IDE) and you’re ready to go. In Microsoft Visual Studio for example, just set the location of the Boost Library path in C/C++ &gt; General &gt; Additional Include Directories:</p><p><a href="/wp-content/uploads/2015/11/boostgraph1.jpg"><img fetchpriority="high" decoding="async" class="alignnone wp-image-6353 size-full" src="" alt="boostgraph1" width="752" height="531" data-layzr="/wp-content/uploads/2015/11/boostgraph1.jpg"></a><br>
+<span id="more-6351"></span><br>
+If you are developing in a Linux-based environment and have already installed Boost, there is good chance you don’t need to do anything else.</p><p>Shortcuts to examples covered in this boost graph library tutorial are as follows:</p><p><a href="#Directed">1. Creating a directed graph</a><br>
+<a href="#Undirected">2. Creating an undirected graph</a><br>
+<a href="#EdgeWeights">3. Print edge weights in undirected graphs</a><br>
+<a href="#Dijkstra">4. Finding paths using Dijkstra’s shortest path algorithm</a><br>
+<a href="#Kruskal">5. Finding minimal spanning trees using Kruskal’s algorithm</a><br>
+<a href="#DIMACS">6. DIMACS maximum flow problems</a></p><p><a name="Directed"></a><strong>1. Creating a directed graph</strong></p><p>The first thing you probably need to learn coding-wise, is the use of the adjacency list to create the graph edge connections. It’s probably worthwhile getting used to making liberal use of typedefs, given that Boost library declarations can end up somewhat lengthy.</p><p>To declare an adjacency list for a directed graph for example:</p><pre class="brush: cpp; title: ; notranslate" title="">
+typedef boost::adjacency_list&lt;boost::vecS, boost::vecS, boost::directedS&gt; DirectedGraph;
+</pre><p>Suppose we wish to build the following weighted directed graph:</p><p><a href="/wp-content/uploads/2015/11/BoostGraph3.jpg"><img decoding="async" class="alignnone size-medium wp-image-6360" src="" alt="BoostGraph3" width="300" height="216" data-layzr="/wp-content/uploads/2015/11/BoostGraph3-300x216.jpg"></a></p><p>We can do this by making repeated calls to add_edge to create the graph. The following code listing shows you how, and prints out the result:</p><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;boost/graph/adjacency_list.hpp&gt;
+#include &lt;iostream&gt;
+
+typedef boost::property&lt;boost::edge_weight_t, int&gt; EdgeWeightProperty;
+typedef boost::adjacency_list&lt;boost::listS, boost::vecS, boost::directedS, boost::no_property, EdgeWeightProperty &gt; DirectedGraph;
+typedef boost::graph_traits&lt;DirectedGraph&gt;::edge_iterator edge_iterator;
+
+int main()
+{
+    DirectedGraph g;
+
+    boost::add_edge (0, 1, 8, g);
+    boost::add_edge (0, 3, 18, g);
+    boost::add_edge (1, 2, 20, g);
+    boost::add_edge (2, 3, 2, g);
+    boost::add_edge (3, 1, 1, g);
+    boost::add_edge (1, 3, 7, g);
+    boost::add_edge (1, 4, 1, g);
+    boost::add_edge (4, 5, 6, g);
+    boost::add_edge (2, 5, 7, g);
+
+    std::pair&lt;edge_iterator, edge_iterator&gt; ei = edges(g);
+
+    std::cout &lt;&lt; "Number of edges = " &lt;&lt; num_edges(g) &lt;&lt; "\n";
+    std::cout &lt;&lt; "Edge list:\n";
+
+    std::copy( ei.first, ei.second,
+                std::ostream_iterator&lt;boost::adjacency_list&lt;&gt;::edge_descriptor&gt;{
+                    std::cout, "\n"});
+
+    std::cout &lt;&lt; std::endl;
+
+    return 0;
+ }
+</pre><p>Giving the following output:</p><p><a href="/wp-content/uploads/2015/11/boostgraph21.jpg"><img decoding="async" class="alignnone size-medium wp-image-6362" src="" alt="boostgraph2" width="300" height="195" data-layzr="/wp-content/uploads/2015/11/boostgraph21-300x195.jpg"></a></p><p><a name="Undirected"></a><strong>2. Creating an undirected graph</strong></p><p>Consider the following undirected graph:</p><p><a href="/wp-content/uploads/2015/11/BoostGraph5.jpg"><img decoding="async" class="alignnone size-medium wp-image-6386" src="" alt="BoostGraph5" width="300" height="216" data-layzr="/wp-content/uploads/2015/11/BoostGraph5-300x216.jpg"></a></p><p>Which we build in a similar way, but this time stipulating the use of the boost::undirectedS property:</p><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;boost/graph/adjacency_list.hpp&gt;
+#include &lt;iostream&gt;
+
+typedef boost::property&lt;boost::edge_weight_t, int&gt; EdgeWeightProperty;
+typedef boost::adjacency_list&lt;boost::listS, boost::vecS,boost::undirectedS,boost::no_property,EdgeWeightProperty&gt; UndirectedGraph;
+typedef boost::graph_traits&lt;UndirectedGraph&gt;::edge_iterator edge_iterator;
+
+int main()
+{
+    UndirectedGraph g;
+
+    boost::add_edge (0, 1, 8, g);
+    boost::add_edge (0, 3, 18, g);
+    boost::add_edge (1, 2, 20, g);
+    boost::add_edge (2, 3, 2, g);
+    boost::add_edge (1, 3, 7, g);
+    boost::add_edge (1, 4, 1, g);
+    boost::add_edge (4, 5, 6, g);
+    boost::add_edge (2, 5, 7, g);
+
+    std::pair&lt;edge_iterator, edge_iterator&gt; ei = edges(g);
+
+    std::cout &lt;&lt; "Number of edges = " &lt;&lt; num_edges(g) &lt;&lt; "\n";
+    std::cout &lt;&lt; "Edge list:\n";
+
+    for (edge_iterator it = ei.first; it != ei.second; ++it )
+    {
+        std::cout &lt;&lt; *it &lt;&lt; std::endl;
+    }
+
+    std::cout &lt;&lt; std::endl;
+
+    return 0;
+ }
+</pre><p>Edge list of undirected graph as follows:</p><p><a href="/wp-content/uploads/2015/11/BoostGraph4.jpg"><img decoding="async" class="alignnone wp-image-6384 size-full" src="" alt="BoostGraph4" width="389" height="223" data-layzr="/wp-content/uploads/2015/11/BoostGraph4.jpg"></a></p><p><a name="EdgeWeights"></a><strong>3. Print edge weights in undirected graphs</strong></p><p>Consider the following spanning tree:</p><p><a href="/wp-content/uploads/2015/11/BoostGraph6.jpg"><img decoding="async" class="alignnone size-medium wp-image-6394" src="" alt="BoostGraph6" width="300" height="236" data-layzr="/wp-content/uploads/2015/11/BoostGraph6-300x236.jpg"></a></p><p>Obtain the mapping between edges and their respective weights by using the boost_property_map:</p><pre class="brush: cpp; title: ; notranslate" title="">
+boost::property_map&lt;UndirectedGraph, boost::edge_weight_t&gt;::type EdgeWeightMap = get(boost::edge_weight_t(), g);
+</pre><p>Full code listing:</p><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;iostream&gt;
+#include &lt;boost/graph/graph_traits.hpp&gt;
+#include &lt;boost/graph/adjacency_list.hpp&gt;
+ 
+typedef boost::property&lt;boost::edge_weight_t, double&gt; EdgeWeight;
+typedef boost::adjacency_list&lt;boost::listS, boost::vecS, boost::undirectedS, boost::no_property, EdgeWeight&gt; UndirectedGraph;
+typedef boost::graph_traits&lt;UndirectedGraph&gt;::edge_iterator edge_iterator;
+ 
+int main(int, char*[])
+{
+    // 1. Undirected graph - print out the edge weights
+    UndirectedGraph g;
+ 
+    boost::add_edge(0, 1, 8, g);
+    boost::add_edge(0, 5, 2, g);
+    boost::add_edge(5, 6, 1, g);
+    boost::add_edge(4, 5, 5, g);
+    boost::add_edge(3, 5, 7, g);
+ 
+    boost::property_map&lt;UndirectedGraph, boost::edge_weight_t&gt;::type EdgeWeightMap = get(boost::edge_weight_t(), g);
+ 
+    std::pair&lt;edge_iterator, edge_iterator&gt; edgePair;
+    for (edgePair = edges(g); edgePair.first != edgePair.second; ++edgePair.first)
+    {
+        std::cout &lt;&lt; *edgePair.first &lt;&lt; " " &lt;&lt; EdgeWeightMap[*edgePair.first] &lt;&lt; std::endl;
+    }   
+ 
+    return 0;
+}
+</pre><p>Giving the following output of the edges and their respective weights:</p><p><a href="/wp-content/uploads/2015/11/BoostGraph7.jpg"><img decoding="async" class="alignnone wp-image-6397 size-full" src="" alt="BoostGraph7" width="381" height="199" data-layzr="/wp-content/uploads/2015/11/BoostGraph7.jpg"></a></p><p><a name="Dijkstra"></a><strong>4. Finding paths using Dijkstra’s shortest path algorithm</strong></p><p>The same “dijkstra-example.cpp” as used at the following link:</p><p><a href="http://www.boost.org/doc/libs/1_55_0/libs/graph/example/dijkstra-example.cpp">http://www.boost.org/doc/libs/1_55_0/libs/graph/example/dijkstra-example.cpp</a></p><p>Graphical representation of “dijkstra-example” example graph:</p><p><a href="/wp-content/uploads/2015/11/BoostGraph9.jpg"><img decoding="async" class="alignnone size-medium wp-image-6414" src="" alt="BoostGraph9" width="300" height="295" data-layzr="/wp-content/uploads/2015/11/BoostGraph9-300x295.jpg"></a></p><p>In this demonstration we use the dijkstra_shortest_paths method to obtain not only the shortest path tree, but output the path between a selected source-destination pair as well.</p><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;boost/config.hpp&gt;
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;boost/graph/graph_traits.hpp&gt;
+#include &lt;boost/graph/adjacency_list.hpp&gt;
+#include &lt;boost/graph/dijkstra_shortest_paths.hpp&gt;
+#include &lt;boost/property_map/property_map.hpp&gt;
+
+int main(int, char *[])
+{
+  typedef boost::adjacency_list &lt;boost::listS, boost::vecS, boost::directedS, boost::no_property, 
+	  boost::property&lt;boost::edge_weight_t, int&gt; &gt; graph_t;
+  typedef boost::graph_traits&lt;graph_t&gt;::vertex_descriptor vertex_descriptor;
+  typedef std::pair&lt;int, int&gt; Edge;
+
+  const int num_nodes = 5;
+  enum nodes { A, B, C, D, E };
+  char name[] = "ABCDE";
+  Edge edge_array[] = { Edge(A, C), Edge(B, B), Edge(B, D), Edge(B, E),
+    Edge(C, B), Edge(C, D), Edge(D, E), Edge(E, A), Edge(E, B)
+  };
+
+  int weights[] = { 1, 2, 1, 2, 7, 3, 1, 1, 1 };
+  int num_arcs = sizeof(edge_array) / sizeof(Edge);
+
+  // Graph created from the list of edges
+  graph_t g(edge_array, edge_array + num_arcs, weights, num_nodes);
+  
+  // Create property_map from edges to weights
+  boost::property_map&lt;graph_t, boost::edge_weight_t&gt;::type weightmap = get(boost::edge_weight, g);
+
+  // Create vectors to store the predecessors (p) and the distances from the root (d)
+  std::vector&lt;vertex_descriptor&gt; p(num_vertices(g));
+  std::vector&lt;int&gt; d(num_vertices(g));
+
+  // Create descriptor for the source node
+  vertex_descriptor s = vertex(A, g);
+  vertex_descriptor goal = vertex(E, g);
+
+  // Evaluate Dijkstra on graph g with source s, predecessor_map p and distance_map d
+  boost::dijkstra_shortest_paths(g, s, 
+	  boost::predecessor_map(&amp;p[0]).distance_map(&amp;d[0]));
+
+        //p[] is the predecessor map obtained through dijkstra
+	//name[] is a vector with the names of the vertices
+	//s and goal are vertex descriptors
+	std::vector&lt;boost::graph_traits&lt;graph_t&gt;::vertex_descriptor &gt; path;
+	boost::graph_traits&lt;graph_t&gt;::vertex_descriptor current = goal;
+
+	while(current!=s) 
+	{
+		path.push_back(current);
+		current = p[current];
+	}
+	path.push_back(s);
+
+	// Prints the path obtained in reverse
+	std::cout &lt;&lt; "Path from " &lt;&lt; name[s] &lt;&lt; " to " &lt;&lt; name[goal] &lt;&lt; std::endl;
+	std::vector&lt;boost::graph_traits&lt;graph_t&gt;::vertex_descriptor &gt;::reverse_iterator it;
+
+	for (it = path.rbegin(); it != path.rend(); ++it) {
+		std::cout &lt;&lt; name[*it] &lt;&lt; " ";
+	}
+	std::cout &lt;&lt; std::endl;
+
+  return EXIT_SUCCESS;
+}
+</pre><p>Giving the following output showing the shortest path between nodes A and E:</p><p><a href="/wp-content/uploads/2015/11/BoostGraph8.jpg"><img decoding="async" class="alignnone wp-image-6409 size-full" src="" alt="BoostGraph8" width="397" height="163" data-layzr="/wp-content/uploads/2015/11/BoostGraph8.jpg"></a></p><p><a name="Kruskal"></a><strong>5. Finding minimal spanning trees using Kruskal’s algorithm</strong></p><p>Again I take an original example from the boost.org site and make use of it here:</p><p><a href="http://www.boost.org/doc/libs/1_55_0/libs/graph/example/kruskal-example.cpp">http://www.boost.org/doc/libs/1_55_0/libs/graph/example/kruskal-example.cpp</a></p><p>Graphical representation of example graph:</p><p><a href="/wp-content/uploads/2015/11/BoostGraph101.jpg"><img decoding="async" class="alignnone size-medium wp-image-6430" src="" alt="BoostGraph10" width="300" height="258" data-layzr="/wp-content/uploads/2015/11/BoostGraph101-300x258.jpg"></a></p><p>I remove the Boost workarounds (BOOST_MSVC &lt;= 1300 etc) and the outputting to the .dot file just to keep things more concise. I also remove use of the using boost namespace in my examples, but that’s just a personal preference:</p><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;boost/graph/adjacency_list.hpp&gt;
+#include &lt;boost/graph/kruskal_min_spanning_tree.hpp&gt;
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+int main()
+{
+  typedef boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::undirectedS,
+    boost::no_property, boost::property&lt;boost::edge_weight_t, int&gt; &gt; Graph;
+  
+  typedef boost::graph_traits &lt;Graph&gt;::edge_descriptor Edge;
+  typedef boost::graph_traits &lt;Graph&gt;::vertex_descriptor Vertex;
+  typedef std::pair&lt;int, int&gt; E;
+
+  const int num_nodes = 5;
+  E edge_array[] = { E(0, 2), E(1, 3), E(1, 4), E(2, 1), E(2, 3),
+    E(3, 4), E(4, 0), E(4, 1)
+  };
+  
+  int weights[] = { 1, 1, 2, 7, 3, 1, 1, 1 };
+  std::size_t num_edges = sizeof(edge_array) / sizeof(E);
+
+  Graph g(edge_array, edge_array + num_edges, weights, num_nodes);
+
+  boost::property_map&lt;Graph, boost::edge_weight_t &gt;::type weight = get(boost::edge_weight, g);
+  std::vector &lt; Edge &gt; spanning_tree;
+
+  boost::kruskal_minimum_spanning_tree(g, std::back_inserter(spanning_tree));
+
+  std::cout &lt;&lt; "Print the edges in the MST:" &lt;&lt; std::endl;
+  
+  for (std::vector &lt; Edge &gt;::iterator ei = spanning_tree.begin();
+        ei != spanning_tree.end(); ++ei) 
+  {
+    std::cout &lt;&lt; source(*ei, g) 
+              &lt;&lt; " &lt;--&gt; " 
+              &lt;&lt; target(*ei, g)
+              &lt;&lt; " with weight of " 
+              &lt;&lt; weight[*ei]
+              &lt;&lt; std::endl;
+  }
+
+  return 0;
+}
+</pre><p>Giving the following set of edge-weight pairs making up the minimal spanning tree:</p><p><a href="/wp-content/uploads/2015/11/BoostGraph11.jpg"><img decoding="async" class="alignnone wp-image-6426 size-full" src="" alt="BoostGraph11" width="365" height="211" data-layzr="/wp-content/uploads/2015/11/BoostGraph11.jpg"></a></p><p>Graphical representation of minimal spanning tree as follows:</p><p><a href="/wp-content/uploads/2015/11/BoostGraph12.jpg"><img decoding="async" class="alignnone size-medium wp-image-6428" src="" alt="BoostGraph12" width="300" height="237" data-layzr="/wp-content/uploads/2015/11/BoostGraph12-300x237.jpg"></a></p><p><a name="DIMACS"></a><strong>6. DIMACS maximum flow problems</strong></p><p>DIMACS (Center for Discrete Mathematics and Theoretical Computer Science has formulated ‘challenges’ for problems involving network flows. See this link for more information:</p><p><a href="http://lpsolve.sourceforge.net/5.5/DIMACS_maxf.htm">http://lpsolve.sourceforge.net/5.5/DIMACS_maxf.htm</a></p><p>The problem is to find the maximum possible flow from a given source node to a given sink node. Possible applications include finding the maximum flow of orders through a job shop, the maximum flow of water through a storm sewer system, and the maximum flow of product through a product distribution system.</p><p>Example DIMACS file:</p><pre class="brush: plain; title: ; notranslate" title="">
+c This is a simple example file to demonstrate the DIMACS
+c input file format for maximum flow problems. The solution
+c vector is [5,10,5,0,5,5,10,5] with cost at 15.
+c Problem line (nodes, links)
+p max 6 8
+c source
+n 1 s
+c sink
+n 6 t
+c Arc descriptor lines (from, to, capacity)
+a 1 2 5
+a 1 3 15
+a 2 4 5
+a 2 5 5
+a 3 4 5
+a 3 5 5
+a 4 6 15
+a 5 6 5
+c
+c End of file
+</pre><p>The lines beginning with ‘c’ are comment lines. The problem line begins with the letter ‘p’ and represents the problem designation (max, min etc), the number of edges (8) and the number of vertices (6). Lines beginning with ‘n’ are the node descriptors – node ID and whether the node is a source (‘s’) or a sink (‘t’). Finally the ‘a’ lines are descriptors giving the node interconnections and their weights.</p><p>The following graphical representation of the example network flow problem, shows not only the network interconnections and capacities but the flows on the links as well:</p><p><a href="/wp-content/uploads/2015/11/BoostMaxFlow1.jpg"><img decoding="async" class="alignnone size-medium wp-image-6438" src="" alt="BoostMaxFlow1" width="300" height="155" data-layzr="/wp-content/uploads/2015/11/BoostMaxFlow1-300x155.jpg"></a></p><p>Code listing as applied to this problem (you have to supply it your sample DICOM file as described previously):</p><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;boost/config.hpp&gt;
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;string&gt;
+
+#include &lt;boost/graph/edmonds_karp_max_flow.hpp&gt;
+#include &lt;boost/graph/adjacency_list.hpp&gt;
+#include &lt;boost/graph/read_dimacs.hpp&gt;
+#include &lt;boost/graph/graph_utility.hpp&gt;
+
+int main()
+{
+	typedef boost::adjacency_list_traits&lt;boost::vecS, boost::vecS, boost::directedS &gt; Traits;
+    typedef boost::adjacency_list&lt;boost::listS, boost::vecS, boost::directedS,
+		boost::property&lt;boost::vertex_name_t, std::string &gt;,
+		boost::property&lt;boost::edge_capacity_t, long,
+		boost::property&lt;boost::edge_residual_capacity_t, long,
+		boost::property&lt;boost::edge_reverse_t, Traits::edge_descriptor&gt;&gt;&gt;&gt; Graph;
+
+	Graph g;
+
+	boost::property_map&lt;Graph, boost::edge_capacity_t&gt;::type
+		capacity = get(boost::edge_capacity, g);
+	boost::property_map&lt;Graph, boost::edge_reverse_t&gt;::type rev = get(boost::edge_reverse, g);
+	boost::property_map&lt;Graph, boost::edge_residual_capacity_t&gt;::type
+		residual_capacity = get(boost::edge_residual_capacity, g);
+
+	Traits::vertex_descriptor s, t;
+	
+	// Use a DIMACS network flow file as stdin:
+	std::ifstream is ("dimacs.txt", std::ios::in);
+	read_dimacs_max_flow(g, capacity, rev, s, t, is);
+
+#if defined(BOOST_MSVC) &amp;&amp; BOOST_MSVC &lt;= 1300
+  std::vector&lt;default_color_type&gt; color(num_vertices(g));
+  std::vector&lt;Traits::edge_descriptor&gt; pred(num_vertices(g));
+  long flow = edmunds_karp_max_flow
+    (g, s, t, capacity, residual_capacity, rev, &amp;color[0], &amp;pred[0]);
+#else
+  long flow = edmonds_karp_max_flow(g, s, t);
+#endif
+
+	std::cout &lt;&lt; "c  The total flow:" &lt;&lt; std::endl;
+	std::cout &lt;&lt; "s " &lt;&lt; flow &lt;&lt; std::endl &lt;&lt; std::endl;
+	std::cout &lt;&lt; "c flow values:" &lt;&lt; std::endl;
+
+	boost::graph_traits&lt;Graph&gt;::vertex_iterator u_iter, u_end;
+	boost::graph_traits&lt;Graph&gt;::out_edge_iterator ei, e_end;
+  
+	for (boost::tie(u_iter, u_end) = vertices(g); u_iter != u_end; ++u_iter)
+		for (boost::tie(ei, e_end) = out_edges(*u_iter, g); ei != e_end; ++ei)
+			if (capacity[*ei] &gt; 0)
+				std::cout &lt;&lt; "f " &lt;&lt; *u_iter &lt;&lt; " " &lt;&lt; target(*ei, g) &lt;&lt; " "
+					      &lt;&lt; (capacity[*ei] - residual_capacity[*ei]) 
+						  &lt;&lt; std::endl;
+
+	return EXIT_SUCCESS;
+}
+</pre><p>Giving the following result:</p><p><a href="/wp-content/uploads/2015/11/BoostMaxFlow2.jpg"><img decoding="async" class="alignnone wp-image-6439 size-full" src="" alt="BoostMaxFlow2" width="397" height="259" data-layzr="/wp-content/uploads/2015/11/BoostMaxFlow2.jpg"></a></p><p>As anticipated the solution vector of the output variables is [5, 10, 5, 0, 5, 5, 10, 5].</p><p>Example DIMACS file “dimacs.txt” downloadable from here:</p><p><a href="/Downloads/dimacs.txt">/Downloads/dimacs.txt</a></p>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '6351'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2015/getting-started-with-the-boost-graph-library/&amp;media=&amp;description=Getting%20started%20with%20the%20Boost%20Graph%20Library" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2011/sorting-objects-using-stl/" title="Sorting Objects Using STL" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Sorting Objects Using STL"></div>
+                                                                        <h4 class="title front-view-title">Sorting Objects Using STL</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2012/the-k-shortest-paths-algorithm-in-c/" title="The K-Shortest Paths Algorithm in C++" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="The K-Shortest Paths Algorithm in C++"></div>
+                                                                        <h4 class="title front-view-title">The K-Shortest Paths Algorithm in C++</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2012/getting-started-with-windows-gdi-graphics-applications-in-c/" title="Getting started with Windows GDI graphics applications in C++" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Getting started with Windows GDI graphics applications in C++"></div>
+                                                                        <h4 class="title front-view-title">Getting started with Windows GDI graphics applications in C++</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-42014">
+    		                    <div id="comment-42014" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/ddc6f6a7634dbff6b9b64604652bbb715523993993aac38f88ba0ccbb638df3e?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/ddc6f6a7634dbff6b9b64604652bbb715523993993aac38f88ba0ccbb638df3e?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">student</span></span>                                                            <span class="ago">31 July 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi.. Its really very useful.. and could please share more details about how to install it in ubuntu..</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2015/getting-started-with-the-boost-graph-library/?replytocom=42014#respond" data-commentid="42014" data-postid="6351" data-belowelement="comment-42014" data-respondelement="respond" data-replyto="Reply to student" aria-label="Reply to student">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    </ol><ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-42015">
+    		                    <div id="comment-42015" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">31 July 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi try this link for installing the boost C++ libraries in Ubuntu Linux:</p>
+<p><a href="/2012/getting-started-with-the-boost-libraries-in-ubuntu-linux/" rel="ugc">/2012/getting-started-with-the-boost-libraries-in-ubuntu-linux/</a></p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2015/getting-started-with-the-boost-graph-library/?replytocom=42015#respond" data-commentid="42015" data-postid="6351" data-belowelement="comment-42015" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-42021">
+    		                    <div id="comment-42021" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/ddc6f6a7634dbff6b9b64604652bbb715523993993aac38f88ba0ccbb638df3e?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/ddc6f6a7634dbff6b9b64604652bbb715523993993aac38f88ba0ccbb638df3e?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">student</span></span>                                                            <span class="ago">1 August 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi thank u.. Ill try..</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2015/getting-started-with-the-boost-graph-library/?replytocom=42021#respond" data-commentid="42021" data-postid="6351" data-belowelement="comment-42021" data-respondelement="respond" data-replyto="Reply to student" aria-label="Reply to student">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-45736">
+    		                    <div id="comment-45736" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/a7b13a84ff07744c36e082c76acfa73889a02b30e05287f29afc84e178df0f99?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/a7b13a84ff07744c36e082c76acfa73889a02b30e05287f29afc84e178df0f99?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Lawrence</span></span>                                                            <span class="ago">20 March 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>How come the vertex id from the output does not match the input dimacs.txt, for instance, there’s no vertex 0 in dimacs.txt?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2015/getting-started-with-the-boost-graph-library/?replytocom=45736#respond" data-commentid="45736" data-postid="6351" data-belowelement="comment-45736" data-respondelement="respond" data-replyto="Reply to Lawrence" aria-label="Reply to Lawrence">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-45739">
+    		                    <div id="comment-45739" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">21 March 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Lawrence not sure why Boost chooses to do zero based indexing in spite of the graph node numberings.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2015/getting-started-with-the-boost-graph-library/?replytocom=45739#respond" data-commentid="45739" data-postid="6351" data-belowelement="comment-45739" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="pingback odd alt thread-odd thread-alt depth-1" id="li-comment-53678">
+    		                    <div id="comment-53678">
+                        <div class="comment-author vcard">
+                            Pingback: <a href="http://www.wdfnck.co/boost-graph-library.htm" class="url" rel="ugc external nofollow">boost graph library – WDF</a>                                                            <span class="ago">17 May 2019</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                            </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			
+		</div>
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2015/getting-started-with-the-boost-graph-library/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="6351" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-cpp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
+<script id="syntaxhighlighter-brush-plain-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

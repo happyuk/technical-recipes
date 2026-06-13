@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>Implementing the Flow Deviation Algorithm in C++ – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Implementing the Flow Deviation Algorithm in C++ Comments Feed" href="/2013/implementing-the-flow-deviation-algorithm-in-c/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2013%2Fimplementing-the-flow-deviation-algorithm-in-c%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2013%2Fimplementing-the-flow-deviation-algorithm-in-c%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/4370"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2013/implementing-the-flow-deviation-algorithm-in-c/">
+<link rel="shortlink" href="/?p=4370">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-4370 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-4370" class="g post post-4370 type-post status-publish format-standard hentry category-c-mfc category-optimization tag-aaron-kershenbaum tag-flow-deviation-algorithm tag-leonard-kleinrock tag-routing-optimization">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/c-mfc/" itemprop="item"><span itemprop="name">C++ / MFC / STL</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Implementing the Flow Deviation Algorithm in C++</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">Implementing the Flow Deviation Algorithm in C++</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>31 December 2013</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/c-mfc/" title="View all posts in C++ / MFC / STL">C++ / MFC / STL</a>, <a href="/category/optimization/" title="View all posts in Optimization">Optimization</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2013/implementing-the-flow-deviation-algorithm-in-c/#comments" itemprop="interactionCount">3 Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p><strong>Introduction</strong></p><p>The <a href="http://www.control.aau.dk/~henrik/undervisning/Markov2/The_Flow_Deviation_Method.pdf">flow deviation algorithm</a> as developed by <a href="http://en.wikipedia.org/wiki/Leonard_Kleinrock">Leonard Kleinrock</a> et al is an efficient means of assigning routes and flows for a given network topology so as to minimize the overall average delay.  The problem consists of finding a set of routes for all communicating end nodes which minimize the delay without violating link capacity constraints.  The Flow Deviation method works in a manner very similar to <a href="http://www.seas.ucla.edu/~vandenbe/236C/lectures/gradient.pdf">gradient methods</a> for functions with continuous variables, whereby the concept of using gradients is replaced by the concept of “shortest path” flows.<br>
+<span id="more-4370"></span><br>
+<strong>Algorithm Overview</strong></p><p>The algorithm proceeds by first assigning length values to network links in proportion to their calculated incremental delay values.  Having obtained the set of link length values, the shortest distance paths between all communicating end nodes are found using a shortest path algorithm such a Dijkstra or Bellman.  An initial flow pattern can then be determined by loading each of the shortest path links with the traffic requirements.</p><p>For every subsequent flow pattern that is then found, it is superposed with with the previously found set of network flow patterns.  Superposition involves sending a portion of the network flow on to the old paths and a portion of the network flow on to the new path in such a way as to minimize the total delay.  The optimal proportion of flows is found using a binary search over the interval 0..1.  To summarize: given and old flow pattern F1, and a new flow pattern F2, the superposed flow pattern F3 is:</p><p>F3 = xF1 + (1-x)F2</p><p>Having updated the link flows, a new set of shortest paths can then be computed and this process repeated until no significant reductions occur in the average delay.</p><p><strong>Finding Shortest Paths</strong></p><p>Bellman’s algorithm was chosen to return information on the shortest paths available for a given network topology with link flows and link capacities.  It’s output is a two-dimensional array of integers which can be used to determine all of the links in the shortest path between each pair of communicating end nodes.  By starting from the destination node, the complete path is found by backtracking along each of the path links until the source node is reached.  Once we have these shortest paths, we can load all the shortest path links with their traffic flow requirements.<br>
+<strong><br>
+Finding an initial feasible traffic flow</strong></p><p>Upon starting the flow deviation algorithm with an initial set of shortest paths and loading these links with network flows, it may well be necessary to scale up the link capacities at least temporarily, so that they are able to accommodate the flows assigned to them, without any of the link flows exceeding their capacity.  As the algorithm iterates and more efficient flow patterns are found, it may be possible to gradually scale back these capacities so they are eventually brought back to their original values without any of the link flows violating their capacity constraints.</p><p><strong>C++ Implementation</strong></p><p>A modified version of <a href="http://www.cs.princeton.edu/~rs/">Robert Sedgewick</a>‘s graph data structure was used to represent interconnections between network nodes.  Sedgewick’s <a href="http://www.cs.princeton.edu/~rs/Algs3.cxx5/code.txt">graph interface</a> essentially consists of two data types:</p><p>i. An <code>Edge</code> data type, including a constructor, to represent an edge (link) between two vertices (nodes).  Also included in the <code>Edge</code> data type are parameters representing values of link flow, link capacity and link ‘length’.</p><p>ii. A <code>Graph</code> data type which incorporates operations to add or remove edges, retrieve edge lists in the form of vector arrays.  This <code>Graph</code> structure is used here as a general-purpose interface, in order to support whichever network design algorithms we are interested in applying.  The <code>Graph</code> structure also includes <code>V</code> and <code>E</code> variables to directly tell us the number of network nodes and links respectively.</p><p>The C++ code implementing the flow deviation algorithm borrows heavily from the algorithm description given in <a href="http://cis.poly.edu/people/akershen.htm">Aaron Kershenbaum</a>‘s book ‘<a href="http://dl.acm.org/citation.cfm?id=154726">Telecommunications Network Design Algorithms</a>‘ (ISBN:0-07-034228-8), specifically the ‘Chapter 6 – Routing’ section.  This project reproduces exactly as possible Kershenbaum’s recommendations, while at the same time taking advantage the advantages in object orientation, data encapsulation and access to the <a href="http://en.wikipedia.org/wiki/Standard_Template_Library">Standard Template Library</a> (STL) that the C++ programming language clearly gives us.</p><p>I find <a href="http://publib.boulder.ibm.com/infocenter/comphelp/v8v101/topic/com.ibm.xlcpp8a.doc/language/ref/cplr039.htm#cplr039">static member functions</a> useful when I don’t need to create instances of an object just so I can execute a public function inside it. This was found to be the case when implementing a general utility/helper class for the purpose of repetitively executing each of the Flow Deviation Algorithm components: setting link lengths, loading the links, superposing network flows etc.  The <code>FlowDevUtil</code> class does just this kind of repetitive work in the form of a set of public functions that do not require instances to be created and do not have to maintain any state between calls.</p><p>The following code sample I think gives a reasonably clear and high-level overview of just how the algorithm achieves the objective of finding the set of network flows and paths that minimise the overall delay:</p><pre name="code" class="cpp:nocontrols:nogutter:firstline[1]">
+// Flow deviation algorithm
+void Algorithm::FlowDeviation( Graph&lt;Edge&gt;* graph,
+			                   SPdist&amp; spdist,
+			                   SPpred&amp; sppred,
+	                           Req&amp; req,
+			                   const int&amp; MsgLen )
+{
+    double PreviousDelay = INFINITY;
+    int TotalReq = FlowDevUtil::Accumulate( req );
+
+    const int nn = graph-&gt;V();
+
+    FlowDevUtil::SetLinkLens( graph, MsgLen );
+
+    for ( int i = 0; i  EPSILON )
+    {
+        FlowDevUtil::SetLinkLens( graph, MsgLen );
+
+        for ( int i = 0; i 
+<p><strong>Example Usage</strong></p>
+<p>For the purpose of demonstration, I have used the same network topology and traffic requirements as the example problem given in <a href="http://dl.acm.org/citation.cfm?id=154726">Kershenbaum's book</a>.  Using the API provided by the Algorithm class to obtain the optimal network flows and routes is simple.  </p>
+<p>1. First provide the set of <code>Edge</code> components that specify interconnections between nodes (links) as well as their link capacity values and link flow values.  Use this array of <code>Edge</code> types to initialize the modified version of Sedgewick's <code>Graph</code> data structure.</p>
+<p>2. Create and initialize the traffic requirements matrix (<code>req</code>), a two-dimensional array representing the required traffic flow between communicating end nodes.</p>
+<p>3. Create the shortest path matrices, which are also two-dimensional arrays, and are used to store shortest paths (<code>sppred</code>) and shortest path distances (<code>spdist</code>).</p>
+<p>4. Create an instance of <code>Algorithm</code>, an run the <code>FlowDeviation</code> method, passing it the <code>Graph</code> data structure, the shortest path / traffic requirement matrices and the message length value as parameters.</p>
+<p>Code sample of example usage as shown:</p>
+<pre name="code" class="cpp:nocontrols:nogutter:firstline[1]">
+#include "Algorithm.h"
+#include "ShortestPathTree.h"
+#include "Matrix.h"
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;vector&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    Edge* edges[] = { new Edge( 0, 1, 0.0, 0.0, 0.0, 2.0, 2.0 ),
+                      new Edge( 1, 0, 0.0, 0.0, 0.0, 2.0, 2.0 ),
+                      new Edge( 1, 2, 0.0, 0.0, 0.0, 2.0, 2.0 ),
+                      new Edge( 2, 1, 0.0, 0.0, 0.0, 2.0, 2.0 ),
+                      new Edge( 0, 2, 0.0, 0.0, 0.0, 2.0, 2.0 ),
+                      new Edge( 2, 0, 0.0, 0.0, 0.0, 2.0, 2.0 ) };
+
+    int no_edges = sizeof( edges ) / sizeof( edges[ 0 ] );
+
+    std::vector&lt;Edge*&gt; v_edges( edges, edges + no_edges );
+    
+    // Number of network nodes
+    const int nn = 3;
+
+    // Create graph from interconnections given    
+    Graph&lt;Edge&gt; graph( nn, true, v_edges );
+
+    // Initialize requirements, shortest path matrices
+    Req req( nn, nn );
+    req( 0, 1 ) = 2;
+    req( 1, 2 ) = 3;
+
+    SPdist spdist( nn, nn );
+    SPpred sppred( nn, nn );
+
+    // Apply flow deviation algorithm
+    Algorithm algorithm;
+    algorithm.FlowDeviation( &amp;graph, spdist, sppred, req, 1 );
+         
+    return 0;
+}
+</pre>
+<p><strong><br>
+Computational Results</strong></p>
+<p>The following graph show the progress of the Flow Deviation Algorithm in the form of average delay in seconds versus the iteration.  </p>
+<p>In this simple experiment the algorithm converged to a delay value of 3.43 seconds in 43 iterations, the same as that described by Kershenbaum.  (The values of <code>EPSILON</code> and <code>DELTA</code> used in the example were 0.001 and 0.05 respectively.)</p>
+<p><a href="/wp-content/uploads/2013/12/FD_Graph.png"><img fetchpriority="high" decoding="async" src="" alt="FD_Graph" width="546" height="330" class="alignnone size-full wp-image-4391" data-layzr="/wp-content/uploads/2013/12/FD_Graph.png"></a></p>
+<p>The following console output shows the value of incremental delay on each of the six links, plus the average delay, taken over each of the 43 iterations:</p>
+<p><a href="/wp-content/uploads/2013/12/FD_Iterations.png"><img decoding="async" src="" alt="FD_Iterations" width="669" height="566" class="alignnone size-full wp-image-4393" data-layzr="/wp-content/uploads/2013/12/FD_Iterations.png"></a></p>
+<p><strong>Download source code</strong></p>
+<p>Download the Visual Studio 2010 project and code. Upon payment you should be promptly directed to a download link. Please contact me if you experience any problems and I will get it sent to you as soon as possible.</p>
+<div data-embed="button"><script type="application/json">{"action":{"root":"view","product":"buy"},"colors":{"buttons":{"background":"#8e46e5","text":"#ffffff"},"checkout":{"background":"#8e46e5","text":"#ffffff"}},"landscapeProduct":false,"logos":true,"modal":{"checkout":true,"product":true},"showFileList":true,"showQuantity":true,"showSku":true,"text":"Buy it now","url":"https://selz.co/EJR-WeN7d"}</script></div>
+<p><script async src="https://embeds.selzstatic.com/1/loader.js"></script><br>
+<noscript><a href="https://selz.co/EJR-WeN7d" target="_blank" rel="noopener noreferrer">Buy it now</a></noscript></p>
+</pre>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '4370'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2013/implementing-the-flow-deviation-algorithm-in-c/&amp;media=&amp;description=Implementing%20the%20Flow%20Deviation%20Algorithm%20in%20C++" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2014/using-boostfilesystem/" title="Using boost::filesystem" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using boost::filesystem"></div>
+                                                                        <h4 class="title front-view-title">Using boost::filesystem</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2015/windows-programming-using-mingw/" title="Windows programming using MinGW" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Windows programming using MinGW"></div>
+                                                                        <h4 class="title front-view-title">Windows programming using MinGW</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2011/using-function-objects-functors-c/" title="Using Function Objects (Functors) in STL / C++" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using Function Objects (Functors) in STL / C++"></div>
+                                                                        <h4 class="title front-view-title">Using Function Objects (Functors) in STL / C++</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-55597">
+    		                    <div id="comment-55597" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/a30c02dd000be7da1e7b69e2458edf0abf0da995bf94860a429496982462554d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/a30c02dd000be7da1e7b69e2458edf0abf0da995bf94860a429496982462554d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Gil Gelbert</span></span>                                                            <span class="ago">17 February 2020</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>How can one contact you? I am interested in the code.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2013/implementing-the-flow-deviation-algorithm-in-c/?replytocom=55597#respond" data-commentid="55597" data-postid="4370" data-belowelement="comment-55597" data-respondelement="respond" data-replyto="Reply to Gil Gelbert" aria-label="Reply to Gil Gelbert">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    </ol><ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-55598">
+    		                    <div id="comment-55598" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">17 February 2020</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Just updated this page to contain a Selz link.<br>
+Cheers<br>
+Andy</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2013/implementing-the-flow-deviation-algorithm-in-c/?replytocom=55598#respond" data-commentid="55598" data-postid="4370" data-belowelement="comment-55598" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-59057">
+    		                    <div id="comment-59057" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/0df9de94bf9ed366ac754ed6db05ecfddc6f3d94f267b6bb35b181e937fc433f?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/0df9de94bf9ed366ac754ed6db05ecfddc6f3d94f267b6bb35b181e937fc433f?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Ginger</span></span>                                                            <span class="ago">17 June 2021</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>What does gflow means?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2013/implementing-the-flow-deviation-algorithm-in-c/?replytocom=59057#respond" data-commentid="59057" data-postid="4370" data-belowelement="comment-59057" data-respondelement="respond" data-replyto="Reply to Ginger" aria-label="Reply to Ginger">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			
+		</div>
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2013/implementing-the-flow-deviation-algorithm-in-c/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="4370" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>Using RSA to encrypt large data files in C# – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Using RSA to encrypt large data files in C# Comments Feed" href="/2013/using-rsa-to-encrypt-large-data-files-in-c/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2013%2Fusing-rsa-to-encrypt-large-data-files-in-c%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2013%2Fusing-rsa-to-encrypt-large-data-files-in-c%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/3559"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2013/using-rsa-to-encrypt-large-data-files-in-c/">
+<link rel="shortlink" href="/?p=3559">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-3559 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-3559" class="g post post-3559 type-post status-publish format-standard hentry category-c-net-2 tag-aes-256 tag-asymmetric tag-decryption tag-encryption tag-private-key tag-public-key tag-rsa">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/c-net-2/" itemprop="item"><span itemprop="name">C# / .Net / WPF</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Using RSA to encrypt large data files in C#</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">Using RSA to encrypt large data files in C#</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>3 February 2013</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/c-net-2/" title="View all posts in C# / .Net / WPF">C# / .Net / WPF</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2013/using-rsa-to-encrypt-large-data-files-in-c/#comments" itemprop="interactionCount">6 Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p><strong>Introduction</strong></p><p>A utility in C# to use public/private key encryption of data inside large text files, before sending them over a secure connection such as SSL.  As I soon found out when playing around with this technique, RSA as a means of assymetric encryption has a drawback, and that is in the size of the text you are encrypting – anything other than a piddling   amount of text resulting in a ‘Bad length’ type of Exception.  This is because asymmetric encryption is designed only for encrypting data smaller than it’s key size.<br>
+<span id="more-3559"></span></p><p><strong>Overcoming the limitation of RSA</strong></p><p>In practice RSA is used to exchange a private secret key between communicating end users that is then used to symmetrically encrypt/decrypt the large data.  In other words, in order to successfully maintain asymmetry in encrypting arbitrarily large data, we combine both approaches: </p><p><strong><em>Encryption:</em></strong></p><p>i. Generate a random key of the length required for symmetrical encryption technique such as AES/Rijndael or similar.</p><p>ii. Encrypt your data using AES/Rijndael using that random key generated in part i.</p><p>iii. Use RSA encryption to asymmetrically encrypt the random key generated in part i.</p><p>Publish (eg write to a file) the outputs from parts ii. and iii.: the AES-encrypted data and the RSA-encrypted random key.</p><p><strong><em>Decryption:</em></strong></p><p>i. Decrypt the AES random key using your <em>private </em>RSA key.</p><p>In this example, the private RSA key is stored as an XML file:</p><pre class="brush: xml; title: ; notranslate" title="">
+&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;RSAKeyValue&gt;
+  &lt;Modulus&gt;
+    mNn/rFCaSoWN1QwgFhTJH8/ZESQWg1Od+5orjHF5umzy6iherkA6xaS66KecFeWGl/raeCKVxDGx25PtLWNI+oJLQ2GOlwM0I4mROqItS9kMhTH2M8uO8qtPKGHgGCU6F9x+ECa/0Gz6pmCVQwi+YVBO3evbsOkDIWz6VXVyzMM=
+  &lt;/Modulus&gt;
+  &lt;Exponent&gt;
+    AQAB
+  &lt;/Exponent&gt;
+  &lt;P&gt;
+    zctkkvfL3iKaFGG6pUdwyz5wFSUs3foQ86mN1CqQa3xo1SJmaep6WoOE2Hl3HptiY85NM2wKxPKtp0mkeQVsaQ==
+  &lt;/P&gt;
+  &lt;Q&gt;
+    viQg34B5PGp9xIGKOdOiV7VRsQugXNW+ZfjBfYBsE8obiQtce53QnnClgch6KM/kv5s3bxKgh7LV07DFM2J6Sw==
+  &lt;/Q&gt;
+  &lt;DP&gt;
+    K9YPbl7qRj8Iox7OKza0iBacuWRZ0k7aHY0YcQFAEiVGD2BsgFM6DN3HBnWZMiPXKXtgZnu1L46h/uho6H6HQQ==
+  &lt;/DP&gt;
+  &lt;DQ&gt;
+    NK8wCJ3BefML3BoEodc5IVJVS1gsW+zBr+GIQ20FBUq37HYgbwQgXPZbdaWF668G8+xfJMCliFQOGXTef0lnFw==
+  &lt;/DQ&gt;
+  &lt;InverseQ&gt;
+    MlFTqSgrmdBJo+ka1V8EQGedonzzvchKdUPiORdr3NLXD5xeDzk+8N8U9PkIJgyPE/rtFTSwIQAZla03duCF/A==
+  &lt;/InverseQ&gt;
+  &lt;D&gt;
+    kvcAOokhYMe60H6hFzoTC5BIEJAXSVwLiY/5kUbGGPaKNZRtPLOrDr/NqscFb5RJ7jUW++2c/JAfh5VatYpB7obJPPz2A/ljK/1LtgJCsd58PuGPYoeIEAiG3goUViog4c7QnQc4wAsH9RYL5I6yPXevaUL9uthWtveo7udVoFE=
+  &lt;/D&gt;
+&lt;/RSAKeyValue&gt;
+</pre><p>ii. Decrypt the original data using the decrypted AES random key</p><p><strong>Encryption / decryption using asymmetric algorithm RSA</strong></p><p>The following class is for encrypting, decrypting smaller amounts of data with public and private keys using the asymmetric algorithm RSA and is heavily influenced by the example code given at <a href="http://www.csharpdeveloping.net/Snippet/how_to_encrypt_decrypt_using_asymmetric_algorithm_rsa">this site</a>.</p><pre class="brush: csharp; title: ; notranslate" title="">
+// &lt;summary&gt;
+// 1. From http://www.csharpdeveloping.net/Snippet/how_to_encrypt_decrypt_using_asymmetric_algorithm_rsa
+// An asymmetric algorithm to publically encrypt and privately decrypt text data.
+// &lt;/summary&gt;
+
+namespace Crypto
+{
+    using System;
+    using System.Security.Cryptography;
+    using System.Text;
+
+    public static class RSA
+    {
+        /// &lt;summary&gt;
+        /// The padding scheme often used together with RSA encryption.
+        /// &lt;/summary&gt;
+        private static bool _optimalAsymmetricEncryptionPadding = false;
+
+        /// &lt;summary&gt;
+        /// Converts the RSA-encrypted text into a string
+        /// &lt;/summary&gt;
+        /// &lt;param name="text"&gt;The plain text input&lt;/param&gt;
+        /// &lt;param name="publicKeyXml"&gt;The RSA public key in XML format&lt;/param&gt;
+        /// &lt;param name="keySize"&gt;The RSA key length&lt;/param&gt;
+        /// &lt;returns&gt;The the RSA-encrypted text&lt;/returns&gt;
+        public static string Encrypt(string text, string publicKeyXml, int keySize)
+        {
+            var encrypted = EncryptByteArray(Encoding.UTF8.GetBytes(text), publicKeyXml, keySize);
+
+            return Convert.ToBase64String(encrypted);
+        }
+
+        /// &lt;summary&gt;
+        /// Gets and validates the RSA-encrypted text as a byte array
+        /// &lt;/summary&gt;
+        /// &lt;param name="data"&gt;The plain text in byte array format&lt;/param&gt;
+        /// &lt;param name="publicKeyXml"&gt;The RSA public key in XML format&lt;/param&gt;
+        /// &lt;param name="keySize"&gt;The RSA key length&lt;/param&gt;
+        /// &lt;returns&gt;The the RSA-encrypted byte array&lt;/returns&gt;
+        private static byte[] EncryptByteArray(byte[] data, string publicKeyXml, int keySize)
+        {
+            if (data == null || data.Length == 0)
+            {
+                throw new ArgumentException("Data are empty", "data");
+            }
+
+            int maxLength = GetMaxDataLength(keySize);
+
+            if (data.Length &gt; maxLength)
+            {
+                throw new ArgumentException(String.Format("Maximum data length is {0}", maxLength), "data");
+            }
+
+            if (!IsKeySizeValid(keySize))
+            {
+                throw new ArgumentException("Key size is not valid", "keySize");
+            }
+
+            if (String.IsNullOrEmpty(publicKeyXml))
+            {
+                throw new ArgumentException("Key is null or empty", "publicKeyXml");
+            }
+
+            using (var provider = new RSACryptoServiceProvider(keySize))
+            {
+                provider.FromXmlString(publicKeyXml);
+                return provider.Encrypt(data, _optimalAsymmetricEncryptionPadding);
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Converts the RSA-decrypted text into a string
+        /// &lt;/summary&gt;
+        /// &lt;param name="text"&gt;The plain text input&lt;/param&gt;
+        /// &lt;param name="publicKeyXml"&gt;The RSA public key in XML format&lt;/param&gt;
+        /// &lt;param name="keySize"&gt;The RSA key length&lt;/param&gt;
+        /// &lt;returns&gt;The the RSA-decrypted text&lt;/returns&gt;
+        public static string Decrypt(string text, string publicAndPrivateKeyXml, int keySize)
+        {
+            var decrypted = DecryptByteArray(Convert.FromBase64String(text), publicAndPrivateKeyXml, keySize);
+            return Encoding.UTF8.GetString(decrypted);
+        }
+
+        /// &lt;summary&gt;
+        /// Gets and validates the RSA-decrypted text as a byte array
+        /// &lt;/summary&gt;
+        /// &lt;param name="data"&gt;The plain text in byte array format&lt;/param&gt;
+        /// &lt;param name="publicKeyXml"&gt;The RSA public key in XML format&lt;/param&gt;
+        /// &lt;param name="keySize"&gt;The RSA key length&lt;/param&gt;
+        /// &lt;returns&gt;The the RSA-decrypted byte array&lt;/returns&gt;
+        private static byte[] DecryptByteArray(byte[] data, string publicAndPrivateKeyXml, int keySize)
+        {
+            if (data == null || data.Length == 0)
+            {
+                throw new ArgumentException("Data are empty", "data");
+            }
+
+            if (!IsKeySizeValid(keySize))
+            {
+                throw new ArgumentException("Key size is not valid", "keySize");
+            }
+
+            if (String.IsNullOrEmpty(publicAndPrivateKeyXml))
+            {
+                throw new ArgumentException("Key is null or empty", "publicAndPrivateKeyXml");
+            }
+
+            using (var provider = new RSACryptoServiceProvider(keySize))
+            {
+                provider.FromXmlString(publicAndPrivateKeyXml);
+                return provider.Decrypt(data, _optimalAsymmetricEncryptionPadding);
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Gets the maximum data length for a given key
+        /// &lt;/summary&gt;       
+        /// &lt;param name="keySize"&gt;The RSA key length&lt;/param&gt;
+        /// &lt;returns&gt;The maximum allowable data length&lt;/returns&gt;
+        public static int GetMaxDataLength(int keySize)
+        {
+            if (_optimalAsymmetricEncryptionPadding)
+            {
+                return ((keySize - 384) / 8) + 7;
+            }
+            return ((keySize - 384) / 8) + 37;
+        }
+
+        /// &lt;summary&gt;
+        /// Checks if the given key size if valid
+        /// &lt;/summary&gt;       
+        /// &lt;param name="keySize"&gt;The RSA key length&lt;/param&gt;
+        /// &lt;returns&gt;True if valid; false otherwise&lt;/returns&gt;
+        public static bool IsKeySizeValid(int keySize)
+        {
+            return keySize &gt;= 384 &amp;&amp;
+                   keySize &lt;= 16384 &amp;&amp;
+                   keySize % 8 == 0;
+        }
+    }
+}
+</pre><p><strong>Encryption / decryption using symmetric algorithm AES256</strong></p><p>For symmetric encryption of the data as described previously, I use an implementation of Rijndael’s algorithm.  An excellent implementation that I have observed to work for my own purposes can be found <a href="http://www.obviex.com/samples/Encryption.aspx">here</a>, that I have heavily reproduced in the following code:</p><pre class="brush: csharp; title: ; notranslate" title="">
+// &lt;summary&gt;A symmetric key algorithm used to encrypt/decrypt text data to AES256 standard.
+// using Rijndael's ("Rin-dal") algorithm
+// &lt;/summary&gt;
+
+namespace Crypto
+{
+    using System;
+    using System.IO;
+    using System.Security.Cryptography;
+    using System.Text;
+
+    public class Rijndael
+    {
+        // Constants used in our AES256 (Rijndael) Encryption / Decryption
+        const string initVector = "@1B2c3D4e5F6g7H8";     // Must be 16 bytes
+        const string passPhrase = "Pas5pr@se";            // Any string
+        const string saltValue = "s@1tValue";             // Any string
+        const string hashAlgorithm = "SHA1";              // Can also be "MD5", "SHA1" is stronger
+        const int passwordIterations = 2;                 // Can be any number, usually 1 or 2       
+        const int keySize = 256;                          // Allowed values: 192, 128 or 256
+
+
+        private static string randomKeyText = string.Empty;
+
+        /// &lt;summary&gt;
+        /// Convert random key byte array into a ASCII string
+        /// &lt;/summary&gt;       
+        /// &lt;param name="bytes"&gt;Random key byte array to be converted.&lt;/param&gt;    
+        /// &lt;returns&gt;Random key formatted as a string&lt;/returns&gt;       
+        static string GetString(byte[] bytes)
+        {
+            char[] chars = new char[bytes.Length / sizeof(char)];
+            System.Buffer.BlockCopy(bytes, 0, chars, 0, bytes.Length);
+            return new string(chars);
+        }
+
+        /// &lt;summary&gt;
+        /// Convert random key ASCII string into a byte array 
+        /// &lt;/summary&gt;       
+        /// &lt;param name="randomKeyText"&gt;Random key string to be converted.&lt;/param&gt;    
+        /// &lt;returns&gt;Random key formatted as a byte array&lt;/returns&gt;       
+        static byte[] GetBytes(string randomKeyText)
+        {
+            byte[] bytes = new byte[randomKeyText.Length * sizeof(char)];
+            System.Buffer.BlockCopy(randomKeyText.ToCharArray(), 0, bytes, 0, bytes.Length);
+            return bytes;
+        }
+
+        /// &lt;summary&gt;
+        /// Get the random key string
+        /// &lt;/summary&gt;            
+        /// &lt;returns&gt;Random key formatted as a string&lt;/returns&gt;       
+        public static string GetRandomKeyText()
+        {
+            return randomKeyText;
+        }
+
+        /// &lt;summary&gt;
+        /// Encrypts text using Rijndael symmetric key algorithm and returns base64-encoded result.
+        /// &lt;/summary&gt;       
+        /// &lt;param name="plainText"&gt;Plain text data to be encrypted.&lt;/param&gt;    
+        /// &lt;returns&gt;Encrypted value formatted as a base64-encoded string.&lt;/returns&gt;
+        public static string Encrypt(string plainText)
+        {
+            // Convert init vector / salt value ASCII strings into byte arrays          
+            // If strings include Unicode characters, use Unicode, UTF7, or UTF8 encoding
+            byte[] initVectorBytes = Encoding.ASCII.GetBytes(initVector);
+            byte[] saltValueBytes = Encoding.ASCII.GetBytes(saltValue);
+
+            // Convert our plain text into a byte array
+            // Assume plain text can contains UTF8 characters
+            byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+
+            // Using the specified hash algorithm, create a password from the specified passphrase 
+            // and salt value from which we will derive the key
+            // Password creation can be done in one or more iterations
+            PasswordDeriveBytes password = new PasswordDeriveBytes(
+                                                            passPhrase,
+                                                            saltValueBytes,
+                                                            hashAlgorithm,
+                                                            passwordIterations);
+
+            // Use  password to generate random bytes for encryption key. 
+            // Specify the size of the key in bytes (instead of bits)
+            // Set string equivalent of the random key byte array.
+            byte[] keyBytes = password.GetBytes(keySize / 8);
+            randomKeyText = GetString(keyBytes);
+
+            // Create uninitialized Rijndael encryption object.
+            RijndaelManaged symmetricKey = new RijndaelManaged();
+
+            // Set encryption mode to Cipher Block Chaining            
+            symmetricKey.Mode = CipherMode.CBC;
+
+            // Generate encryptor from the key bytes and initialization vector. 
+            // Key size will be based on the number of key bytes
+            ICryptoTransform encryptor = symmetricKey.CreateEncryptor(
+                                                             keyBytes,
+                                                             initVectorBytes);
+
+            // Define memory stream to contain encrypted data
+            MemoryStream memoryStream = new MemoryStream();
+
+            // Define cryptographic stream (always use Write mode for encryption)
+            CryptoStream cryptoStream = new CryptoStream(
+                                                    memoryStream,
+                                                    encryptor,
+                                                    CryptoStreamMode.Write);
+
+            // Start and finish encrypting.
+            cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
+            cryptoStream.FlushFinalBlock();
+
+            // Convert encrypted data from a memory stream into a byte array
+            byte[] cipherTextBytes = memoryStream.ToArray();
+
+            // Close memory and cryptographic streams
+            memoryStream.Close();
+            cryptoStream.Close();
+
+            // Convert encrypted data into a base64-encoded string and return 
+            return Convert.ToBase64String(cipherTextBytes);
+        }
+
+        /// &lt;summary&gt;
+        /// Decrypts text using Rijndael symmetric key algorithm.
+        /// &lt;/summary&gt;
+        /// &lt;param name="cipherText"&gt;Base64-formatted text value.&lt;/param&gt;
+        /// &lt;param name="keyBytes"&gt;The public key in byte array format&lt;/param&gt;       
+        /// &lt;param name="initVector"&gt;Vector required to encrypt 1st block of text data, exactly 16 bytes long&lt;/param&gt;      
+        /// &lt;returns&gt;Decrypted UTF8-encoded string value&lt;/returns&gt;       
+        public static string Decrypt(string cipherText, string randomKeyText)
+        {
+            // Convert strings defining encryption key characteristics into byte
+            // arrays. Let us assume that strings only contain ASCII codes.
+            // If strings include Unicode characters, use Unicode, UTF7, or UTF8
+            // encoding.
+            byte[] initVectorBytes = Encoding.ASCII.GetBytes(initVector);
+
+            // Convert our ciphertext into a byte array.
+            byte[] cipherTextBytes = Convert.FromBase64String(cipherText);
+
+            // Create uninitialized Rijndael encryption object.
+            RijndaelManaged symmetricKey = new RijndaelManaged();
+
+            // It is reasonable to set encryption mode to Cipher Block Chaining
+            // (CBC). Use default options for other symmetric key parameters.
+            symmetricKey.Mode = CipherMode.CBC;
+
+            // Generate decryptor from existing key bytes and initialization vector. 
+            // Key size will be defined based on the number of the key bytes
+            byte[] keyBytes = GetBytes(randomKeyText);
+            ICryptoTransform decryptor = symmetricKey.CreateDecryptor(
+                                                             keyBytes,
+                                                             initVectorBytes);
+
+            // Define memory stream which will be used to hold encrypted data
+            MemoryStream memoryStream = new MemoryStream(cipherTextBytes);
+
+            // Define cryptographic stream (always use Read mode for encryption)
+            CryptoStream cryptoStream = new CryptoStream(memoryStream,
+                                                          decryptor,
+                                                          CryptoStreamMode.Read);
+
+            // We don't know what the size of decrypted data will be, so allocate buffer 
+            // long enough to hold ciphertext plaintext is never longer than ciphertext
+            byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+
+            // Start decrypting.
+            int decryptedByteCount = cryptoStream.Read(
+                                                    plainTextBytes,
+                                                    0,
+                                                    plainTextBytes.Length);
+
+            // Close both streams.
+            memoryStream.Close();
+            cryptoStream.Close();
+
+            // Convert decrypted data into a string. 
+            // Let us assume that the original plaintext string was UTF8-encoded.
+            string plainText = Encoding.UTF8.GetString(
+                                                    plainTextBytes,
+                                                    0,
+                                                    decryptedByteCount);
+
+            // Return decrypted string  
+            return plainText;
+        }
+    }
+}
+</pre><p>I took the classes described above, using them to create <code>Encryptor </code>and <code>Decryptor </code>utility classes, containing APIs with which to fully perform the necessary steps needed to encrypt/decrypt large data files, as described above.  For presentation reasons I do not describe them here, but they (along with the whole Visual Studio project) are available from the download given below.</p><p>As a means of demonstrating how these classes and techniques work, I list the following text outputs given at each of the stages of the encryption and decryption stages in the code:</p><p><strong><em>1. Original text:</em>   </strong></p><pre class="brush: plain; title: ; notranslate" title="">
+"I have of late - but wherefore I know not - lost all my mirth,
+forgone all custom of exercises;
+and indeed it goes so heavily with my disposition that this goodly frame,
+the earth, seems to me a sterile promontory;
+this most excellent canopy, the air, look you, this brave o'erhanging firmament,
+this majestical roof fretted with golden fire,
+why, it appears no other thing to me than a foul and pestilential congregation of vapours.
+What a piece of work is a man! how noble in reason! how infinite in faculty!
+in form and moving how express and admirable!
+in action how like an angel! in apprehension how like a god!
+the beauty of the world! the paragon of animals!
+And yet to me, what is this quintessence of dust?
+man delights not me: no, nor woman neither."
+</pre><p><strong><em>2. Random key used to encrypt the original text:</em></strong></p><pre class="brush: plain; title: ; notranslate" title="">
+챼޻ﰾṦ챻챰籶❠⨘뜱湋驴礉
+</pre><p><strong><em>3. AES256-Encrypted original text:</em></strong></p><p>The Encrypt utility class is then used to AES256-encrypt the raw text data:</p><pre class="brush: plain; title: ; notranslate" title="">
+VbB9lfxlQq1QYqYwG0E9WgHT9yLbY7ZAMtVDf0IFN4nXnyGfICPrLTREDt8icCrF4aX
+72Vrm+B8ynOn3lLDBIAraWNyc7+jJXqmyUxfaHbVP0R3vqee0dblkG8sC/PzkLZ21db
+yoiXxp9e2UZdeK1lTDjAHAf5rLR3YF/eYBz6avNvkvxWbnWb6AhPsobDAPxfYU8U2RN
+Fnm0Az7PFN3GeAEeI2U7/pLnYqwE5mWqsdLIw6fplhuNE3xDGwIsMlVUrgAZZHnvaoD
+KLNmLfxCyh3na3vuw6E/0AlUAuzE5zYjXm5u/Nv96eU1cKXhJKBSb3zMBUByy0VAMdE
+X+KD14NBpr2PEvUHeiUv6EOcuc1YZwgaDiweFP22dkQMuqPFQrdJsEutVzlhSBtLvcf
+JvSuOLlPSn0BsR5/SSDoESME84cpUDRfJDfUo2nFYxKKsEAJQy/cmet69IpIhOJvaZr
+76UIAjrF4kArYlhMgDY92k+PZqbABL4yticTtbJSWMUOUSRIZqtAH+BlmShJordTNq2
+ChfM+IdV6M+Zd7tW4uOdbl/YZ5GLhf39ZSu2csSVr0G1o/rmrRMsxDIuxMcfpkp/gxO
+ou26mLUuscakFoceQBNToWVGDRYzndVADGFwbkAdPIGi4taFmM/JECEHmrWnRXd7d7f
+PlmDHhdwxS4MVpqW3MNE5c8kNrUU6cT08evYJnNPUBcJEfL3Y4J5yS/7tmlmLyVvy1o
+7neCB6r4Dx+lGCjjqfma4XaUGHPPRYy7mKl+9MdXvwv+IaZBfn+cTPv2659408ol+WI
+s7f2HoryhRXE3IpGuCAnFMtdEQnSiTNfPgg0Hd+4/NqiJJOQ9ueBsGrwNoplPJZDkN8
+bWhnLQSLXEmgWpGSVZH32Rc5ld7YOA/onlXW1d8WlaXyPCXvh0m+5e4IU4DAVo/7+dQ
+Junkpk390+UknGcKqIUA+duoIFjtPWZgVN+Kxq7Oi5TB8ffUAE9Rp1yXI9qv4uMbWkG
+R2lOF6OzLAcmePXsFCIoUNAzRzuJVY7gNvWgxI+kN+S7fFkguW5Nl26O7bpnww=
+</pre><p><strong>4. RSA-encrypted random key:</strong></p><p>And the Encrypt facility is also used to RSA-encrypt the random key used in the AES256-enryption of the original text:  </p><pre class="brush: plain; title: ; notranslate" title="">
+euledXShX+rPYC2uTKlbFFK9wY1yHzIkRSiW6yb7PJg2EL08omo5KucuuaYMiUhcxI/
+BCiCQq3RblWXISIQkjJ/fomj42o4BUoNud9bbJ7iPCCn+1xEFuSpIonXwjg5iQJpV95
+nhh+ca7ycd93o1gFjOypQUD59A8ULxcjJbNcY=
+</pre><p><strong>5. RSA-decrypted random key:</strong></p><p>At the client side, or at whichever entity is allowed to hold the private key, the <code>Decryptor </code>utility class is used to RSA-decrypt the random key, giving us the original random key we started with:</p><pre class="brush: plain; title: ; notranslate" title="">
+챼޻ﰾṦ챻챰籶❠⨘뜱湋驴礉
+</pre><p><strong>6. AES256-decrypted original text:</strong></p><p>Finally, now that we have the original random key, we use it to AES256-decrypt the original raw text.  Even though we use a symmetric algorithm here, we preserve the asymmetry as this AES256-decrption is not possible without first having RSA-decrypted the original random key.</p><pre class="brush: plain; title: ; notranslate" title="">
+Decrypted text:  "I have of late - but wherefore I know not - lost all my mirth,
+forgone all custom of exercises;
+and indeed it goes so heavily with my disposition that this goodly frame,
+the earth, seems to me a sterile promontory;
+this most excellent canopy, the air, look you, this brave o'erhanging firmament,
+this majestical roof fretted with golden fire,
+why, it appears no other thing to me than a foul and pestilential congregation of vapours.
+What a piece of work is a man! how noble in reason! how infinite in faculty!
+in form and moving how express and admirable!
+in action how like an angel! in apprehension how like a god!
+the beauty of the world! the paragon of animals!
+And yet to me, what is this quintessence of dust?
+man delights not me: no, nor woman neither."
+</pre><p><strong>Purchase the Visual Studio 2010 C# project demonstrating these concepts from here, a very simple to use console application:</strong></p><p><a href="/@technical_recipes/uu36" rel="noopener" target="_blank">Visual Studio 2010 console application</a></p><p>Comments and feedback welcome.</p>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '3559'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2013/using-rsa-to-encrypt-large-data-files-in-c/&amp;media=&amp;description=Using%20RSA%20to%20encrypt%20large%20data%20files%20in%20C#" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2013/getting-started-with-swig-interfacing-between-c-and-c-visual-studio-projects/" title="Getting started with SWiG for interfacing between C# and C++ Visual Studio projects" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Getting started with SWiG for interfacing between C# and C++ Visual Studio projects"></div>
+                                                                        <h4 class="title front-view-title">Getting started with SWiG for interfacing between C# and C++ Visual Studio projects</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2017/how-to-binding-the-windowstate-property-of-a-window-in-wpf-using-mvvm/" title="How to bind the WindowState property of a window in WPF using MVVM" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="How to bind the WindowState property of a window in WPF using MVVM"></div>
+                                                                        <h4 class="title front-view-title">How to bind the WindowState property of a window in WPF using MVVM</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2019/getting-started-with-typescript-in-visual-studio-code/" title="Getting started with TypeScript in Visual Studio Code" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Getting started with TypeScript in Visual Studio Code"></div>
+                                                                        <h4 class="title front-view-title">Getting started with TypeScript in Visual Studio Code</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-5239">
+    		                    <div id="comment-5239" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/da9294a75cea13a98533b3fcbcd6a314506f64e4180fbe69f1a3e8ea313507ef?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/da9294a75cea13a98533b3fcbcd6a314506f64e4180fbe69f1a3e8ea313507ef?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="http://david.carybros.com/" class="url" rel="ugc external nofollow">David</a></span></span>                                                            <span class="ago">2 November 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thank you, Andy. This is a nice example of a hybrid cryptosystem ( <a href="http://en.wikipedia.org/wiki/hybrid_cryptosystem" rel="nofollow ugc">http://en.wikipedia.org/wiki/hybrid_cryptosystem</a> ).</p>
+<p>You might also find the Cryptography Q&amp;A site useful ( <a href="http://crypto.stackexchange.com/" rel="nofollow ugc">http://crypto.stackexchange.com/</a> ).</p>
+<p>For more open-source crypto code, see <a href="https://en.wikibooks.org/wiki/Cryptography/Open_Source_Cryptography" rel="nofollow ugc">https://en.wikibooks.org/wiki/Cryptography/Open_Source_Cryptography</a> .</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    </ol><ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-5245">
+    		                    <div id="comment-5245" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">3 November 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks David.</p>
+<p>Thats a pretty impressive <a href="http://david.carybros.com/html/resume.html" rel="nofollow">resume</a> you have there.</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-11729">
+    		                    <div id="comment-11729" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/d680564f533bdb74236f80cf658565066070bc2683a3317e63d0841db75c46d2?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/d680564f533bdb74236f80cf658565066070bc2683a3317e63d0841db75c46d2?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Jason Barnett</span></span>                                                            <span class="ago">20 August 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi There,<br>
+I am a beginner when it comes to cryptography so please accept my apologies if the following question is daft!</p>
+<p>Please can you advise how I can modify the code to reliably work using a randomly generated byte array for passPhrase rather than using the hard coded constant “Pas5pr@se” as the start point. I have found having modified the code I am getting sporadic occurrences of the  .Net cryptographic error “Padding is invalid and cannot be removed”. I sense I am missing something obvious.</p>
+<p>Thanks in advance<br>
+from Jason</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-45926">
+    		                    <div id="comment-45926" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">10 April 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Jason sorry for not noticing this comment (ahem) some years ago.  If you want to safely generate a random passphrase / salt whatever then you could try RNGCryptoServiceProvider:</p>
+<p>So instead of this:</p>
+<p>//byte[] saltValueBytes = Encoding.ASCII.GetBytes(saltValue);</p>
+<p>Try this:</p>
+<p>RandomNumberGenerator rand = new RNGCryptoServiceProvider();  //to be safe…<br>
+byte[] saltValueBytes = new byte[32];                                        //Create a 32 byte salt<br>
+ rand.GetNonZeroBytes(saltValueBytes);</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-20012">
+    		                    <div id="comment-20012" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/0bec29095b06a8821496bc6ac1b46550e52a14f5e4923343dea80df287d78c29?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/0bec29095b06a8821496bc6ac1b46550e52a14f5e4923343dea80df287d78c29?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Jyotsana</span></span>                                                            <span class="ago">18 December 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>good one!!<br>
+very helpful article</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-22375">
+    		                    <div id="comment-22375" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">1 February 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thank you!</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			
+		</div>
+
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-xml-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushXml.js"></script>
+<script id="syntaxhighlighter-brush-csharp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js"></script>
+<script id="syntaxhighlighter-brush-plain-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

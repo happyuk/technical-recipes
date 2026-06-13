@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>How to Create an Installer with Microsoft Visual Studio – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » How to Create an Installer with Microsoft Visual Studio Comments Feed" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2011%2Fhow-to-create-an-installer-in-microsoft-visual-studio%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2011%2Fhow-to-create-an-installer-in-microsoft-visual-studio%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/1744"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/">
+<link rel="shortlink" href="/?p=1744">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-1744 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-1744" class="g post post-1744 type-post status-publish format-standard hentry category-installers category-windows tag-installer tag-microsoft tag-msi tag-visual-studio">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/installers/" itemprop="item"><span itemprop="name">Installers</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">How to Create an Installer with Microsoft Visual Studio</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">How to Create an Installer with Microsoft Visual Studio</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>1 December 2011</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/installers/" title="View all posts in Installers">Installers</a>, <a href="/category/windows/" title="View all posts in Windows">Windows</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/#comments" itemprop="interactionCount">33 Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p><strong>Introduction</strong></p><p>Visual Studio 2010 contains a package that enables you to create Windows installer files for your applications.  Follow these simple steps to build your own setup package for the Visual Studio application you are working on.<br>
+<span id="more-1744"></span><br>
+<strong>Creating an installer within your existing Visual Studio project</strong></p><p>Start by adding an installer project by right-clicking on your solution folder and choosing Add -&gt; New Project:</p><p><a href="/wp-content/uploads/2011/12/Installer1.jpg"><img fetchpriority="high" decoding="async" src="" alt="" title="Installer1" width="300" height="179" class="alignnone size-medium wp-image-1746" data-layzr="/wp-content/uploads/2011/12/Installer1-300x179.jpg"></a></p><p>Then in the Add New Project dialog choose Visual Studio Installer and Setup Wizard.  Give your setup program a name and press OK:</p><p><a href="/wp-content/uploads/2011/12/Installer2.png"><img decoding="async" src="" alt="" title="Installer2" width="300" height="168" class="alignnone size-medium wp-image-1748" data-layzr="/wp-content/uploads/2011/12/Installer2-300x168.png"></a></p><p>The Setup Wizard will then walk you through the remaining steps.  First click next and then decide if you need a Windows or Web application.  You probably don’t yet need any of the other special packages, so just click next.  Even if you did, you can still add them at a later date:</p><p><a href="/wp-content/uploads/2011/12/Installer3.jpg"><img decoding="async" src="" alt="" title="Installer3" width="300" height="230" class="alignnone size-medium wp-image-1751" data-layzr="/wp-content/uploads/2011/12/Installer3-300x230.jpg"></a></p><p>Then select the files that will be coming out of your application. Select Primary for all your exes, dlls etc.  You probably don’t need source code so leave this unchecked.  Or debugging symbols.  But you will probably need to include documentation files, if you have those.  Click next:</p><p><a href="/wp-content/uploads/2011/12/Installer4.jpg"><img decoding="async" src="" alt="" title="Installer4" width="300" height="230" class="alignnone size-medium wp-image-1752" data-layzr="/wp-content/uploads/2011/12/Installer4-300x230.jpg"></a></p><p>Then use the next section to add any other files such as chm, pdf, rtf etc, and then select next:</p><p><a href="/wp-content/uploads/2011/12/Installer5.jpg"><img decoding="async" src="" alt="" title="Installer5" width="300" height="230" class="alignnone size-medium wp-image-1753" data-layzr="/wp-content/uploads/2011/12/Installer5-300x230.jpg"></a></p><p>After clicking finish you will see that a new project gets added to your application:</p><p><a href="/wp-content/uploads/2011/12/Installer6.jpg"><img decoding="async" src="" alt="" title="Installer6" width="300" height="279" class="alignnone size-medium wp-image-1754" data-layzr="/wp-content/uploads/2011/12/Installer6-300x279.jpg"></a></p><p><strong>Editing your installer project</strong></p><p>To edit your project properties to eg change its name, right click on the project and select properties:</p><p><a href="/wp-content/uploads/2011/12/Installer9.jpg"><img decoding="async" src="" alt="" title="Installer9" width="300" height="213" class="alignnone size-medium wp-image-1758" data-layzr="/wp-content/uploads/2011/12/Installer9-300x213.jpg"></a></p><p>There are three main folders in the user interface: Application Folder, User’s Desktop and Users Programs Menu.  The Application Folder will specify where the software is located.  For example, if you wish this to contain the executable of your application, then copy the exe file, right-click the Application Folder and paste the application to it.  You can also right-click the executable file in order to create shortcuts, which can be inserted into the User’s Desktop / User’s Programs Menu. This enables the shortcut to be created on the user’s desktop and in the main Programs menu:</p><p><a href="/wp-content/uploads/2011/12/Installer13.jpg"><img decoding="async" src="" alt="" title="Installer13" width="300" height="96" class="alignnone size-medium wp-image-1778" data-layzr="/wp-content/uploads/2011/12/Installer13-300x96.jpg"></a></p><p>If you wish, you can make it look more organized by right-clicking the User’s Programs Menu in order to create a new folder with which to house your shortcut.  You can also re-name and/or tidy up your shortcut, eg by giving it the same name as your main application:</p><p><a href="/wp-content/uploads/2011/12/Installer141.jpg"><img decoding="async" src="" alt="" title="Installer14" width="300" height="74" class="alignnone size-medium wp-image-1794" data-layzr="/wp-content/uploads/2011/12/Installer141-300x74.jpg"></a></p><p>Ditto the User’s Desktop folder:</p><p><a href="/wp-content/uploads/2011/12/Installer15.jpg"><img decoding="async" src="" alt="" title="Installer15" width="300" height="82" class="alignnone size-medium wp-image-1785" data-layzr="/wp-content/uploads/2011/12/Installer15-300x82.jpg"></a></p><p>To change the destination of the application folder right-click the Application Folder in the File System window and choose Properties:</p><p><a href="/wp-content/uploads/2011/12/Installer11.jpg"><img decoding="async" src="" alt="" title="Installer11" width="300" height="102" class="alignnone size-medium wp-image-1762" data-layzr="/wp-content/uploads/2011/12/Installer11-300x102.jpg"></a></p><p>DefaultLocation gives you the overall structure of the folder location.  You might wish to remove the ‘Manufacturer’ section, for example, if you do not wish to include this in your overall folder location.  You can also individually modify each of these, such as ‘ProgramFilesFolder’ if you prefer your programs to be installed elsewhere:</p><p><a href="/wp-content/uploads/2011/12/Installer10.jpg"><img decoding="async" src="" alt="" title="Installer10" width="300" height="126" class="alignnone size-medium wp-image-1764" data-layzr="/wp-content/uploads/2011/12/Installer10-300x126.jpg"></a></p><p>To change the default location of installed programs:</p><p>Click Start.<br>
+Click Run…<br>
+Type Regedit.<br>
+Look for this key: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ Windows\CurrentVersion</p><p>In the rightside window look for ProgramFilesDir. Double click on it and change C:\Program Files to another folder or directory:</p><p><a href="/wp-content/uploads/2011/12/Installer12.jpg"><img decoding="async" src="" alt="" title="Installer12" width="300" height="133" class="alignnone size-medium wp-image-1766" data-layzr="/wp-content/uploads/2011/12/Installer12-300x133.jpg"></a></p><p><strong>Creating additional sub-folders</strong></p><p>Right-click the Applications Folder and select Add -&gt; New Folder.  Rename and add any additional files as required.  Once added, right-click on this folder to view its properties and make sure its AlwaysCreate property is set to true, to ensure this folder and its contents are created upon installation:</p><p><a href="/wp-content/uploads/2011/12/Installer20.jpg"><img decoding="async" src="" alt="" title="Installer20" width="296" height="149" class="alignnone size-full wp-image-1803" data-layzr="/wp-content/uploads/2011/12/Installer20.jpg"></a></p><p><strong>Setting the application icons</strong><br>
+In the File System editor, go to where a shortcut is located (eg User’s Desktop / User’s Programs Menu), right click and choose its properties.  In the properties, select the Icon field and in the drop down menu that appears, use the browse to identify the icon file that you want to use:</p><p><a href="/wp-content/uploads/2011/12/Installer21.jpg"><img decoding="async" src="" alt="" title="Installer21" width="300" height="149" class="alignnone size-medium wp-image-1805" data-layzr="/wp-content/uploads/2011/12/Installer21-300x149.jpg"></a></p><p>In the Icon dialog that appreas use the browse button to locate the icon file (*.ico) of your choice:</p><p><a href="/wp-content/uploads/2011/12/Installer22.jpg"><img decoding="async" src="" alt="" title="Installer22" width="300" height="231" class="alignnone size-medium wp-image-1807" data-layzr="/wp-content/uploads/2011/12/Installer22-300x231.jpg"></a></p><p>In this example for the User’s Desktop I selected ‘Add File…’ and used the icon I had developed for the ‘RouteOptimizer’ project I was working on, located in the ‘res’ folder of the said project:</p><p><a href="/wp-content/uploads/2011/12/Installer23.jpg"><img decoding="async" src="" alt="" title="Installer23" width="300" height="213" class="alignnone size-medium wp-image-1809" data-layzr="/wp-content/uploads/2011/12/Installer23-300x213.jpg"></a></p><p>Ditto User’s Programs Menu:</p><p><a href="/wp-content/uploads/2011/12/Installer24.jpg"><img decoding="async" src="" alt="" title="Installer24" width="300" height="213" class="alignnone size-medium wp-image-1813" data-layzr="/wp-content/uploads/2011/12/Installer24-300x213.jpg"></a></p><p><strong>Building your installer project</strong></p><p>By default when you build your project it will build your main application.  Build it by right-cliking on the installer project and choosing Build:</p><p><a href="/wp-content/uploads/2011/12/Installer7.jpg"><img decoding="async" src="" alt="" title="Installer7" width="300" height="276" class="alignnone size-medium wp-image-1756" data-layzr="/wp-content/uploads/2011/12/Installer7-300x276.jpg"></a></p><p><a href="/wp-content/uploads/2011/12/Installer8.jpg"><img decoding="async" src="" alt="" title="Installer8" width="300" height="108" class="alignnone size-medium wp-image-1757" data-layzr="/wp-content/uploads/2011/12/Installer8-300x108.jpg"></a></p><p><strong>Testing your installer package</strong></p><p>Once this is done, locate your project in Visual Studio, go into the Debug folder and you will see two different installers used for two different purposes:</p><p><a href="/wp-content/uploads/2011/12/Installer16.jpg"><img decoding="async" src="" alt="" title="Installer16" width="300" height="194" class="alignnone size-medium wp-image-1792" data-layzr="/wp-content/uploads/2011/12/Installer16-300x194.jpg"></a></p><p>Test the installer by double-clicking one of them eg setup.exe and work through the setup wizard:</p><p><a href="/wp-content/uploads/2011/12/Installer17.jpg"><img decoding="async" src="" alt="" title="Installer17" width="300" height="245" class="alignnone size-medium wp-image-1795" data-layzr="/wp-content/uploads/2011/12/Installer17-300x245.jpg"></a></p><p>Click Next, changing any other properties as you see fit, the folder for example:</p><p><a href="/wp-content/uploads/2011/12/Installer18.jpg"><img decoding="async" src="" alt="" title="Installer18" width="300" height="245" class="alignnone size-medium wp-image-1797" data-layzr="/wp-content/uploads/2011/12/Installer18-300x245.jpg"></a></p><p>And after working through any other remaining sections of the wizard, that is pretty much it:</p><p><a href="/wp-content/uploads/2011/12/Installer19.jpg"><img decoding="async" src="" alt="" title="Installer19" width="300" height="245" class="alignnone size-medium wp-image-1800" data-layzr="/wp-content/uploads/2011/12/Installer19-300x245.jpg"></a></p><p>Look on the desktop and program menus to check that all of your program shortcuts, files, folders etc have been correctly installed.</p>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '1744'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2011/how-to-create-an-installer-in-microsoft-visual-studio/&amp;media=&amp;description=How%20to%20Create%20an%20Installer%20with%20Microsoft%20Visual%20Studio" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2011/getting-started-with-nvidia-cuda-for-windows/" title="Getting Started with NVIDIA CUDA for Windows" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Getting Started with NVIDIA CUDA for Windows"></div>
+                                                                        <h4 class="title front-view-title">Getting Started with NVIDIA CUDA for Windows</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2018/how-to-disable-a-network-connection-from-control-panel/" title="How to disable a network connection from Control Panel" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="How to disable a network connection from Control Panel"></div>
+                                                                        <h4 class="title front-view-title">How to disable a network connection from Control Panel</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2018/using-robocopy-to-transfer-file-some-tips-and-tricks/" title="Using robocopy to transfer files: tips and tricks" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using robocopy to transfer files: tips and tricks"></div>
+                                                                        <h4 class="title front-view-title">Using robocopy to transfer files: tips and tricks</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-959">
+    		                    <div id="comment-959" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/83fe37696e5cf2781e9545bb6e21bf2b9e66f77a6660dbe11c44ec8b7f78dc79?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/83fe37696e5cf2781e9545bb6e21bf2b9e66f77a6660dbe11c44ec8b7f78dc79?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">KYAW ZAW TUN</span></span>                                                            <span class="ago">18 March 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I am the programming student . SO I need to try a lot .Thanks for the help</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=959#respond" data-commentid="959" data-postid="1744" data-belowelement="comment-959" data-respondelement="respond" data-replyto="Reply to KYAW ZAW TUN" aria-label="Reply to KYAW ZAW TUN">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    </ol><ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-960">
+    		                    <div id="comment-960" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">18 March 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>You’re welcome.  Thanks for the feedback.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=960#respond" data-commentid="960" data-postid="1744" data-belowelement="comment-960" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-1108">
+    		                    <div id="comment-1108" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/0063a4e63b956ebc5b04171b97f978cbdc1265c9c60aff5576253e5e9ff951d2?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/0063a4e63b956ebc5b04171b97f978cbdc1265c9c60aff5576253e5e9ff951d2?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="http://www.actualinstaller.com/" class="url" rel="ugc external nofollow">actual</a></span></span>                                                            <span class="ago">12 May 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Andy, thnx for this article! I got it.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=1108#respond" data-commentid="1108" data-postid="1744" data-belowelement="comment-1108" data-respondelement="respond" data-replyto="Reply to actual" aria-label="Reply to actual">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-1114">
+    		                    <div id="comment-1114" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">19 May 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>You.re welcome. Good to see this has been of use…</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=1114#respond" data-commentid="1114" data-postid="1744" data-belowelement="comment-1114" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-1608">
+    		                    <div id="comment-1608" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/bbc76727a53c2622ef13ed363132b235653aaf4bd7569811fcd56ea02418cd39?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/bbc76727a53c2622ef13ed363132b235653aaf4bd7569811fcd56ea02418cd39?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Peter</span></span>                                                            <span class="ago">7 July 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks so much! Well written and of great help 🙂</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=1608#respond" data-commentid="1608" data-postid="1744" data-belowelement="comment-1608" data-respondelement="respond" data-replyto="Reply to Peter" aria-label="Reply to Peter">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-1612">
+    		                    <div id="comment-1612" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">7 July 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>You’re welcome.  Glad to see these instructions are still of use…</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=1612#respond" data-commentid="1612" data-postid="1744" data-belowelement="comment-1612" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even depth-2" id="li-comment-2114">
+    		                    <div id="comment-2114" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/d4925cc85ed94d230fa6887ddfe8da7ecce12260f1b4cb0d8f6453b3500aa9e0?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/d4925cc85ed94d230fa6887ddfe8da7ecce12260f1b4cb0d8f6453b3500aa9e0?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="http://ILANTUS.com/" class="url" rel="ugc external nofollow">Tarun Kumar Singh</a></span></span>                                                            <span class="ago">5 September 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks , the article is very useful for me , I learned  from it ,<br>
+“How to make a Setup” .<br>
+Tarun</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=2114#respond" data-commentid="2114" data-postid="1744" data-belowelement="comment-2114" data-respondelement="respond" data-replyto="Reply to Tarun Kumar Singh" aria-label="Reply to Tarun Kumar Singh">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1884">
+    		                    <div id="comment-1884" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/8ef6927148c62b060840ec01a7d4a2f6e7cc564e3ba83ce1004fdbbfdbd2d8e5?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/8ef6927148c62b060840ec01a7d4a2f6e7cc564e3ba83ce1004fdbbfdbd2d8e5?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Sandiego</span></span>                                                            <span class="ago">30 July 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Andy,<br>
+Thank you for the detailed description. I find it much more intuitive than the msdn descriptions 🙂<br>
+I do have one concern about one step in the process though.  When you say “…if you wish this to contain the executable of your application, then copy the exe file, right-click the Application Folder and paste the application to it.”, which exe file are you using in this case? The one from the obj/Debug folder in the original project?  Or the one from /bin ?  I’m getting building errors using either one.  Please enlighten me! THX</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=1884#respond" data-commentid="1884" data-postid="1744" data-belowelement="comment-1884" data-respondelement="respond" data-replyto="Reply to Sandiego" aria-label="Reply to Sandiego">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-1886">
+    		                    <div id="comment-1886" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">30 July 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Sandiego</p>
+<p>Yes, it was the exectuable contained in the Debug or Release folder that I had in mind, that exe which when you double-click on it runs the application you are working on.  I will update this post to clarify this point better…</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=1886#respond" data-commentid="1886" data-postid="1744" data-belowelement="comment-1886" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-1888">
+    		                    <div id="comment-1888" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/2b59a4dd8ba6fad5ebe4858c4d44335be3310bd33221ae79337dd77465bc960d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/2b59a4dd8ba6fad5ebe4858c4d44335be3310bd33221ae79337dd77465bc960d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="http://farisa-lutfi.web.ugm.ac.id/" class="url" rel="ugc external nofollow">faris</a></span></span>                                                            <span class="ago">31 July 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>this article is what i need..<br>
+its help me to finish my program<br>
+thanks very much 🙂</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=1888#respond" data-commentid="1888" data-postid="1744" data-belowelement="comment-1888" data-respondelement="respond" data-replyto="Reply to faris" aria-label="Reply to faris">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-1892">
+    		                    <div id="comment-1892" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">31 July 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>You’re welcome Faris. It’s always good to get feedback.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=1892#respond" data-commentid="1892" data-postid="1744" data-belowelement="comment-1892" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-2055">
+    		                    <div id="comment-2055" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/172d3b5ecc6f71c81730cc366198b1f3641399a84a9c235d691a09e4f4c776a9?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/172d3b5ecc6f71c81730cc366198b1f3641399a84a9c235d691a09e4f4c776a9?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Alex</span></span>                                                            <span class="ago">21 August 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Andy, thanks a lot for great instructions. Couple of questions: where you live off you still have to have 2 files to run the install:<br>
+– setup.exe<br>
+– app_name.msi<br>
+Can you explain how to combine both into one exe?</p>
+<p>Also, is the only way to set up verbose logging is to run the msi directly through cmd line? or is there a setting hidden somewhere in VS where you can turn it on by default and have it go to %temp%?</p>
+<p>Thanks a lot</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=2055#respond" data-commentid="2055" data-postid="1744" data-belowelement="comment-2055" data-respondelement="respond" data-replyto="Reply to Alex" aria-label="Reply to Alex">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-2058">
+    		                    <div id="comment-2058" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">21 August 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Alex,<br>
+My honest answers to both questions are don’t knows. I have not used the installer feature in any depth. For the first question, I think either the exe or msi generated can be used to install your program, I don’t know how to combine both.  The msi file by itself should be sufficient.</p>
+<p>For the second question, perhaps these links may be of help?</p>
+<p><a href="http://support.microsoft.com/kb/223300" rel="nofollow ugc">http://support.microsoft.com/kb/223300</a></p>
+<p><a href="http://msdn.microsoft.com/en-us/library/aa266445%28v=vs.60%29.aspx" rel="nofollow ugc">http://msdn.microsoft.com/en-us/library/aa266445%28v=vs.60%29.aspx</a></p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=2058#respond" data-commentid="2058" data-postid="1744" data-belowelement="comment-2058" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-2871">
+    		                    <div id="comment-2871" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/1c17a5a9399d4ed01571ca3410e00c0769afff567dea4f84c21b70e7f9b49cad?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/1c17a5a9399d4ed01571ca3410e00c0769afff567dea4f84c21b70e7f9b49cad?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">alhmzawey</span></span>                                                            <span class="ago">11 January 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>thank you for great description</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=2871#respond" data-commentid="2871" data-postid="1744" data-belowelement="comment-2871" data-respondelement="respond" data-replyto="Reply to alhmzawey" aria-label="Reply to alhmzawey">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-2872">
+    		                    <div id="comment-2872" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">11 January 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks alhmzawey , you’re welcome.  Andy.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=2872#respond" data-commentid="2872" data-postid="1744" data-belowelement="comment-2872" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-2885">
+    		                    <div id="comment-2885" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/f1151f6ae6ffc00c9d50f04014f3db3ae1e57ec36baaeaebd069ec71ddd958a7?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/f1151f6ae6ffc00c9d50f04014f3db3ae1e57ec36baaeaebd069ec71ddd958a7?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="http://cksdsvv.blogspot.in/" class="url" rel="ugc external nofollow">chandan kumar sharma</a></span></span>                                                            <span class="ago">14 January 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>how to make a single user setup in visual studio 2010…</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=2885#respond" data-commentid="2885" data-postid="1744" data-belowelement="comment-2885" data-respondelement="respond" data-replyto="Reply to chandan kumar sharma" aria-label="Reply to chandan kumar sharma">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-2899">
+    		                    <div id="comment-2899" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/e21a84dc21d584f9344e7a119245558887a2ddb1c880cf6af6b88b0ae83da528?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/e21a84dc21d584f9344e7a119245558887a2ddb1c880cf6af6b88b0ae83da528?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Adriana</span></span>                                                            <span class="ago">18 January 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Andy,</p>
+<p>Got article. I wonder, do you know how to make this installation to be dynamic and capture the folder path? So in case user choose another folder to install an application this information can be captured and then tell the code where to find resource file.<br>
+This regarding an app which will write to external file such as .txt</p>
+<p>Can reply to me here or to my email.</p>
+<p>Many thanks in advance.<br>
+Adriana</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=2899#respond" data-commentid="2899" data-postid="1744" data-belowelement="comment-2899" data-respondelement="respond" data-replyto="Reply to Adriana" aria-label="Reply to Adriana">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-2926">
+    		                    <div id="comment-2926" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/69b9930f35519c41fc33c2b50d79e9e8bacaf89df3952cd5750ee0dabf7699fc?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/69b9930f35519c41fc33c2b50d79e9e8bacaf89df3952cd5750ee0dabf7699fc?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Daniel</span></span>                                                            <span class="ago">23 January 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Great article.</p>
+<p>In my case, app needs to write log files and other files that must be strored in appdata folder (Win7 later not allow to change files in app folder). Could you please add that portion?</p>
+<p>Thanks.</p>
+<p>Daniel</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=2926#respond" data-commentid="2926" data-postid="1744" data-belowelement="comment-2926" data-respondelement="respond" data-replyto="Reply to Daniel" aria-label="Reply to Daniel">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-3158">
+    		                    <div id="comment-3158" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">27 January 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Daniel. Thanks for the feedback.<br>
+I’ve not had time to further develop this lately, maybe one of these days.<br>
+Any further insights you might have in the meantime would be much appreciated.  Andy</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=3158#respond" data-commentid="3158" data-postid="1744" data-belowelement="comment-3158" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-3481">
+    		                    <div id="comment-3481" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/5f863a7590c4d3aa8bd74f606fa32c955de0f308362b2048171e21fa6e91452d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/5f863a7590c4d3aa8bd74f606fa32c955de0f308362b2048171e21fa6e91452d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Naveen C</span></span>                                                            <span class="ago">29 January 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Andy,</p>
+<p>Great explanation. </p>
+<p>Is there a way to add a value to appdata folder or registry or add environment variables?</p>
+<p>Regards,<br>
+Naveen C.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=3481#respond" data-commentid="3481" data-postid="1744" data-belowelement="comment-3481" data-respondelement="respond" data-replyto="Reply to Naveen C" aria-label="Reply to Naveen C">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-3832">
+    		                    <div id="comment-3832" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/778b8ab311f3be34907b11fe5a472f49762a1aff7cbf4873ed7c4304406d104b?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/778b8ab311f3be34907b11fe5a472f49762a1aff7cbf4873ed7c4304406d104b?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Sub Dee</span></span>                                                            <span class="ago">14 March 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Is that possible to keep all the Dlls in one folder and only the executables in release folder.</p>
+<p>Thanks</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=3832#respond" data-commentid="3832" data-postid="1744" data-belowelement="comment-3832" data-respondelement="respond" data-replyto="Reply to Sub Dee" aria-label="Reply to Sub Dee">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-3833">
+    		                    <div id="comment-3833" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">14 March 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Sub Dee, I have never used installer in that way.  If you get any further insights I would be happy to know.<br>
+Andrew</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=3833#respond" data-commentid="3833" data-postid="1744" data-belowelement="comment-3833" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-3934">
+    		                    <div id="comment-3934" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/f0ae0fe9e42789184ca6e519e71b0542db77fe9368d8fd98a666236afd4cd9cb?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/f0ae0fe9e42789184ca6e519e71b0542db77fe9368d8fd98a666236afd4cd9cb?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Skip</span></span>                                                            <span class="ago">31 March 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Can the Visual Studio installer be used to create a 2 way installation using a radio button?  What I mean is, can you create an installer that asks you to choose which version of the program you want to install (admin side or client side)?<br>
+If this is still not clear, I can send a screenprint of an example.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=3934#respond" data-commentid="3934" data-postid="1744" data-belowelement="comment-3934" data-respondelement="respond" data-replyto="Reply to Skip" aria-label="Reply to Skip">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-3945">
+    		                    <div id="comment-3945" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/76ec5d64feb6ef5fdb93e0fb453274286c441a52dd9db476ba06ff2e9e0c3916?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/76ec5d64feb6ef5fdb93e0fb453274286c441a52dd9db476ba06ff2e9e0c3916?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">sanaullah</span></span>                                                            <span class="ago">4 April 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I made installer according to above instructions but when I run the application by clicking application shortcut icon, following error occured.<br>
+” A network-related or instance-specific error occured while establishing a connection to SQL server. The server was not found or was not accessible. Verify that instance name is correct and the SQL server is configured to allow remote connection.(Provider: Named pipes provider, error:40- could not open a connection to SQL Server)”</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=3945#respond" data-commentid="3945" data-postid="1744" data-belowelement="comment-3945" data-respondelement="respond" data-replyto="Reply to sanaullah" aria-label="Reply to sanaullah">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-10478">
+    		                    <div id="comment-10478" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/0ca082d43828338c839f18e32310c48e344d9ccdc98c9d5b366b2dfb0927075e?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/0ca082d43828338c839f18e32310c48e344d9ccdc98c9d5b366b2dfb0927075e?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Hassan</span></span>                                                            <span class="ago">22 July 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>please help me in making of msi package for Microsoft project 2013……..</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=10478#respond" data-commentid="10478" data-postid="1744" data-belowelement="comment-10478" data-respondelement="respond" data-replyto="Reply to Hassan" aria-label="Reply to Hassan">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-23416">
+    		                    <div id="comment-23416" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/f154f0e16e72c1cacc666d0d0efa905b6999955b789cff992ca78b9487c4a203?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/f154f0e16e72c1cacc666d0d0efa905b6999955b789cff992ca78b9487c4a203?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Randy Billingham</span></span>                                                            <span class="ago">3 March 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>When I create the installer the class wizard no longer works. Everything is working except the class wizard. Any ideas?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=23416#respond" data-commentid="23416" data-postid="1744" data-belowelement="comment-23416" data-respondelement="respond" data-replyto="Reply to Randy Billingham" aria-label="Reply to Randy Billingham">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-28714">
+    		                    <div id="comment-28714" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/88386fb6e28a139b3c0e22fb25bdbb40120b29880c95289987e1750b080bbafa?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/88386fb6e28a139b3c0e22fb25bdbb40120b29880c95289987e1750b080bbafa?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">kasiim</span></span>                                                            <span class="ago">16 August 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>i like this it has ben so helpful</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=28714#respond" data-commentid="28714" data-postid="1744" data-belowelement="comment-28714" data-respondelement="respond" data-replyto="Reply to kasiim" aria-label="Reply to kasiim">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-28752">
+    		                    <div id="comment-28752" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">17 August 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Glad to hear it.  Thanks!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=28752#respond" data-commentid="28752" data-postid="1744" data-belowelement="comment-28752" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-41045">
+    		                    <div id="comment-41045" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/317a77e183618d9c854d752dbdf6c851249145b962df2d3687f063a4118fce5e?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/317a77e183618d9c854d752dbdf6c851249145b962df2d3687f063a4118fce5e?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Bless Lemon</span></span>                                                            <span class="ago">7 May 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Precise and Concise tutorial you have there. Descriptive and intuitive enough. Kudos</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=41045#respond" data-commentid="41045" data-postid="1744" data-belowelement="comment-41045" data-respondelement="respond" data-replyto="Reply to Bless Lemon" aria-label="Reply to Bless Lemon">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-41528">
+    		                    <div id="comment-41528" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/854d6055804c72814e54f9d95552a52f43f897da048ec6e096d2b7d07c091d72?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/854d6055804c72814e54f9d95552a52f43f897da048ec6e096d2b7d07c091d72?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">okoro</span></span>                                                            <span class="ago">19 June 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>good one thanks</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=41528#respond" data-commentid="41528" data-postid="1744" data-belowelement="comment-41528" data-respondelement="respond" data-replyto="Reply to okoro" aria-label="Reply to okoro">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-46827">
+    		                    <div id="comment-46827" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/a21965d6e2e98c5bb9b60f387ac5b2f16ffe9bf2f642bf829747200e93483013?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/a21965d6e2e98c5bb9b60f387ac5b2f16ffe9bf2f642bf829747200e93483013?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">IshanthSriram</span></span>                                                            <span class="ago">7 July 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi,  I need to create msi package for application created in. Net framework 3.5 have to validate licence key also take care some business rules..  Business asked to use visual studio to build package..  Kindly suggest wich version of visual studio can I use..  Id ok to use VS 2010</p>
+<p>Thanks<br>
+Ishanth</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=46827#respond" data-commentid="46827" data-postid="1744" data-belowelement="comment-46827" data-respondelement="respond" data-replyto="Reply to IshanthSriram" aria-label="Reply to IshanthSriram">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-49159">
+    		                    <div id="comment-49159" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/5428f581e9bdfd8bd004d852ea551844a522e4f89a62b3ef944f623d932cd804?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/5428f581e9bdfd8bd004d852ea551844a522e4f89a62b3ef944f623d932cd804?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="http://boldnobold.com/" class="url" rel="ugc external nofollow">Trevor</a></span></span>                                                            <span class="ago">22 May 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I will try this guide very soon, it looks clear and is easy to understand which is good when time is so valuable.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=49159#respond" data-commentid="49159" data-postid="1744" data-belowelement="comment-49159" data-respondelement="respond" data-replyto="Reply to Trevor" aria-label="Reply to Trevor">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-57091">
+    		                    <div id="comment-57091" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/860de9bd1d7d647a69a551aec9c8af1699278e4e3714fbc161cb1af20031584c?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/860de9bd1d7d647a69a551aec9c8af1699278e4e3714fbc161cb1af20031584c?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">kwndev</span></span>                                                            <span class="ago">29 October 2020</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hello Andy!<br>
+I am new face in programming.<br>
+I made this tasks step by step as you shown. But application not run on windows 10 even I installed .Net 3.5 on target machine.<br>
+My project have app.config and I added some settings like connectionString, appSetting. Please teach me how I could do that. </p>
+<p>Thanks in Advance,<br>
+kwndev</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/?replytocom=57091#respond" data-commentid="57091" data-postid="1744" data-belowelement="comment-57091" data-respondelement="respond" data-replyto="Reply to kwndev" aria-label="Reply to kwndev">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			
+		</div>
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2011/how-to-create-an-installer-in-microsoft-visual-studio/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="1744" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

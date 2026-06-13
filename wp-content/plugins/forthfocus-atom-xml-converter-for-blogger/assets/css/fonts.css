@@ -1,0 +1,36 @@
+/* Local Montserrat font-face rules. Enqueued only when the font files exist. */
+@font-face {
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url('/wp-content/plugins/forthfocus-atom-xml-converter-for-blogger/assets/fonts/Montserrat-Light.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('/wp-content/plugins/forthfocus-atom-xml-converter-for-blogger/assets/fonts/Montserrat-Regular.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url('/wp-content/plugins/forthfocus-atom-xml-converter-for-blogger/assets/fonts/Montserrat-Medium.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url('/wp-content/plugins/forthfocus-atom-xml-converter-for-blogger/assets/fonts/Montserrat-SemiBold.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url('/wp-content/plugins/forthfocus-atom-xml-converter-for-blogger/assets/fonts/Montserrat-Bold.woff2') format('woff2');
+}

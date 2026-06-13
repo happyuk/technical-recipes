@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>Using Postman with Cisco APIC REST API – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Using Postman with Cisco APIC REST API Comments Feed" href="/2022/using-postman-with-cisco-apic-rest-api/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2022%2Fusing-postman-with-cisco-apic-rest-api%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2022%2Fusing-postman-with-cisco-apic-rest-api%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/9793"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2022/using-postman-with-cisco-apic-rest-api/">
+<link rel="shortlink" href="/?p=9793">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-9793 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-9793" class="g post post-9793 type-post status-publish format-standard hentry category-networks">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/networks/" itemprop="item"><span itemprop="name">Networks</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Using Postman with Cisco APIC REST API</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">Using Postman with Cisco APIC REST API</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>1 April 2022</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/networks/" title="View all posts in Networks">Networks</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2022/using-postman-with-cisco-apic-rest-api/#respond" itemprop="interactionCount">No Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p>Some instructions on getting started with using Postman with Cisco APIC REST API.</p><p>Click on any of the images / screenshots shown to enlarge.</p><p>Some of this material was lifted from <a href="https://www.youtube.com/watch?v=kkt2VQog9wo">Du’An Lightfoot’s very helpful YouTube channel</a>.</p><p><strong>Initial setup</strong></p><p>Firstly, if you have not yet done so, <a href="https://developer.cisco.com/">create an account with Cisco</a>.</p><p>Log into the Cisco sandbox: <a href="https://developer.cisco.com/site/sandbox">https://developer.cisco.com/site/sandbox</a></p><p>Click on the ACI ‘Always On’ simulator:</p><p><a href="/wp-content/uploads/2022/04/devnetsandbox.jpg"><img fetchpriority="high" decoding="async" src="" alt="" width="1836" height="798" class="alignnone size-full wp-image-9796" data-layzr="/wp-content/uploads/2022/04/devnetsandbox.jpg"></a></p><p>This directs you to another URL which gives another link to click on to direct you to the sandbox.  Grab the username / password credentials highlighted as below (click to enlarge).</p><p><a href="/wp-content/uploads/2022/04/devnetsandbox2.jpg"><img decoding="async" src="" alt="" width="1893" height="797" class="alignnone size-full wp-image-9797" data-layzr="/wp-content/uploads/2022/04/devnetsandbox2.jpg"></a></p><p>On clicking this you are directed to the actual ACI sandbox.  You can login using the credentials that were provided:</p><p><a href="/wp-content/uploads/2022/04/devnetsandbox3.jpg"><img decoding="async" src="" alt="" width="1768" height="801" class="alignnone size-full wp-image-9798" data-layzr="/wp-content/uploads/2022/04/devnetsandbox3.jpg"></a></p><p>Thereby directing you to the sandboxed APIC ACI Inspector:</p><p><a href="/wp-content/uploads/2022/04/devnetsandbox4.jpg"><img decoding="async" src="" alt="" width="1920" height="1030" class="alignnone size-full wp-image-9799" data-layzr="/wp-content/uploads/2022/04/devnetsandbox4.jpg"></a></p><p><strong>Authentication</strong></p><p>To use the example POST login API, <a href="https://www.postman.com/downloads/">obtain Postman</a>, an application used for testing APIs.</p><p>Use the POST command: https://sandboxapicdc.cisco.com/api/aaaLogin.json</p><p>Use the credentials provided in the initial setup for “name” and “pwd”  to create the API body.  The password may have changed since writing this blog post.</p><pre class="brush: xml; title: ; notranslate" title="">
+{
+	"aaaUser":{
+		"attributes":{
+			"name":"admin",
+			"pwd":"!v3G@!4@Y"
+		}
+	}	
+}
+</pre><p>Make sure ‘Enable SSL certificate verification’ is switched off in the Settings tab and hit the Send button to get the 200 OK response:</p><p><a href="/wp-content/uploads/2022/04/devnetsandbox5.jpg"><img decoding="async" src="" alt="" width="1371" height="715" class="alignnone size-full wp-image-9800" data-layzr="/wp-content/uploads/2022/04/devnetsandbox5.jpg"></a></p><p>And this is what you get in the body of the response, including the token and refresh timeout period:</p><pre class="brush: xml; title: ; notranslate" title="">
+{
+    "totalCount": "1",
+    "imdata": [
+        {
+            "aaaLogin": {
+                "attributes": {
+                    "token": "eyJhbGciOiJSUzI1NiIsImtpZCI6InMxMWdlb2ZiazNvNjd4bnJtaDl0NGlvMnlzYzd0ZnJyIiwidHlwIjoiand0In0.eyJyYmFjIjpbeyJkb21haW4iOiJhbGwiLCJyb2xlc1IiOjAsInJvbGVzVyI6MX1dLCJpc3MiOiJBQ0kgQVBJQyIsInVzZXJuYW1lIjoiYWRtaW4iLCJ1c2VyaWQiOjE1Mzc0LCJ1c2VyZmxhZ3MiOjAsImlhdCI6MTY0ODg4MzkwNSwiZXhwIjoxNjQ4ODg0NTA1LCJzZXNzaW9uaWQiOiJDL0pqcFUzUFFvbVlld1IzNjVCdVF3PT0ifQ.nQOAKpSUrE8a_2Uh5YMztChz2SNdGISVqsZpJspktDh2rMbI_C_EnNsluTPcwA4CzcznCgrb0plk5xcFYwmKUcwV14LbzuVbLssLjq82t5-fzu3495y_NSzB0cu2Q1-qkLhxjdD3MrdxLdxSsAEyZUgvUsJTz1Khj1w6S8lSh6_Ibt_lo0FttZRpG1uE_cMlMmR6MUm4vvxBn41z7NEXsRt3SxnCV_IT9iqw3ElwB5NfotsScNBkkNl1t1F8reH2wqrKl5vuksM4HTs058297uyib6qmfkyJPZgy46V3J3SAf7Cy_KtiOsZ8nSwYlWmCSYjIlyAptayZqxyutUDMLA",
+                    "siteFingerprint": "s11geofbk3o67xnrmh9t4io2ysc7tfrr",
+                    "refreshTimeoutSeconds": "600",
+                    "maximumLifetimeSeconds": "86400",
+                    "guiIdleTimeoutSeconds": "1200",
+                    "restTimeoutSeconds": "90",
+                    "creationTime": "1648883905",
+                    "firstLoginTime": "1648883905",
+                    "userName": "admin",
+                    "remoteUser": "false",
+                    "unixUserId": "15374",
+                    "sessionId": "C/JjpU3PQomYewR365BuQw==",
+                    "lastName": "",
+                    "firstName": "",
+                    "changePassword": "no",
+                    "version": "5.2(1g)",
+                    "buildTime": "Wed Jul 28 23:09:38 UTC 2021",
+                    "node": "topology/pod-1/node-1"
+                },
+                "children": [
+                    {
+                        "aaaUserDomain": {
+                            "attributes": {
+                                "name": "all",
+                                "rolesR": "admin",
+                                "rolesW": "admin"
+                            },
+                            "children": [
+                                {
+                                    "aaaReadRoles": {
+                                        "attributes": {}
+                                    }
+                                },
+                                {
+                                    "aaaWriteRoles": {
+                                        "attributes": {},
+                                        "children": [
+                                            {
+                                                "role": {
+                                                    "attributes": {
+                                                        "name": "admin"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "DnDomainMapEntry": {
+                            "attributes": {
+                                "dn": "uni/tn-mgmt",
+                                "readPrivileges": "admin",
+                                "writePrivileges": "admin"
+                            }
+                        }
+                    },
+                    {
+                        "DnDomainMapEntry": {
+                            "attributes": {
+                                "dn": "uni/tn-infra",
+                                "readPrivileges": "admin",
+                                "writePrivileges": "admin"
+                            }
+                        }
+                    },
+                    {
+                        "DnDomainMapEntry": {
+                            "attributes": {
+                                "dn": "uni/tn-common",
+                                "readPrivileges": "admin",
+                                "writePrivileges": "admin"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
+</pre><p><strong>Obtaining tenant details</strong></p><p>An example GET command to obtain the number and details of tenants in this sandbox APIC:</p><p>GET https://sandboxapicdc.cisco.com/api/class/fvTenant.json </p><p><a href="/wp-content/uploads/2022/04/devnetsandbox6-1.jpg"><img decoding="async" src="" alt="" width="1375" height="854" class="alignnone size-full wp-image-9802" data-layzr="/wp-content/uploads/2022/04/devnetsandbox6-1.jpg"></a></p><p>Tenant details in json format as follows</p><pre class="brush: xml; title: ; notranslate" title="">
+{
+    "totalCount": "8",
+    "imdata": [
+        {
+            "fvTenant": {
+                "attributes": {
+                    "annotation": "",
+                    "childAction": "",
+                    "descr": "",
+                    "dn": "uni/tn-infra",
+                    "extMngdBy": "",
+                    "lcOwn": "local",
+                    "modTs": "2022-04-01T11:14:49.584+00:00",
+                    "monPolDn": "uni/tn-common/monepg-default",
+                    "name": "infra",
+                    "nameAlias": "",
+                    "ownerKey": "",
+                    "ownerTag": "",
+                    "status": "",
+                    "uid": "0",
+                    "userdom": "all"
+                }
+            }
+        },
+        {
+            "fvTenant": {
+                "attributes": {
+                    "annotation": "",
+                    "childAction": "",
+                    "descr": "",
+                    "dn": "uni/tn-common",
+                    "extMngdBy": "",
+                    "lcOwn": "local",
+                    "modTs": "2022-04-01T11:14:44.190+00:00",
+                    "monPolDn": "uni/tn-common/monepg-default",
+                    "name": "common",
+                    "nameAlias": "",
+                    "ownerKey": "",
+                    "ownerTag": "",
+                    "status": "",
+                    "uid": "0",
+                    "userdom": "all"
+                }
+            }
+        },
+        {
+            "fvTenant": {
+                "attributes": {
+                    "annotation": "",
+                    "childAction": "",
+                    "descr": "",
+                    "dn": "uni/tn-mgmt",
+                    "extMngdBy": "",
+                    "lcOwn": "local",
+                    "modTs": "2022-04-01T11:14:49.186+00:00",
+                    "monPolDn": "uni/tn-common/monepg-default",
+                    "name": "mgmt",
+                    "nameAlias": "",
+                    "ownerKey": "",
+                    "ownerTag": "",
+                    "status": "",
+                    "uid": "0",
+                    "userdom": "all"
+                }
+            }
+        },
+        {
+            "fvTenant": {
+                "attributes": {
+                    "annotation": "",
+                    "childAction": "",
+                    "descr": "Try ACI tool demo at https://oneaciapp.talapupa.com",
+                    "dn": "uni/tn-oneaciapp",
+                    "extMngdBy": "",
+                    "lcOwn": "local",
+                    "modTs": "2022-04-01T11:23:50.049+00:00",
+                    "monPolDn": "uni/tn-common/monepg-default",
+                    "name": "oneaciapp",
+                    "nameAlias": "",
+                    "ownerKey": "",
+                    "ownerTag": "",
+                    "status": "",
+                    "uid": "15374",
+                    "userdom": ":all:"
+                }
+            }
+        },
+        {
+            "fvTenant": {
+                "attributes": {
+                    "annotation": "",
+                    "childAction": "",
+                    "descr": "",
+                    "dn": "uni/tn-Heroes",
+                    "extMngdBy": "",
+                    "lcOwn": "local",
+                    "modTs": "2022-04-01T11:27:26.480+00:00",
+                    "monPolDn": "uni/tn-common/monepg-default",
+                    "name": "Heroes",
+                    "nameAlias": "",
+                    "ownerKey": "",
+                    "ownerTag": "",
+                    "status": "",
+                    "uid": "15374",
+                    "userdom": ":all:"
+                }
+            }
+        },
+        {
+            "fvTenant": {
+                "attributes": {
+                    "annotation": "",
+                    "childAction": "",
+                    "descr": "",
+                    "dn": "uni/tn-SnV",
+                    "extMngdBy": "",
+                    "lcOwn": "local",
+                    "modTs": "2022-04-01T11:27:26.751+00:00",
+                    "monPolDn": "uni/tn-common/monepg-default",
+                    "name": "SnV",
+                    "nameAlias": "",
+                    "ownerKey": "",
+                    "ownerTag": "",
+                    "status": "",
+                    "uid": "15374",
+                    "userdom": ":all:"
+                }
+            }
+        },
+        {
+            "fvTenant": {
+                "attributes": {
+                    "annotation": "",
+                    "childAction": "",
+                    "descr": "",
+                    "dn": "uni/tn-Aravid",
+                    "extMngdBy": "",
+                    "lcOwn": "local",
+                    "modTs": "2022-04-01T12:16:43.874+00:00",
+                    "monPolDn": "uni/tn-common/monepg-default",
+                    "name": "Aravid",
+                    "nameAlias": "",
+                    "ownerKey": "",
+                    "ownerTag": "",
+                    "status": "",
+                    "uid": "15374",
+                    "userdom": ":all:"
+                }
+            }
+        },
+        {
+            "fvTenant": {
+                "attributes": {
+                    "annotation": "",
+                    "childAction": "",
+                    "descr": "",
+                    "dn": "uni/tn-tenant_public",
+                    "extMngdBy": "",
+                    "lcOwn": "local",
+                    "modTs": "2022-04-01T12:25:26.738+00:00",
+                    "monPolDn": "uni/tn-common/monepg-default",
+                    "name": "tenant_public",
+                    "nameAlias": "",
+                    "ownerKey": "",
+                    "ownerTag": "",
+                    "status": "",
+                    "uid": "15374",
+                    "userdom": ":all:"
+                }
+            }
+        }
+    ]
+}
+</pre><p>One of the tenants is “common”.  Search for this in the All Tenants tab to get information on end point groups (EPGs), bridge domains etc:</p><p><a href="/wp-content/uploads/2022/04/devnetsandbox7.jpg"><img decoding="async" src="" alt="" width="595" height="408" class="alignnone size-full wp-image-9803" data-layzr="/wp-content/uploads/2022/04/devnetsandbox7.jpg"></a></p><p><strong>Creating a new tenant</strong></p><p>Create a new tenant by using a POST command and json body containing the name, description etc.  This should return a status code of 200.</p><p>POST  https://sandboxapicdc.cisco.com/api/mo/uni/tn-Support.json</p><p>Body (raw)</p><pre class="brush: xml; title: ; notranslate" title="">
+{
+	"fvTenant" : {
+		"attributes" : {
+			"name":"Support",
+			"descr":"The Support Organization Tenant",
+			"nameAlias":"Andy",
+            "status":"created,modified"
+		}
+	}
+}
+</pre><p>Output:</p><pre class="brush: xml; title: ; notranslate" title="">
+{
+    "totalCount": "0",
+    "imdata": []
+}
+</pre><p>Then do the GET command to obtain the tenant information again:</p><p>GET  https://sandboxapicdc.cisco.com/api/mo/uni/tn-Support.json</p><p>And we get back the tenant we just created:</p><pre class="brush: xml; title: ; notranslate" title="">
+{
+    "totalCount": "1",
+    "imdata": [
+        {
+            "fvTenant": {
+                "attributes": {
+                    "annotation": "",
+                    "childAction": "",
+                    "descr": "The Support Organization Tenant",
+                    "dn": "uni/tn-Support",
+                    "extMngdBy": "",
+                    "lcOwn": "local",
+                    "modTs": "2022-04-07T12:23:41.077+00:00",
+                    "monPolDn": "uni/tn-common/monepg-default",
+                    "name": "Support",
+                    "nameAlias": "Andy",
+                    "ownerKey": "",
+                    "ownerTag": "",
+                    "status": "",
+                    "uid": "15374",
+                    "userdom": ":all:"
+                }
+            }
+        }
+    ]
+}
+</pre><p>View the list of all tenants in the APIC on the tenant in the APIC sandbox and see that the new tenant has been added:</p><p><a href="/wp-content/uploads/2022/04/devnetsandbox8-1.jpg"><img decoding="async" src="" alt="" width="969" height="688" class="alignnone size-full wp-image-9876" data-layzr="/wp-content/uploads/2022/04/devnetsandbox8-1.jpg"></a></p><p><strong>Deleting a tenant</strong></p><p>Use the DELETE command to remove the tenant you created</p><p>DELETE https://sandboxapicdc.cisco.com/api/mo/uni/tn-Support.json</p><p>And see that the Support tenant is no longer visible in the APIC sandbox:</p><p><a href="/wp-content/uploads/2022/04/devnetsandbox9.jpg"><img decoding="async" src="" alt="" width="969" height="688" class="alignnone size-full wp-image-9878" data-layzr="/wp-content/uploads/2022/04/devnetsandbox9.jpg"></a></p><p><strong>Create a fabric policy</strong></p><p>In the previous examples the REST command and body text were provided.  In this example we use the APIC API Inspector to create API requests to perform the operations.</p><p>In APIC sandbox, navigate to Fabric &gt; Fabric Policies tab:</p><p><a href="/wp-content/uploads/2022/04/devnetsandbox10.jpg"><img decoding="async" src="" alt="" width="969" height="688" class="alignnone size-full wp-image-9883" data-layzr="/wp-content/uploads/2022/04/devnetsandbox10.jpg"></a></p><p>Right-click SNMP and select Create SNMP Policy.  Give it a name and click the Submit button:</p><p><a href="/wp-content/uploads/2022/04/devnetsandbox11.jpg"><img decoding="async" src="" alt="" width="969" height="688" class="alignnone size-full wp-image-9884" data-layzr="/wp-content/uploads/2022/04/devnetsandbox11.jpg"></a></p><p>Notice that the new SNMP policy appears:</p><p><a href="/wp-content/uploads/2022/04/devnetsandbox12.jpg"><img decoding="async" src="" alt="" width="969" height="688" class="alignnone size-full wp-image-9885" data-layzr="/wp-content/uploads/2022/04/devnetsandbox12.jpg"></a></p><p>In the APIC sandbox click the cog symbol and select Show API Inspector.  In the search bar enter POST and copy the content as shown, including the URL and the payload content in particular:</p><p><a href="/wp-content/uploads/2022/04/devnetsandbox13.jpg"><img decoding="async" src="" alt="" width="841" height="468" class="alignnone size-full wp-image-9886" data-layzr="/wp-content/uploads/2022/04/devnetsandbox13.jpg"></a></p><p>Go back to the APIC sandbox and delete the SNMP policy you created, so that it no longer appears:</p><p><a href="/wp-content/uploads/2022/04/devnetsandbox14.jpg"><img decoding="async" src="" alt="" width="969" height="688" class="alignnone size-full wp-image-9887" data-layzr="/wp-content/uploads/2022/04/devnetsandbox14.jpg"></a></p><p>Open Postman and create a new POST command to create the new SNMP policy using the URL and payload you just copied.  (You might have to re-send the authenticate REST command if you have timed out.)</p><p><a href="/wp-content/uploads/2022/04/devnetsandbox15.jpg"><img decoding="async" src="" alt="" width="1359" height="879" class="alignnone size-full wp-image-9888" data-layzr="/wp-content/uploads/2022/04/devnetsandbox15.jpg"></a></p><p>Navigate back to the APIC sandbox and notice that the new SNMP policy appears:</p><p><a href="/wp-content/uploads/2022/04/devnetsandbox16.jpg"><img decoding="async" src="" alt="" width="969" height="688" class="alignnone size-full wp-image-9890" data-layzr="/wp-content/uploads/2022/04/devnetsandbox16.jpg"></a></p>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '9793'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2022/using-postman-with-cisco-apic-rest-api/&amp;media=&amp;description=Using%20Postman%20with%20Cisco%20APIC%20REST%20API" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2022/using-python-with-cisco-apic-rest-api/" title="Using Python with Cisco APIC REST API" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using Python with Cisco APIC REST API"></div>
+                                                                        <h4 class="title front-view-title">Using Python with Cisco APIC REST API</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2022/using-ansible-to-create-delete-and-list-tenants/" title="Using Ansible to Create, Delete and List Tenants" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using Ansible to Create, Delete and List Tenants"></div>
+                                                                        <h4 class="title front-view-title">Using Ansible to Create, Delete and List Tenants</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2022/using-ansible-automate-cisco-aci-in-windows/" title="Using Ansible to automate Cisco ACI in Windows" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using Ansible to automate Cisco ACI in Windows"></div>
+                                                                        <h4 class="title front-view-title">Using Ansible to automate Cisco ACI in Windows</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2022/using-postman-with-cisco-apic-rest-api/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="9793" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-xml-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushXml.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

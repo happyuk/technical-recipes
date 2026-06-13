@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>How to Create Resizable Dialogs in MFC – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » How to Create Resizable Dialogs in MFC Comments Feed" href="/2011/how-to-create-resizable-dialogs-in-mfc/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2011%2Fhow-to-create-resizable-dialogs-in-mfc%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2011%2Fhow-to-create-resizable-dialogs-in-mfc%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/41"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2011/how-to-create-resizable-dialogs-in-mfc/">
+<link rel="shortlink" href="/?p=41">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-41 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-41" class="g post post-41 type-post status-publish format-standard hentry category-c-mfc tag-dialog tag-microsoft-foundation-classes tag-resizable tag-resizable-dialog tag-ws_thickframe">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/c-mfc/" itemprop="item"><span itemprop="name">C++ / MFC / STL</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">How to Create Resizable Dialogs in MFC</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">How to Create Resizable Dialogs in MFC</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>20 August 2011</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/c-mfc/" title="View all posts in C++ / MFC / STL">C++ / MFC / STL</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2011/how-to-create-resizable-dialogs-in-mfc/#comments" itemprop="interactionCount">17 Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p><strong>Example 1: Using Paulo Messina’s Code Project sample</strong></p><p>A minimalist use of the CResizeableDialog class as described by <a href="http://www.codeproject.com/KB/dialog/resizabledialog.aspx">Paulo Messina at CodeProject </a>.   Hope you find the following recipe useful. Visual Studio 2003 source code is downloadable from <a href="/Downloads/Dialog.7z">here</a>.</p><p>1. Create a new MFC Project </p><p><a href="/wp-content/uploads/2011/08/resizeable_dialog1.jpg"><img fetchpriority="high" decoding="async" src="" alt="resizeable_dialog1" width="531" height="387" class="alignnone size-full wp-image-5705" data-layzr="/wp-content/uploads/2011/08/resizeable_dialog1.jpg"></a></p><p>2.  In the resource editor, add a simple edit control that will be used to demonstrate how this resizing works:</p><p><a href="/wp-content/uploads/2011/08/resizeable_dialog2.jpg"><img decoding="async" src="" alt="resizeable_dialog2" width="330" height="288" class="alignnone size-full wp-image-5707" data-layzr="/wp-content/uploads/2011/08/resizeable_dialog2.jpg"></a></p><p>3. Download the <a href="http://www.codeproject.com/KB/dialog/resizablelib.aspx">CodeProject library</a> to a location of your choice.</p><p>4. Add this downloaded project to the same dialog project you are working on.  To do this, right-click the topmost solution folder and select Add Existing Project:</p><p><a href="/wp-content/uploads/2011/08/resizeable_dialog3.jpg"><img decoding="async" src="" alt="resizeable_dialog3" width="402" height="362" class="alignnone size-full wp-image-5709" data-layzr="/wp-content/uploads/2011/08/resizeable_dialog3.jpg"></a></p><p>So that the extra project is added:</p><p><a href="/wp-content/uploads/2011/08/resizeable_dialog4.jpg"><img decoding="async" src="" alt="resizeable_dialog4" width="213" height="114" class="alignnone size-full wp-image-5710" data-layzr="/wp-content/uploads/2011/08/resizeable_dialog4.jpg"></a></p><p>5. Right-click on the Dialog (or whatever you called your project)  folder and select “Set Project Dependencies”, making sure ResizableLib is checked:</p><p><a href="/wp-content/uploads/2011/08/resizeable_dialog5.jpg"><img decoding="async" src="" alt="resizeable_dialog5" width="366" height="350" class="alignnone size-full wp-image-5712" data-layzr="/wp-content/uploads/2011/08/resizeable_dialog5.jpg"></a></p><p>6. In the Dialog code make sure CDialog is replaced with CResizeableDialog at the following appropriate points.</p><div>(i) In the Dialog class (header file) be sure to insert #include “ResizableDialog.h”. In this Dialog class, replace CDialog with CResizableDialog:
+<pre class="brush: cpp; title: ; notranslate" title="">
+#include "ResizableDialog.h"
+
+// CDialogDlg dialog
+class CDialogDlg : public CResizableDialog
+
+{
+// Construction
+public:
+	CDialogDlg(CWnd* pParent = NULL);	// constructor
+
+// Dialog Data
+
+	enum { IDD = IDD_DIALOG_DIALOG };
+
+protected:
+        // DDX/DDV support
+	virtual void DoDataExchange(CDataExchange* pDX);	
+
+// Implementation
+protected:
+
+	HICON m_hIcon;
+
+	// Generated message map functions
+	virtual BOOL OnInitDialog();
+	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
+
+	afx_msg void OnPaint();
+	afx_msg HCURSOR OnQueryDragIcon();
+
+	DECLARE_MESSAGE_MAP()
+};
+</pre>
+<p>Basically replace all instances of CDialog with CResizableDialog, except in CAboutDlg of course.</p>
+<p>7. Add the dependencies needed to build the project. In Project Properties-&gt; C/C++ -&gt; General -&gt; Additional Include Directories:</p>
+<p><a href="/wp-content/uploads/2011/08/resizeable_dialog6.jpg"><img decoding="async" src="" alt="resizeable_dialog6" width="664" height="474" class="alignnone size-full wp-image-5715" data-layzr="/wp-content/uploads/2011/08/resizeable_dialog6.jpg"></a></p>
+<p>8. Finally, In OnInitDialog() add the extra initialization needed make the gripper visible, set maximum dialog size, add anchors to control items etc and we’re done.</p></div><div>
+<pre class="brush: cpp; title: ; notranslate" title="">
+// Initialize anchor points
+AddAnchor(IDOK, BOTTOM_RIGHT);
+
+AddAnchor(IDCANCEL, BOTTOM_RIGHT);
+AddAnchor(IDC_EDIT1, TOP_LEFT, BOTTOM_RIGHT);
+
+// Set max tracking size to half a screen
+CRect rc;
+GetDesktopWindow()-&amp;gt;GetClientRect(&amp;amp;rc);
+SetMaxTrackSize(CSize(rc.Width(), rc.Height()));
+
+// Set max. position and size on top of the screen
+rc.bottom = 200;
+SetMaximizedRect( rc );
+</pre>
+<p><a href="/wp-content/uploads/2011/08/resizeable_dialog7.jpg"><img decoding="async" src="" alt="resizeable_dialog7" width="330" height="291" class="alignnone size-full wp-image-5717" data-layzr="/wp-content/uploads/2011/08/resizeable_dialog7.jpg"></a></p>
+<p><strong>Example 2: <a href="http://stackoverflow.com/questions/138040/how-to-create-a-resizable-cdialog-in-mfc">Stack Overflow</a> posting</strong></p>
+<p>Courtesy of <a href="http://stackoverflow.com/users/5987/mark-ransom">Mark Ransom</a>.  Some things things needed to use this class are:</p>
+<p>1. Set your dialog style to include WS_THICKFRAME:</p>
+<pre class="brush: cpp; title: ; notranslate" title="">
+IDD_DIALOGRESIZE_DIALOG DIALOGEX 0, 0, 215, 178
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP |
+      WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "DialogResize"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    LISTBOX         IDC_LIST1,35,35,143,99,LBS_SORT |
+                    LBS_NOINTEGRALHEIGHT |
+                    WS_VSCROLL | WS_TABSTOP
+END
+</pre>
+<p>2. Make your dialog class derive from the CResizableDialog base class instead of CDialog or CDialogEx:</p>
+<pre class="brush: cpp; title: ; notranslate" title="">
+// CDialogResizeDlg dialog
+class CDialogResizeDlg : public CResizableDialog
+</pre>
+<p>3. In your OnInitDialog function call the AutoMove function for each child control to define how much it should move and how much it should resize relative to the parent dialog. Use this example to ‘stretch’ the dialog child controls from a fixed position:</p>
+<pre class="brush: cpp; title: ; notranslate" title="">
+AutoMove( IDC_LIST1, 0, 0, 100, 100 );
+</pre>
+<p>4. In the dialog class you are using (not the CResizable base class), replace all instances of CDialog with CBaseDialog.</p>
+<p>Example VS2003 code downloadable from <a href="/Downloads/DialogResize.7z">here</a>.</p>
+<p>Example VS2010 code  downloadable from <a href="/Downloads/DialogResizeVS2010.zip">here</a>.</p>
+<p>Another VS2010 project is available this time incorporating a list control that is resized <em>and </em>repositioned upon stretching the dialog and a button control that is repositioned only.  We achieve this by specifying how much we wish to allow the button control to be repositioned, while leaving its resizing parameters set to zero:</p>
+<pre class="brush: cpp; title: ; notranslate" title="">
+AutoMove( IDC_LIST1, 0, 0, 100, 100 );
+AutoMove( IDC_BUTTON1, 100, 100, 0, 0 );
+</pre>
+<p>This is the dialog before repositioning:</p>
+<p><a href="/wp-content/uploads/2011/08/ResizeBefore.jpg"><img decoding="async" src="" alt="ResizeBefore" width="331" height="323" class="alignnone size-full wp-image-5724" data-layzr="/wp-content/uploads/2011/08/ResizeBefore.jpg"></a></p>
+<p>And this is the dialog after repositioning:</p>
+<p><a href="/wp-content/uploads/2011/08/ResizeAfter.jpg"><img decoding="async" src="" alt="ResizeAfter" width="400" height="384" class="alignnone size-full wp-image-5725" data-layzr="/wp-content/uploads/2011/08/ResizeAfter.jpg"></a></p>
+<p>Updated VS2010 code downloadable from <a href="/Downloads/DialogResizeVS2010_2.zip">here</a>.</p>
+</div>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '41'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2011/how-to-create-resizable-dialogs-in-mfc/&amp;media=&amp;description=How%20to%20Create%20Resizable%20Dialogs%20in%20MFC" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2011/maintaining-recent-file-lists-in-mfc-applications/" title="Maintaining Recent File Lists in MFC Applications" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Maintaining Recent File Lists in MFC Applications"></div>
+                                                                        <h4 class="title front-view-title">Maintaining Recent File Lists in MFC Applications</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2014/obtaining-media-file-information-in-visual-c-using-ffprobe/" title="Obtaining Media File Information in Visual C++ Using FFPROBE" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Obtaining Media File Information in Visual C++ Using FFPROBE"></div>
+                                                                        <h4 class="title front-view-title">Obtaining Media File Information in Visual C++ Using FFPROBE</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2012/converting-between-binary-and-decimal-representations-of-ieee-754-floating-point-numbers-in-c/" title="Converting between binary and decimal representations of IEEE 754 floating-point numbers in C++, Java and Python" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Converting between binary and decimal representations of IEEE 754 floating-point numbers in C++, Java and Python"></div>
+                                                                        <h4 class="title front-view-title">Converting between binary and decimal representations of IEEE 754 floating-point numbers in C++, Java and Python</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-3719">
+    		                    <div id="comment-3719" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/9f7e6ba7cb0129149cf351dd661967462989ce58f88519183863fbc23f00ebe2?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/9f7e6ba7cb0129149cf351dd661967462989ce58f88519183863fbc23f00ebe2?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Frederick Wasti</span></span>                                                            <span class="ago">12 February 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>In Example 2, CDialog should be replaced with “CBaseDialog”, and not “CResizableDialog”, of course.</p>
+<p>Thanks for the good directions for both examples.</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    </ol><ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-3722">
+    		                    <div id="comment-3722" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">12 February 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Yep, you’re right.  Have now updated this code.  Cheers!<br>
+Andy</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-3720">
+    		                    <div id="comment-3720" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/9f7e6ba7cb0129149cf351dd661967462989ce58f88519183863fbc23f00ebe2?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/9f7e6ba7cb0129149cf351dd661967462989ce58f88519183863fbc23f00ebe2?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Frederick Wasti</span></span>                                                            <span class="ago">12 February 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>The links to the VS2003 code are broken, by the way.  (Not that it’s much of a problem, since the “hand-holding” {grin} is so well done for the examples – I built the two examples in VC6 anyway.)</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-3721">
+    		                    <div id="comment-3721" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">12 February 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Download links now fixed.  Thanks for pointing this out!  Andy</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-24201">
+    		                    <div id="comment-24201" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/cd374150473331495aeaa2cd44504581b31acd9262881b249d77dff72f8a926f?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/cd374150473331495aeaa2cd44504581b31acd9262881b249d77dff72f8a926f?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Merlin Cooper</span></span>                                                            <span class="ago">22 March 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Getting an linker error as shown below. Please advise as needed. </p>
+<p>2&gt;rF2RaceControl_MMIDlg.obj : error LNK2001: unresolved external symbol “protected: virtual int __thiscall CResizableState::ReadState(wchar_t const *,class ATL::CStringT&lt;wchar_t,class StrTraitMFC_DLL&lt;wchar_t,class ATL::ChTraitsCRT &gt; &gt; &amp;)” (?ReadState@CResizableState@@MAEHPB_WAAV?$CStringT@_WV?$StrTraitMFC_DLL@_WV?$ChTraitsCRT@_W@ATL@@@@@ATL@@@Z)<br>
+2&gt;rF2RaceControl_MMIDlg.obj : error LNK2001: unresolved external symbol “protected: virtual int __thiscall CResizableState::WriteState(wchar_t const *,wchar_t const *)” (?WriteState@CResizableState@@MAEHPB_W0@Z)</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-24202">
+    		                    <div id="comment-24202" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">22 March 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Merlin I have not been able to re-create the problem you’ve described.<br>
+I have created a newer Visual Studio 2010 download – can you give this a try.  Andy.</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-24204">
+    		                    <div id="comment-24204" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/cd374150473331495aeaa2cd44504581b31acd9262881b249d77dff72f8a926f?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/cd374150473331495aeaa2cd44504581b31acd9262881b249d77dff72f8a926f?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Merlin Cooper</span></span>                                                            <span class="ago">22 March 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks. </p>
+<p>Worked with the updated files. Just had to change the include statement and the Projects Configuration type from application to static library. </p>
+<p>Thanks for the fast update.</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-24213">
+    		                    <div id="comment-24213" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/cd374150473331495aeaa2cd44504581b31acd9262881b249d77dff72f8a926f?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/cd374150473331495aeaa2cd44504581b31acd9262881b249d77dff72f8a926f?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Merlin Cooper</span></span>                                                            <span class="ago">22 March 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Another question. Seems that the most recent version just provides one method?</p>
+<p>Could you please explain a little more how to use AutoMove?</p>
+<p>void AutoMove(int iID, double dXMovePct, double dYMovePct, double dXSizePct, double dYSizePct);</p>
+<p>When using the AutoMove method a Tab-Control seems to become a simple listbox and I was not able to simply move the the OK and CANCEL button.</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-24263">
+    		                    <div id="comment-24263" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">23 March 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Merlin<br>
+I literally opened the VS2003 project in VS2010 and just let it do the conversion.<br>
+I had similar experiences to yours when trying to incorporate a button.<br>
+In addition to the first parameter defining the control ID, the other arguments passed to AutoMove enable you to define </p>
+<p>i. how much the child control is repositioned.<br>
+ii. how much the child control is resized.</p>
+<p>Another thing I noticed is that as soon as you add another control like a button, the WS_THICKFRAME mask that you need to insert disappears!  You need to go and re-instate this value otherwise the ability to resize and reposition the controls is lost.</p>
+<p>Anyways, I have created yet another download, to incorporate a button control which does not get resized, but is re-positioned only.  It’s available at the same Download location, renamed to DialogResizeVS2010_2.zip</p>
+<p>Let me know what you think.<br>
+Regards<br>
+Andy</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-24345">
+    		                    <div id="comment-24345" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/52832bcb88a4d14f1c4486fc10f578e9c377bab7a21cc14474bca5abe2ad7e46?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/52832bcb88a4d14f1c4486fc10f578e9c377bab7a21cc14474bca5abe2ad7e46?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">John</span></span>                                                            <span class="ago">25 March 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Very thanks for sharing that code. Currently, I am delevoping a window form that has text, two buttons and two picture controls. I want to apply your code for my problem. However, it does not work for two picture controls. Let see my edit code and please give me some comment.<br>
+I set<br>
+	AutoMove( IDC_STATIC, 50, 50, 50, 50 );<br>
+	AutoMove( IDC_STATIC2, 0, 0, 100, 100 );<br>
+	AutoMove( IDC_BUTTON1, 100, 100, 0, 0 );<br>
+	AutoMove( IDC_BUTTON2, 100, 100, 0, 0 );<br>
+	AutoMove( IDC_TEXT, 0, 0, 100, 100 );<br>
+This is before resizing<br>
+<a href="https://www.dropbox.com/s/g20sq2hdwnqpxlg/Capture2.PNG?dl=0" rel="nofollow ugc">https://www.dropbox.com/s/g20sq2hdwnqpxlg/Capture2.PNG?dl=0</a><br>
+After resizing<br>
+<a href="https://www.dropbox.com/s/lhjbv1ecry52pt6/Capture1.PNG?dl=0" rel="nofollow ugc">https://www.dropbox.com/s/lhjbv1ecry52pt6/Capture1.PNG?dl=0</a><br>
+This is my edit source code<br>
+<a href="https://www.dropbox.com/s/s5cz7j91reag4n7/DialogResizeVS2010.rar?dl=0" rel="nofollow ugc">https://www.dropbox.com/s/s5cz7j91reag4n7/DialogResizeVS2010.rar?dl=0</a></p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-24376">
+    		                    <div id="comment-24376" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/52832bcb88a4d14f1c4486fc10f578e9c377bab7a21cc14474bca5abe2ad7e46?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/52832bcb88a4d14f1c4486fc10f578e9c377bab7a21cc14474bca5abe2ad7e46?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">John</span></span>                                                            <span class="ago">26 March 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I fixed it. Thanks</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-3" id="li-comment-24378">
+    		                    <div id="comment-24378" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">26 March 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks John.  I didn’t get the chance to look at this.  Any comments on how you did it?<br>
+Andy</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-4" id="li-comment-24409">
+    		                    <div id="comment-24409" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/52832bcb88a4d14f1c4486fc10f578e9c377bab7a21cc14474bca5abe2ad7e46?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/52832bcb88a4d14f1c4486fc10f578e9c377bab7a21cc14474bca5abe2ad7e46?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">John</span></span>                                                            <span class="ago">27 March 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Yes. I would like to share the source code<br>
+	AutoMove( IDC_IMG, 20, 0, 80, 100 );<br>
+	AutoMove( IDC_VIDEO, 0, 0, 20, 20 );<br>
+	AutoMove( IDC_BUTTON1, 100, 100, 0, 0 );<br>
+	AutoMove( IDC_BUTTON2, 100, 100, 0, 0 );</p>
+<p>That means the IDC_VIDEO will not move in left side. It only zoom in with limited value.<br>
+However, I meet new problem. That is show image in picture control IDC_IMG. I cannot show image in picture control because we use<br>
+  CStatic pic1;<br>
+ CResizableDialog::DoDataExchange(pDX);<br>
+ DDX_Control(pDX, IDC_IMG, pic1);</p>
+<p>Do you tried to show the image in picture control with above code? Thank in advance</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-5" id="li-comment-24453">
+    		                    <div id="comment-24453" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">28 March 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Lovely stuff, thank you.  I will have a look at the picture image control…</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-24530">
+    		                    <div id="comment-24530" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/52832bcb88a4d14f1c4486fc10f578e9c377bab7a21cc14474bca5abe2ad7e46?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/52832bcb88a4d14f1c4486fc10f578e9c377bab7a21cc14474bca5abe2ad7e46?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">John</span></span>                                                            <span class="ago">30 March 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Yes. Picture control can be used for show image or video. Currently, I am using it to display image and detect face using opencv 2.4.10. However, I found some bugs when I used within 1 minute and closing app:<br>
+” Unhandled exception at at 0x760C4598 in DialogResize.exe: Microsoft C++ exception: cv::Exception at memory location 0x01A5EFB8.”<br>
+ I think the problem is free memory problem or detect face try to detect a empty image. I am not sure. Could you find my problem in above code. For full code, you can download at <a href="https://www.dropbox.com/s/s5cz7j91reag4n7/DialogResizeVS2010.rar?dl=0" rel="nofollow ugc">https://www.dropbox.com/s/s5cz7j91reag4n7/DialogResizeVS2010.rar?dl=0</a><br>
+If you are interesting in that control. Let see and find the solution. Thanks</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-24548">
+    		                    <div id="comment-24548" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">30 March 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Give a a day or two, probably on the weekend I will take a look…</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-29152">
+    		                    <div id="comment-29152" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/fcb7d41af57c6126a8482ca78a529915d16a29860f4eb59c238747bacfe40fd1?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/fcb7d41af57c6126a8482ca78a529915d16a29860f4eb59c238747bacfe40fd1?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andre</span></span>                                                            <span class="ago">26 August 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Very useful and simple class. Big Thank you!!</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			
+		</div>
+
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-cpp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

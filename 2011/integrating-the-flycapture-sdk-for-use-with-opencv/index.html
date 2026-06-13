@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>Integrating the FlyCapture SDK for use with OpenCV – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Integrating the FlyCapture SDK for use with OpenCV Comments Feed" href="/2011/integrating-the-flycapture-sdk-for-use-with-opencv/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2011%2Fintegrating-the-flycapture-sdk-for-use-with-opencv%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2011%2Fintegrating-the-flycapture-sdk-for-use-with-opencv%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/361"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2011/integrating-the-flycapture-sdk-for-use-with-opencv/">
+<link rel="shortlink" href="/?p=361">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-361 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-361" class="g post post-361 type-post status-publish format-standard hentry category-opencv category-opencv-2 tag-flycapture tag-opencv tag-iplimage tag-set-dimensions">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/opencv/" itemprop="item"><span itemprop="name">Image Detection</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Integrating the FlyCapture SDK for use with OpenCV</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">Integrating the FlyCapture SDK for use with OpenCV</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>25 August 2011</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/opencv/" title="View all posts in Image Detection">Image Detection</a>, <a href="/category/opencv-2/" title="View all posts in OpenCV">OpenCV</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2011/integrating-the-flycapture-sdk-for-use-with-opencv/#comments" itemprop="interactionCount">25 Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p><strong>Introduction</strong></p><p>A recent stab at grabbing images from the Flea2 camera using APIs from the FlyCapture2 SDK by <a href="http://www.ptgrey.com/">Point Gray Research</a> (PGR).  Additionally, the camera was to be used in  “Format 7 mode”, so that we may grab partial regions of the complete image.<span id="more-361"></span></p><p>This application builds on the AsynchTriggerEx C++ example provided by PGR, so that the user can grab images from the camera either by way of software triggers, or from an external hardware triggers.</p><p><strong>Using Format7 mode to grab partial images</strong></p><p>The <em>Format7ImageSettings</em> data structure is modified in order to set the desired output image size, pixel formats etc.  Standard FlyCapture API calls are used to perform all necessary camera actions: connect to camera, disconnect from camera, start image capturing, retrieve image buffers etc. When the using the default equipment setup, the input images obtained are grayscales of 24 x 480 pixels consisting of an array of dark gray spots against a lighter shade of gray background.</p><p><strong>Converting FlyCapture images into OpenCV images</strong></p><p>In the image grabbing loop, FlyCapture2-obtained images are converted into OpenCV-compatible images by copying the pixel data from one to the other:</p><pre class="brush: cpp; title: ; notranslate" title="">
+memcpy( img-&gt;imageData,
+        image.GetData(),
+        data_size );
+</pre><p><strong>Thresholding the grayscale image into binary (black &amp; white)</strong></p><p>The OpenCV grayscale image is then thresholded to produce a black and white (binary) image, from which we can use for things like detecting the number and location of the spots.  Depending on the equipment used and lighting arrangement, some experimentation is probably needed to come up with an optimal threshold value.</p><pre class="brush: cpp; title: ; notranslate" title="">
+cvThreshold( img,         // source_img,
+             img_bw,      // destination image
+             140,         // threhold val.
+             255,         // max. val
+             CV_THRESH_BINARY );   // binary type );
+</pre><p>Original FlyCapture grayscale image, set to a Format 7 partial image (24 x 480 pixels) and converted to OpenCV format:</p><p><a href="http://technical-recipes.com/wp-content/uploads/2011/08/orig.bmp"><img decoding="async" title="orig" src="" alt="" data-layzr="http://technical-recipes.com/wp-content/uploads/2011/08/orig.bmp"><br>
+</a></p><p>Thresholded to a black and white (binary) image:</p><p><a href="http://technical-recipes.com/wp-content/uploads/2011/08/B_W.bmp_24.bmp"><img decoding="async" title="B_W.bmp_24" src="" alt="" data-layzr="http://technical-recipes.com/wp-content/uploads/2011/08/B_W.bmp_24.bmp"><br>
+</a></p><p>Full code listing:</p><pre class="brush: cpp; title: ; notranslate" title="">
+// CameraTest.cpp : Defines entry point for console application.
+
+#include "stdafx.h"
+#include "FlyCapture2.h"
+#include &lt;cv.h&gt;
+#include &lt;highgui.h&gt;  
+
+// Disable  C4996 warnings
+#pragma warning(disable: 4996)
+#define SOFTWARE_TRIGGER_CAMERA
+
+using namespace FlyCapture2;
+
+const int col_size   = 24;
+const int row_size   = 480;
+const int data_size  = row_size * col_size;
+
+// Forward declarations
+bool CheckSoftwareTriggerPresence( Camera* pCam );
+bool PollForTriggerReady( Camera* pCam );
+bool FireSoftwareTrigger( Camera* pCam );
+void PrintError( Error error );
+void ReleaseImage( IplImage* pimg,
+	           IplImage* pimg_bw,
+	           CvMemStorage* pstorage );
+
+void GrabImages( Camera* pcam,
+                 IplImage* pimg,
+                 IplImage* pimg_bw,
+                 CvMemStorage* pstorage,
+                 int cnt );
+
+// Main Control Loop
+int _tmain(int argc, _TCHAR* argv[])
+{
+    Camera cam;
+    CameraInfo camInfo;
+    Error error;
+    BusManager busMgr;
+    PGRGuid guid;
+    Format7PacketInfo fmt7PacketInfo;
+    Format7ImageSettings fmt7ImageSettings;
+    CvMemStorage* storage = NULL;
+    IplImage* img    = NULL;
+    IplImage* img_bw = NULL;
+    TriggerMode triggerMode;
+
+    // Create OpenCV structs for grayscale image
+    img = cvCreateImage( cvSize( col_size, row_size ),
+			 IPL_DEPTH_8U,
+			 1 );
+    img_bw = cvCloneImage( img );	
+
+    storage = cvCreateMemStorage( 0 );
+
+    // Get Flea2 camera
+    error = busMgr.GetCameraFromIndex( 0, &amp;guid );	
+
+    if ( error != PGRERROR_OK )
+    {
+	PrintError( error );
+        return -1;
+    }	
+
+    // Connect to the camera
+    error = cam.Connect( &amp;guid );
+    if ( error != PGRERROR_OK )
+    {
+        PrintError( error );
+        return -1;
+    }	
+
+    // Get camera information
+    error = cam.GetCameraInfo(&amp;camInfo);
+    if ( error != PGRERROR_OK )
+    {
+        PrintError( error );
+        return -1;
+    }
+
+#ifndef SOFTWARE_TRIGGER_CAMERA
+    // Check for external trigger support
+    TriggerModeInfo triggerModeInfo;
+    error = cam.GetTriggerModeInfo( &amp;triggerModeInfo ;
+
+    if ( error != PGRERROR_OK )
+    {
+        PrintError( error );
+	return -1;
+    }
+
+    if ( triggerModeInfo.present != true )
+    {
+        printf( "Camera doesn't support external trigger!\n" );
+	return -1;
+    }
+
+#endif
+    // Get current trigger settings
+    error = cam.GetTriggerMode( &amp;triggerMode );
+    if ( error != PGRERROR_OK )
+    {
+        PrintError( error );
+        return -1;
+    }
+
+    // Set camera to trigger mode 0
+    triggerMode.onOff = true;
+    triggerMode.mode = 0;
+    triggerMode.parameter = 0;
+#ifdef SOFTWARE_TRIGGER_CAMERA
+
+    // A source of 7 means software trigger
+    triggerMode.source = 7;
+#else
+
+    // Triggering the camera externally using source 0.
+    triggerMode.source = 0;
+#endif
+
+    // Set camera triggering mode
+    error = cam.SetTriggerMode( &amp;triggerMode );
+    if ( error != PGRERROR_OK )
+    {
+        PrintError( error );
+        return -1;
+    }
+
+    // Power on the camera
+    const unsigned int k_cameraPower = 0x610;
+    const unsigned int k_powerVal = 0x80000000;
+    error  = cam.WriteRegister( k_cameraPower, k_powerVal );
+
+    if ( error != PGRERROR_OK )
+    {
+        PrintError( error );
+        return -1;
+    }
+
+    // Poll to ensure camera is ready
+    bool retVal = PollForTriggerReady( &amp;cam );
+    if( !retVal )
+    {
+        PrintError( error );
+        return -1;
+    }   
+
+    // Set camera configuration: region of 24 x 480 pixels
+    // greyscale image mode
+    fmt7ImageSettings.width   = col_size;
+    fmt7ImageSettings.height  = row_size;
+    fmt7ImageSettings.mode    = MODE_0;
+    fmt7ImageSettings.offsetX = 312;
+    fmt7ImageSettings.offsetY = 0;
+    fmt7ImageSettings.pixelFormat = PIXEL_FORMAT_MONO8;
+
+    // Validate Format 7 settings
+    bool valid;
+    error = cam.ValidateFormat7Settings( &amp;fmt7ImageSettings,
+		                         &amp;valid,
+					 &amp;fmt7PacketInfo );
+    unsigned int num_bytes =
+        fmt7PacketInfo.recommendedBytesPerPacket;	
+
+    // Set Format 7 (partial image mode) settings
+    error = cam.SetFormat7Configuration( &amp;fmt7ImageSettings,
+                                         num_bytes );
+    if ( error != PGRERROR_OK)
+    {
+        PrintError( error );
+        return -1;
+    }
+
+    // Start capturing images
+    error = cam.StartCapture();
+    if ( error != PGRERROR_OK )
+    {
+        PrintError( error );
+        return -1;
+    }
+
+    #ifdef SOFTWARE_TRIGGER_CAMERA
+
+    if ( !CheckSoftwareTriggerPresence( &amp;cam ) )
+    {
+        printf( "SOFT_ASYNC_TRIGGER not implemented on "
+                "this camera! Stopping application\n" );
+        return -1;
+    }
+
+    #else
+    printf( "Trigger the camera by sending a trigger pulse"
+            " to GPIO%d.\n",
+            triggerMode.source );
+    #endif
+
+    error = cam.StartCapture();
+
+    // Warm up - necessary to get decent images.
+    // See Flea2 Technical Ref.: camera will typically not
+    // send first 2 images acquired after power-up
+    // It may therefore take several (n) images to get
+    // satisfactory image, where n is undefined
+    for ( int i = 0; i &lt; 30; i++ )
+    {
+        // Check that the trigger is ready
+        PollForTriggerReady( &amp;cam );
+
+        // Fire software trigger
+        FireSoftwareTrigger( &amp;cam );
+
+        Image im;
+
+        // Retrieve image before starting main loop
+        Error error = cam.RetrieveBuffer( &amp;im );
+        if ( error != PGRERROR_OK )
+        {
+            PrintError( error );
+            return -1;
+        }
+    }
+
+    #ifdef SOFTWARE_TRIGGER_CAMERA
+
+    if ( !CheckSoftwareTriggerPresence( &amp;cam ) )
+    {
+        printf( "SOFT_ASYNC_TRIGGER not implemented on this"
+                " camera! Stopping application\n");
+        return -1;
+    }
+    #else
+
+    printf( "Trigger camera by sending trigger pulse to"
+            " GPIO%d.\n",
+            triggerMode.source );
+    #endif
+
+    // Grab images acc. to number of hw/sw trigger events
+    for ( int i = 0; i &lt; 25; i++ )
+    {
+        GrabImages( &amp;cam, img, img_bw, storage, i );
+    } 
+
+    // Turn trigger mode off.
+    triggerMode.onOff = false;
+    error = cam.SetTriggerMode( &amp;triggerMode );
+    if ( error != PGRERROR_OK )
+    {
+        PrintError( error );
+        return -1;
+    } 
+
+    printf( "\nFinished grabbing images\n" ); 
+
+    // Stop capturing images error = cam.StopCapture();
+    if ( error != PGRERROR_OK )
+    {
+        PrintError( error );
+        return -1;
+    } 
+
+    // Disconnect the camera
+    error = cam.Disconnect();
+    if ( error != PGRERROR_OK )
+    {
+        PrintError( error );
+        return -1;
+    } 
+
+    ReleaseImage( img, img_bw, storage);
+    return 0;
+} 
+
+// Print error trace
+void PrintError( Error error )
+{
+    error.PrintErrorTrace();
+} 
+
+// Check for the presence of software trigger
+bool CheckSoftwareTriggerPresence( Camera* pCam )
+{
+    const unsigned int k_triggerInq = 0x530;
+    Error error;
+    unsigned int regVal = 0;
+    error = pCam-&gt;ReadRegister( k_triggerInq, &amp;regVal );
+    if ( error != PGRERROR_OK )
+    {
+        // TODO
+    }
+
+    if( ( regVal &amp; 0x10000 ) != 0x10000 )
+    {
+        return false;
+    }
+
+    return true;
+}
+
+// Start polling for trigger ready
+bool PollForTriggerReady( Camera* pCam )
+{
+    const unsigned int k_softwareTrigger = 0x62C;
+    Error error;
+    unsigned int regVal = 0;
+
+    do
+    {
+        error = pCam-&gt;ReadRegister( k_softwareTrigger,
+                                       regVal );
+
+        if ( error != PGRERROR_OK )
+        {
+            // TODO
+        }
+    } while ( (regVal &gt;&gt; 31) != 0 );
+
+    return true;
+}
+
+// Launch the software trigger event
+bool FireSoftwareTrigger( Camera* pCam )
+{
+    const unsigned int k_softwareTrigger = 0x62C;
+    const unsigned int k_fireVal = 0x80000000;
+    Error error;
+
+    error = pCam-&gt;WriteRegister( k_softwareTrigger,
+                                    k_fireVal );
+
+    if ( error != PGRERROR_OK )
+    {
+        // TODO
+    }
+
+    return true;
+}
+
+// Tidy up memory allocated for images etc
+void ReleaseImage( IplImage* pimg,
+                   IplImage* pimg_bw,
+                   CvMemStorage* pstorage )
+{
+    cvReleaseImage( &amp;pimg );
+    cvReleaseImage( &amp;pimg_bw );
+    cvClearMemStorage( pstorage );
+}
+
+// Grab camera grayscale image and convert into
+// an OpenCV image
+void GrabImages( Camera* pcam,
+                 IplImage* pimg,
+                 IplImage* pimg_bw,
+                 CvMemStorage* pstorage,
+                 int cnt )
+{
+    Image image;
+
+    #ifdef SOFTWARE_TRIGGER_CAMERA
+
+    // Check that the trigger is ready
+    PollForTriggerReady( pcam );
+
+    printf( "Press Enter to initiate software trigger.\n" );
+
+    getchar();
+
+    // Fire software trigger
+    bool retVal = FireSoftwareTrigger( pcam );
+
+    if ( !retVal )
+    {
+        // TODO.
+    }
+
+    #endif
+
+    // Retrieve image before starting main loop
+    Error error = pcam-&gt;RetrieveBuffer( &amp;image );
+
+    if ( error != PGRERROR_OK )
+    {
+        // TODO.
+    }
+
+    // Copy FlyCapture2 image into OpenCV struct
+    memcpy( pimg-&gt;imageData,
+    image.GetData(),
+    data_size );
+
+    // Save the bitmap to file
+    cvSaveImage( "orig.bmp", pimg );
+
+    // Threshold to convert image into binary (B&amp;W)
+    cvThreshold( pimg,    // source image
+                 pimg_bw, // destination image
+                 145,     // threhold val.
+                 255,     // max. val
+                 CV_THRESH_BINARY ); // binary type );
+
+    // Save the bitmap to file
+    char buffer[ 20 ];
+    sprintf( buffer, "%d", cnt );
+    std::string mess = "B_W.bmp_";
+    mess.append( buffer );
+    mess.append( ".bmp" );
+    cvSaveImage( mess.c_str(), pimg_bw );
+
+    // Find connected components using OpenCV
+    // for black spots against a white background
+    CvSeq* seq;
+    int num_blobs = cvFindContours( pimg_bw,
+                                    pstorage,
+                                    &amp;seq,
+                                    sizeof( CvContour ),
+                                    CV_RETR_LIST,
+                                    CV_CHAIN_APPROX_NONE,
+                                    cvPoint( 0, 0 ) ) - 1;
+}
+</pre><p><strong><br>
+Other posts related to image detection</strong></p><p><a href="/2011/tracking-coloured-objects-in-video-using-opencv/">Tracking Coloured Objects in Video using OpenCV</a><br>
+<a href="/2011/displaying-avi-video-using-opencv/">Displaying AVI Video using OpenCV</a><br>
+<a href="/2011/analyzing-flycapture2-images-obtained-from-flea2-cameras/">Analyzing FlyCapture2 Images obtained from Flea2 Cameras</a><br>
+<a href="/2011/309/">OpenCV Detection of Dark Objects Against Light Backgrounds</a><br>
+<a href="/2011/setting-up-opencv-in-visual-studio/">Getting Started with OpenCV in Visual Studio</a><br>
+<a href="/2011/object-detection-using-the-opencv-cvblobslib-libraries/">Object Detection Using the OpenCV / cvBlobsLib Libraries</a></p>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '361'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2011/integrating-the-flycapture-sdk-for-use-with-opencv/&amp;media=&amp;description=Integrating%20the%20FlyCapture%20SDK%20for%20use%20with%20OpenCV" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2021/getting-started-with-tesseract-optical-character-recognition-ocr-library-in-visual-studio/" title="Getting started with Tesseract optical character recognition (OCR) library in Visual Studio" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Getting started with Tesseract optical character recognition (OCR) library in Visual Studio"></div>
+                                                                        <h4 class="title front-view-title">Getting started with Tesseract optical character recognition (OCR) library in Visual Studio</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2011/displaying-avi-video-using-opencv/" title="Displaying AVI Video using OpenCV" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Displaying AVI Video using OpenCV"></div>
+                                                                        <h4 class="title front-view-title">Displaying AVI Video using OpenCV</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2011/analyzing-flycapture-images-obtained-from-flea-cameras/" title="Analyzing FlyCapture Images obtained from Flea Digital Cameras" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Analyzing FlyCapture Images obtained from Flea Digital Cameras"></div>
+                                                                        <h4 class="title front-view-title">Analyzing FlyCapture Images obtained from Flea Digital Cameras</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-933">
+    		                    <div id="comment-933" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/d8ef4eb253580532c5ebf3167cd8a26df624b07d949fecb77966812a3b79a317?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/d8ef4eb253580532c5ebf3167cd8a26df624b07d949fecb77966812a3b79a317?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Pkout</span></span>                                                            <span class="ago">23 February 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Does this work for you when you try more complicated opencv functions such as camshift() or getting image first moment? I am successfully getting the frames and converting them to opencv format. I can even use cvShowImage() to show what the camera sees, but as soon as I try more advanced functions like the ones mentioned above, the program crashes without any valuable error message. I am developing in c++.</p>
+<p>Thank you!</p>
+<p>Pkout</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    </ol><ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-935">
+    		                    <div id="comment-935" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">23 February 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Pkout, I have never tried the more advanced stuff like camshift, so I’m not sure what the cause of your crash is.  Would it help if you would try a bare minimum prototype that uses this camshift function and see if it still crashes then?  It might be a more fundamental issue. I remember having to overcome all kinds of gotchas when trying out this opencv stuff for the first time.  If you could point people towards some code that might help.</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-3" id="li-comment-936">
+    		                    <div id="comment-936" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/d8ef4eb253580532c5ebf3167cd8a26df624b07d949fecb77966812a3b79a317?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/d8ef4eb253580532c5ebf3167cd8a26df624b07d949fecb77966812a3b79a317?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Pkout</span></span>                                                            <span class="ago">23 February 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks for the response! I know the problem isn’t in my implementation of OpenCV because the same code works fine when I either load the video from a file (even if the file is an uncompressed RAW8 format video from FlyCapture) or when I connect a webcam and, therefore, avoid using the flycapture-to-opencv memcpy() conversion. It starts crashing only when I implement the memcpy() on the flycapture image object. Weird. I suspect its something silly, like incorrect matrix data alignment or something of that sort. But I have no idea how to fix it :(. Thanks!</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt depth-2" id="li-comment-27274">
+    		                    <div id="comment-27274" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/9c520caf74cff9b9a891be3694b20b3586ceb17f2891ceb1d098709c1e0969a3?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/9c520caf74cff9b9a891be3694b20b3586ceb17f2891ceb1d098709c1e0969a3?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">OFER</span></span>                                                            <span class="ago">5 July 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>opencv imaages often crash if width and height of the image is not in 4 bytes multiplies exactly<br>
+try to change the image size</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-1139">
+    		                    <div id="comment-1139" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/8c7a97063a1515f5b54c71839e352cb14655d10695319f7bbe8be9da51d59035?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/8c7a97063a1515f5b54c71839e352cb14655d10695319f7bbe8be9da51d59035?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">nguyen</span></span>                                                            <span class="ago">5 June 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hello,<br>
+I download your code and tried to build this code. Unfortunately, I got an error ” fatal error C1083: Cannot open include file: ‘stdafx.h’: No such file or directory”.</p>
+<p>Please tell me how to fix this problem, thanks.</p>
+<p>PS: I use VS 2008 and OpenCV 2.1;</p>
+<p>Thank you for your help.</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-1140">
+    		                    <div id="comment-1140" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">5 June 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi – I think I could have done with mentioning this in the post.</p>
+<p>If in Microsoft Visual Studio, you start by creating an empty<br>
+project and paste in the code I have given then yes, the compiler in all probability will complain along the lines of ‘fatal error C1083: Cannot open include file: ‘stdafx.h’: No such file or directory’.  This is because it being an empty project with nothing in or no settings will need to know where ‘stdafx.h’ lives.  Sorry about that.</p>
+<p>In your Project properties, go to C/C++ -&gt; General -&gt; Additional Include Directories, and tell it where this file lives.  In my VS 2010, this was located in:</p>
+<p>C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\src\mfc</p>
+<p>It is probably different for yours.  Once this is set and you re-compile, you might then get the following error message :</p>
+<p>fatal error C1189: #error :  Building MFC application with /MD[d] (CRT dll version) requires MFC shared dll version. Please #define _AFXDLL or do not use /MD[d]</p>
+<p>Go into Project Properties -&gt; C/C++ -&gt; Code generation -&gt; Runtime Library<br>
+and set this to Multi-threaded Debug (/MTd) instead of Multi-threaded Debug DLL (/MDd)</p>
+<p>Alternatively:</p>
+<p>Instead of using an empty project, in your Visual Studio create a new console project, while making sure to leave the ‘Precompiled Header’ checkbox in the<br>
+checked (with tick) state, and you should not get any of these set up / compilation problems.  </p>
+<p>To do this In Visual Studio, create a new project, choosing ‘Win32 Console Applicatio’n among the list of available options.  Once this problem is out of the way, it is then a matter of setting up your FlyCapture / OpenCV settings.  This I originally found to be a little trickier!  Let me know how you get on.</p>
+<p>Andy</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-3" id="li-comment-1141">
+    		                    <div id="comment-1141" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/8c7a97063a1515f5b54c71839e352cb14655d10695319f7bbe8be9da51d59035?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/8c7a97063a1515f5b54c71839e352cb14655d10695319f7bbe8be9da51d59035?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">nguyen</span></span>                                                            <span class="ago">6 June 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Dear Mr. Andy,</p>
+<p>Thanks you for your instruction.</p>
+<p>Now, I am trying to setting up Flycapture/OpenCV. I have already added “C:\Program Files\Point Grey Research\PGR FlyCapture\include”; “…\lib”; “…\src” and “…\bin” into VS2008 project.</p>
+<p>When I built this code, I got some error:<br>
+error C2871: ‘PGRFlyCapture’ : a namespace with this name does not exist<br>
+error C2065: ‘Camera’ : undeclared identifier<br>
+error C2065: ‘pCam’ : undeclared identifier<br>
+fatal error C1903: unable to recover from previous error(s); stopping compilation<br>
+Beside that, I changed  “#include “PGRFlyCapture.h” ” into the code instead  #include “FlyCapture2.h”. Am I correct this step?<br>
+Please help me correct these error.</p>
+<p>Thank you so much.</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment odd alt depth-4" id="li-comment-1142">
+    		                    <div id="comment-1142" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">6 June 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>nguyen</p>
+<p>Your next step would be to make sure the FlyCapture software has been correctly installed and set up in Visual Studio.  More detailed information on this can be found on this post:</p>
+<p><a href="/2011/getting-started-with-the-flycapture-sdk/" rel="ugc">/2011/getting-started-with-the-flycapture-sdk/</a></p>
+<p>It basically involves these steps:</p>
+<p>1. Install the full FlyCapture software package.<br>
+2. Setting project dependencies<br>
+3. Importing the FlyCapture property sheet(s).</p>
+<p>Andy</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-5" id="li-comment-1143">
+    		                    <div id="comment-1143" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/8c7a97063a1515f5b54c71839e352cb14655d10695319f7bbe8be9da51d59035?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/8c7a97063a1515f5b54c71839e352cb14655d10695319f7bbe8be9da51d59035?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Nguyen</span></span>                                                            <span class="ago">6 June 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Dear Mr.Andy,</p>
+<p>I still got the same error even though I have already set up FlyCapture with Visual Studio as following your instruction on pages that you suggested.</p>
+<p>What do I need to do for next step? </p>
+<p>Thank you.</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt depth-4" id="li-comment-1145">
+    		                    <div id="comment-1145" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">9 June 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I think I know what your problem is.  The FlyCapture set-up example I gave is appropriate for a more recent version of the FlyCapture SDK.  </p>
+<p>“PGRFlyCapture” you are using pertains to an older version (1.8 or older perhaps?) whereas the one I was using (“FlyCapture2”) is for the FlyCapture v2.2 Release 14 – Windows.  </p>
+<p>Check out their software downloads page for their SDKs to see what I mean.  I have updated the other blog posting in order to clarify this.</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-1144">
+    		                    <div id="comment-1144" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">6 June 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi are you definitely using</p>
+<p>#include “FlyCapture2.h”  </p>
+<p>and</p>
+<p>using namespace FlyCapture2;  </p>
+<p>in your code?  It might be a good idea to strip out all the other code, and start with an empty main and any #includes / namespaces you need.  I haven’t visited this area for a while, but I will re-examine it when I get the chance.  If I see any new problems or get any more insights I will update this post accordingly.</p>
+<p>In general, a ‘Compiler Error C2871’ will occur when you pass an identifier that is not a namespace to a using directive:</p>
+<p><a href="http://msdn.microsoft.com/en-us/library/1s0wz6d0%28v=vs.80%29.aspx" rel="nofollow ugc">http://msdn.microsoft.com/en-us/library/1s0wz6d0%28v=vs.80%29.aspx</a></p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1149">
+    		                    <div id="comment-1149" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/bc417846e160c1b45aa3c86640c13f82f4cde72ca46391ef09a2c1aed4aaf864?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/bc417846e160c1b45aa3c86640c13f82f4cde72ca46391ef09a2c1aed4aaf864?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">James</span></span>                                                            <span class="ago">11 June 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I got some error as follows: </p>
+<p>Error Trace:<br>
+Source: .\IidcCameraInternal.cpp(584) Built: Feb  4 2011 16:54:35 – Error settin<br>
+g Format 7 information.<br>
++-&gt; From: .\Format7.cpp(432) Built: Feb  4 2011 16:54:47 – Error setting Format<br>
+7 information.<br>
++-&gt; From: .\Format7.cpp(954) Built: Feb  4 2011 16:54:47 – Invalid Format7 image<br>
+ size (L:312 T:0 W:24 H:480 M:0 PF:2147483648)<br>
++-&gt; From: .\Format7.cpp(1246) Built: Feb  4 2011 16:54:47 – Invalid image size s<br>
+etting.</p>
+<p>The code stops at: </p>
+<p>    error = cam.ValidateFormat7Settings( &amp;fmt7ImageSettings,<br>
+                           &amp;valid,<br>
+         &amp;fmt7PacketInfo );  </p>
+<p>I do have pt grey chameleon camera connected. Please help. </p>
+<p>Thanks,</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-1150">
+    		                    <div id="comment-1150" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">11 June 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi James<br>
+I have experienced problems with validating Format 7 settings before, which I have described in another posting:</p>
+<p><a href="/2011/when-the-flycapture2-validateformat7settings-function-returns-pgrerror_iidc_failed-type-error-message/" rel="ugc">/2011/when-the-flycapture2-validateformat7settings-function-returns-pgrerror_iidc_failed-type-error-message/</a></p>
+<p>The problem I had was in choosing infeasible height/width settings.  I found that it worked for (say) 24 x 480 or 56 x 482 pixels but not 52 x 484 or 24 x 483 – because the height had to be a multiple of 8.</p>
+<p>It took me ages to realize that this was the problem.  I guess Point Grey have documented this somewhere, but I had overlooked it.  I’m not sure if there are any other considerations for when using the chameleon range.  It may also be worth Googling ‘Format 7 error FlyCapture’ or similar.</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-1320">
+    		                    <div id="comment-1320" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/5de31a73c1eab55371597c9599080057ad8582106670bd80905b3a11217cab7f?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/5de31a73c1eab55371597c9599080057ad8582106670bd80905b3a11217cab7f?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">James</span></span>                                                            <span class="ago">23 June 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Very helpful, thank you for sharing.</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-3760">
+    		                    <div id="comment-3760" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/8c9bb64f99c8654e5bd2e14e945a17b5b51a71dbc17a53054d5e7f1ec51e4633?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/8c9bb64f99c8654e5bd2e14e945a17b5b51a71dbc17a53054d5e7f1ec51e4633?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Marcus Rene</span></span>                                                            <span class="ago">22 February 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I download your code and tried to build this code. Unfortunately, I got an error. </p>
+<p>void ReleaseImage( IplImage* pimg, IplImage* pimg_bw, CvMemStorage* pstorage );<br>
+voidReleaseImage<br>
+Error: incomplete type in not allowed </p>
+<p>void GrabImages( Camera* pcam, IplImage* pimg, IplImage* pimg_bw, CvMemStorage* pstorage, int cnt );<br>
+Error: “IplIMage” is undefined</p>
+<p>Marcus</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-3762">
+    		                    <div id="comment-3762" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/8c9bb64f99c8654e5bd2e14e945a17b5b51a71dbc17a53054d5e7f1ec51e4633?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/8c9bb64f99c8654e5bd2e14e945a17b5b51a71dbc17a53054d5e7f1ec51e4633?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Marcus Rene</span></span>                                                            <span class="ago">23 February 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>The last error was solved add a line:<br>
+#include “C:\Program Files\OpenCV2.3\build\include\opencv2\core\core_c.h”</p>
+<p>But now I have more error.</p>
+<p>1&gt;—— Build started: Project: Iniciando Firewire, Configuration: Debug x64 ——<br>
+1&gt;Build started 23/02/2013 09:56:33.<br>
+1&gt;InitializeBuildStatus:<br>
+1&gt;  Touching “x64\Debug\Iniciando Firewire.unsuccessfulbuild”.<br>
+1&gt;ClCompile:<br>
+1&gt;  All outputs are up-to-date.<br>
+1&gt;  Main.cpp<br>
+1&gt;C:\Program Files\OpenCV2.3\build\include\opencv2/flann/logger.h(70): warning C4996: ‘fopen’: This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.<br>
+1&gt;          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of ‘fopen’<br>
+1&gt;Main.cpp(288): error C2664: ‘FlyCapture2::Camera::ReadRegister’ : cannot convert parameter 2 from ‘unsigned int’ to ‘unsigned int *’<br>
+1&gt;          Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or function-style cast<br>
+1&gt;Main.cpp(313): error C2664: ‘FlyCapture2::Camera::ReadRegister’ : cannot convert parameter 2 from ‘unsigned int’ to ‘unsigned int *’<br>
+1&gt;          Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or function-style cast<br>
+1&gt;<br>
+1&gt;Build FAILED.</p>
+<p>Do you have any solution?</p>
+<p>Best regards.</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-3763">
+    		                    <div id="comment-3763" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/8c9bb64f99c8654e5bd2e14e945a17b5b51a71dbc17a53054d5e7f1ec51e4633?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/8c9bb64f99c8654e5bd2e14e945a17b5b51a71dbc17a53054d5e7f1ec51e4633?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Marcus Rene</span></span>                                                            <span class="ago">23 February 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>About last post the error happens here.<br>
+bool PollForTriggerReady( Camera* pCam )<br>
+{<br>
+    const unsigned int k_softwareTrigger = 0x62C;<br>
+    Error error;<br>
+    unsigned int regVal = 0;  </p>
+<p>    do<br>
+    {<br>
+        error = pCam-&gt;ReadRegister( k_softwareTrigger,<br>
+                                       regVal );  </p>
+<p>        if ( error != PGRERROR_OK )<br>
+        {<br>
+            // TODO<br>
+        }<br>
+    } while ( (regVal &gt;&gt; 31) != 0 );  </p>
+<p>    return true;<br>
+}  </p>
+<p>For this variable regVal has a message:<br>
+Error argument of type “unsigned int” is incompatibile with parameter of type “unsigned int”.</p>
+<p>Do you have any tip?</p>
+<p>Best regards,</p>
+<p>Marcus Rene</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-3764">
+    		                    <div id="comment-3764" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">23 February 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Marcus<br>
+I think this may be an issue with certain code symbols not being displayed correctly.<br>
+I think an ampersand (‘&amp;’) is missing in various sections of the code.  Can you please try placing a ‘&amp;’ behind regVal, as in:</p>
+<p>pCam-&gt;ReadRegister( k_softwareTrigger,<br>
+&amp;regVal ); </p>
+<p>Cheers,<br>
+Andy</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-3771">
+    		                    <div id="comment-3771" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/8c9bb64f99c8654e5bd2e14e945a17b5b51a71dbc17a53054d5e7f1ec51e4633?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/8c9bb64f99c8654e5bd2e14e945a17b5b51a71dbc17a53054d5e7f1ec51e4633?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Marcus Rene</span></span>                                                            <span class="ago">26 February 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Andy,<br>
+Thank you very much for your instructions.<br>
+ I was a lit bit confused, because I had FlyCap for x64 and x86 at same computer.<br>
+ Maybe I was charge for dll x86 and lib x64, or vice versa<br>
+ Thank you very much, because the program works very well now..</p>
+<p> Cheers<br>
+ Marcus Rene</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-4158">
+    		                    <div id="comment-4158" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/c9640cdc7fe57dff830b336f7e18c451cbdec4babcc88fa696843e9146e644dc?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/c9640cdc7fe57dff830b336f7e18c451cbdec4babcc88fa696843e9146e644dc?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Max</span></span>                                                            <span class="ago">28 April 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Andy, </p>
+<p>This has been extremely useful for a project I am working on involving a 3D scanner with openCV and a Point Grey camera.</p>
+<p>The program takes a live stream from the camera, displays it and gives the user more options for calibration/scanning/ect. Before we got the point grey camera, we had the code set up to use the camera as a webcam (for testing phases) since openCV plays very well with them (using cvcapturefromCAM()). Point grey has directshow dlls which allows openCV to *attempt* to use the ptgrey camera, but my program crashes and it seems that many people have issues upon camera connection.</p>
+<p>My question is: </p>
+<p>Have you been able to use a live stream from the point grey camera to openCV? My code is entirely set up to use a livestream from the camera and it would take a huge amount of work the change everything to image by image capture.</p>
+<p>One thought I have had is to use Flycapture2 to continuously capture to an AVI file and have openCV use capturefromAVI(), but simultaneously reading and writing to this file has proved somewhat difficult.</p>
+<p>Also, I am using Win7 x64, VS2010 x86, FlyCapture2/camera driver x86, and openCV 2.4.4 and compile everything in 32bit. I have also tried every camera driver(x64 and x86) that point grey has to offer for my camera(FireFlyMV) with no luck.</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-4167">
+    		                    <div id="comment-4167" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">1 May 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Max<br>
+Everything I’ve done so far with FlyCapture / OpenCV has been on an image-by-image basis.  I’ve been lucky in that my images were also quite simple – rows of inkjet printed spots, albeit quite tiny in the order of microns.</p>
+<p>My only advice is to keep experimenting to find out what works reliably and what doesn’t.  I agree that some aspects of FlyCapture and OpenCV are more flakey than others.</p>
+<p>Maybe it would be beneficial if (one day) I could experiment with using livestreams and share my experiences on this blog, but don’t hold your breath just yet.  So much to do, so little time…</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-7719">
+    		                    <div id="comment-7719" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/387d6e6128e8b28a83ad70b05229bf130970ee7d8c101c4757ac15bc27136809?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/387d6e6128e8b28a83ad70b05229bf130970ee7d8c101c4757ac15bc27136809?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Archit</span></span>                                                            <span class="ago">29 May 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi,</p>
+<p>I created a new Wings console project and copied the copied code along with including the FlyCapture SDK and OpenCV libraries inthe project. However, on running the executable,windows just crashes and restarts. I am not able to figure out the problem for it. </p>
+<p>Thank you for any help.</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-7720">
+    		                    <div id="comment-7720" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/387d6e6128e8b28a83ad70b05229bf130970ee7d8c101c4757ac15bc27136809?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/387d6e6128e8b28a83ad70b05229bf130970ee7d8c101c4757ac15bc27136809?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Archit</span></span>                                                            <span class="ago">29 May 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Just forgot to add in my previous post that I am using a PGR Flea3 camera</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-42224">
+    		                    <div id="comment-42224" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/53d12d47096e8dbe7f2efd8d9dc629bfb16bef944b03ed92d514d3fb6c24b8d8?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/53d12d47096e8dbe7f2efd8d9dc629bfb16bef944b03ed92d514d3fb6c24b8d8?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Anshul Rathore</span></span>                                                            <span class="ago">14 August 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I want to the acknowledge GPIO high after an image is captured. How can I set GPIO to high when image is captured and low and done capturing the image</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-42829">
+    		                    <div id="comment-42829" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/fe4f6310bd379675951bce75c874cd1c5ba9c5cb1b5dc4dc1293bba04edc0868?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/fe4f6310bd379675951bce75c874cd1c5ba9c5cb1b5dc4dc1293bba04edc0868?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Sercan</span></span>                                                            <span class="ago">20 September 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I implemented your code. When I run it, it freezes  at retrieveBuffer function. Then, I close the program manually. Then, I run again and close it manually again. After two freezes, it runs successfully. How can I solve that problem?</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			
+		</div>
+
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-cpp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

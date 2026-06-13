@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>Switching between WPF XAML views using MVVM DataTriggers – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Switching between WPF XAML views using MVVM DataTriggers Comments Feed" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2016%2Fswitching-between-wpf-xaml-views-using-mvvm-datatriggers%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2016%2Fswitching-between-wpf-xaml-views-using-mvvm-datatriggers%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/6909"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/">
+<link rel="shortlink" href="/?p=6909">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-6909 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-6909" class="g post post-6909 type-post status-publish format-standard hentry category-c-net-2 tag-binding tag-datatrigger tag-mvvm tag-wpf tag-xaml">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/c-net-2/" itemprop="item"><span itemprop="name">C# / .Net / WPF</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Switching between WPF XAML views using MVVM DataTriggers</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">Switching between WPF XAML views using MVVM DataTriggers</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>29 May 2016</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/c-net-2/" title="View all posts in C# / .Net / WPF">C# / .Net / WPF</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/#comments" itemprop="interactionCount">22 Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p>Related post:</p><p><a href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatemplate/">/2016/switching-between-wpf-xaml-views-using-mvvm-datatemplate/</a></p><p>This post addresses the problem of being able to switch between different views based on the property of a ViewModel class.</p><p>To get started in Visual Studio, create a new WPF Application:</p><p><a href="/wp-content/uploads/2016/05/XamlSwitching1.jpg" rel="attachment wp-att-6911"><img fetchpriority="high" decoding="async" src="" alt="XamlSwitching1" width="803" height="608" class="alignnone size-full wp-image-6911" data-layzr="/wp-content/uploads/2016/05/XamlSwitching1.jpg"></a></p><p>So that when we build and run the application we have a blank window like this:</p><p><a href="/wp-content/uploads/2016/05/XamlSwitching2.jpg" rel="attachment wp-att-6913"><img decoding="async" src="" alt="XamlSwitching2" width="525" height="350" class="alignnone size-full wp-image-6913" data-layzr="/wp-content/uploads/2016/05/XamlSwitching2.jpg"></a></p><p>To demonstrate how WPF windows can be made to switch between different views, create two new XAML views, View1.xaml and View2.xaml, each consisting of a simple TextBlock containing different texts to demonstrate that the views are different.</p><p>In your Visual Studio project, right-click your project folder and select Add &gt; New Item.  Select User Control (WPF) and name your file as View1.xaml:</p><p><a href="/wp-content/uploads/2016/05/XamlSwitching3.png" rel="attachment wp-att-6915"><img decoding="async" src="" alt="XamlSwitching3" width="800" height="608" class="alignnone size-full wp-image-6915" data-layzr="/wp-content/uploads/2016/05/XamlSwitching3.png"></a></p><p>In the xaml portion of the file, insert the code to display the Text in the view as follows:</p><pre class="brush: xml; title: ; notranslate" title="">
+&lt;UserControl x:Class="XamlSwitching.View1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"&gt;
+    &lt;Grid&gt;
+        &lt;TextBlock FontSize="20" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"&gt;
+            Screen for View1
+        &lt;/TextBlock&gt;
+    &lt;/Grid&gt;
+&lt;/UserControl&gt;
+</pre><p>Repeat the previous step, but this time creating a new view called View2.xaml.  Insert the code for View2.xaml as shown:</p><pre class="brush: xml; title: ; notranslate" title="">
+&lt;UserControl x:Class="XamlSwitching.View2"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"&gt;
+    &lt;Grid&gt;
+        &lt;TextBlock FontSize="20" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"&gt;
+            Screen for View2
+        &lt;/TextBlock&gt;
+    &lt;/Grid&gt;
+&lt;/UserControl&gt;
+</pre><p>We may wish to switch between XAML views based on a property of a class.  For example, display View1 if our ViewModel property is set to “0”; otherwise display View 2 if our ViewModel property is set to “1”. In this case, you would use a DataTrigger.</p><p>Create a very simple ViewModel class by right-clicking your project folder, select Add &gt; New Item.  Select Class and we will call our ViewModel class MainWindowViewModel.cs:</p><p><a href="/wp-content/uploads/2016/05/XamlSwitching4.jpg" rel="attachment wp-att-6920"><img decoding="async" src="" alt="XamlSwitching4" width="800" height="608" class="alignnone size-full wp-image-6920" data-layzr="/wp-content/uploads/2016/05/XamlSwitching4.jpg"></a>  </p><p>Our ViewModel class contains a getter/setter property and a constructor to set the default property value:</p><pre class="brush: csharp; title: ; notranslate" title="">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace XamlSwitching
+{
+    public class MainWindowViewModel
+    {
+        public int SwitchView
+        {
+            get;
+            set;
+        }
+
+        public MainWindowViewModel()
+        {
+            SwitchView = 0;
+        }
+    }
+}
+</pre><p>In our MainWindow.xaml we configure our DataTemplate, DataContext with the ViewModel class we created.</p><p>And also the DataTrigger, to tell the application which view to display, if the property is set to anything other than the default:</p><pre class="brush: csharp; title: ; notranslate" title="">
+&lt;Window x:Class="XamlSwitching.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:XamlSwitching"
+        Title="MainWindow" Height="350" Width="525"&gt;
+
+    &lt;Window.DataContext&gt;
+        &lt;local:MainWindowViewModel /&gt;
+    &lt;/Window.DataContext&gt;
+
+    &lt;Window.Resources&gt;
+        &lt;DataTemplate x:Key="View1Template" DataType="{x:Type local:MainWindowViewModel}"&gt;
+            &lt;local:View1 /&gt;
+        &lt;/DataTemplate&gt;
+
+        &lt;DataTemplate x:Key="View2Template" DataType="{x:Type local:MainWindowViewModel}"&gt;
+            &lt;local:View2 /&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/Window.Resources&gt;
+
+    &lt;Grid&gt;
+        &lt;ContentControl Content="{Binding }"&gt;
+            &lt;ContentControl.Style&gt;
+                &lt;Style TargetType="{x:Type ContentControl}"&gt;
+                    &lt;Setter Property="ContentTemplate" Value="{StaticResource View1Template}" /&gt;
+                    &lt;Style.Triggers&gt;
+                        &lt;DataTrigger Binding="{Binding SwitchView}" Value="1"&gt;
+                            &lt;Setter Property="ContentTemplate" Value="{StaticResource View2Template}" /&gt;
+                        &lt;/DataTrigger&gt;
+                    &lt;/Style.Triggers&gt;
+                &lt;/Style&gt;
+            &lt;/ContentControl.Style&gt;
+        &lt;/ContentControl&gt;
+    &lt;/Grid&gt;
+&lt;/Window&gt;
+</pre><p>In our ViewModel constructor, the ‘SwitchView’ property is defaulted to “0”, thereby causing the application to display View1 when run:</p><p><a href="/wp-content/uploads/2016/05/XamlSwitching5.jpg" rel="attachment wp-att-6925"><img decoding="async" src="" alt="XamlSwitching5" width="525" height="350" class="alignnone size-full wp-image-6925" data-layzr="/wp-content/uploads/2016/05/XamlSwitching5.jpg"></a></p><p>Now set the ‘SwitchView’ property to “1” inside the ViewModel constructor:</p><pre class="brush: csharp; title: ; notranslate" title="">
+public MainWindowViewModel()
+        {
+            SwitchView = 1;
+        }
+</pre><p>When re-building and re-running the application we get the View2 screen displayed as shown:</p><p><a href="/wp-content/uploads/2016/05/XamlSwitching6.png" rel="attachment wp-att-6926"><img decoding="async" src="" alt="XamlSwitching6" width="525" height="350" class="alignnone size-full wp-image-6926" data-layzr="/wp-content/uploads/2016/05/XamlSwitching6.png"></a></p><p><script data-selz-t="_selz-btn-default" data-selz-a="modal" data-selz-b="http://selz.co/N1ijQI$EM" data-text="Buy it now: 10 x  WPF Recipes">
+if (typeof _$elz === "undefined") { var _$elz = {}; }
+if (typeof _$elz.b === "undefined") { 
+_$elz.b = { e: document.createElement("script") }; 
+_$elz.b.e.src = "https://selz.com/embed/button"; 
+document.body.appendChild(_$elz.b.e); }
+</script><br>
+<noscript><a href="http://selz.co/N1ijQI%24EM" target="_blank">Buy it now: 10 x  WPF Recipes</a><a href="https://selz.com/info/sell-ebooks" target="_blank">Sell ebooks</a></noscript></p>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '6909'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/&amp;media=&amp;description=Switching%20between%20WPF%20XAML%20views%20using%20MVVM%20DataTriggers" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2018/applying-a-genetic-algorithm-to-the-linear-assignment-problem/" title="Applying a genetic algorithm to the Linear Assignment Problem" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Applying a genetic algorithm to the Linear Assignment Problem"></div>
+                                                                        <h4 class="title front-view-title">Applying a genetic algorithm to the Linear Assignment Problem</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2016/binding-the-visibility-of-wpf-elements-to-a-property/" title="Binding the visibility of WPF elements to a property" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Binding the visibility of WPF elements to a property"></div>
+                                                                        <h4 class="title front-view-title">Binding the visibility of WPF elements to a property</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2020/dragging-shapes-with-the-mouse-in-wpf-mvvm/" title="Dragging shapes with the mouse in WPF / MVVM" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img width="190" height="120" src="" class="attachment-truepixel-related size-truepixel-related wp-post-image" alt="Dragging shapes with the mouse in WPF / MVVM" title="Dragging shapes with the mouse in WPF / MVVM" decoding="async" data-layzr="/wp-content/uploads/2017/05/MousePositionMvvm2-190x120.jpg"></div>                                                <h4 class="title front-view-title">Dragging shapes with the mouse in WPF / MVVM</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-45497">
+    		                    <div id="comment-45497" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/37c7f877bf3fa7dbac63b93c0b04228bba6ad741c91ef179c3a8f9e8ba4d20d6?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/37c7f877bf3fa7dbac63b93c0b04228bba6ad741c91ef179c3a8f9e8ba4d20d6?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">RK</span></span>                                                            <span class="ago">18 February 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>How do you make these views dynamically switching for example for menu command event?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=45497#respond" data-commentid="45497" data-postid="6909" data-belowelement="comment-45497" data-respondelement="respond" data-replyto="Reply to RK" aria-label="Reply to RK">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    </ol><ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-45501">
+    		                    <div id="comment-45501" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">19 February 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>You would get your menu command event to update the ‘SwitchView’ public integer property.<br>
+Changing this value will cause the selected view to get updated.<br>
+In this very simple example I am just setting this property in the Main Window view-model constructor, but you can<br>
+set this value anywhere you like.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=45501#respond" data-commentid="45501" data-postid="6909" data-belowelement="comment-45501" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-47050">
+    		                    <div id="comment-47050" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/626b07c25115d43355144d0b4131b826a1477033068ae84fbf218fe5ef7265cc?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/626b07c25115d43355144d0b4131b826a1477033068ae84fbf218fe5ef7265cc?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">PK</span></span>                                                            <span class="ago">26 July 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Great article!<br>
+Could you give me some hints on how to modify MainWindow.xaml to switch between 3 views or more instead of two?</p>
+<p>Thanks in advance</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=47050#respond" data-commentid="47050" data-postid="6909" data-belowelement="comment-47050" data-respondelement="respond" data-replyto="Reply to PK" aria-label="Reply to PK">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-47054">
+    		                    <div id="comment-47054" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">26 July 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks pk.  Give me a day or two and I’ll see what I can do.</p>
+<p><strong>Update</strong><br>
+Just emailed you an example.  This is what you do:<br>
+1. Create another view (View 3)<br>
+2. In MainWindow.xaml – Resources section add equivalent template for View 3<br>
+3. In Style.Triggers section in MainWindw.xaml add another Data Trigger for Template 3.<br>
+4. Try it with new setting in the MainWindowViewModel.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=47054#respond" data-commentid="47054" data-postid="6909" data-belowelement="comment-47054" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-3" id="li-comment-47067">
+    		                    <div id="comment-47067" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/626b07c25115d43355144d0b4131b826a1477033068ae84fbf218fe5ef7265cc?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/626b07c25115d43355144d0b4131b826a1477033068ae84fbf218fe5ef7265cc?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">PK</span></span>                                                            <span class="ago">27 July 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>It is exactly how I thought. It is important for me, because it is very likely that I will have to add new views in my app in the future. But this approach makes it very simple.</p>
+<p>Thanks for help 🙂</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=47067#respond" data-commentid="47067" data-postid="6909" data-belowelement="comment-47067" data-respondelement="respond" data-replyto="Reply to PK" aria-label="Reply to PK">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-47120">
+    		                    <div id="comment-47120" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/5888c3fbab4808d7bef5abdcc6b337926d1256398ce01f7d1742b8832f52b80e?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/5888c3fbab4808d7bef5abdcc6b337926d1256398ce01f7d1742b8832f52b80e?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Kevin</span></span>                                                            <span class="ago">31 July 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Great article !<br>
+Changing views on the fly requires more than just changing the value right ?<br>
+For example, i placed a button on View1.xaml and changed the value of SwitchView to 1 on a click, but my view will not change. I guess i have to refresh the MainWindow somewhere or somehow ?<br>
+I also read your article from 9 August 2016 and downloaded the full programm, but it is way more complex. Some guess for an easier solution ? 🙂</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=47120#respond" data-commentid="47120" data-postid="6909" data-belowelement="comment-47120" data-respondelement="respond" data-replyto="Reply to Kevin" aria-label="Reply to Kevin">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-47121">
+    		                    <div id="comment-47121" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">31 July 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Kevin another update in order methinks.<br>
+I would think that what you’re trying to achieve will involve implementing OnPropertyChanged etc as per the post on 9 August 2016.<br>
+There might be a simpler way of doing it however. Any suggestions welcome.<br>
+Andy</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=47121#respond" data-commentid="47121" data-postid="6909" data-belowelement="comment-47121" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-47569">
+    		                    <div id="comment-47569" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/fecea487524c7b09765ea1c9d47d96ab2750a942fda85abde0c2aa0fc289e588?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/fecea487524c7b09765ea1c9d47d96ab2750a942fda85abde0c2aa0fc289e588?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Swapnajeet</span></span>                                                            <span class="ago">6 September 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi,<br>
+Thanks for your post. However I would like to know how would you dynamically assign viewmodels to the view. My requirement is that I have 4 views which I can toggle in between and the 4 views are replicated in 4 different cells. When a user chooses a view it should have it’s view model assigned</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=47569#respond" data-commentid="47569" data-postid="6909" data-belowelement="comment-47569" data-respondelement="respond" data-replyto="Reply to Swapnajeet" aria-label="Reply to Swapnajeet">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-47680">
+    		                    <div id="comment-47680" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/2cad324364b20fae0955f43b63881567dad6e8592bc458d6e87b2d4fd3722ea6?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/2cad324364b20fae0955f43b63881567dad6e8592bc458d6e87b2d4fd3722ea6?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Matt</span></span>                                                            <span class="ago">21 September 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi, I’m getting an error when I try to say </p>
+<p>It says View1 does not exist in my namespace, do you have any reason why I could be getting this?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=47680#respond" data-commentid="47680" data-postid="6909" data-belowelement="comment-47680" data-respondelement="respond" data-replyto="Reply to Matt" aria-label="Reply to Matt">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-47681">
+    		                    <div id="comment-47681" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/2cad324364b20fae0955f43b63881567dad6e8592bc458d6e87b2d4fd3722ea6?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/2cad324364b20fae0955f43b63881567dad6e8592bc458d6e87b2d4fd3722ea6?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Matt</span></span>                                                            <span class="ago">21 September 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>For some reason the pasted text got cut out, the line causing the error is</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=47681#respond" data-commentid="47681" data-postid="6909" data-belowelement="comment-47681" data-respondelement="respond" data-replyto="Reply to Matt" aria-label="Reply to Matt">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-3" id="li-comment-47682">
+    		                    <div id="comment-47682" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/2cad324364b20fae0955f43b63881567dad6e8592bc458d6e87b2d4fd3722ea6?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/2cad324364b20fae0955f43b63881567dad6e8592bc458d6e87b2d4fd3722ea6?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Matt</span></span>                                                            <span class="ago">21 September 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>“”</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=47682#respond" data-commentid="47682" data-postid="6909" data-belowelement="comment-47682" data-respondelement="respond" data-replyto="Reply to Matt" aria-label="Reply to Matt">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-47683">
+    		                    <div id="comment-47683" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/2cad324364b20fae0955f43b63881567dad6e8592bc458d6e87b2d4fd3722ea6?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/2cad324364b20fae0955f43b63881567dad6e8592bc458d6e87b2d4fd3722ea6?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Matt</span></span>                                                            <span class="ago">21 September 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Nevermind, I guess I can’t post code, just ignore all my replies, haha</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=47683#respond" data-commentid="47683" data-postid="6909" data-belowelement="comment-47683" data-respondelement="respond" data-replyto="Reply to Matt" aria-label="Reply to Matt">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-47684">
+    		                    <div id="comment-47684" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/2cad324364b20fae0955f43b63881567dad6e8592bc458d6e87b2d4fd3722ea6?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/2cad324364b20fae0955f43b63881567dad6e8592bc458d6e87b2d4fd3722ea6?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Matt</span></span>                                                            <span class="ago">21 September 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Nevermind, I figured it out, sorry!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=47684#respond" data-commentid="47684" data-postid="6909" data-belowelement="comment-47684" data-respondelement="respond" data-replyto="Reply to Matt" aria-label="Reply to Matt">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-3" id="li-comment-47685">
+    		                    <div id="comment-47685" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">21 September 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Nice one!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=47685#respond" data-commentid="47685" data-postid="6909" data-belowelement="comment-47685" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-48361">
+    		                    <div id="comment-48361" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/f8665bcff860aea7589bee8b47f4c532fe7fb24f5948fcd3f999c458628b8de4?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/f8665bcff860aea7589bee8b47f4c532fe7fb24f5948fcd3f999c458628b8de4?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="https://asimplify.com/" class="url" rel="ugc external nofollow">Asim</a></span></span>                                                            <span class="ago">27 December 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi, Thanks a lot for this effort. I am doing that same kind of work but little stuck need your help on that.<br>
+I want to change usercontrol on the basis of another usercontrol’s event. When I change SwitchView property value nothing changes.<br>
+Can you please help me out?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=48361#respond" data-commentid="48361" data-postid="6909" data-belowelement="comment-48361" data-respondelement="respond" data-replyto="Reply to Asim" aria-label="Reply to Asim">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-48363">
+    		                    <div id="comment-48363" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">27 December 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Asim that’s correct yes, when you simply change an ‘ordinary’ property value such as your SwitchView property, the view will not update, even though you can see with your own eyes that the property value has physically changed.</p>
+<p>To accomplish what you need, please refer to this related post, which does a similar thing with switching WPF views except that the ViewModel implementing the SwitchView property also inherits and implements ‘INotifyPropertyChanged’ – this is essential for notifying the View whenever a ViewModel property changes.</p>
+<p><a href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatemplate/" rel="ugc">/2016/switching-between-wpf-xaml-views-using-mvvm-datatemplate/</a></p>
+<p>Email me a compressed version of your Visual Studio project if you like and I’ll see what I can do.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=48363#respond" data-commentid="48363" data-postid="6909" data-belowelement="comment-48363" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-55708">
+    		                    <div id="comment-55708" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/a098c4e92d7b9dc2fa34f9a6ef0b326a8e8eb44358f89c9bbf12381c22fc1d1e?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/a098c4e92d7b9dc2fa34f9a6ef0b326a8e8eb44358f89c9bbf12381c22fc1d1e?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">BoltCrank</span></span>                                                            <span class="ago">2 March 2020</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Andy,</p>
+<p>man you rock this is exactly what I needed, even the binind is working from my Model instance that I’m using in my Windows ViewModel</p>
+<p>thanks for the help man!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=55708#respond" data-commentid="55708" data-postid="6909" data-belowelement="comment-55708" data-respondelement="respond" data-replyto="Reply to BoltCrank" aria-label="Reply to BoltCrank">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-55780">
+    		                    <div id="comment-55780" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">17 March 2020</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Awesome!  Thanks for the confirmation.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=55780#respond" data-commentid="55780" data-postid="6909" data-belowelement="comment-55780" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-56289">
+    		                    <div id="comment-56289" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/c9758da181e6b7bef7252f33f3b69078ef6f93864b05919f272097802a36f3aa?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/c9758da181e6b7bef7252f33f3b69078ef6f93864b05919f272097802a36f3aa?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Hulinning2</span></span>                                                            <span class="ago">11 June 2020</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks. This is what I need to switch curren view to other views but all views using the same data context.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=56289#respond" data-commentid="56289" data-postid="6909" data-belowelement="comment-56289" data-respondelement="respond" data-replyto="Reply to Hulinning2" aria-label="Reply to Hulinning2">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-56357">
+    		                    <div id="comment-56357" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/82685230bb78b54d2a48a4c731fdc577701eea839ea867da6b5fc4847aae2699?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/82685230bb78b54d2a48a4c731fdc577701eea839ea867da6b5fc4847aae2699?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Himanshu</span></span>                                                            <span class="ago">22 June 2020</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi I am getting Error cant put window in a style.</p>
+<p>Can you please help?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=56357#respond" data-commentid="56357" data-postid="6909" data-belowelement="comment-56357" data-respondelement="respond" data-replyto="Reply to Himanshu" aria-label="Reply to Himanshu">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-56839">
+    		                    <div id="comment-56839" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/dc6171c1745a4a8ee8f5bcbdf8ce432433b1d43afed54118edea9c46ac8c7c76?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/dc6171c1745a4a8ee8f5bcbdf8ce432433b1d43afed54118edea9c46ac8c7c76?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">localghost</span></span>                                                            <span class="ago">11 September 2020</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi,<br>
+Is there a way to keep the instances of the View when switching?<br>
+My Problem is that when i switch from View1 to View2 and back to View1, View1 creates a new instance of itself and therefore some Controls are enabled again, because i use enable controls by event with mvvm so there is no direct binding to IsEnabled.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=56839#respond" data-commentid="56839" data-postid="6909" data-belowelement="comment-56839" data-respondelement="respond" data-replyto="Reply to localghost" aria-label="Reply to localghost">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-56861">
+    		                    <div id="comment-56861" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/e071ebb32742178e0c754c6bddc43c143b1553e5f6fb41fbeb7cddb5bb1c9317?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/e071ebb32742178e0c754c6bddc43c143b1553e5f6fb41fbeb7cddb5bb1c9317?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">localghost</span></span>                                                            <span class="ago">14 September 2020</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi, is there a way to keep the instance of the UserControl when switching and vice versa? I enabled/disable some controls with subscriber pattern from the ViewModel and when i do this in one of the UserControls and i switch back the enable-properties are set back.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/?replytocom=56861#respond" data-commentid="56861" data-postid="6909" data-belowelement="comment-56861" data-respondelement="respond" data-replyto="Reply to localghost" aria-label="Reply to localghost">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			
+		</div>
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2016/switching-between-wpf-xaml-views-using-mvvm-datatriggers/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="6909" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-xml-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushXml.js"></script>
+<script id="syntaxhighlighter-brush-csharp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

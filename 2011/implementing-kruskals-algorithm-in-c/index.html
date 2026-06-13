@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>Implementing Kruskal’s Algorithm in C# – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Implementing Kruskal’s Algorithm in C# Comments Feed" href="/2011/implementing-kruskals-algorithm-in-c/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2011%2Fimplementing-kruskals-algorithm-in-c%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2011%2Fimplementing-kruskals-algorithm-in-c%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/844"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2011/implementing-kruskals-algorithm-in-c/">
+<link rel="shortlink" href="/?p=844">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-844 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-844" class="g post post-844 type-post status-publish format-standard hentry category-c-net-2 category-windows tag-net tag-c-mfc tag-kruskal tag-windows-forms tag-winforms">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/c-net-2/" itemprop="item"><span itemprop="name">C# / .Net / WPF</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Implementing Kruskal’s Algorithm in C#</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">Implementing Kruskal’s Algorithm in C#</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>12 September 2011</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/c-net-2/" title="View all posts in C# / .Net / WPF">C# / .Net / WPF</a>, <a href="/category/windows/" title="View all posts in Windows">Windows</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2011/implementing-kruskals-algorithm-in-c/#comments" itemprop="interactionCount">10 Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p>This post is essentially a blatant lifting of Omar Gamil’s <a href="http://www.codeproject.com/KB/recipes/Kruskal_Algorithm.aspx">CodeProject article</a> on the same subject. I have been using the project as means of getting into C# programming and using things like Windows Forms etc in Visual Studio environments for the first time.  <span id="more-844"></span>Lots of screen shots and code samples have been included as a means of showing the reader how to create such a project from A to B.  For a good explanation of what Kruskal is and how it works, you could do worse than to visit the <a href="http://en.wikipedia.org/wiki/Kruskal%27s_algorithm">Wiki Page</a> on it.  In a nutshell, Kruskal is used to find the set of links in a network such that their overall weight is minimized, while avoiding network cycles (loops) in the solution.</p><p>VS 2008 C# project downloadable from <a href="http://technical-recipes.com/Downloads/Kruskal_Csharp.7z">here</a>.</p><p><strong>Create a new Windows Forms Application</strong></p><p><a href="http://technical-recipes.com/wp-content/uploads/2011/09/krus1.jpg"><img fetchpriority="high" decoding="async" src="" alt="" title="krus1" width="300" height="215" class="alignnone size-medium wp-image-845" data-layzr="http://technical-recipes.com/wp-content/uploads/2011/09/krus1-300x215.jpg"></a></p><p><strong>Set the Form Properties</strong></p><p>In the main form that get created, right click on it and set its properties, such as name etc.  I also chose to rename the default name from Form1 to Kruskal:</p><p><a href="http://technical-recipes.com/wp-content/uploads/2011/09/krus2.jpg"><img decoding="async" src="" alt="" title="krus2" width="253" height="300" class="alignnone size-medium wp-image-846" data-layzr="http://technical-recipes.com/wp-content/uploads/2011/09/krus2-253x300.jpg"></a></p><p>Open up the toolbox, select a panel control, drag it over to your form, and resizing it as necessary.  Feel free to set any other properties, in this example I have let them all as defaults:</p><p><a href="http://technical-recipes.com/wp-content/uploads/2011/09/krus3.jpg"><img decoding="async" src="" alt="" title="krus3" width="300" height="233" class="alignnone size-medium wp-image-847" data-layzr="http://technical-recipes.com/wp-content/uploads/2011/09/krus3-300x233.jpg"></a></p><p>Using the toolbox dialog again, select the button control and create two new ones.   Right-click on them and set their text/name properties to “Solve” and “Clear” as shown:</p><p><a href="http://technical-recipes.com/wp-content/uploads/2011/09/krusx.jpg"><img decoding="async" src="" alt="" title="krusx" width="300" height="233" class="alignnone size-medium wp-image-851" data-layzr="http://technical-recipes.com/wp-content/uploads/2011/09/krusx-300x233.jpg"></a></p><p>Double-click on the “Solve” button and double-click on the “Clear” button in order to generate their respective event handling codes:</p><pre class="brush: csharp; title: ; notranslate" title="">
+private void Solve_Click(object sender, EventArgs e)
+{
+}
+
+private void Clear_Click(object sender, EventArgs e)
+{
+}
+</pre><p>Create another, smaller windows form with which we can use to modify the link connection weights.  Right-click on your project folder, select Add -&gt; New Item… -&gt; Visual C# Items -&gt; Windows Form.  Name your form as Cost.cs and click the Add button:</p><p><a href="http://technical-recipes.com/wp-content/uploads/2011/09/krus41.jpg"><img decoding="async" src="" alt="" title="krus4" width="300" height="225" class="alignnone size-medium wp-image-854" data-layzr="http://technical-recipes.com/wp-content/uploads/2011/09/krus41-300x225.jpg"></a></p><p>On your newly added Cost form, add a text edit control and a button.  You may wish to rename the button text to “OK”, resize the form etc in the way shown:</p><p><a href="http://technical-recipes.com/wp-content/uploads/2011/09/krus5.jpg"><img decoding="async" src="" alt="" title="krus5" width="183" height="152" class="alignnone size-full wp-image-855" data-layzr="http://technical-recipes.com/wp-content/uploads/2011/09/krus5.jpg"></a></p><p>Double-click the OK button to generate the event handling code as shown:</p><pre class="brush: csharp; title: ; notranslate" title="">
+private void OK_Click(object sender, EventArgs e)
+{
+}
+</pre><p><strong>Implement the Graph Modelling code</strong></p><p>Create the C# class to implement tha handling of network links.  Right-click the project folder, and select Add -&gt; New Item -&gt; Visual C# Items -&gt; Code and name the class as “Link.cs”. </p><p><a href="http://technical-recipes.com/wp-content/uploads/2011/09/krus6.jpg"><img decoding="async" src="" alt="" title="krus6" width="300" height="177" class="alignnone size-medium wp-image-856" data-layzr="http://technical-recipes.com/wp-content/uploads/2011/09/krus6-300x177.jpg"></a></p><p>Repeat the above by adding a class named “Node.cs”.  Go to the Link.cs code and copy the following code which is used to implement the sorting of links according to weight, return link end nodes etc:</p><pre class="brush: csharp; title: ; notranslate" title="">
+class Link : IComparable
+{
+    #region Members
+    Node v1, v2;
+    int nCost;
+    System.Drawing.Point pStringPosition;
+    #endregion
+
+    #region Properties
+    public Node V1
+    {
+        get
+        {
+            return v1;
+        }
+    }
+    public Node V2
+    {
+        get
+        {
+            return v2;
+        }
+    }
+    public int Cost
+    {
+        get
+        {
+            return nCost;
+        }
+    }
+    public System.Drawing.Point StringPosition
+    {
+        get
+        {
+            return pStringPosition;
+        }
+    }
+    #endregion
+
+    public Link(Node v1, Node v2, int nCost, System.Drawing.Point pStringPosition)
+    {
+        this.v1 = v1;
+        this.v2 = v2;
+        this.nCost = nCost;
+        this.pStringPosition = pStringPosition;
+    }
+
+    #region IComparable Members
+
+    public int CompareTo(object obj)
+    {
+        Link e = (Link)obj;
+        return this.nCost.CompareTo(e.nCost);
+    }
+
+    #endregion
+
+    internal static void QuickSort(List&lt;Link&gt; m_lstEdgesInitial, int nLeft, int nRight)
+    {
+        int i, j, x;
+        i = nLeft; j = nRight;
+        x = m_lstEdgesInitial[(nLeft + nRight) / 2].Cost;
+
+        do
+        {
+            while ((m_lstEdgesInitial[i].Cost &lt; x) &amp;&amp; (i &lt; nRight)) i++;
+            while ((x &lt; m_lstEdgesInitial[j].Cost) &amp;&amp; (j &gt; nLeft)) j--;
+
+            if (i &lt;= j)
+            {
+                Link y = m_lstEdgesInitial[i];
+                m_lstEdgesInitial[i] = m_lstEdgesInitial[j];
+                m_lstEdgesInitial[j] = y;
+                i++; j--;
+            }
+        } while (i &lt;= j);
+
+        if (nLeft &lt; j) QuickSort(m_lstEdgesInitial, nLeft, j);
+        if (i &lt; nRight) QuickSort(m_lstEdgesInitial, i, nRight);
+    }
+}
+</pre><p>Go to the “Node.cs” class code and insert the following code needed to set the node properties and “Join” end nodes:</p><pre class="brush: csharp; title: ; notranslate" title="">
+class Node
+{
+    #region Members
+    int nName;
+    public int nRank;
+    public Node vRoot;
+    public System.Drawing.Point pPosition;
+    #endregion
+
+    #region Properties
+    public int Name
+    {
+        get
+        {
+            return nName;
+        }
+    }
+    #endregion
+
+    public Node(int nName, System.Drawing.Point pPosition)
+    {
+        this.nName = nName;
+        nRank = 0;
+        this.vRoot = this;
+        this.pPosition = pPosition;
+    }
+
+    #region Methods
+    internal Node GetRoot()
+    {
+        if (this.vRoot != this)// am I my own parent ? (am i the root ?)
+        {
+            this.vRoot = this.vRoot.GetRoot();// No? then get my parent
+        }
+        return this.vRoot;
+    }
+
+    internal static void Join(Node vRoot1, Node vRoot2)
+    {
+
+        if (vRoot2.nRank &lt; vRoot1.nRank)//is the rank of Root2 less than that of Root1 ?
+        {
+            vRoot2.vRoot = vRoot1;//yes! then Root1 is the parent of Root2 (since it has the higher rank)
+        }
+        else //rank of Root2 is greater than or equal to that of Root1
+        {
+            vRoot1.vRoot = vRoot2;//make Root2 the parent
+            if (vRoot1.nRank == vRoot2.nRank)//both ranks are equal ?
+            {
+                vRoot1.nRank++;//increment one of them, we need to reach a single root for the whole tree
+            }
+        }
+    }
+    #endregion
+}
+</pre><p>Right-click on the Code form you created earlier, and select “View Code”.  Insert the code needed to implement the event handling when the user clicks the OK button and add a member variable for hold the cost value:</p><pre class="brush: csharp; title: ; notranslate" title="">
+public partial class Cost : Form
+{
+    public int m_nCost;
+
+    public Cost()
+    {
+        InitializeComponent();
+    }
+
+    private void OK_Click(object sender, EventArgs e)
+    {
+        if (textCost.Text == string.Empty)
+            errorProvider1.SetError(textCost, "please enter value");
+        else
+        {
+            m_nCost = int.Parse(textCost.Text);
+            this.Close();
+        }
+
+    }
+}
+</pre><p><strong>Implement the Kruskal’s Algorithm and drawing code:</strong></p><p>Right-click on the main form you created first of all, select View Code.  You will need to insert all the code needed to implement the drawing functions, event handling etc.  This is the full code listing:</p><pre class="brush: csharp; title: ; notranslate" title="">
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace Kruskal
+{
+    public partial class Kruskal : Form
+    {
+        public Kruskal()
+        {
+            InitializeComponent();
+            Reset();
+        }
+
+        #region Member Variables
+        const int m_nRadius = 20;
+        const int m_nHalfRadius = (m_nRadius / 2);
+
+        Color m_colVertex = Color.Aqua;
+        Color m_colEdge = Color.Red;
+
+        List&lt;Node&gt; m_lstVertices;
+        List&lt;Link&gt; m_lstEdgesInitial, m_lstEdgesFinal;
+
+        Node m_vFirstVertex, m_vSecondVertex;
+
+        bool m_bDrawEdge, m_bSolved;
+
+        #endregion
+
+        #region Events
+
+        private void panel1_MouseClick(object sender, MouseEventArgs e)
+        {
+            Point pClicked = new Point(e.X - m_nHalfRadius, e.Y - m_nHalfRadius);
+            if (Control.ModifierKeys == Keys.Control)//if Ctrl is pressed
+            {
+                if (!m_bDrawEdge)
+                {
+                    m_vFirstVertex = GetSelectedVertex(pClicked);
+                    m_bDrawEdge = true;
+                }
+                else
+                {
+                    m_vSecondVertex = GetSelectedVertex(pClicked);
+                    m_bDrawEdge = false;
+                    if (m_vFirstVertex != null &amp;&amp; m_vSecondVertex != null &amp;&amp; m_vFirstVertex.Name != m_vSecondVertex.Name)
+                    {
+                        Cost formCost = new Cost();
+                        formCost.ShowDialog();
+
+                        Point pStringPoint = GetStringPoint(m_vFirstVertex.pPosition, m_vSecondVertex.pPosition);
+                        m_lstEdgesInitial.Add(new Link(m_vFirstVertex, m_vSecondVertex, formCost.m_nCost, pStringPoint));
+                        panelKruskal.Invalidate();
+                    }
+                }
+            }
+            else
+            {
+                m_lstVertices.Add(new Node(m_lstVertices.Count, pClicked));
+                panelKruskal.Invalidate();
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            DrawVertices(g);
+            DrawEdges(g);
+            g.Dispose();
+        }
+
+        // Find Minimal spanning tree using Kruskal
+        private void Solve_Click(object sender, EventArgs e)
+        {
+            if (m_lstVertices.Count &gt; 2)
+            {
+                if (m_lstEdgesInitial.Count &lt; m_lstVertices.Count - 1)
+                {
+                    MessageBox.Show("Missing Edges", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    Solve.Enabled = false;
+                    int nTotalCost = 0;
+                    m_lstEdgesFinal = SolveGraph(ref nTotalCost);
+                    m_bSolved = true;
+                    panelKruskal.Invalidate();
+                    MessageBox.Show("Total Cost:" + nTotalCost.ToString(), "Solution", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        // Clear the drawing area
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Clear form ?", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (dr == DialogResult.Yes)
+            {
+                Solve.Enabled = true;
+                Graphics g = panelKruskal.CreateGraphics();
+                g.Clear(panelKruskal.BackColor);
+                Reset();
+            }
+        }
+
+        #endregion
+
+        #region Methods
+
+        #region Drawing
+
+        private void DrawEdges(Graphics g)
+        {
+            Pen P = new Pen(m_colEdge);
+            List&lt;Link&gt; lstEdges = m_bSolved ? m_lstEdgesFinal : m_lstEdgesInitial;
+            foreach (Link e in lstEdges)
+            {
+                Point pV1 = new Point(e.V1.pPosition.X + m_nHalfRadius, e.V1.pPosition.Y + m_nHalfRadius);
+                Point pV2 = new Point(e.V2.pPosition.X + m_nHalfRadius, e.V2.pPosition.Y + m_nHalfRadius);
+                g.DrawLine(P, pV1, pV2);
+                DrawString(e.Cost.ToString(), e.StringPosition, g);
+            }
+        }
+
+        private void DrawString(string strText, Point pDrawPoint, Graphics g)
+        {
+            Font drawFont = new Font("Arial", 15);
+            SolidBrush drawBrush = new SolidBrush(Color.Black);
+            g.DrawString(strText, drawFont, drawBrush, pDrawPoint);
+        }
+
+        private void DrawVertices(Graphics g)
+        {
+            Pen P = new Pen(m_colVertex);
+            Brush B = new SolidBrush(m_colVertex);
+            foreach (Node v in m_lstVertices)
+            {
+                g.DrawEllipse(P, v.pPosition.X, v.pPosition.Y, m_nRadius, m_nRadius);
+                g.FillEllipse(B, v.pPosition.X, v.pPosition.Y, m_nRadius, m_nRadius);
+                DrawString(v.Name.ToString(), v.pPosition, g);
+            }
+        }
+
+        private Node GetSelectedVertex(Point pClicked)
+        {
+            Node vReturn = null;
+            double dDistance;
+            foreach (Node v in m_lstVertices)
+            {
+                dDistance = GetDistance(v.pPosition, pClicked);
+                if (dDistance &lt;= m_nRadius)
+                {
+                    vReturn = v;
+                    break;
+                }
+            }
+            return vReturn;
+        }
+
+        private double GetDistance(Point pStart, Point pFinish)
+        {
+            return Math.Sqrt(Math.Pow(pStart.X - pFinish.X, 2) + Math.Pow(pStart.Y - pFinish.Y, 2));
+        }
+
+        private Point GetStringPoint(Point pStart, Point pFinish)
+        {
+            int X = (pStart.X + pFinish.X) / 2;
+            int Y = (pStart.Y + pFinish.Y) / 2;
+            return new Point(X, Y);
+        }
+        #endregion
+
+        private void Reset()
+        {
+            m_lstVertices = new List&lt;Node&gt;();
+            m_lstEdgesInitial = new List&lt;Link&gt;();
+            m_bSolved = false;
+            m_vFirstVertex = m_vSecondVertex = null;
+        }
+
+        private List&lt;Link&gt; SolveGraph(ref int nTotalCost)
+        {
+            Link.QuickSort(m_lstEdgesInitial, 0, m_lstEdgesInitial.Count - 1);
+            List&lt;Link&gt; lstEdgesRetun = new List&lt;Link&gt;(m_lstEdgesInitial.Count);
+            foreach (Link ed in m_lstEdgesInitial)
+            {
+                Node vRoot1, vRoot2;
+                vRoot1 = ed.V1.GetRoot();
+                vRoot2 = ed.V2.GetRoot();
+                if (vRoot1.Name != vRoot2.Name)
+                {
+                    nTotalCost += ed.Cost;
+                    Node.Join(vRoot1, vRoot2);
+                    lstEdgesRetun.Add(new Link(ed.V1, ed.V2, ed.Cost, ed.StringPosition));
+                }
+            }
+            return lstEdgesRetun;
+        }
+
+        #endregion
+    }
+}
+</pre><p>In the Kruskal.Designer.cs code, or whatever you decided to name it, make sure the paint and mouse click event handlers have been included inside the InitializeComponent() method for the panel control you created:</p><pre class="brush: csharp; title: ; notranslate" title="">
+this.panelKruskal.Location = new System.Drawing.Point(36, 37);
+this.panelKruskal.Name = "panelKruskal";
+this.panelKruskal.Size = new System.Drawing.Size(372, 330);
+this.panelKruskal.TabIndex = 0;
+this.panelKruskal.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+this.panelKruskal.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
+</pre><p><strong>Try it out!</strong></p><p>You should now be in a position to build your program.  When running, add nodes using left mouse button clicks:</p><p><a href="http://technical-recipes.com/wp-content/uploads/2011/09/krus7.jpg"><img decoding="async" src="" alt="" title="krus7" width="300" height="232" class="alignnone size-medium wp-image-859" data-layzr="http://technical-recipes.com/wp-content/uploads/2011/09/krus7-300x232.jpg"></a></p><p>To set links and link connect weights between node pairs, simply hold down the control button and left-click the two end nodes you are interested in.  You will then see the small Cost form you created eariler to enter your values here.  Keep repeating until you have added all the links required:</p><p><a href="http://technical-recipes.com/wp-content/uploads/2011/09/krus8.jpg"><img decoding="async" src="" alt="" title="krus8" width="300" height="232" class="alignnone size-medium wp-image-860" data-layzr="http://technical-recipes.com/wp-content/uploads/2011/09/krus8-300x232.jpg"></a></p><p>And click the “Solve” button to generate the Minimal Spanning Tree:</p><p><a href="http://technical-recipes.com/wp-content/uploads/2011/09/krus9.jpg"><img decoding="async" src="" alt="" title="krus9" width="300" height="232" class="alignnone size-medium wp-image-861" data-layzr="http://technical-recipes.com/wp-content/uploads/2011/09/krus9-300x232.jpg"></a></p><p>Full C# Kruskal Visual Studio project downloadable from <a href="http://technical-recipes.com/Downloads/Kruskal_Csharp.7z">here</a>.</p>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '844'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2011/implementing-kruskals-algorithm-in-c/&amp;media=&amp;description=Implementing%20Kruskal%E2%80%99s%20Algorithm%20in%20C#" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2015/finding-permutations-in-strings/" title="Finding permutations in strings" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Finding permutations in strings"></div>
+                                                                        <h4 class="title front-view-title">Finding permutations in strings</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2019/using-typescript-in-visual-studio-2017/" title="Using TypeScript in Visual Studio 2017" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using TypeScript in Visual Studio 2017"></div>
+                                                                        <h4 class="title front-view-title">Using TypeScript in Visual Studio 2017</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2017/creating-a-windows-application-in-java-using-eclipse/" title="Creating a Windows application in Java using Eclipse" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Creating a Windows application in Java using Eclipse"></div>
+                                                                        <h4 class="title front-view-title">Creating a Windows application in Java using Eclipse</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-1961">
+    		                    <div id="comment-1961" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/996bd0bd20bd8ce7193b7f17a2ab028c8e5be587a458dea26dab0e73eddcdfe6?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/996bd0bd20bd8ce7193b7f17a2ab028c8e5be587a458dea26dab0e73eddcdfe6?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">kani mozhi</span></span>                                                            <span class="ago">6 August 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>This code is good..  much useful..<br>
+thank u..</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/implementing-kruskals-algorithm-in-c/?replytocom=1961#respond" data-commentid="1961" data-postid="844" data-belowelement="comment-1961" data-respondelement="respond" data-replyto="Reply to kani mozhi" aria-label="Reply to kani mozhi">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    </ol><ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-1966">
+    		                    <div id="comment-1966" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">6 August 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Welcome.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/implementing-kruskals-algorithm-in-c/?replytocom=1966#respond" data-commentid="1966" data-postid="844" data-belowelement="comment-1966" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-3" id="li-comment-6172">
+    		                    <div id="comment-6172" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/981973fc37d2ec618267572842768e10ef0e80c8b103128e2270b2a66bde5ade?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/981973fc37d2ec618267572842768e10ef0e80c8b103128e2270b2a66bde5ade?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">kevin</span></span>                                                            <span class="ago">24 March 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Do you have demo for travelling salesman problem using Kruskal’s Algorithm and minimum Spanning Tree?</p>
+<p>Thanks.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/implementing-kruskals-algorithm-in-c/?replytocom=6172#respond" data-commentid="6172" data-postid="844" data-belowelement="comment-6172" data-respondelement="respond" data-replyto="Reply to kevin" aria-label="Reply to kevin">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-4" id="li-comment-6176">
+    		                    <div id="comment-6176" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">25 March 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Travelling salesman posts here:</p>
+<p><a href="/2012/genetic-algorithms-applied-to-travelling-saleman-problems-in-c/" rel="ugc">/2012/genetic-algorithms-applied-to-travelling-saleman-problems-in-c/</a><br>
+<a href="/2012/c-implementation-of-hill-climbing-and-simulated-annealing-applied-to-travelling-salesman-problems/" rel="ugc">/2012/c-implementation-of-hill-climbing-and-simulated-annealing-applied-to-travelling-salesman-problems/</a><br>
+<a href="/2012/applying-c-implementations-of-2-opt-to-travelling-salesman-problems/" rel="ugc">/2012/applying-c-implementations-of-2-opt-to-travelling-salesman-problems/</a></p>
+<p>Kruskal’s Algorithm here:</p>
+<p><a href="/2012/kruskals-algorithm-in-c/" rel="ugc">/2012/kruskals-algorithm-in-c/</a><br>
+<a href="/2011/implementing-kruskals-algorithm-in-c/" rel="ugc">/2011/implementing-kruskals-algorithm-in-c/</a><br>
+<a href="/2011/minimal-spanning-tree-kruskal-algorithm-in-c/" rel="ugc">/2011/minimal-spanning-tree-kruskal-algorithm-in-c/</a></p>
+<p>Andy</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/implementing-kruskals-algorithm-in-c/?replytocom=6176#respond" data-commentid="6176" data-postid="844" data-belowelement="comment-6176" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-2712">
+    		                    <div id="comment-2712" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/1cecbbbf807db641bc40a2327dddc47f182aae9f317f1e5ac2fb9a13d99f885f?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/1cecbbbf807db641bc40a2327dddc47f182aae9f317f1e5ac2fb9a13d99f885f?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Doaa Mohamed</span></span>                                                            <span class="ago">9 December 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>please , I don’t know how to set link between two nodes<br>
+could you please tell me how ? 🙂</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/implementing-kruskals-algorithm-in-c/?replytocom=2712#respond" data-commentid="2712" data-postid="844" data-belowelement="comment-2712" data-respondelement="respond" data-replyto="Reply to Doaa Mohamed" aria-label="Reply to Doaa Mohamed">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-2714">
+    		                    <div id="comment-2714" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">10 December 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>1. Hold down your keyboard’s Control button.<br>
+2. Left-mouse-click on the two nodes you wish to set the link between.</p>
+<p>That should be it.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/implementing-kruskals-algorithm-in-c/?replytocom=2714#respond" data-commentid="2714" data-postid="844" data-belowelement="comment-2714" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-11014">
+    		                    <div id="comment-11014" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/b0c13c539bbe757ea850e834b21d5e374ceaa6b6e3b115c5a242cbd5fe41c5cf?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/b0c13c539bbe757ea850e834b21d5e374ceaa6b6e3b115c5a242cbd5fe41c5cf?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Priyanka Jadhav</span></span>                                                            <span class="ago">5 August 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Its simply nice implementation of Kruskal Algo…..keep it up!!!!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/implementing-kruskals-algorithm-in-c/?replytocom=11014#respond" data-commentid="11014" data-postid="844" data-belowelement="comment-11014" data-respondelement="respond" data-replyto="Reply to Priyanka Jadhav" aria-label="Reply to Priyanka Jadhav">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-25770">
+    		                    <div id="comment-25770" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/965cd15d112b73503dc134b5ab7a6046e61ce014a09e9206ff0179c3a2e7907b?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/965cd15d112b73503dc134b5ab7a6046e61ce014a09e9206ff0179c3a2e7907b?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">sadrettin dalan</span></span>                                                            <span class="ago">6 May 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>this code does not draw a path</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/implementing-kruskals-algorithm-in-c/?replytocom=25770#respond" data-commentid="25770" data-postid="844" data-belowelement="comment-25770" data-respondelement="respond" data-replyto="Reply to sadrettin dalan" aria-label="Reply to sadrettin dalan">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-25781">
+    		                    <div id="comment-25781" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">6 May 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>That’s right.  It finds and draws minimal spanning trees not paths.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/implementing-kruskals-algorithm-in-c/?replytocom=25781#respond" data-commentid="25781" data-postid="844" data-belowelement="comment-25781" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-56373">
+    		                    <div id="comment-56373" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/2b65ea0abb4ff22bb08943aa497dbff7ad2f06d4f95fae06c80dbe878fddce14?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/2b65ea0abb4ff22bb08943aa497dbff7ad2f06d4f95fae06c80dbe878fddce14?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Nguyễn Duy Khoa</span></span>                                                            <span class="ago">24 June 2020</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Can you make Prim with the same code and make the choose vertex for starting Alogirm</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/implementing-kruskals-algorithm-in-c/?replytocom=56373#respond" data-commentid="56373" data-postid="844" data-belowelement="comment-56373" data-respondelement="respond" data-replyto="Reply to Nguyễn Duy Khoa" aria-label="Reply to Nguyễn Duy Khoa">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			
+		</div>
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2011/implementing-kruskals-algorithm-in-c/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="844" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-csharp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

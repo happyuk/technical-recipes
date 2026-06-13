@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>How to interface with Excel in C++ – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » How to interface with Excel in C++ Comments Feed" href="/2012/how-to-interface-with-excel-in-c/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2012%2Fhow-to-interface-with-excel-in-c%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2012%2Fhow-to-interface-with-excel-in-c%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/3109"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2012/how-to-interface-with-excel-in-c/">
+<link rel="shortlink" href="/?p=3109">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-3109 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-3109" class="g post post-3109 type-post status-publish format-standard hentry category-c-mfc category-windows tag-c-net-mfc tag-c-mfc tag-com tag-excel tag-interface tag-interfacing tag-microsoft-excel tag-open tag-read tag-spreadsheet tag-write">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/c-mfc/" itemprop="item"><span itemprop="name">C++ / MFC / STL</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">How to interface with Excel in C++</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">How to interface with Excel in C++</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>16 September 2012</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/c-mfc/" title="View all posts in C++ / MFC / STL">C++ / MFC / STL</a>, <a href="/category/windows/" title="View all posts in Windows">Windows</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2012/how-to-interface-with-excel-in-c/#comments" itemprop="interactionCount">42 Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p>Interfacing Excel in C++ is task that I needed to overcome recently, so I thought I would post some code and instructions on the said topic. Some online articles that I found to be useful include the following:<br>
+<span id="more-3109"></span><br>
+<a href="http://www.maths.manchester.ac.uk/~ahazel/EXCEL_C++.pdf">A Brief Introduction to C++ and Interfacing with Excel</a><br>
+<a href="http://www.codeproject.com/Articles/15837/Accessing-Excel-Spreadsheets-via-C">Accessing Excel Spreadsheets via C++</a><br>
+<a href="http://www.drdobbs.com/programming-excel-com-objects-in-c/184401222">Programming Excel COM Objects in C++</a></p><p>Without further ado, or huge swathes of boring theory, here are the steps needed to at least get you interfacing with Microsoft Excel via C++:</p><p><strong>1: Ensure pre-requisite files are installed and located</strong></p><p>We must ensure that a number of Microsoft libraries and their file locations have been installed and located, namely <code>MSO.DLL, VBE6EXT.OLB and EXCEL.EXE</code>. Make sure that you have a suitable version of Microsoft Excel installed, any version should do. In this example, Excel 2003 was used.</p><p>The locations of these files will obviously differ from machine to machine, so the first step is to determine their whereabouts. In Windows 7 for example, I recommend using Windows Explorer search facility. To locate (say) ‘<code>VBE6EXT.OLB</code>‘, click on the ‘Computer’ icon at the left, and in the edit box at the upper right simply enter ‘<code>VBE6EXT.OLB</code>‘ and let Explorer do the rest:</p><p><a href="/wp-content/uploads/2012/09/Excel1.jpg"><img fetchpriority="high" decoding="async" class="alignnone wp-image-3118 size-full" title="Excel1" src="" alt="Excel in C++" width="715" height="368" data-layzr="/wp-content/uploads/2012/09/Excel1.jpg"></a></p><p>Right-click on the file and select ‘Open file location’. If you then click inside the file location edit box, this will give you the location you need, which you can then copy and paste:</p><p><a href="/wp-content/uploads/2012/09/Excel2.jpg"><img decoding="async" class="alignnone size-full wp-image-3119" title="Excel2" src="" alt="" width="715" height="368" data-layzr="/wp-content/uploads/2012/09/Excel2.jpg"></a></p><p>In my example, the location of the ‘<code>VBE6EXT.OLB</code>‘ is<br>
+<code>"C:\Program Files (x86)\Common Files\microsoft shared\VBA\VBA6\\VBE6EXT.OLB"</code></p><p>Do the same for the MSO.DLL and EXCEL.EXE files and you are then in a position to proceed to the next step.</p><p><strong>2. Set up the Microsoft libraries</strong></p><p>In order to use Excel functionality from within a C++ program we use the <a href="http://en.wikipedia.org/wiki/Component_Object_Model">Microsoft Component Object Model (COM)</a>. The required import libraries are shown below and need to be included in any C++ application that interfaces with Excel.</p><p>Just use the file directories you found on your own computer for each <code>#import</code>, remembering to replace single backslashes (‘\’) with double backslashes (‘\\’), since the single backslash is classed as a special character:</p><pre class="brush: cpp; title: ; notranslate" title="">
+#import "C:\\Program Files (x86)\\Common Files\\microsoft shared\\OFFICE11\\MSO.DLL" \
+    rename( "RGB", "MSORGB" )
+
+using namespace Office;
+
+#import "C:\\Program Files (x86)\\Common Files\\microsoft shared\\VBA\\VBA6\\VBE6EXT.OLB"
+
+using namespace VBIDE;
+
+#import "C:\\Program Files (x86)\\Microsoft Office\\OFFICE11\\EXCEL.EXE" \
+    rename( "DialogBox", "ExcelDialogBox" ) \
+    rename( "RGB", "ExcelRGB" ) \
+    rename( "CopyFile", "ExcelCopyFile" ) \
+    rename( "ReplaceText", "ExcelReplaceText" ) \
+	exclude( "IFont", "IPicture" ) no_dual_interfaces
+</pre><p><code>rename</code> is used to change certain strings in the import library to avoid clashes with other libraries containing functions, variables or classes with the same name. <code>exclude</code> prevents the import of specified items. <code>no_dual_interfaces</code> must also be included for the correct functioning of the Excel application function.<br>
+<strong><br>
+3. Use the Excel Object Model in your C++ code</strong></p><p>The Excel Object Model contains a huge number of functions and objects. We will concentrate on just a few of those required to perform this tasks of reading from and writing to the Excel spreadsheet. Declaring an Excel Application Object pointer is simple enough:</p><pre class="brush: cpp; title: ; notranslate" title="">
+Excel::_ApplicationPtr pXL;
+</pre><p>Once created, we can use this pointer to open for reading and writing our Excel Workbook of choice:</p><pre class="brush: cpp; title: ; notranslate" title="">
+pXL-&gt;Workbooks-&gt;Open( L"C:\\dump\\book.xls" );
+</pre><p>Set the <code>Visible </code>parameter depending on whether you would like the Excel spreadsheet to be displayed or not:</p><pre class="brush: cpp; title: ; notranslate" title="">
+pXL-&gt;Visible = false;  
+</pre><p>This is how we can access the active Excel Worksheet and the cells within it:</p><pre class="brush: cpp; title: ; notranslate" title="">
+	Excel::_WorksheetPtr pWksheet = pXL-&gt;ActiveSheet;
+	Excel::RangePtr pRange = pWksheet-&gt;Cells;
+</pre><p>To read the values of individual cells, simply use the <code>Excel::RangePtr</code> pointer above, remembering that in Excel cells must start from index = 1:</p><pre class="brush: cpp; title: ; notranslate" title="">
+double value = pRange-&gt;Item[1][1];
+</pre><p>While writing and modifying individual cells is just as straightforward:</p><pre class="brush: cpp; title: ; notranslate" title="">
+pRange-&gt;Item[1][1] = 5.4321;
+</pre><p>For example, I use the following simple Excel worksheet with a few modified cells:</p><p><a href="/wp-content/uploads/2012/09/ExcelCpp1.jpg"><img decoding="async" class="alignnone size-full wp-image-4929" src="" alt="ExcelCpp1" width="594" height="327" data-layzr="/wp-content/uploads/2012/09/ExcelCpp1.jpg"></a></p><p>I then run the example code in order to read the cell values, modify them and save the spreadsheet respectively:</p><p><a href="/wp-content/uploads/2012/09/ExcelCpp2.jpg"><img decoding="async" class="alignnone size-full wp-image-4930" src="" alt="ExcelCpp2" width="429" height="199" data-layzr="/wp-content/uploads/2012/09/ExcelCpp2.jpg"></a></p><p>Upon re-opening the spreadsheet “book.xls” notice how the cells have been updated and saved:</p><p><a href="/wp-content/uploads/2012/09/ExcelCpp3.jpg"><img decoding="async" class="alignnone size-full wp-image-4931" src="" alt="ExcelCpp3" width="594" height="327" data-layzr="/wp-content/uploads/2012/09/ExcelCpp3.jpg"></a></p><p><strong>Full code listing: Office 2003 Example</strong></p><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;iostream&gt;
+ 
+// Make sure your file paths for MSO.DLL, VBE6EXT.OLB and EXCEL.EXE are 100% correct
+// For 32-bit systems the file path is usually "C:\\Program Files\\..."
+// For 64-bit systems the file path is usually "C:\\Program Files (x86)\\..."
+ 
+// #import "C:\\Program Files (x86)\\Common Files\\microsoft shared\\OFFICE11\\MSO.DLL"
+#import "C:\\Program Files\\Common Files\\Microsoft Shared\\OFFICE11\\MSO.DLL" \
+    rename( "RGB", "MSORGB" ) 
+  
+using namespace Office;
+ 
+//#import "C:\\Program Files (x86)\\Common Files\\microsoft shared\\VBA\\VBA6\\VBE6EXT.OLB"  
+#import "C:\Program Files\\Common Files\\microsoft shared\\VBA\\VBA6\\VBE6EXT.OLB"  
+       
+using namespace VBIDE;  
+       
+// #import "C:\\Program Files (x86)\\Microsoft Office\\OFFICE11\\EXCEL.EXE"   
+#import "C:\\Program Files\\Microsoft Office\\OFFICE11\\EXCEL.EXE" \
+    rename( "DialogBox", "ExcelDialogBox" ) \
+    rename( "RGB", "ExcelRGB" ) \
+    rename( "CopyFile", "ExcelCopyFile" ) \
+    rename( "ReplaceText", "ExcelReplaceText" )
+ 
+int main()  
+{  
+    HRESULT hr = CoInitializeEx(0, COINIT_MULTITHREADED);   
+    if (FAILED(hr))   
+    {  
+        std::cout &lt;&lt; "Failed to initialize COM library. Error code = 0x" 
+            &lt;&lt; std::hex &lt;&lt; hr &lt;&lt; std::endl;   
+        return hr;  
+    }  
+       
+    // Create Excel Application Object pointer  
+    Excel::_ApplicationPtr pXL;  
+       
+    if ( FAILED( pXL.CreateInstance( "Excel.Application" ) ) )  
+    {  
+        std::cout &lt;&lt; "Failed to initialize Excel::_Application!" &lt;&lt; std::endl;  
+        return 0;  
+    }  
+           
+    // Open the Excel Workbook, but don't make it visible  
+    pXL-&gt;Workbooks-&gt;Open( L"C:\\dump\\book.xls" );  
+    //pXL-&gt;Visible[ 0 ] = false;   // sometimes generates error?
+    pXL-&gt;PutVisible(0, FALSE);
+       
+    // Access Excel Worksheet and return pointer to Worksheet cells  
+    Excel::_WorksheetPtr pWksheet = pXL-&gt;ActiveSheet;  
+ 
+    pWksheet-&gt;Name = L"Sheet1";
+ 
+    Excel::RangePtr pRange = pWksheet-&gt;Cells;  
+ 
+    // Read an Excel data cell. (Note Excel cells start from index = 1)
+    double value1 = pRange-&gt;Item[1][1];
+    std::cout &lt;&lt; "Value in CELL [1][1] = " &lt;&lt; value1 &lt;&lt; std::endl;
+    double value2 = pRange-&gt;Item[1][2];
+    std::cout &lt;&lt; "Value in CELL [1][2] = " &lt;&lt; value2 &lt;&lt; std::endl;
+ 
+    // Write/modify Excel data cells + save. (reopen xls file to verify)
+    std::cout &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Modifying Excel cell values..." &lt;&lt; std::endl;
+    std::cout &lt;&lt; std::endl;
+    pRange-&gt;Item[1][1] = 5.4321;  
+    pRange-&gt;Item[1][2] = 1.1211;
+ 
+    // Output new value
+    value1 = pRange-&gt;Item[1][1];
+    std::cout &lt;&lt; "New value in CELL [1][1] = " &lt;&lt; value1 &lt;&lt; std::endl;
+    value2 = pRange-&gt;Item[1][2];
+    std::cout &lt;&lt; "New value in CELL [1][2] = " &lt;&lt; value2 &lt;&lt; std::endl;
+ 
+    // Switch off alert prompting to save as 
+    pXL-&gt;PutDisplayAlerts( LOCALE_USER_DEFAULT, VARIANT_FALSE );
+ 
+    // Save the values in book.xml and release resources
+    pWksheet-&gt;SaveAs( "C:\\dump\\book.xls" );
+    pWksheet-&gt;Release();
+ 
+    // And switch back on again...
+    pXL-&gt;PutDisplayAlerts( LOCALE_USER_DEFAULT, VARIANT_TRUE );  
+ 
+    pXL-&gt;Quit();
+ 
+    return 0;  
+}  
+</pre><p><strong>Full code listing: Office 2013 Example</strong></p><p>The following example was also seen to work on a more recent version of Excel (2013).</p><p>One or two differences in where the pre-requisite import files, executables etc were located but that’s about it:</p><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;iostream&gt;
+  
+// Make sure your file paths for MSO.DLL, VBE6EXT.OLB and EXCEL.EXE are 100% correct
+#import "C:\\Program Files\\Microsoft Office 15\\root\\vfs\\ProgramFilesCommonX86\\Microsoft Shared\\OFFICE15\\MSO.DLL" \
+    rename( "RGB", "MSORGB" )  \
+	rename( "DocumentProperties", "DocumentPropertiesXL" ) no_dual_interfaces 
+   
+using namespace Office;
+   
+#import "C:\\Program Files\\Microsoft Office 15\\root\\vfs\\ProgramFilesCommonX86\\Microsoft Shared\\VBA\\VBA6\\VBE6EXT.OLB"
+        
+using namespace VBIDE;  
+        
+#import "C:\\Program Files\\Microsoft Office 15\\root\\office15\\EXCEL.EXE" \
+	exclude("IFont", "IPicture")  \
+    rename( "DialogBox", "ExcelDialogBox" ) \
+    rename( "RGB", "ExcelRGB" ) \
+    rename( "CopyFile", "ExcelCopyFile" ) \
+    rename( "ReplaceText", "ExcelReplaceText" )
+  
+int main()  
+{  
+    HRESULT hr = CoInitializeEx(0, COINIT_MULTITHREADED);   
+    if (FAILED(hr))   
+    {  
+        std::cout &lt;&lt; "Failed to initialize COM library. Error code = 0x"
+            &lt;&lt; std::hex &lt;&lt; hr &lt;&lt; std::endl;   
+        return hr;  
+    }  
+        
+    // Create Excel Application Object pointer  
+    Excel::_ApplicationPtr pXL;  
+        
+    if ( FAILED( pXL.CreateInstance( "Excel.Application" ) ) )  
+    {  
+        std::cout &lt;&lt; "Failed to initialize Excel::_Application!" &lt;&lt; std::endl;  
+        return 0;  
+    }  
+            
+    // Open the Excel Workbook, but don't make it visible  
+    pXL-&gt;Workbooks-&gt;Open( L"C:\\dump\\book.xls" );  
+    //pXL-&gt;Visible[ 0 ] = false;   // sometimes generates error?
+    pXL-&gt;PutVisible(0, FALSE);
+        
+    // Access Excel Worksheet and return pointer to Worksheet cells  
+    Excel::_WorksheetPtr pWksheet = pXL-&gt;ActiveSheet;  
+  
+    pWksheet-&gt;Name = L"Sheet1";
+  
+    Excel::RangePtr pRange = pWksheet-&gt;Cells;  
+  
+    // Read an Excel data cell. (Note Excel cells start from index = 1)
+    double value1 = pRange-&gt;Item[1][1];
+    std::cout &lt;&lt; "Value in CELL [1][1] = " &lt;&lt; value1 &lt;&lt; std::endl;
+    double value2 = pRange-&gt;Item[1][2];
+    std::cout &lt;&lt; "Value in CELL [1][2] = " &lt;&lt; value2 &lt;&lt; std::endl;
+  
+    // Write/modify Excel data cells + save. (reopen xls file to verify)
+    std::cout &lt;&lt; std::endl;
+    std::cout &lt;&lt; "Modifying Excel cell values..." &lt;&lt; std::endl;
+    std::cout &lt;&lt; std::endl;
+    pRange-&gt;Item[1][1] = 5.4321;  
+    pRange-&gt;Item[1][2] = 1.1211;
+  
+    // Output new value
+    value1 = pRange-&gt;Item[1][1];
+    std::cout &lt;&lt; "New value in CELL [1][1] = " &lt;&lt; value1 &lt;&lt; std::endl;
+    value2 = pRange-&gt;Item[1][2];
+    std::cout &lt;&lt; "New value in CELL [1][2] = " &lt;&lt; value2 &lt;&lt; std::endl;
+  
+    // Switch off alert prompting to save as 
+    pXL-&gt;PutDisplayAlerts( LOCALE_USER_DEFAULT, VARIANT_FALSE );
+  
+    // Save the values in book.xml and release resources
+    pWksheet-&gt;SaveAs( "C:\\dump\\book.xls" );
+    pWksheet-&gt;Release();
+  
+    // And switch back on again...
+    pXL-&gt;PutDisplayAlerts( LOCALE_USER_DEFAULT, VARIANT_TRUE );  
+  
+    pXL-&gt;Quit();
+  
+    return 0;  
+}  
+</pre><p>One final thing – please be aware that any existing Excel processes still running in the background must be closed down before running this program, otherwise errors are likely to occur. For example you may be debugging this program and then decide to exit before <code>pXL-&gt;Quit()</code> is called:</p><p><a href="/wp-content/uploads/2012/09/ExcelCpp4.jpg"><img decoding="async" class="alignnone size-full wp-image-4932" src="" alt="ExcelCpp4" width="404" height="455" data-layzr="/wp-content/uploads/2012/09/ExcelCpp4.jpg"></a></p>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '3109'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2012/how-to-interface-with-excel-in-c/&amp;media=&amp;description=How%20to%20interface%20with%20Excel%20in%20C++" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2015/finding-permutations-in-strings/" title="Finding permutations in strings" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Finding permutations in strings"></div>
+                                                                        <h4 class="title front-view-title">Finding permutations in strings</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2018/how-to-encrypt-basic-authentication-credentials-in-a-web-api-application/" title="How to encrypt basic authentication credentials in a Web Api application" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="How to encrypt basic authentication credentials in a Web Api application"></div>
+                                                                        <h4 class="title front-view-title">How to encrypt basic authentication credentials in a Web Api application</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2012/factory-patterns-in-c/" title="Factory Patterns in C++" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Factory Patterns in C++"></div>
+                                                                        <h4 class="title front-view-title">Factory Patterns in C++</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-4381">
+    		                    <div id="comment-4381" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/ab66c3f6e540b8fbdb3f6fc3e5f16444b4bdb0aac5ac862eaea3b200cfb106c0?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/ab66c3f6e540b8fbdb3f6fc3e5f16444b4bdb0aac5ac862eaea3b200cfb106c0?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Praveen Jesudhas</span></span>                                                            <span class="ago">5 June 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Is it possible to do these import statements dynamically, so that it could be made to work for different versions of excel.</p>
+<p>Is it possible to do something like LoadLibrary</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=4381#respond" data-commentid="4381" data-postid="3109" data-belowelement="comment-4381" data-respondelement="respond" data-replyto="Reply to Praveen Jesudhas" aria-label="Reply to Praveen Jesudhas">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    </ol><ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-6167">
+    		                    <div id="comment-6167" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">22 March 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>No idea at this time.  Suggestions anyone?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=6167#respond" data-commentid="6167" data-postid="3109" data-belowelement="comment-6167" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even depth-2" id="li-comment-45840">
+    		                    <div id="comment-45840" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/f174f32de3541ee1b96d29f764a6d4913e6d8ccebac7cfa6b1c59c32c6bc2c18?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/f174f32de3541ee1b96d29f764a6d4913e6d8ccebac7cfa6b1c59c32c6bc2c18?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Mai</span></span>                                                            <span class="ago">1 April 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>No, These are COM objects and Interfaces, and hence versioned. I.e each Excel .EXE and it’s associated libraries are exposed thru a specific COM interface(that has a  specific GUID). Therefore,  the COM interface for Excel 2003, would be different to the COM Interface for Excel 2010  – for example.<br>
+LoadLibrary is used to load DLLs, and even though COM Objects lve in DLLs, they are invoked the the use of the COM SUbsystem  API (CoCreateInatance, QueryInterface etc)</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=45840#respond" data-commentid="45840" data-postid="3109" data-belowelement="comment-45840" data-respondelement="respond" data-replyto="Reply to Mai" aria-label="Reply to Mai">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-6165">
+    		                    <div id="comment-6165" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/62719ed349be6394e215b28895404d2083ae2066769085b137a25f2baf23fb18?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/62719ed349be6394e215b28895404d2083ae2066769085b137a25f2baf23fb18?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">iyad</span></span>                                                            <span class="ago">22 March 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Im trying to use this code but there are some errors such as” illegal escape sequence” at this line<br>
+#import “C:\\Program Files (x86)\\Common Files\\microsoft shared\\OFFICE11\\MSO.DLL” \<br>
+    rename( “RGB”, “MSORGB” )<br>
+note : I put 15 instead of 11<br>
+any help ?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=6165#respond" data-commentid="6165" data-postid="3109" data-belowelement="comment-6165" data-respondelement="respond" data-replyto="Reply to iyad" aria-label="Reply to iyad">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-6166">
+    		                    <div id="comment-6166" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">22 March 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Iyad.  Can you verify that what you posted is the EXACT location of your MSO.DLL file?<br>
+It may well be a lot different to my example.  Find this out and get back to me.  Andy</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=6166#respond" data-commentid="6166" data-postid="3109" data-belowelement="comment-6166" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-7870">
+    		                    <div id="comment-7870" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/96ef01c7f8bb3e40aa797352338549dadd3ca93bd6222bbf70a43620ced5594a?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/96ef01c7f8bb3e40aa797352338549dadd3ca93bd6222bbf70a43620ced5594a?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">exsan</span></span>                                                            <span class="ago">2 June 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I am using MS Visual Studio Express 2013<br>
+it seems not compatible yet ??</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=7870#respond" data-commentid="7870" data-postid="3109" data-belowelement="comment-7870" data-respondelement="respond" data-replyto="Reply to exsan" aria-label="Reply to exsan">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-7895">
+    		                    <div id="comment-7895" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">3 June 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi exsan<br>
+Not tried it with Visual Studio 2013 yet.<br>
+If you get any insights please let me know.<br>
+Andy</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=7895#respond" data-commentid="7895" data-postid="3109" data-belowelement="comment-7895" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-9019">
+    		                    <div id="comment-9019" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/bf5fac89fc2d48c0b3773b5e9944c476ed131ee537935ac112e171ff27dcc2fc?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/bf5fac89fc2d48c0b3773b5e9944c476ed131ee537935ac112e171ff27dcc2fc?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Developer</span></span>                                                            <span class="ago">30 June 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>hi,<br>
+[some one have asked it earlier too but.. ] Do anyone have any idea on how to import these dynamically.?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=9019#respond" data-commentid="9019" data-postid="3109" data-belowelement="comment-9019" data-respondelement="respond" data-replyto="Reply to Developer" aria-label="Reply to Developer">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-9569">
+    		                    <div id="comment-9569" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/1027f1521ec9c5aae871a6d42c93f5bd2792af19229f6886cddd2ffb0a4953ea?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/1027f1521ec9c5aae871a6d42c93f5bd2792af19229f6886cddd2ffb0a4953ea?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Polyhedron</span></span>                                                            <span class="ago">8 July 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>After the SaveAs, you should add a pWksheet-&gt;Release(), or the excel.exe process won’t release and if you try to open this file, it will say the file is locked.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=9569#respond" data-commentid="9569" data-postid="3109" data-belowelement="comment-9569" data-respondelement="respond" data-replyto="Reply to Polyhedron" aria-label="Reply to Polyhedron">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-9626">
+    		                    <div id="comment-9626" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">8 July 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks and well spotted.  Will update accordingly…</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=9626#respond" data-commentid="9626" data-postid="3109" data-belowelement="comment-9626" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-11749">
+    		                    <div id="comment-11749" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/7d27b20dbc2a4e936886c786edce8fbbbbd141996f92ed05a8319184336573ad?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/7d27b20dbc2a4e936886c786edce8fbbbbd141996f92ed05a8319184336573ad?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">macuna</span></span>                                                            <span class="ago">21 August 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>thanks happyuk. I am using VS 2012 and Office 365 and it doesn’t work. In my other laptop it works very well with VS 2012 and Office 2010. Can anyone please tell me if it works with Office 2013?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=11749#respond" data-commentid="11749" data-postid="3109" data-belowelement="comment-11749" data-respondelement="respond" data-replyto="Reply to macuna" aria-label="Reply to macuna">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-11783">
+    		                    <div id="comment-11783" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">21 August 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi<br>
+I have only tested this with Office 2003.  I would be interested<br>
+to know of other people’s experience.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=11783#respond" data-commentid="11783" data-postid="3109" data-belowelement="comment-11783" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-11994">
+    		                    <div id="comment-11994" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/83e6fa261e7c43bdece480b4a995611c08dd28c5f4fa61faf4845c164bbee35d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/83e6fa261e7c43bdece480b4a995611c08dd28c5f4fa61faf4845c164bbee35d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="http://none/" class="url" rel="ugc external nofollow">Gidon</a></span></span>                                                            <span class="ago">24 August 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks, right to the point..<br>
+havent tried it yet though.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=11994#respond" data-commentid="11994" data-postid="3109" data-belowelement="comment-11994" data-respondelement="respond" data-replyto="Reply to Gidon" aria-label="Reply to Gidon">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="trackback odd alt thread-odd thread-alt depth-1" id="li-comment-19056">
+    		                    <div id="comment-19056">
+                        <div class="comment-author vcard">
+                            Pingback: <a href="http://www.quora.com/How-do-I-parse-excel-files-in-c++#ans8410281" class="url" rel="ugc external nofollow">Quora</a>                                                            <span class="ago">3 December 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                            </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-26499">
+    		                    <div id="comment-26499" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/25b13770d79ebfc32c4107cc159c85bed63a8ae4f924c563cc9024710da5ac5e?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/25b13770d79ebfc32c4107cc159c85bed63a8ae4f924c563cc9024710da5ac5e?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Lasse</span></span>                                                            <span class="ago">8 June 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Works fine with studio 2012 and Excel 2010.<br>
+But how can I format a cell to text?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=26499#respond" data-commentid="26499" data-postid="3109" data-belowelement="comment-26499" data-respondelement="respond" data-replyto="Reply to Lasse" aria-label="Reply to Lasse">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-29830">
+    		                    <div id="comment-29830" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/f3bc79930396419c9759c548b192bbf927742413b3e5ddac279c30d54061b7a4?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/f3bc79930396419c9759c548b192bbf927742413b3e5ddac279c30d54061b7a4?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">CJV</span></span>                                                            <span class="ago">13 September 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>If a worksheet is to be already open, how can I set pXL? Also., relatedly, a data feed will be changing the values of the cell in Excel. Can I presume I will return the current  value rather than the last saved one?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=29830#respond" data-commentid="29830" data-postid="3109" data-belowelement="comment-29830" data-respondelement="respond" data-replyto="Reply to CJV" aria-label="Reply to CJV">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-29831">
+    		                    <div id="comment-29831" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/f3bc79930396419c9759c548b192bbf927742413b3e5ddac279c30d54061b7a4?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/f3bc79930396419c9759c548b192bbf927742413b3e5ddac279c30d54061b7a4?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">CJV</span></span>                                                            <span class="ago">13 September 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Also, what is the best design if speed is of the essence? Is this approach preferred to some of the other libraries available?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=29831#respond" data-commentid="29831" data-postid="3109" data-belowelement="comment-29831" data-respondelement="respond" data-replyto="Reply to CJV" aria-label="Reply to CJV">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-29884">
+    		                    <div id="comment-29884" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">14 September 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I have not looked into these issues.  If you get any insights I would be very interested to know.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=29884#respond" data-commentid="29884" data-postid="3109" data-belowelement="comment-29884" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-31031">
+    		                    <div id="comment-31031" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/20811c52ef45b3221cfb1e4885798583067f06a33c199037659967af7479333f?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/20811c52ef45b3221cfb1e4885798583067f06a33c199037659967af7479333f?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Kirk</span></span>                                                            <span class="ago">14 October 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I’m getting an error that says “Missing or incorrect TypeLibImport.dll”.  How can I fix this?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=31031#respond" data-commentid="31031" data-postid="3109" data-belowelement="comment-31031" data-respondelement="respond" data-replyto="Reply to Kirk" aria-label="Reply to Kirk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-31099">
+    		                    <div id="comment-31099" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">15 October 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Kirk sounds like a missing dll however I’ve not come across this.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=31099#respond" data-commentid="31099" data-postid="3109" data-belowelement="comment-31099" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-31495">
+    		                    <div id="comment-31495" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/20811c52ef45b3221cfb1e4885798583067f06a33c199037659967af7479333f?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/20811c52ef45b3221cfb1e4885798583067f06a33c199037659967af7479333f?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Kirk</span></span>                                                            <span class="ago">23 October 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Here are the locations of the MSO.dll and VBA6EXT.OLB and where Excel is installed. Thoughts?  I’m using CodeBlocks 13.12 and the BCC32 compiler.</p>
+<p>#import “C:\\Program Files (x86)\\Common Files\\microsoft<br>
+shared\OFFICE12\\MSO.DLL”\<br>
+    rename( “RGB”, “MSORGB” )</p>
+<p>#import “C:\\Program Files (x86)\\Common Files\\microsoft shared\\VBA\\VBA6\\VBE6EXT.OLB”</p>
+<p>#import “C:\\Program Files (x86)\\Microsoft Office\\Office12\\EXCEL.EXE” \<br>
+    rename( “DialogBox”, “ExcelDialogBox” ) \<br>
+    rename( “RGB”, “ExcelRGB” ) \<br>
+    rename( “CopyFile”, “ExcelCopyFile” ) \<br>
+    rename( “ReplaceText”, “ExcelReplaceText” )</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=31495#respond" data-commentid="31495" data-postid="3109" data-belowelement="comment-31495" data-respondelement="respond" data-replyto="Reply to Kirk" aria-label="Reply to Kirk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-31990">
+    		                    <div id="comment-31990" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/2bc93d2427b4f8addd53979fdfeb7a2f331a3a7f0800fb8b24906bd0bfd599cb?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/2bc93d2427b4f8addd53979fdfeb7a2f331a3a7f0800fb8b24906bd0bfd599cb?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Fabian</span></span>                                                            <span class="ago">2 November 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I get a compiler error at the line: 	double value1 = pRange-&gt;Item[1][1];</p>
+<p>Error: Expression must be a pointer to a object type</p>
+<p>Is this because I’m using Office 2013 and VS 2013? Or can I solve this problem?</p>
+<p>If this will not work with Office 2013 and VS 2013, is there an other easy way to read the data of an excel file with a c++ programm?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=31990#respond" data-commentid="31990" data-postid="3109" data-belowelement="comment-31990" data-respondelement="respond" data-replyto="Reply to Fabian" aria-label="Reply to Fabian">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-31993">
+    		                    <div id="comment-31993" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">2 November 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Fabian<br>
+I’ve not yet tried this out with Office / VS 2013.<br>
+I Would appreciate any insights you get on the way…</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=31993#respond" data-commentid="31993" data-postid="3109" data-belowelement="comment-31993" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-33122">
+    		                    <div id="comment-33122" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/28c04c1d413e2a8169544cd0c2ac1b00ae5e287d2f3ce06b1fb495a0f4a02e95?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/28c04c1d413e2a8169544cd0c2ac1b00ae5e287d2f3ce06b1fb495a0f4a02e95?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">surbhi</span></span>                                                            <span class="ago">2 December 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>How to change properties of text such as colour, alignment and various others using the above .</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=33122#respond" data-commentid="33122" data-postid="3109" data-belowelement="comment-33122" data-respondelement="respond" data-replyto="Reply to surbhi" aria-label="Reply to surbhi">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-33341">
+    		                    <div id="comment-33341" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">8 December 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Surbhi not looked at this yet, just the very basic stuff.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=33341#respond" data-commentid="33341" data-postid="3109" data-belowelement="comment-33341" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-39141">
+    		                    <div id="comment-39141" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/fb81b6e92536a8287724eaeaf0f1b57801406910a25f4102510b3dba3c285d94?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/fb81b6e92536a8287724eaeaf0f1b57801406910a25f4102510b3dba3c285d94?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Heinrich</span></span>                                                            <span class="ago">18 February 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>When i am trying to Import the Excel files(Excel2010), the Compiler never stops and the number of warnings Keep increasing. The rest of the code works until i try to use the #import</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=39141#respond" data-commentid="39141" data-postid="3109" data-belowelement="comment-39141" data-respondelement="respond" data-replyto="Reply to Heinrich" aria-label="Reply to Heinrich">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-40589">
+    		                    <div id="comment-40589" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/633091a76b93ef0e2d7cf2f0082aec7ab39000499f304b2cf4e10313367a9535?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/633091a76b93ef0e2d7cf2f0082aec7ab39000499f304b2cf4e10313367a9535?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Baqrie</span></span>                                                            <span class="ago">31 March 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I’ve tried with excel 2013 or 2016 and VS 2010. It works well. The different are the address of MSO.dll and excel.exe</p>
+<p>#import “C:\\Program Files\\Common Files\\Microsoft Shared\\OFFICE15\\MSO.DLL” \<br>
+    rename(“RGB”, “MSORGB”) \<br>
+    rename(“DocumentProperties”, “MSODocumentProperties”)</p>
+<p>using namespace Office;</p>
+<p>#import “C:\\Program Files (x86)\\Common Files\\Microsoft Shared\\VBA\\VBA6\\VBE6EXT.OLB”</p>
+<p>using namespace VBIDE;</p>
+<p>#import “C:\\Program Files\\Microsoft Office\\Office15\\EXCEL.EXE” \<br>
+    rename(“DialogBox”, “ExcelDialogBox”) \<br>
+    rename(“RGB”, “ExcelRGB”) \<br>
+    rename(“CopyFile”, “ExcelCopyFile”) \<br>
+    rename(“ReplaceText”, “ExcelReplaceText”) \<br>
+    no_auto_exclude</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=40589#respond" data-commentid="40589" data-postid="3109" data-belowelement="comment-40589" data-respondelement="respond" data-replyto="Reply to Baqrie" aria-label="Reply to Baqrie">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-41314">
+    		                    <div id="comment-41314" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/380a0eaf75acc3017f8755aef6ef69bd698d5d15346d03cb4a889d73ba634011?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/380a0eaf75acc3017f8755aef6ef69bd698d5d15346d03cb4a889d73ba634011?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Ben</span></span>                                                            <span class="ago">1 June 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi,</p>
+<p>I am a newbie in C++ and I was trying to use the code with eclipse and Mingw and I got stuck with the error on the line “using namespace Office;” and “using namespace VBIDE;”. Eclipse says “Symbol Office/VBIDE could not be resolved”. Is there any work around on this issue, please help.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=41314#respond" data-commentid="41314" data-postid="3109" data-belowelement="comment-41314" data-respondelement="respond" data-replyto="Reply to Ben" aria-label="Reply to Ben">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-3" id="li-comment-41360">
+    		                    <div id="comment-41360" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">5 June 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hello Baqrie.  Sorry for the delay in replying.  This is not an area I have looked at yet.  Let me know if you get any further insights.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=41360#respond" data-commentid="41360" data-postid="3109" data-belowelement="comment-41360" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-40590">
+    		                    <div id="comment-40590" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/633091a76b93ef0e2d7cf2f0082aec7ab39000499f304b2cf4e10313367a9535?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/633091a76b93ef0e2d7cf2f0082aec7ab39000499f304b2cf4e10313367a9535?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Baqrie</span></span>                                                            <span class="ago">31 March 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>To change some properties, this is what I did:</p>
+<p>  Excel::_WorksheetPtr sht_Result = spXlBook-&gt;Worksheets-&gt;GetItem(L”sheet1″);<br>
+  Excel::RangePtr rng_result = sht_Result -&gt;GetRange(L”result”);<br>
+  rng_result -&gt;Font-&gt;Bold = VARIANT_TRUE; // make font Bold<br>
+  rng_result -&gt;Font-&gt;Name = L”Arial”; //set the font name to Arial<br>
+  rng_result -&gt;HorizontalAlignment = Excel::xlCenter; // set horizontal Alignment to center<br>
+  rng_result -&gt;Borders-&gt;LineStyle = Excel::xlContinuous; // set border<br>
+  rng_result -&gt;Borders-&gt;Weight = Excel::xlThick; // set border thickness</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=40590#respond" data-commentid="40590" data-postid="3109" data-belowelement="comment-40590" data-respondelement="respond" data-replyto="Reply to Baqrie" aria-label="Reply to Baqrie">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-40604">
+    		                    <div id="comment-40604" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">31 March 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Baqrie that’s a great bit of feedback that will benefit those using the more recent versions of Excel.<br>
+Thanks a lot!<br>
+Andy</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=40604#respond" data-commentid="40604" data-postid="3109" data-belowelement="comment-40604" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-42575">
+    		                    <div id="comment-42575" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/802c7f4361e75952cfcc49e599bb9747428f123eb709ff789df6eefdd4f933a6?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/802c7f4361e75952cfcc49e599bb9747428f123eb709ff789df6eefdd4f933a6?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">pradeep</span></span>                                                            <span class="ago">4 September 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I get a compiler error at the line: double value1 = pRange-&gt;Item[1][1];<br>
+Error: Expression must be a pointer to a object type.</p>
+<p>i am using excel 2007. please help</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=42575#respond" data-commentid="42575" data-postid="3109" data-belowelement="comment-42575" data-respondelement="respond" data-replyto="Reply to pradeep" aria-label="Reply to pradeep">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-45061">
+    		                    <div id="comment-45061" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/972b703e3426ed4a2db5cbfdc90bb56a5ee27e5ec2b6c8a806c34c7720917e1d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/972b703e3426ed4a2db5cbfdc90bb56a5ee27e5ec2b6c8a806c34c7720917e1d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Ash</span></span>                                                            <span class="ago">20 January 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I am using VS 2005 / Excel 2010 , im getting type mismatch while opening the workbook-&gt;open.<br>
+Anyone with inputs?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=45061#respond" data-commentid="45061" data-postid="3109" data-belowelement="comment-45061" data-respondelement="respond" data-replyto="Reply to Ash" aria-label="Reply to Ash">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-45985">
+    		                    <div id="comment-45985" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/db3c749498d26fd384673347fb9e2e6228c126da2abc433112c9af2772dc82c1?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/db3c749498d26fd384673347fb9e2e6228c126da2abc433112c9af2772dc82c1?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">John</span></span>                                                            <span class="ago">14 April 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>The code works great with VS2017 and Excel 2010 using correct file locations. However where can I obtain details of the COM object model for Excel? ie  -&gt;Get Range(), -&gt;GetItem()and what else??? Where are these documented please?</p>
+<p>Thanks.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=45985#respond" data-commentid="45985" data-postid="3109" data-belowelement="comment-45985" data-respondelement="respond" data-replyto="Reply to John" aria-label="Reply to John">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-45993">
+    		                    <div id="comment-45993" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">15 April 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>It’s the Excel Object Model you want which contains over 200 objects and a vast number of associated functions.  </p>
+<p><a href="https://msdn.microsoft.com/en-us/library/office/ff194068.aspx" rel="nofollow ugc">https://msdn.microsoft.com/en-us/library/office/ff194068.aspx</a></p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=45993#respond" data-commentid="45993" data-postid="3109" data-belowelement="comment-45993" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-46069">
+    		                    <div id="comment-46069" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/23954be109c46ce98eeb48661ba0e9666b927a67796585f7d0869e4c9a934d6a?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/23954be109c46ce98eeb48661ba0e9666b927a67796585f7d0869e4c9a934d6a?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">jilu</span></span>                                                            <span class="ago">27 April 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>where can i get the excel api documentation for c++</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=46069#respond" data-commentid="46069" data-postid="3109" data-belowelement="comment-46069" data-respondelement="respond" data-replyto="Reply to jilu" aria-label="Reply to jilu">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-49679">
+    		                    <div id="comment-49679" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/0be41ab43b614a63bc51d5da2faff2ca6bddd21cba4e1f03322b5ea9a8f96b94?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/0be41ab43b614a63bc51d5da2faff2ca6bddd21cba4e1f03322b5ea9a8f96b94?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Tuvi</span></span>                                                            <span class="ago">4 August 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>VS2017 and Office 2013 here. Work great, with modified file location. Thanks. Great tutorial.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=49679#respond" data-commentid="49679" data-postid="3109" data-belowelement="comment-49679" data-respondelement="respond" data-replyto="Reply to Tuvi" aria-label="Reply to Tuvi">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-49839">
+    		                    <div id="comment-49839" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">16 August 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Tuvi many thanks for the feedback.  Good to see this works with recent versions of Visual Studio.<br>
+Andrew</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=49839#respond" data-commentid="49839" data-postid="3109" data-belowelement="comment-49839" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-51834">
+    		                    <div id="comment-51834" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/9df1ec38bf812a539ce49c89952f8e761609b67e725e19f9304770395ca0b39f?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/9df1ec38bf812a539ce49c89952f8e761609b67e725e19f9304770395ca0b39f?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Usman</span></span>                                                            <span class="ago">30 November 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hello Andy,<br>
+My issue is explained here:<br>
+<a href="https://stackoverflow.com/questions/53515730/delete-excel-sheet-randomly-fails" rel="nofollow ugc">https://stackoverflow.com/questions/53515730/delete-excel-sheet-randomly-fails</a></p>
+<p>In your code,I learned about PutDisplayAlerts( LOCALE_USER_DEFAULT, VARIANT_FALSE );</p>
+<p>I need to put warning prompts off.<br>
+Please help</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=51834#respond" data-commentid="51834" data-postid="3109" data-belowelement="comment-51834" data-respondelement="respond" data-replyto="Reply to Usman" aria-label="Reply to Usman">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-52705">
+    		                    <div id="comment-52705" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/af99322587c3b67fb6fb4e5381bac1976dfb2f0717330e441c2b63f52d6f4fb0?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/af99322587c3b67fb6fb4e5381bac1976dfb2f0717330e441c2b63f52d6f4fb0?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Vishakha</span></span>                                                            <span class="ago">25 January 2019</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I am using VS 2013 and Office 2016. I am getting errors in excel.tlh file mainly because ‘rename’ is not getting declared correctly.  Any help will be appreciated!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=52705#respond" data-commentid="52705" data-postid="3109" data-belowelement="comment-52705" data-respondelement="respond" data-replyto="Reply to Vishakha" aria-label="Reply to Vishakha">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-56358">
+    		                    <div id="comment-56358" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/c510a39dfd03e83ede419284746019bf47374314241dd8a1ebeee4cfbbd1332d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/c510a39dfd03e83ede419284746019bf47374314241dd8a1ebeee4cfbbd1332d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Kushal Gore</span></span>                                                            <span class="ago">22 June 2020</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi,<br>
+This post helped me.<br>
+Using #import directive of VC++, I am able to generate .tli and .tlh files for Excel 2013. I am able to compile and build my application using functions exposed by these 2 files. Basically I am able to read and write into Excel 2013 (.xlsx) format files through my application.</p>
+<p>Now my question is When I run my application on a machine which does not have Excel 2013 installed, will my application work properly? Or it will require Excel 2013 to be installed there ?</p>
+<p>What will happen if I run my application on a machine which has some lower versions of Excel 2013 installed?</p>
+<p>I am using visual studio 2017 with C++ 17 standard.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=56358#respond" data-commentid="56358" data-postid="3109" data-belowelement="comment-56358" data-respondelement="respond" data-replyto="Reply to Kushal Gore" aria-label="Reply to Kushal Gore">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-56628">
+    		                    <div id="comment-56628" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/468033c4945e9178fc337c88fe1ee387043b84a228ab517b991ad30d0d826eb2?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/468033c4945e9178fc337c88fe1ee387043b84a228ab517b991ad30d0d826eb2?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">suraj</span></span>                                                            <span class="ago">4 August 2020</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi, This code help me for creating excel using c++. I just want help in to add .JPG image in excel in fixed cell like (Row-14,Col- A to Row 21,col-G), and image should fitted properly. Please help me with the same and Thanks in advance.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=56628#respond" data-commentid="56628" data-postid="3109" data-belowelement="comment-56628" data-respondelement="respond" data-replyto="Reply to suraj" aria-label="Reply to suraj">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-57565">
+    		                    <div id="comment-57565" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/58bb9f72997bb39f6b21cf0d70031014d997c3f06ab2491fde5877442bd25e0d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/58bb9f72997bb39f6b21cf0d70031014d997c3f06ab2491fde5877442bd25e0d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="http://critisys.com/" class="url" rel="ugc external nofollow">james j enright</a></span></span>                                                            <span class="ago">4 January 2021</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>i sm uding vs2019 , office pro plus 2019 and trying to integrate this into an mfc dlg base app on windows 10. the code does not compile.<br>
+i have made the necessary path changes for the 3 import files so all files are found but am sensing there is some incompatability between the mso.dll and the excel.exe<br>
+file:</p>
+<p>the mso.dll and teh vbe imports compile – the excel.exe import does not compile – here is a portiuon of the comile errors;<br>
+1&gt;C:\Users\j\ExcelAutomation\Debug\excel.tlh(29084,18): error C2027: use of undefined type ‘Excel::Office’<br>
+1&gt;C:\Users\j\ExcelAutomation\Debug\excel.tlh(29076): message : see declaration of ‘Excel::Office’<br>
+1&gt;C:\Users\j\ExcelAutomation\Debug\excel.tlh(29084,35): error C3646: ‘Type’: unknown override specifier<br>
+1&gt;C:\Users\j\ExcelAutomation\Debug\excel.tlh(29098,22): error C2027: use of undefined type ‘Excel::Office’</p>
+<p>would appreciate any insights</p>
+<p>thx – j</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/?replytocom=57565#respond" data-commentid="57565" data-postid="3109" data-belowelement="comment-57565" data-respondelement="respond" data-replyto="Reply to james j enright" aria-label="Reply to james j enright">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			
+		</div>
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2012/how-to-interface-with-excel-in-c/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="3109" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-cpp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

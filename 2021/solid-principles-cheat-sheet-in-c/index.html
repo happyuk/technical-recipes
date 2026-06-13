@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>SOLID Principles cheat sheet in C# – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » SOLID Principles cheat sheet in C# Comments Feed" href="/2021/solid-principles-cheat-sheet-in-c/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2021%2Fsolid-principles-cheat-sheet-in-c%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2021%2Fsolid-principles-cheat-sheet-in-c%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/9532"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2021/solid-principles-cheat-sheet-in-c/">
+<link rel="shortlink" href="/?p=9532">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-9532 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-9532" class="g post post-9532 type-post status-publish format-standard hentry category-c-net-2 category-design-patterns tag-solid">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/c-net-2/" itemprop="item"><span itemprop="name">C# / .Net / WPF</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">SOLID Principles cheat sheet in C#</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">SOLID Principles cheat sheet in C#</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>21 August 2021</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/c-net-2/" title="View all posts in C# / .Net / WPF">C# / .Net / WPF</a>, <a href="/category/design-patterns/" title="View all posts in Design Patterns">Design Patterns</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2021/solid-principles-cheat-sheet-in-c/#respond" itemprop="interactionCount">No Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p>A summary of SOLID Principles as implemented in the C# language.</p><p>Useful link: <a href="https://code-maze.com/solid-principles/">https://code-maze.com/solid-principles/</a></p><p><strong>1. Single Responsibility Principle</strong></p><p>Every class should have only one responsibility. Consider the class PersonalDetails whose responsibility is to hold details about a person:</p><pre class="brush: java; title: ; notranslate" title="">
+public class PersonDetails
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public string Identifier { get; set; }
+
+    public void PrintReport()
+    {
+        Console.WriteLine("Name: " + Name);
+        Console.WriteLine("Age: " + Age.ToString());
+        Console.WriteLine("Identifier: " + Identifier);
+    }
+}
+</pre><p>After instantiating, we then use a public method to print out the details of that person:</p><pre class="brush: java; title: ; notranslate" title="">
+PersonDetails person1 = new PersonDetails
+{
+    Name = "Andrew",
+    Age = 36,
+    Identifier = "MDJW0031"
+};
+
+person1.PrintReport();
+</pre><p><a href="/wp-content/uploads/2021/08/single_responsibility_1.png"><img fetchpriority="high" decoding="async" class="alignnone size-full wp-image-9541" src="" alt="" width="448" height="284" data-layzr="/wp-content/uploads/2021/08/single_responsibility_1.png"></a></p><p>The problem is that this class has more than one responsibility. It is not just holding details of a person but printing it too.<br>
+More potential complexities will ensue if it is decided we want to add other unrelated functionality such save the person to disk too.</p><p>We overcome this by separating unrelated code.</p><pre class="brush: java; title: ; notranslate" title="">
+public class PersonDetails
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public string Identifier { get; set; }
+}
+</pre><p>And creating a new class to handle the responsibility of printing:</p><pre class="brush: java; title: ; notranslate" title="">
+public class Printer
+{
+    public void Print(PersonDetails personDetails)
+    {
+        Console.WriteLine("Name: " + personDetails.Name);
+        Console.WriteLine("Age: " + personDetails.Age.ToString());
+        Console.WriteLine("Identifier: " + personDetails.Identifier);
+    }
+}
+</pre><p>Implemented as follows:</p><pre class="brush: java; title: ; notranslate" title="">
+Printer printer = new Printer();
+printer.Print(new PersonDetails
+{
+    Name = "Andrew",
+    Age = 36,
+    Identifier = "MDJW0031"
+});
+</pre><p><strong>2. Open-closed Principle</strong></p><p>This pattern is useful for lowering the chance of bugs, and means “Open for extension, closed for modification”</p><p>In other words, it should be easy to extend the functionality of classes without having to modify them.</p><p>Consider the following example which deals with the filtering of computer monitors by type and screen:</p><pre class="brush: java; title: ; notranslate" title="">
+public enum MonitorType
+{
+    OLED,
+    LCD,
+    LED
+}
+</pre><pre class="brush: java; title: ; notranslate" title="">
+public enum Screen
+{
+    WideScreen,
+    CurvedScreen
+}
+</pre><pre class="brush: java; title: ; notranslate" title="">
+public class ComputerMonitor
+{
+    public string Name { get; set; }
+    public MonitorType Type { get; set; }
+    public Screen Screen { get; set; }
+}
+</pre><pre class="brush: java; title: ; notranslate" title="">
+public class MonitorFilter
+{
+    public List&lt;ComputerMonitor&gt; FilterByType(IEnumerable&lt;ComputerMonitor&gt; monitors, 
+MonitorType type) =&gt;
+            monitors.Where(m =&gt; m.Type == type).ToList();
+}
+</pre><pre class="brush: java; title: ; notranslate" title="">
+var monitors = new List&lt;ComputerMonitor&gt;
+{
+    new ComputerMonitor { Name = "Samsung S345", Screen = Screen.CurvedScreen, Type = MonitorType.OLED },
+    new ComputerMonitor { Name = "Philips P532", Screen = Screen.WideScreen, Type = MonitorType.LCD },
+    new ComputerMonitor { Name = "LG L888", Screen = Screen.WideScreen, Type = MonitorType.LED },
+    new ComputerMonitor { Name = "Samsung S999", Screen = Screen.WideScreen, Type = MonitorType.OLED },
+    new ComputerMonitor { Name = "Dell D2J47", Screen = Screen.CurvedScreen, Type = MonitorType.LCD }
+};
+
+var filter = new MonitorFilter();
+var lcdMonitors = filter.FilterByType(monitors, MonitorType.LCD);
+Console.WriteLine("All LCD monitors");
+foreach (var monitor in lcdMonitors)
+{
+    Console.WriteLine($"Name: {monitor.Name}, Type: {monitor.Type}, Screen: {monitor.Screen}");
+}
+</pre><p><a href="/wp-content/uploads/2021/08/single_responsibility_2.png"><img decoding="async" class="alignnone size-full wp-image-9545" src="" alt="" width="449" height="281" data-layzr="/wp-content/uploads/2021/08/single_responsibility_2.png"></a></p><p>Change MonitorFilter class:</p><pre class="brush: java; title: ; notranslate" title="">
+public class MonitorFilter
+{
+    public List&lt;ComputerMonitor&gt; FilterByType(IEnumerable&lt;ComputerMonitor&gt; monitors, MonitorType type) =&gt;
+        monitors.Where(m =&gt; m.Type == type).ToList();
+    public List&lt;ComputerMonitor&gt; FilterByScreen(IEnumerable&lt;ComputerMonitor&gt; monitors, Screen screen) =&gt;
+        monitors.Where(m =&gt; m.Screen == screen).ToList();
+}
+</pre><p>This gives the desired result but violates the open-closed principle. The solution is to use interfaces:</p><pre class="brush: java; title: ; notranslate" title="">
+public interface ISpecification&lt;T&gt;
+{
+    bool isSatisfied(T item);
+}
+
+public interface IFilter&lt;T&gt;
+{
+    List&lt;T&gt; Filter(IEnumerable&lt;T&gt; monitors, ISpecification&lt;T&gt; specification);
+}
+</pre><p>Create a separate class for the monitor type specification to implement ISpecification:</p><pre class="brush: java; title: ; notranslate" title="">
+public class MonitorTypeSpecification : ISpecification&lt;ComputerMonitor&gt;
+{
+    private readonly MonitorType _type;
+    public MonitorTypeSpecification(MonitorType type)
+    {
+        _type = type;
+    }
+    public bool isSatisfied(ComputerMonitor item) =&gt; item.Type == _type;
+}
+</pre><p>Modify the existing MonitorFilter class by getting it to implement the Ifilter interface:</p><pre class="brush: java; title: ; notranslate" title="">
+public class MonitorFilter : IFilter&lt;ComputerMonitor&gt;
+{
+    public List&lt;ComputerMonitor&gt; Filter(IEnumerable&lt;ComputerMonitor&gt; monitors, ISpecification&lt;ComputerMonitor&gt; specification) =&gt;
+        monitors.Where(m =&gt; specification.isSatisfied(m)).ToList();
+}
+</pre><p>On implementing this in the program, the result should be the same:</p><pre class="brush: java; title: ; notranslate" title="">
+var filter = new MonitorFilter();
+var lcdMonitors = filter.Filter(monitors, new MonitorTypeSpecification(MonitorType.LCD));
+Console.WriteLine("All LCD monitors");
+foreach (var monitor in lcdMonitors)
+{
+    Console.WriteLine($"Name: {monitor.Name}, Type: {monitor.Type}, Screen: {monitor.Screen}");
+}
+</pre><p>So it is now possible to make further extensions to our MonitoFilter class without actually modifiying the class itself. If we want to filter by screen type, create a new screen specification class that implements the Ispecification interface, and use that:</p><pre class="brush: java; title: ; notranslate" title="">
+public class ScreenTypeSpecification : ISpecification&lt;ComputerMonitor&gt;
+{
+    private readonly Screen _screen;
+    public ScreenTypeSpecification(Screen screen)
+    {
+        _screen = screen;
+    }
+    public bool isSatisfied(ComputerMonitor item) =&gt; item.Screen == _screen;
+}
+</pre><p>And make use of this in the main code:</p><pre class="brush: java; title: ; notranslate" title="">
+var filter = new MonitorFilter();
+var wideScreenMonitors = filter.Filter(monitors, new ScreenSpecification(Screen.WideScreen));
+foreach (var monitor in wideScreenMonitors)
+{
+    Console.WriteLine($"Name: {monitor.Name}, Type: {monitor.Type}, Screen: {monitor.Screen}");
+}
+</pre><p><a href="/wp-content/uploads/2021/08/single_responsibility_3.png"><img decoding="async" class="alignnone size-full wp-image-9547" src="" alt="" width="449" height="281" data-layzr="/wp-content/uploads/2021/08/single_responsibility_3.png"></a></p><p><strong>3. Liskov Substitution Principle</strong></p><p>A form of polymorphism. Functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it. Derived class objects should be able to replace base class objects without modifying it’s behaviour:</p><p>Example classes to calculate the sum of all numbers or just even numbers.</p><pre class="brush: java; title: ; notranslate" title="">
+public class SumCalculator
+{
+    protected readonly int[] _numbers;
+    public SumCalculator(int[] numbers)
+    {
+        _numbers = numbers;
+    }
+    public int Calculate() =&gt; _numbers.Sum();
+}
+</pre><pre class="brush: java; title: ; notranslate" title="">
+public class EvenNumbersSumCalculator : SumCalculator
+{
+    public EvenNumbersSumCalculator(int[] numbers)
+        : base(numbers)
+    {
+    }
+    public new int Calculate() =&gt; _numbers.Where(x =&gt; x % 2 == 0).Sum();
+}
+</pre><pre class="brush: java; title: ; notranslate" title="">
+var numbers = new int[] { 5, 7, 9, 8, 1, 6, 4 };
+SumCalculator sum = new SumCalculator(numbers);
+Console.WriteLine($"The sum of all the numbers: {sum.Calculate()}");
+Console.WriteLine();
+EvenNumbersSumCalculator evenSum = new EvenNumbersSumCalculator(numbers);
+Console.WriteLine($"The sum of all the even numbers: {evenSum.Calculate()}");
+</pre><p><a href="/wp-content/uploads/2021/08/single_responsibility_4.png"><img decoding="async" class="alignnone size-full wp-image-9549" src="" alt="" width="449" height="281" data-layzr="/wp-content/uploads/2021/08/single_responsibility_4.png"></a></p><p>Works fine. But of we try this:</p><pre class="brush: java; title: ; notranslate" title="">
+var numbers = new int[] { 5, 7, 9, 8, 1, 6, 4 };
+SumCalculator evenSum = new EvenNumbersSumCalculator(numbers);
+Console.WriteLine($"The sum of all the even numbers: {evenSum.Calculate()}");
+</pre><p>We don’t get the result we desire:</p><p><a href="/wp-content/uploads/2021/08/single_responsibility_5.png"><img decoding="async" class="alignnone size-full wp-image-9551" src="" alt="" width="449" height="279" data-layzr="/wp-content/uploads/2021/08/single_responsibility_5.png"></a></p><p>We don’t get the expected result because our variable evenSum is of type SumCalculator which is the base class. This means that the Count method from the SumCalculator class will be executed, not the EvenNumbersSumCalculator class. Therefore our child class is not behaving as a substitute for the parent class, thereby violating the Liskov substitution principle.</p><p>We overcome this by using abstract base classes:</p><pre class="brush: java; title: ; notranslate" title="">
+public abstract class Calculator
+{
+    protected readonly int[] _numbers;
+    public Calculator(int[] numbers)
+    {
+        _numbers = numbers;
+    }
+    public abstract int Calculate();
+}
+</pre><pre class="brush: java; title: ; notranslate" title="">
+public class SumCalculator : Calculator
+{
+    public SumCalculator(int[] numbers) : base(numbers) { }
+    public override int Calculate() =&gt; _numbers.Sum();
+}
+</pre><pre class="brush: java; title: ; notranslate" title="">
+public class EvenNumbersSumCalculator : Calculator
+{
+    public EvenNumbersSumCalculator(int[] numbers) : base(numbers) {}
+    public override int Calculate() =&gt; _numbers.Where(x =&gt; x % 2 == 0).Sum();
+}
+</pre><pre class="brush: java; title: ; notranslate" title="">
+var numbers = new int[] { 5, 7, 9, 8, 1, 6, 4 };
+Calculator sum = new SumCalculator(numbers);
+Console.WriteLine($"The sum of all the numbers: {sum.Calculate()}");
+Console.WriteLine();
+Calculator evenSum = new EvenNumbersSumCalculator(numbers);
+Console.WriteLine($"The sum of all the even numbers: {evenSum.Calculate()}");
+</pre><p><strong>4. Interface-segregation principle</strong></p><p>This states that no client should be forced to depend on methods it does not need or should not use . Many client-specific interfaces can work better than one general-purpose interface.</p><p>For example, to develop a behavior for a multifunctional car , there are vehicles that we can only drive and there are vehicles that we can only fly. But there are vehicles we can both drive and fly. We would like to create a class which supports all these actions for a vehicle.</p><pre class="brush: java; title: ; notranslate" title="">
+public interface IVehicle
+{
+    void Drive();
+    void Fly();
+}
+</pre><p> </p><pre class="brush: java; title: ; notranslate" title="">
+public class MultiFunctionalCar : IVehicle
+{
+    public void Drive()
+    {
+        Console.WriteLine("Drive a multifunctional car");
+    }
+    public void Fly()
+    {
+        Console.WriteLine("Fly a multifunctional car");
+    }
+}
+</pre><p>This covers the requirements for a multi-functional car. However if we want to develop classes for drive-only and fly-only vehicles, we see inefficiencies:</p><pre class="brush: java; title: ; notranslate" title="">
+public class Car : IVehicle
+{
+    public void Drive()
+    {
+        Console.WriteLine("Driving a car");
+    }
+    public void Fly()
+    {
+        throw new NotImplementedException();
+    }
+}
+</pre><pre class="brush: java; title: ; notranslate" title="">
+public class Airplane : IVehicle
+{
+    public void Drive()
+    {
+        throw new NotImplementedException();
+    }
+    public void Fly()
+    {
+        Console.WriteLine("Flying a plane");
+    }
+}
+</pre><p>Each class only contains one required declaration: the unwanted one is made to throw an exception, which is wasteful.</p><p>The solution is to split the IVehicle interface into separate Icar and IAircraft interfaces:</p><pre class="brush: java; title: ; notranslate" title="">
+public interface ICar
+{
+    void Drive();
+}
+</pre><pre class="brush: java; title: ; notranslate" title="">
+public interface IAirplane
+{
+    void Fly();
+}
+</pre><p>Resulting in classes that only implement the methods they need:</p><pre class="brush: java; title: ; notranslate" title="">
+public class Car : ICar
+{
+    public void Drive()
+    {
+        Console.WriteLine("Driving a car");
+    }
+}
+</pre><pre class="brush: java; title: ; notranslate" title="">
+public class Airplane : IAirplane
+{
+    public void Fly()
+    {
+        Console.WriteLine("Flying a plane");
+    }
+}
+</pre><pre class="brush: java; title: ; notranslate" title="">
+public class MultiFunctionalCar : ICar, IAirplane
+{
+    public void Drive()
+    {
+        Console.WriteLine("Drive a multifunctional car");
+    }
+    public void Fly()
+    {
+        Console.WriteLine("Fly a multifunctional car");
+    }
+}
+</pre><p><strong>5. Dependency Inversion Principle</strong></p><p>These depend upon abstractions, [not] concretions</p><p>Dependency Inversion Principle is a means of creating logic for higher-level modules in such a way to be reusable and unaffected by any changes from the lower level modules in the application.</p><p>Having this idea in mind the Dependency Inversion Principle states that</p><ul>
+<li>High-level modules should not depend on low-level modules, both should depend on abstractions.<br>
+Abstractions should not depend on details. Details should depend on abstractions.</li>
+</ul><p>Consider an example violation of the dependency inversion principle, a low-level class used to keep track of an employee’s details:</p><pre class="brush: java; title: ; notranslate" title="">
+public enum Gender
+{
+    Male,
+    Female
+}
+
+public enum Position
+{
+    Administrator,
+    Manager,
+    Executive
+}
+
+public class Employee
+{
+    public string Name { get; set; }
+    public Gender Gender { get; set; }
+    public Position Position { get; set; }
+}
+
+public class EmployeeManager
+{
+    private readonly List&lt;Employee&gt; _employees;
+    public EmployeeManager()
+    {
+        _employees = new List&lt;Employee&gt;();
+    }
+    public void AddEmployee(Employee employee)
+    {
+        _employees.Add(employee);
+    }
+}
+</pre><p>Which is used by a highler-level class used to do statistical analysis on the employees:</p><pre class="brush: java; title: ; notranslate" title="">
+public class EmployeeStatistics
+{
+    private readonly EmployeeManager _empManager;
+    public EmployeeStatistics(EmployeeManager empManager)
+    {
+        _empManager = empManager;
+    }
+    public int CountFemaleManagers()
+    {
+        //logic goes here
+    }
+}
+</pre><p>We cannot make use of the private _employees list in the EmployeeManager class, so one solution would be expose the private list:</p><p>Then we are in a position to count the employees:</p><pre class="brush: java; title: ; notranslate" title="">
+public class EmployeeStatistics
+{
+    private readonly EmployeeManager _empManager;
+    public EmployeeStatistics(EmployeeManager empManager)
+    {
+        _empManager = empManager;
+    }
+    public int CountFemaleManagers() =&gt;
+      _empManager.Employees.Count(emp =&gt; emp.Gender == Gender.Female &amp;&amp; emp.Position == Position.Manager);
+}
+</pre><p>This works, but is not good practice, given these two problems:</p><p>We can’t send any other object in the EmployeeStatistics constructor except the EmployeeManager object.<br>
+We are using the public property from the low-level class inside the high-level class. In doing so, our low-level class can’t change its way of keeping track of employees, without it impacting the higher-level class. For example, if we want to implement it using a dictionary instead of a list, we would also need to change the EmployeeStatistics higher-level class.</p><p>The solution is to decouple our two classes so the both of them depend on abstraction.</p><pre class="brush: java; title: ; notranslate" title="">
+public interface IEmployeeSearchable
+{
+    IEnumerable&lt;Employee&gt; GetEmployeesByGenderAndPosition(Gender gender, Position position);
+}
+
+public class EmployeeManager : IEmployeeSearchable
+{
+    private readonly List&lt;Employee&gt; _employees;
+    public EmployeeManager()
+    {
+        _employees = new List&lt;Employee&gt;();
+    }
+
+    public void AddEmployee(Employee employee)
+    {
+        _employees.Add(employee);
+    }
+    public IEnumerable&lt;Employee&gt; GetEmployeesByGenderAndPosition(Gender gender, Position position)
+        =&gt; _employees.Where(emp =&gt; emp.Gender == gender &amp;&amp; emp.Position == position);
+}
+</pre><p>Then modify the higher-level EmployeeStatistics class, so that it is no longer dependant on the lower-level EmployeeManager class, but uses the interface in the constructor instead.</p><pre class="brush: java; title: ; notranslate" title="">
+public class EmployeeStatistics
+{
+    private readonly IEmployeeSearchable _emp;
+    public EmployeeStatistics(IEmployeeSearchable emp)
+    {
+        _emp = emp;
+    }
+    public int CountFemaleManagers() =&gt;
+    _emp.GetEmployeesByGenderAndPosition(Gender.Female, Position.Manager).Count();
+}
+</pre><p>It now becomes possible to modify EmployeeManager without us having to worry about the EmployeeStatistivs class as well. They are decoupled.</p><p>Check the result:</p><pre class="brush: java; title: ; notranslate" title="">
+var empManager = new EmployeeManager();
+empManager.AddEmployee(new Employee { Name = "Leen", Gender = Gender.Female, Position = Position.Manager });
+empManager.AddEmployee(new Employee { Name = "Mike", Gender = Gender.Male, Position = Position.Administrator });
+var stats = new EmployeeStatistics(empManager);
+Console.WriteLine($"Number of female managers in our company is: {stats.CountFemaleManagers()}");
+</pre><p><a href="/wp-content/uploads/2021/08/single_responsibility_6.png"><img decoding="async" class="alignnone size-full wp-image-9553" src="" alt="" width="449" height="279" data-layzr="/wp-content/uploads/2021/08/single_responsibility_6.png"></a></p>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '9532'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2021/solid-principles-cheat-sheet-in-c/&amp;media=&amp;description=SOLID%20Principles%20cheat%20sheet%20in%20C#" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2018/creating-a-zip-archive-in-c/" title="Creating a zip archive in C#" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Creating a zip archive in C#"></div>
+                                                                        <h4 class="title front-view-title">Creating a zip archive in C#</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2016/serializing-data-in-c-using-migrant/" title="Serializing data in C# using Migrant" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Serializing data in C# using Migrant"></div>
+                                                                        <h4 class="title front-view-title">Serializing data in C# using Migrant</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2017/how-to-binding-the-windowstate-property-of-a-window-in-wpf-using-mvvm/" title="How to bind the WindowState property of a window in WPF using MVVM" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="How to bind the WindowState property of a window in WPF using MVVM"></div>
+                                                                        <h4 class="title front-view-title">How to bind the WindowState property of a window in WPF using MVVM</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2021/solid-principles-cheat-sheet-in-c/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="9532" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-java-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJava.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

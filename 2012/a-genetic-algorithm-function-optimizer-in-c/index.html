@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>A Genetic Algorithm Function Optimizer in C++ – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » A Genetic Algorithm Function Optimizer in C++ Comments Feed" href="/2012/a-genetic-algorithm-function-optimizer-in-c/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2012%2Fa-genetic-algorithm-function-optimizer-in-c%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2012%2Fa-genetic-algorithm-function-optimizer-in-c%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/1953"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2012/a-genetic-algorithm-function-optimizer-in-c/">
+<link rel="shortlink" href="/?p=1953">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-1953 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-1953" class="g post post-1953 type-post status-publish format-standard hentry category-c-mfc category-genetic-algorithms category-optimization tag-binary tag-floating-point tag-mathematical">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/c-mfc/" itemprop="item"><span itemprop="name">C++ / MFC / STL</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">A Genetic Algorithm Function Optimizer in C++</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">A Genetic Algorithm Function Optimizer in C++</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>3 April 2012</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/c-mfc/" title="View all posts in C++ / MFC / STL">C++ / MFC / STL</a>, <a href="/category/genetic-algorithms/" title="View all posts in Genetic Algorithms">Genetic Algorithms</a>, <a href="/category/optimization/" title="View all posts in Optimization">Optimization</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2012/a-genetic-algorithm-function-optimizer-in-c/#comments" itemprop="interactionCount">2 Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p><strong>Introduction</strong></p><p>An example of how a genetic algorithm can be applied to optimize standard mathematical functions, such as the <a href="http://en.wikipedia.org/wiki/Rosenbrock_function">Rosenbrock </a>function. (Image obtained from the <a href="http://en.wikipedia.org/wiki/Rosenbrock_function">Wikipedia</a> page.)<br>
+<span id="more-1953"></span><br>
+<a href="/wp-content/uploads/2012/04/Rosenbrock.jpg"><img fetchpriority="high" decoding="async" class="aligncenter wp-image-1957 size-full" title="Rosenbrock" src="" alt="" width="720" height="540" data-layzr="/wp-content/uploads/2012/04/Rosenbrock.jpg"></a></p><p>The Rosenbrock function is a non-convex function used to test the performance of optimization algorithms introduced by Howard H. Rosenbrock in 1960. The Rosenbrock function is defined by:</p><p>[pmath]f(x,y) = (1-x)^2 + 100(y-x^2)^2[/pmath]</p><p>As shown in the diagram, the global minimum lies inside a long, narrow, parabolic shaped flat valley.</p><p>Locating the valley vicinity is fairly straightforward, while converging to the global minimum, located at [pmath](x,y) = (1,1)[/pmath] where [pmath]f(1,1) = 0[/pmath] is trickier.</p><p><strong>The Genetic Algorithm</strong></p><p>This software employs standard genetic operators crossover, mutation and selection, as applied to chromosome representations of floating-point numbers.</p><p>In this application of the genetic algorithm, the IEEE 754 standard, as also described <a href="/2012/converting-between-binary-and-decimal-representations-of-ieee-754-floating-point-numbers-in-c/">here </a>and <a href="/2011/ieee-754-floating-point-to-binary-conversion/">here</a>, is used to represent floating point numbers as binary arrays.</p><p>In short, The first bit represents the sign (0 = plus, 1 = minus); the following 8 bits store the biased exponent (bias=127) and the remaining 23 bits represent the fractional part (mantissa).</p><p>Standard genetic operators crossover and mutation are used to generate new, possible fitter chromosomes. The crossover operator works by exchanging portions of bit strings between pairs of arbitrarily selected ‘parent’ chromosomes to produce new ‘child’ chromosomes. This is illustrated by the diagram below, showing how the portions of the bit string between the positions in ‘parent’ chromosomes P1 and P2 are exchanged to produce ‘child’ chromosome C1 and C2:</p><p><a href="/wp-content/uploads/2012/04/crossover-3.png" rel="attachment wp-att-6642"><img decoding="async" class="alignnone size-full wp-image-6642" src="" alt="crossover" width="631" height="191" data-layzr="/wp-content/uploads/2012/04/crossover-3.png"></a></p><p>The mutation operators works by arbitrarily selecting a single chromosome in the population and changing a randomly selected number of bits to produce a modified version of the chromosome. This is illustrated by the diagram below showing how individual bits are modified to produce the new chromosome:</p><p><a href="/wp-content/uploads/2012/04/mutation-1.png" rel="attachment wp-att-6644"><img decoding="async" class="alignnone size-full wp-image-6644" src="" alt="mutation" width="573" height="80" data-layzr="/wp-content/uploads/2012/04/mutation-1.png"></a></p><p>The downloadable code C++ implementation should be reasonably self-documenting and self-explanatory.</p><p><strong>The code</strong></p><p>The 32-bit binary encodings are implemented using the Chromosome class, as a means of housing the binary values and performing other simple get/set tasks, etc:</p><pre class="brush: cpp; title: ; notranslate" title="">
+class Chromosome
+{
+public:
+	Chromosome(const int&amp; size);
+	~Chromosome(void);
+
+	void SetChromosome( const int&amp; index, const unsigned char&amp; value );
+	unsigned char GetChromosome( const int&amp; index );
+	void SetFitness( const double&amp; value );
+	double GetFitness() const;
+	int size() const;
+	void Print( const int&amp; index ) const;
+
+private:
+
+	std::unique_ptr&lt;int[]&gt; chr;
+	double fitness;
+	int chrSize;
+};
+</pre><p>The Population class maintains a population of Chromosome objects and also apply the standard genetic operators crossover, mutation and selection on them. It also generates an initial arbitrary population of Chromosomes with random values and has other helper functions with which to convert between binary and decimal representations of the binary strings:</p><pre class="brush: cpp; title: ; notranslate" title="">
+class Population
+{
+public:
+	Population(void);
+	~Population(void);
+
+	void SetChromosomeSize( const int&amp; size );
+	void CreateRandomPopulation( const int&amp; size );	
+	void Crossover( const int&amp; index1,
+		            const int&amp; index2,
+					const int&amp; point );
+	void Crossover( const int&amp; index1,
+		            const int&amp; index2,
+					const int&amp; point1,
+					const int&amp; point2 );
+
+	void Mutation( const int&amp; index );
+	double EvaluatePopulation();
+	double CalcChromosomeFitness( const int&amp; index,
+								  float&amp; xv,
+								  float&amp; yv);
+
+	double GetChromosomeFitness( const int&amp; index ) const;
+	void CopyChromosome( const int&amp; source, const int&amp; dest );
+
+private:
+	Chromosome* CreateRandomChromosome();	
+	std::string GetXstring( Chromosome* chr );
+	std::string GetYstring( Chromosome* chr );
+	float GetFloat32( std::string Binary );
+	int Binary2Hex( std::string Binary );
+	double CalculateFitnessFunction( const float&amp; x, 
+		                             const float&amp; y );
+private:
+	std::vector&lt; Chromosome* &gt; pop;
+	int chrSize;
+};
+</pre><p>The next class of interest would be the GeneticAlgorithm class, which should be fairly self-explanatory: run the genetic algorithm, applying it to the population of chromosomes, with the intention of progressively improving the overall fitness over successive iterations:</p><pre class="brush: cpp; title: ; notranslate" title="">
+class GeneticAlgorithm
+{
+public:
+	GeneticAlgorithm(void);
+	~GeneticAlgorithm(void);
+	void Initialize( const int&amp; crate,
+					 const int&amp; mrate,
+					 const int&amp; psize,
+					 const int&amp; iter,
+					 const int&amp; csize,
+					 const int&amp; tsize,
+					 const std::string&amp; path );	
+	void Run();
+
+private:
+
+	void CreatePopulation();
+	double Evaluate();
+	void Crossover();
+	void Mutate();
+	void Select();
+	void SetParameters( const int&amp; crate,
+		                const int&amp; mrate,
+						const int&amp; psize,
+						const int&amp; iter,
+						const int&amp; csize,
+						const int&amp; tsize );
+	void LogResult( const double&amp; result, 
+		            const int&amp; iter,
+		            const int&amp; count );
+
+private:
+	int mutationRate;
+	int crossoverRate;
+	int populationSize;
+	int numberIterations;
+	int chromosomeSize;
+	int tournamentSize;
+	int bestFitnessIndex;
+	double bestFitness;
+	Population pop;
+	Log log;
+};
+</pre><p><strong>Experimental Results</strong></p><p>I have run a number of simple experiments to see how well the algorithm converges over 10,000 iterations. For the first experiment, using the IEEE 754 bit string representation for floating-point numbers, the algorithm parameters used were as follows:</p><p>crossover_rate = 50;<br>
+mutation_rate = 5;<br>
+population_size = 100;<br>
+tournament_size = population_size / 4;</p><p>Binary tournament selection ss the preferred ‘survival of the fittest’ mechanism. This mechanism works by selecting arbitrary pairs of chromosomes from the population, and selecting the fitter of the pair for inclusion in the new generation.</p><p>The code has a simple logger enabling you to dump results to a text file, if required. In this example I got it return the best fitness found so far at every generation.</p><p>Here is graph showing the best value found at every 10th iteration:</p><p><a href="/wp-content/uploads/2012/04/Performance.jpg"><img decoding="async" class="aligncenter wp-image-1974 size-full" title="Performance" src="" alt="" width="763" height="512" data-layzr="/wp-content/uploads/2012/04/Performance.jpg"></a></p><p>The global minimum for this particular function is 0.0; in this run the algorithm managed to get it down to 0.02. As you can see, no further reduction takes place for the next 800 or so iterations. Feel free to try out this code and improve upon it, or apply it to your own area of interest.</p><p><strong>Example usage</strong></p><p>Here is an example of the the main.cpp usage showing parameters used to obtain the results shown in the console output.</p><pre class="brush: cpp; title: ; notranslate" title="">
+// GAfunction.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "Log.h"
+#include "GeneticAlgorithm.h"
+
+const int encoding_type   = 1;
+const int crossover_rate  = 50;
+const int mutation_rate   = 2;
+const int population_size = 500;
+const int number_iterations = 30000;
+const int chromosome_size = 32;
+const int tournament_size = population_size / 10;
+const int precision = 6;
+const int epoch = 50;
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	// Run the GA!
+	GeneticAlgorithm ga;	
+
+	// Set the function type and hence the constraints
+	Constraint constraint = Constraint::Rosenbrock;
+
+	ga.Initialize( epoch,
+		           precision,
+				   encoding_type,
+		           crossover_rate, 
+		           mutation_rate, 
+				   population_size,
+				   number_iterations,
+				   chromosome_size,
+				   tournament_size,
+				   "C:\\dump\\best.txt",
+				   constraint );
+	ga.Run();
+
+	return 0;
+}
+</pre><p>Giving the following console output as shown:</p><p><a href="/wp-content/uploads/2012/04/functionoptimizer1-2.jpg" rel="attachment wp-att-6629"><img decoding="async" class="aligncenter wp-image-6629 size-full" src="" alt="functionoptimizer1" width="669" height="398" data-layzr="/wp-content/uploads/2012/04/functionoptimizer1-2.jpg"></a></p><p>As can be seen, the algorithm steadily approaches x = y = 1.0 to yield the desired optimal result of f(x,y) = 0;</p><p>Running the algorithm for an increased number of iterations, using double the population size yields us even more precise values for x and y as shown:</p><p><a href="/wp-content/uploads/2012/04/functionoptimizer2.jpg" rel="attachment wp-att-6630"><img decoding="async" class="aligncenter wp-image-6630 size-full" src="" alt="functionoptimizer2" width="669" height="398" data-layzr="/wp-content/uploads/2012/04/functionoptimizer2.jpg"></a></p><p><strong>Booth’s function</strong></p><p>Another example optimization test function whose objective function is:</p><p>[pmath]f(x,y) = (x+2y-7)^2 + (2x+y-5)^2[/pmath]</p><p>… and whose known optimal is</p><p>[pmath]f(1,3) = 0[/pmath]</p><p>… and whose constraints are:</p><p>[pmath]-10 &lt;= x,y &lt;= 10[/pmath]</p><p>Visual representation:</p><p><a href="/wp-content/uploads/2012/04/BoothsFunction.jpg" rel="attachment wp-att-6647"><img decoding="async" class="aligncenter wp-image-6647 size-full" src="" alt="BoothsFunction" width="800" height="600" data-layzr="/wp-content/uploads/2012/04/BoothsFunction.jpg"></a></p><p>Console output after 20,000 iterations as shown:</p><p><a href="/wp-content/uploads/2012/04/functionoptimizer3.jpg" rel="attachment wp-att-6649"><img decoding="async" class="aligncenter wp-image-6649 size-full" src="" alt="functionoptimizer3" width="605" height="391" data-layzr="/wp-content/uploads/2012/04/functionoptimizer3.jpg"></a></p><p><strong>McCormick function</strong></p><p>Objective function:</p><p>[pmath]f(x,y) = sin(x+y) + (x-y)^2 – 1.5x + 2.5y + 1[/pmath]</p><p>… known optimal:</p><p>[pmath]f(-0.54719, -0.54719) = -1.9133[/pmath]</p><p>… constraints:</p><p>[pmath]-1.5 &lt;= x &lt;= 4[/pmath]<br>
+[pmath]-3 &lt;= y &lt;= 4[/pmath]</p><p>Visual representation:</p><p><a href="/wp-content/uploads/2012/04/McCormick.jpg" rel="attachment wp-att-6660"><img decoding="async" class="aligncenter wp-image-6660 size-full" src="" alt="McCormick" width="800" height="600" data-layzr="/wp-content/uploads/2012/04/McCormick.jpg"></a></p><p>Console output after 30,000 iterations:</p><p><a href="/wp-content/uploads/2012/04/functionoptimizer4.jpg" rel="attachment wp-att-6663"><img decoding="async" class="aligncenter wp-image-6663 size-full" src="" alt="functionoptimizer4" width="597" height="391" data-layzr="/wp-content/uploads/2012/04/functionoptimizer4.jpg"></a></p><p><strong>Code samples</strong></p><p>Visual Studio 2010 console application is downloadable from here:</p><p><script data-selz-t="_selz-btn-default" data-selz-b="http://selz.co/4JBa-joW7" data-text="Buy it now" data-selz-a="modal" data-selz-cb="6d48cc" data-selz-ct="ffffff" data-selz-chbg="6d48cc" data-selz-chtx="ffffff">if (typeof _$elz === "undefined") { var _$elz = {}; } if (typeof _$elz.b === "undefined") { _$elz.b = { e: document.createElement("script") }; _$elz.b.e.src = "https://selz.com/embed/button"; document.body.appendChild(_$elz.b.e); }</script><br>
+<noscript><a href="http://selz.co/4JBa-joW7" target="_blank" rel="noopener noreferrer">Buy it now</a></noscript></p><p>Comments and feedback always welcome.</p><p>Some other genetic algorithm related posts:</p><p><a href="/2012/genetic-algorithm-based-routing-optimization-an-update/">Genetic Algorithm based routing optimization: an update</a><br>
+<a href="/2012/genetic-algorithms-applied-to-travelling-saleman-problems-in-c/">Genetic Algorithms Applied to Travelling Salesman Problems in C++</a><br>
+<a href="/2011/a-genetic-algorithm-based-routing-optimization-tool/">A Genetic Algorithm Based Routing Optimization Tool</a></p>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '1953'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2012/a-genetic-algorithm-function-optimizer-in-c/&amp;media=&amp;description=A%20Genetic%20Algorithm%20Function%20Optimizer%20in%20C++" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2011/blitting-a-bitmap-image-to-the-screen/" title="‘Blitting’ a Bitmap Image to the Screen." id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="‘Blitting’ a Bitmap Image to the Screen."></div>
+                                                                        <h4 class="title front-view-title">‘Blitting’ a Bitmap Image to the Screen.</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2011/setting-up-the-cu-decision-diagram-cudd-package-for-windows/" title="Getting Started with the CU Decision Diagram (CUDD) Package for Windows" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Getting Started with the CU Decision Diagram (CUDD) Package for Windows"></div>
+                                                                        <h4 class="title front-view-title">Getting Started with the CU Decision Diagram (CUDD) Package for Windows</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2013/practical-examples-of-boost-serialization/" title="Practical examples of using Boost serialization" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Practical examples of using Boost serialization"></div>
+                                                                        <h4 class="title front-view-title">Practical examples of using Boost serialization</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-51771">
+    		                    <div id="comment-51771" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/80392e765502d8018f3eafb975b635ff3a8e67598b3001a17d5aa19eeab0e764?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/80392e765502d8018f3eafb975b635ff3a8e67598b3001a17d5aa19eeab0e764?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Marius</span></span>                                                            <span class="ago">23 November 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hey. Nice work with the article, but it seems that the download link doesn’t work. Could you help me with this problem?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/a-genetic-algorithm-function-optimizer-in-c/?replytocom=51771#respond" data-commentid="51771" data-postid="1953" data-belowelement="comment-51771" data-respondelement="respond" data-replyto="Reply to Marius" aria-label="Reply to Marius">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    </ol><ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-51783">
+    		                    <div id="comment-51783" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">24 November 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Marius links updated please see the Selz link.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2012/a-genetic-algorithm-function-optimizer-in-c/?replytocom=51783#respond" data-commentid="51783" data-postid="1953" data-belowelement="comment-51783" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			
+		</div>
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2012/a-genetic-algorithm-function-optimizer-in-c/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="1953" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-cpp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

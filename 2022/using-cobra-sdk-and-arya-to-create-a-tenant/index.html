@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>Using Cobra SDK and Arya to create a Tenant – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2022%2Fusing-cobra-sdk-and-arya-to-create-a-tenant%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2022%2Fusing-cobra-sdk-and-arya-to-create-a-tenant%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/9905"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2022/using-cobra-sdk-and-arya-to-create-a-tenant/">
+<link rel="shortlink" href="/?p=9905">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-9905 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-9905" class="g post post-9905 type-post status-publish format-standard hentry category-installers category-networks">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/installers/" itemprop="item"><span itemprop="name">Installers</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Using Cobra SDK and Arya to create a Tenant</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">Using Cobra SDK and Arya to create a Tenant</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>8 April 2022</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/installers/" title="View all posts in Installers">Installers</a>, <a href="/category/networks/" title="View all posts in Networks">Networks</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2022/using-cobra-sdk-and-arya-to-create-a-tenant/#respond" itemprop="interactionCount">No Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p><strong>Getting the python and virtual environment set up</strong></p><p>These instructions are for a Windows set up.</p><p>Use these instructions for setting up your Python virtual environment and for obtaining and installing the Cobra SDK and model.</p><p><a href="https://cobra.readthedocs.io/en/latest/install.html">https://cobra.readthedocs.io/en/latest/install.html</a></p><p>But essentially, if you’re doing this for the first time, then do the following:</p><p>Download and install python 2.7 from here (yes, version 2.7)</p><p><a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></p><p>Download this python script to a chosen location, and run it using python.  This will install pip.</p><p><a href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a></p><p>Run these pip commands.  I found that I needed to run the pip2 executable as opposed to version 3 pip that was already installed, in order to successfuly install the requirements and run using python2 etc.</p><p>pip install virtualenv<br>
+pip install virtualenv-clone<br>
+pip install virtualenvwrapper-win</p><p>Run this command to create your virtual environment (See how it creates the acienv folder in your C:\Users\username\Envs folder)</p><p>mkvirtualenv acienv</p><p>Upgrade pip</p><p>python -m pip install –upgrade pip</p><p>Download the Cobra SDK &amp; model files from these locations:</p><p><a href="https://d1nmyq4gcgsfi5.cloudfront.net/fileMedia/1f3d41ce-d154-44e3-74c1-d6cf3b525eaa/acicobra-4.2_3h-py2.py3-none-any.whl">acicobra</a><br>
+<a href="https://d1nmyq4gcgsfi5.cloudfront.net/fileMedia/b3b69aa3-891b-41ff-46db-a73b4b215860/acimodel-4.2_3h-py2.py3-none-any.whl">acimodel</a></p><p>and then do a ‘pip install’ using the paths to these whl files, or just copy them to the directory you’re in:</p><p>pip install acicobra-4.2_3h-py2.py3-none-any.whl<br>
+pip install acimodel-4.2_3h-py2.py3-none-any.whl</p><p>Then run your scripts.  You might have to rename your python.exe installed inside Python27 to python2.exe to run inside the command line.</p><p><strong>Connect to the APIC with the Cobra SDK for an MO Query</strong></p><p><strong>cobra_tenants.py</strong></p><pre class="brush: python; title: ; notranslate" title="">
+#!/usr/bin/python2.7
+import requests
+
+from credentials import *
+from sys import argv
+from cobra.mit.session import LoginSession
+from cobra.mit.access import MoDirectory
+
+# Disable warnings for insecure certificates (self-signed)
+requests.packages.urllib3.disable_warnings(
+    category=requests.packages.urllib3.exceptions.InsecureRequestWarning 
+)
+
+# Argument handling
+if len(argv) != 2:
+    print('Please provide exactly one parameter: the Tenant name!') 
+    exit() 
+
+tenant_name = argv[1]
+print('Checking the APIC for tenant {}'.format(tenant_name))
+
+# Login
+session = LoginSession(APIC_HOST, APIC_USERNAME, APIC_PASSWORD)
+moDir = MoDirectory(session)
+moDir.login()
+
+# Tenant lookup by DN
+tenant = moDir.lookupByDn('uni/tn-{}'.format(tenant_name))
+
+if tenant:
+    print('Found tenant {} with DN: {}'.format(tenant_name, tenant.dn)) 
+else:
+    print('Tenant {} does not exist!'.format(tenant_name))
+</pre><p><strong>credentials.py</strong></p><pre class="brush: python; title: ; notranslate" title="">
+APIC_HOST = "https://sandboxapicdc.cisco.com"
+APIC_USERNAME = "admin"
+APIC_PASSWORD = "!v3G@!4@Y"
+</pre><p>I then run the cobra_tenants.py script with the Sales argument, or any argument for which I know a tenant does not yet exist:</p><p><a href="/wp-content/uploads/2022/04/cobra_tenants1.jpg"><img fetchpriority="high" decoding="async" src="" alt="" width="886" height="466" class="alignnone size-full wp-image-9913" data-layzr="/wp-content/uploads/2022/04/cobra_tenants1.jpg"></a></p><p>I check the APIC sandbox to see which tenants do actually exist, and use that name instead; in this example the tenant named Heroes:</p><p><a href="/wp-content/uploads/2022/04/cobra_tenants2.jpg"><img decoding="async" src="" alt="" width="931" height="667" class="alignnone size-full wp-image-9914" data-layzr="/wp-content/uploads/2022/04/cobra_tenants2.jpg"></a></p><p>I then run the cobra_tenants.py script with the Heroes argument:</p><p><a href="/wp-content/uploads/2022/04/cobra_tenants3.jpg"><img decoding="async" src="" alt="" width="886" height="466" class="alignnone size-full wp-image-9915" data-layzr="/wp-content/uploads/2022/04/cobra_tenants3.jpg"></a></p><p><strong>Perform Class-Based Queries with the Cobra SDK</strong></p><p>We previously performed a managed object query specifically by DN. </p><p>To search for objects by their class name, useful when you do not know the exact DN or you want the full list of such objects, write a new script to implement class-based queries with filters.</p><p><strong>class_query.py</strong></p><p>The ClassQuery from cobra.mit.request (documented at https://cobra.readthedocs.io/en/latest/api-ref/request.html#classquery) will allow you to build more advanced queries for the APIC MIT.</p><p>The first query that you are going to write is one that retrieves all EPG objects (class fvAEPg) currently created on the APIC. This query returns a list of EPG objects (specifically the type of cobra.modelimpl.fv.aepg.AEPg), which can be iterated through to obtain their configuration attributes, such as the Name and DN parameters. Create a ClassQuery object with the fvAEPg string argument, use it in the query() method of the MoDirectory object.</p><p>Add another query to the script that returns all Fabric Nodes (class fabricNode)—these nodes are all the leaf and spine switches plus the controllers. Print the number of nodes returned by the query, iterate through them using a for loop to print the nodes’ Name and DN.</p><p>Add the filter to only query leaf nodes. The property filter can be applied to the previous fabricNode query to return only the leaf nodes in the fabric. Add the code to query the fabric nodes with the role leaf. Use the propFilter parameter to set the query, print the result and iterate through them to print their name, role, and DN.</p><pre class="brush: python; title: ; notranslate" title="">
+#!/usr/bin/python2.7
+from credentials import *
+from cobra.mit.session import LoginSession
+from cobra.mit.access import MoDirectory
+from cobra.mit.request import ClassQuery
+
+import requests
+
+# Disable warnings for insecure certificates (self-signed)
+requests.packages.urllib3.disable_warnings(
+    category=requests.packages.urllib3.exceptions.InsecureRequestWarning 
+)
+
+# Login
+session = LoginSession(APIC_HOST, APIC_USERNAME, APIC_PASSWORD)
+moDir = MoDirectory(session)
+moDir.login()
+
+epgs_query = ClassQuery('fvAEPg')
+epgs = moDir.query(epgs_query)
+
+# Print all EPGs objects returned by the query
+print('fvAEPg class query returned {} EPGs total.'.format(len(epgs)))
+for epg in epgs:
+    print('Name: {:20} DN: {}'.format(epg.name, epg.dn)) 
+
+print('\n')
+
+# Fabric Node query
+fabric_query = ClassQuery('fabricNode')
+nodes = moDir.query(fabric_query)
+
+# Print all the node objects returned by the query
+print('fabricNode class query returned {} nodes total.'.format(len(nodes)))
+for node in nodes:
+    print('Name: {:20} Role: {:20} DN: {}'.format(node.name, node.role, node.dn))
+    
+    
+# Property filter
+print('\nAdding filter to only query for leaf nodes.\n')
+fabric_query.propFilter = 'eq(fabricNode.role,"leaf")'
+
+# Run the query against the API
+nodes = moDir.query(fabric_query)
+
+# Print all the node objects returned by the query
+print('fabricNode class query returned {} nodes total.'.format(len(nodes)))
+for node in nodes:
+    print('Name: {:20} Role: {:20} DN: {}'.format(node.name, node.role, node.dn))
+    
+# You can confirm the final query options by looking at fabric_query.options
+# and compile the full query URL as you would write it in Postman for example
+print('The final query is: {}'.format(fabric_query.getUrl(session)))
+</pre><p>Giving the following output:</p><p><a href="/wp-content/uploads/2022/04/cobra_tenants10.jpg"><img decoding="async" src="" alt="" width="914" height="687" class="alignnone size-full wp-image-9945" data-layzr="/wp-content/uploads/2022/04/cobra_tenants10.jpg"></a></p><p><strong>Use Arya to Generate the Python Code</strong></p><p>To prepare for using the Arya tool to generate Cobra code from APIC configuration, first export an existing Tenant configuration as JSON from the APIC, then proceed to use it as a template to create a new identical Tenant using Cobra code.</p><p>Open the APIC sandbox GUI, navigate to the Tenants &gt; All Tenants. Right-click the Marketing tenant and select Save as…</p><p><a href="/wp-content/uploads/2022/04/cobra_tenants5.jpg"><img decoding="async" src="" alt="" width="931" height="667" class="alignnone size-full wp-image-9918" data-layzr="/wp-content/uploads/2022/04/cobra_tenants5.jpg"></a></p><p>In the Save As dialog window that opens, make sure that Only Configuration, Subtree, and json are selected before clicking Download.</p><p><a href="/wp-content/uploads/2022/04/cobra_tenants6.jpg"><img decoding="async" src="" alt="" width="448" height="278" class="alignnone size-full wp-image-9919" data-layzr="/wp-content/uploads/2022/04/cobra_tenants6.jpg"></a></p><p>Save the file as tn-Marketing.json.</p><p>Open and inspect the tn-Marketing.json file in VS Code or Notepad++ etc. </p><p>Note that it includes the full Tenant configuration, with all child objects, such as VRF, Bridge Domain, EPGs, and so on.</p><p>Format the document by- press Ctrl+Shift+I in VS Code or by using Plugins &gt; JSTool &gt; JSformat in Notepad++.</p><p><strong>Use Arya to Generate the Cobra Code and Create a New Support Tenant</strong></p><p>I used the instructions given at github for installing arya:</p><p><a href="https://github.com/datacenter/arya">https://github.com/datacenter/arya</a></p><p>Once I’d cloned it and run the python setup I still couldn’t get it to run.</p><p>What I found worked was to run the arya.py script directly:</p><p>c:\Temp\CiscoTraining\code\cobra\arya\arya\arya.py -f tn-Marketing.json &gt; arya_code.py</p><p>Which generates this python script:</p><p><strong>arya_code.py</strong></p><pre class="brush: python; title: ; notranslate" title="">
+#!/usr/bin/env python
+'''
+Autogenerated code using arya.py
+Original Object Document Input: 
+{
+    "totalCount": "1",
+    "imdata": [{
+            "fvTenant": {
+                "attributes": {
+                    "annotation": "",
+                    "descr": "",
+                    "dn": "uni/tn-Marketing",
+                    "name": "Marketing",
+                    "nameAlias": "",
+                    "ownerKey": "",
+                    "ownerTag": "",
+                    "userdom": ":all:"
+                },
+                "children": [{
+                        "vzBrCP": {
+                            "attributes": {
+                                "annotation": "",
+                                "descr": "",
+                                "intent": "install",
+                                "name": "Portal",
+                                "nameAlias": "",
+                                "ownerKey": "",
+                                "ownerTag": "",
+                                "prio": "unspecified",
+                                "scope": "context",
+                                "targetDscp": "unspecified",
+                                "userdom": ":all:"
+                            },
+                            "children": [{
+                                    "vzSubj": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "consMatchT": "AtleastOne",
+                                            "descr": "",
+                                            "name": "http",
+                                            "nameAlias": "",
+                                            "prio": "unspecified",
+                                            "provMatchT": "AtleastOne",
+                                            "revFltPorts": "yes",
+                                            "targetDscp": "unspecified",
+                                            "userdom": ":all:"
+                                        },
+                                        "children": [{
+                                                "vzRsSubjFiltAtt": {
+                                                    "attributes": {
+                                                        "action": "permit",
+                                                        "annotation": "",
+                                                        "directives": "",
+                                                        "priorityOverride": "default",
+                                                        "tnVzFilterName": "http",
+                                                        "userdom": ":all:"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }, {
+                        "vnsSvcCont": {
+                            "attributes": {
+                                "annotation": "",
+                                "userdom": "all"
+                            }
+                        }
+                    }, {
+                        "fvEpTags": {
+                            "attributes": {
+                                "annotation": "",
+                                "userdom": "all"
+                            }
+                        }
+                    }, {
+                        "fvCtx": {
+                            "attributes": {
+                                "annotation": "",
+                                "bdEnforcedEnable": "no",
+                                "descr": "",
+                                "ipDataPlaneLearning": "enabled",
+                                "knwMcastAct": "permit",
+                                "name": "Marketing_VRF",
+                                "nameAlias": "",
+                                "ownerKey": "",
+                                "ownerTag": "",
+                                "pcEnfDir": "ingress",
+                                "pcEnfPref": "enforced",
+                                "userdom": ":all:",
+                                "vrfIndex": "0"
+                            },
+                            "children": [{
+                                    "fvRsVrfValidationPol": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnL3extVrfValidationPolName": "",
+                                            "userdom": "all"
+                                        }
+                                    }
+                                }, {
+                                    "vzAny": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "descr": "",
+                                            "matchT": "AtleastOne",
+                                            "name": "",
+                                            "nameAlias": "",
+                                            "prefGrMemb": "disabled",
+                                            "userdom": "all"
+                                        }
+                                    }
+                                }, {
+                                    "fvRsOspfCtxPol": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnOspfCtxPolName": "",
+                                            "userdom": "all"
+                                        }
+                                    }
+                                }, {
+                                    "fvRsCtxToEpRet": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnFvEpRetPolName": "",
+                                            "userdom": "all"
+                                        }
+                                    }
+                                }, {
+                                    "fvRsCtxToExtRouteTagPol": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnL3extRouteTagPolName": "",
+                                            "userdom": "all"
+                                        }
+                                    }
+                                }, {
+                                    "fvRsBgpCtxPol": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnBgpCtxPolName": "",
+                                            "userdom": "all"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }, {
+                        "fvBD": {
+                            "attributes": {
+                                "OptimizeWanBandwidth": "no",
+                                "annotation": "",
+                                "arpFlood": "no",
+                                "descr": "",
+                                "epClear": "no",
+                                "epMoveDetectMode": "",
+                                "hostBasedRouting": "no",
+                                "intersiteBumTrafficAllow": "no",
+                                "intersiteL2Stretch": "no",
+                                "ipLearning": "yes",
+                                "ipv6McastAllow": "no",
+                                "limitIpLearnToSubnets": "yes",
+                                "llAddr": "::",
+                                "mac": "00:22:BD:F8:19:FF",
+                                "mcastAllow": "no",
+                                "multiDstPktAct": "bd-flood",
+                                "name": "Marketing_BD",
+                                "nameAlias": "",
+                                "ownerKey": "",
+                                "ownerTag": "",
+                                "type": "regular",
+                                "unicastRoute": "yes",
+                                "unkMacUcastAct": "proxy",
+                                "unkMcastAct": "flood",
+                                "userdom": ":all:",
+                                "v6unkMcastAct": "flood",
+                                "vmac": "not-applicable"
+                            },
+                            "children": [{
+                                    "fvSubnet": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "ctrl": "nd",
+                                            "descr": "",
+                                            "ip": "20.23.21.1/24",
+                                            "ipDPLearning": "enabled",
+                                            "name": "Marketing_Subnet",
+                                            "nameAlias": "",
+                                            "preferred": "no",
+                                            "scope": "public",
+                                            "userdom": ":all:",
+                                            "virtual": "no"
+                                        }
+                                    }
+                                }, {
+                                    "fvRsMldsn": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnMldSnoopPolName": "",
+                                            "userdom": "all"
+                                        }
+                                    }
+                                }, {
+                                    "fvRsIgmpsn": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnIgmpSnoopPolName": "",
+                                            "userdom": "all"
+                                        }
+                                    }
+                                }, {
+                                    "fvRsCtx": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnFvCtxName": "Marketing_VRF",
+                                            "userdom": "all"
+                                        }
+                                    }
+                                }, {
+                                    "fvRsBdToEpRet": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "resolveAct": "resolve",
+                                            "tnFvEpRetPolName": "",
+                                            "userdom": "all"
+                                        }
+                                    }
+                                }, {
+                                    "fvRsBDToNdP": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "tnNdIfPolName": "",
+                                            "userdom": "all"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }, {
+                        "vzFilter": {
+                            "attributes": {
+                                "annotation": "",
+                                "descr": "",
+                                "name": "http",
+                                "nameAlias": "",
+                                "ownerKey": "",
+                                "ownerTag": "",
+                                "userdom": ":all:"
+                            },
+                            "children": [{
+                                    "vzEntry": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "applyToFrag": "no",
+                                            "arpOpc": "unspecified",
+                                            "dFromPort": "http",
+                                            "dToPort": "http",
+                                            "descr": "",
+                                            "etherT": "ip",
+                                            "icmpv4T": "unspecified",
+                                            "icmpv6T": "unspecified",
+                                            "matchDscp": "unspecified",
+                                            "name": "tcp-80",
+                                            "nameAlias": "",
+                                            "prot": "tcp",
+                                            "sFromPort": "unspecified",
+                                            "sToPort": "unspecified",
+                                            "stateful": "no",
+                                            "tcpRules": "",
+                                            "userdom": ":all:"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }, {
+                        "fvRsTenantMonPol": {
+                            "attributes": {
+                                "annotation": "",
+                                "tnMonEPGPolName": "",
+                                "userdom": "all"
+                            }
+                        }
+                    }, {
+                        "fvAp": {
+                            "attributes": {
+                                "annotation": "",
+                                "descr": "",
+                                "name": "Marketing_APP",
+                                "nameAlias": "",
+                                "ownerKey": "",
+                                "ownerTag": "",
+                                "prio": "unspecified",
+                                "userdom": ":all:"
+                            },
+                            "children": [{
+                                    "fvAEPg": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "descr": "",
+                                            "exceptionTag": "",
+                                            "floodOnEncap": "disabled",
+                                            "fwdCtrl": "",
+                                            "hasMcastSource": "no",
+                                            "isAttrBasedEPg": "no",
+                                            "matchT": "AtleastOne",
+                                            "name": "Users_EPG",
+                                            "nameAlias": "",
+                                            "pcEnfPref": "unenforced",
+                                            "prefGrMemb": "exclude",
+                                            "prio": "unspecified",
+                                            "shutdown": "no",
+                                            "userdom": ":all:"
+                                        },
+                                        "children": [{
+                                                "fvRsCons": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "intent": "install",
+                                                        "prio": "unspecified",
+                                                        "tnVzBrCPName": "Portal",
+                                                        "userdom": ":all:"
+                                                    }
+                                                }
+                                            }, {
+                                                "fvRsCustQosPol": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tnQosCustomPolName": "",
+                                                        "userdom": "all"
+                                                    }
+                                                }
+                                            }, {
+                                                "fvRsBd": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tnFvBDName": "Marketing_BD",
+                                                        "userdom": "all"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }, {
+                                    "fvAEPg": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "descr": "",
+                                            "exceptionTag": "",
+                                            "floodOnEncap": "disabled",
+                                            "fwdCtrl": "",
+                                            "hasMcastSource": "no",
+                                            "isAttrBasedEPg": "no",
+                                            "matchT": "AtleastOne",
+                                            "name": "Portal_EPG",
+                                            "nameAlias": "",
+                                            "pcEnfPref": "unenforced",
+                                            "prefGrMemb": "exclude",
+                                            "prio": "unspecified",
+                                            "shutdown": "no",
+                                            "userdom": ":all:"
+                                        },
+                                        "children": [{
+                                                "fvRsProv": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "intent": "install",
+                                                        "matchT": "AtleastOne",
+                                                        "prio": "unspecified",
+                                                        "tnVzBrCPName": "Portal",
+                                                        "userdom": ":all:"
+                                                    }
+                                                }
+                                            }, {
+                                                "fvRsCustQosPol": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tnQosCustomPolName": "",
+                                                        "userdom": "all"
+                                                    }
+                                                }
+                                            }, {
+                                                "fvRsBd": {
+                                                    "attributes": {
+                                                        "annotation": "",
+                                                        "tnFvBDName": "Marketing_BD",
+                                                        "userdom": "all"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
+
+'''
+raise RuntimeError('Please review the auto generated code before ' +
+                    'executing the output. Some placeholders will ' +
+                    'need to be changed')
+
+# list of packages that should be imported for this code to work
+import cobra.mit.access
+import cobra.mit.request
+import cobra.mit.session
+import cobra.model.fv
+import cobra.model.pol
+import cobra.model.vns
+import cobra.model.vz
+from cobra.internal.codec.xmlcodec import toXMLStr
+
+# log into an APIC and create a directory object
+ls = cobra.mit.session.LoginSession('https://1.1.1.1', 'admin', 'password')
+md = cobra.mit.access.MoDirectory(ls)
+md.login()
+
+# the top level object on which operations will be made
+polUni = cobra.model.pol.Uni('')
+
+# build the request using cobra syntax
+fvTenant = cobra.model.fv.Tenant(polUni, ownerKey=u'', name=u'Marketing', descr=u'', userdom=u':all:', nameAlias=u'', ownerTag=u'', annotation=u'')
+vzBrCP = cobra.model.vz.BrCP(fvTenant, ownerKey=u'', userdom=u':all:', name=u'Portal', descr=u'', targetDscp=u'unspecified', intent=u'install', nameAlias=u'', ownerTag=u'', prio=u'unspecified', annotation=u'')
+vzSubj = cobra.model.vz.Subj(vzBrCP, revFltPorts=u'yes', descr=u'', prio=u'unspecified', targetDscp=u'unspecified', userdom=u':all:', nameAlias=u'', consMatchT=u'AtleastOne', annotation=u'', provMatchT=u'AtleastOne', name=u'http')
+vzRsSubjFiltAtt = cobra.model.vz.RsSubjFiltAtt(vzSubj, tnVzFilterName=u'http', priorityOverride=u'default', userdom=u':all:', action=u'permit', directives=u'', annotation=u'')
+vnsSvcCont = cobra.model.vns.SvcCont(fvTenant, userdom=u'all', annotation=u'')
+fvEpTags = cobra.model.fv.EpTags(fvTenant, userdom=u'all', annotation=u'')
+fvCtx = cobra.model.fv.Ctx(fvTenant, ownerKey=u'', name=u'Marketing_VRF', descr=u'', nameAlias=u'', knwMcastAct=u'permit', vrfIndex=u'0', pcEnfDir=u'ingress', userdom=u':all:', ipDataPlaneLearning=u'enabled', ownerTag=u'', annotation=u'', pcEnfPref=u'enforced', bdEnforcedEnable=u'no')
+fvRsVrfValidationPol = cobra.model.fv.RsVrfValidationPol(fvCtx, userdom=u'all', tnL3extVrfValidationPolName=u'', annotation=u'')
+vzAny = cobra.model.vz.Any(fvCtx, matchT=u'AtleastOne', name=u'', descr=u'', prefGrMemb=u'disabled', userdom=u'all', nameAlias=u'', annotation=u'')
+fvRsOspfCtxPol = cobra.model.fv.RsOspfCtxPol(fvCtx, userdom=u'all', annotation=u'', tnOspfCtxPolName=u'')
+fvRsCtxToEpRet = cobra.model.fv.RsCtxToEpRet(fvCtx, userdom=u'all', annotation=u'', tnFvEpRetPolName=u'')
+fvRsCtxToExtRouteTagPol = cobra.model.fv.RsCtxToExtRouteTagPol(fvCtx, userdom=u'all', annotation=u'', tnL3extRouteTagPolName=u'')
+fvRsBgpCtxPol = cobra.model.fv.RsBgpCtxPol(fvCtx, tnBgpCtxPolName=u'', userdom=u'all', annotation=u'')
+fvBD = cobra.model.fv.BD(fvTenant, multiDstPktAct=u'bd-flood', mcastAllow=u'no', ipv6McastAllow=u'no', userdom=u':all:', limitIpLearnToSubnets=u'yes', unicastRoute=u'yes', unkMcastAct=u'flood', v6unkMcastAct=u'flood', descr=u'', hostBasedRouting=u'no', llAddr=u'::', nameAlias=u'', type=u'regular', ipLearning=u'yes', vmac=u'not-applicable', mac=u'00:22:BD:F8:19:FF', epMoveDetectMode=u'', ownerTag=u'', intersiteBumTrafficAllow=u'no', annotation=u'', ownerKey=u'', name=u'Marketing_BD', epClear=u'no', unkMacUcastAct=u'proxy', arpFlood=u'no', intersiteL2Stretch=u'no', OptimizeWanBandwidth=u'no')
+fvSubnet = cobra.model.fv.Subnet(fvBD, name=u'Marketing_Subnet', descr=u'', ctrl=u'nd', ip=u'20.23.21.1/24', preferred=u'no', annotation=u'', userdom=u':all:', virtual=u'no', nameAlias=u'', ipDPLearning=u'enabled')
+fvRsMldsn = cobra.model.fv.RsMldsn(fvBD, tnMldSnoopPolName=u'', userdom=u'all', annotation=u'')
+fvRsIgmpsn = cobra.model.fv.RsIgmpsn(fvBD, tnIgmpSnoopPolName=u'', userdom=u'all', annotation=u'')
+fvRsCtx = cobra.model.fv.RsCtx(fvBD, userdom=u'all', annotation=u'', tnFvCtxName=u'Marketing_VRF')
+fvRsBdToEpRet = cobra.model.fv.RsBdToEpRet(fvBD, resolveAct=u'resolve', userdom=u'all', annotation=u'', tnFvEpRetPolName=u'')
+fvRsBDToNdP = cobra.model.fv.RsBDToNdP(fvBD, userdom=u'all', annotation=u'', tnNdIfPolName=u'')
+vzFilter = cobra.model.vz.Filter(fvTenant, ownerKey=u'', name=u'http', descr=u'', userdom=u':all:', nameAlias=u'', ownerTag=u'', annotation=u'')
+vzEntry = cobra.model.vz.Entry(vzFilter, tcpRules=u'', arpOpc=u'unspecified', applyToFrag=u'no', dToPort=u'http', descr=u'', nameAlias=u'', matchDscp=u'unspecified', prot=u'tcp', icmpv4T=u'unspecified', sFromPort=u'unspecified', stateful=u'no', userdom=u':all:', icmpv6T=u'unspecified', sToPort=u'unspecified', etherT=u'ip', dFromPort=u'http', annotation=u'', name=u'tcp-80')
+fvRsTenantMonPol = cobra.model.fv.RsTenantMonPol(fvTenant, userdom=u'all', annotation=u'', tnMonEPGPolName=u'')
+fvAp = cobra.model.fv.Ap(fvTenant, ownerKey=u'', name=u'Marketing_APP', descr=u'', userdom=u':all:', nameAlias=u'', ownerTag=u'', prio=u'unspecified', annotation=u'')
+fvAEPg = cobra.model.fv.AEPg(fvAp, shutdown=u'no', isAttrBasedEPg=u'no', matchT=u'AtleastOne', name=u'Users_EPG', descr=u'', fwdCtrl=u'', prefGrMemb=u'exclude', exceptionTag=u'', floodOnEncap=u'disabled', userdom=u':all:', nameAlias=u'', hasMcastSource=u'no', prio=u'unspecified', annotation=u'', pcEnfPref=u'unenforced')
+fvRsCons = cobra.model.fv.RsCons(fvAEPg, userdom=u':all:', tnVzBrCPName=u'Portal', intent=u'install', annotation=u'', prio=u'unspecified')
+fvRsCustQosPol = cobra.model.fv.RsCustQosPol(fvAEPg, userdom=u'all', annotation=u'', tnQosCustomPolName=u'')
+fvRsBd = cobra.model.fv.RsBd(fvAEPg, userdom=u'all', annotation=u'', tnFvBDName=u'Marketing_BD')
+fvAEPg2 = cobra.model.fv.AEPg(fvAp, shutdown=u'no', isAttrBasedEPg=u'no', matchT=u'AtleastOne', name=u'Portal_EPG', descr=u'', fwdCtrl=u'', prefGrMemb=u'exclude', exceptionTag=u'', floodOnEncap=u'disabled', userdom=u':all:', nameAlias=u'', hasMcastSource=u'no', prio=u'unspecified', annotation=u'', pcEnfPref=u'unenforced')
+fvRsProv = cobra.model.fv.RsProv(fvAEPg2, matchT=u'AtleastOne', prio=u'unspecified', tnVzBrCPName=u'Portal', userdom=u':all:', intent=u'install', annotation=u'')
+fvRsCustQosPol2 = cobra.model.fv.RsCustQosPol(fvAEPg2, userdom=u'all', annotation=u'', tnQosCustomPolName=u'')
+fvRsBd2 = cobra.model.fv.RsBd(fvAEPg2, userdom=u'all', annotation=u'', tnFvBDName=u'Marketing_BD')
+
+
+# commit the generated code to APIC
+print(toXMLStr(polUni))
+c = cobra.mit.request.ConfigRequest()
+c.addMo(polUni)
+md.commit(c)
+</pre><p>Do a global replace of “Marketing” with “Support”</p><p><a href="/wp-content/uploads/2022/04/cobra_tenants7.jpg"><img decoding="async" src="" alt="" width="692" height="351" class="alignnone size-full wp-image-9922" data-layzr="/wp-content/uploads/2022/04/cobra_tenants7.jpg"></a></p><p>And remove this block of code:</p><pre class="brush: python; title: ; notranslate" title="">
+raise RuntimeError('Please review the auto generated code before ' +
+                    'executing the output. Some placeholders will ' +
+                    'need to be changed')
+</pre><p>Run the update script in python2 to generate the new tenant:</p><p><a href="/wp-content/uploads/2022/04/cobra_tenants8.jpg"><img decoding="async" src="" alt="" width="1175" height="639" class="alignnone size-full wp-image-9924" data-layzr="/wp-content/uploads/2022/04/cobra_tenants8.jpg"></a></p><p>Inspect the Tenants &gt; All Tenants list again and see that the Tenant called Support has been added:</p><p><a href="/wp-content/uploads/2022/04/cobra_tenants9.jpg"><img decoding="async" src="" alt="" width="931" height="667" class="alignnone size-full wp-image-9925" data-layzr="/wp-content/uploads/2022/04/cobra_tenants9.jpg"></a></p>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '9905'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2022/using-cobra-sdk-and-arya-to-create-a-tenant/&amp;media=&amp;description=Using%20Cobra%20SDK%20and%20Arya%20to%20create%20a%20Tenant" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2020/using-regex-to-find-and-replace-text-in-notepad/" title="Using Regex to find and replace text in Notepad++" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using Regex to find and replace text in Notepad++"></div>
+                                                                        <h4 class="title front-view-title">Using Regex to find and replace text in Notepad++</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2012/using-boostpro-to-install-boost-library-packages/" title="Using BoostPro to install Boost library packages" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using BoostPro to install Boost library packages"></div>
+                                                                        <h4 class="title front-view-title">Using BoostPro to install Boost library packages</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2022/using-python-with-cisco-apic-rest-api/" title="Using Python with Cisco APIC REST API" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using Python with Cisco APIC REST API"></div>
+                                                                        <h4 class="title front-view-title">Using Python with Cisco APIC REST API</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-python-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPython.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

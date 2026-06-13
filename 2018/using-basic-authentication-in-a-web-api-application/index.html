@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>Using basic authentication in a Web API application – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Using basic authentication in a Web API application Comments Feed" href="/2018/using-basic-authentication-in-a-web-api-application/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2018%2Fusing-basic-authentication-in-a-web-api-application%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2018%2Fusing-basic-authentication-in-a-web-api-application%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/8207"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2018/using-basic-authentication-in-a-web-api-application/">
+<link rel="shortlink" href="/?p=8207">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-8207 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-8207" class="g post post-8207 type-post status-publish format-standard hentry category-c-net-2 category-web-development tag-basic-authentication">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/c-net-2/" itemprop="item"><span itemprop="name">C# / .Net / WPF</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Using basic authentication in a Web API application</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">Using basic authentication in a Web API application</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>12 March 2018</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/c-net-2/" title="View all posts in C# / .Net / WPF">C# / .Net / WPF</a>, <a href="/category/web-development/" title="View all posts in Web development">Web development</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2018/using-basic-authentication-in-a-web-api-application/#comments" itemprop="interactionCount">12 Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p>Some instructions on how to create implement basic authentication in a Web API application.</p><p>Just follow what is shown in the steps and screenshots as shown:</p><p><strong>Step 1: Create a new ASP.NET Web application in Visual Studio:</strong></p><p>
+</p><div id="attachment_8209" style="width: 836px" class="wp-caption alignnone"><a href="/wp-content/uploads/2018/03/WebAuth1.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-8209" class="wp-image-8209 size-full" src="" alt="basic authentication in a Web API application" width="826" height="518" data-layzr="/wp-content/uploads/2018/03/WebAuth1.png"></a><p id="caption-attachment-8209" class="wp-caption-text">basic authentication in a Web API application</p></div>
+<p><a href="/wp-content/uploads/2018/03/WebAuth2.png"><img decoding="async" class="alignnone size-full wp-image-8211" src="" alt="" width="800" height="620" data-layzr="/wp-content/uploads/2018/03/WebAuth2.png"></a></p><p><strong>Step 2: Create a new authentication filter</strong></p><p>I have created a new folder with which to put any new filter classes:</p><p><a href="/wp-content/uploads/2018/03/WebAuth3.png"><img decoding="async" class="alignnone size-full wp-image-8214" src="" alt="" width="315" height="368" data-layzr="/wp-content/uploads/2018/03/WebAuth3.png"></a></p><p>Create a new class called BasicAuthenticationAttribute. This needs to inherit from AuthorizationFilterAttribute.</p><pre class="brush: csharp; title: ; notranslate" title="">
+using System;
+using System.Net;
+using System.Net.Http;
+using System.Security.Principal;
+using System.Text;
+using System.Threading;
+using System.Web.Http.Filters;
+
+namespace WebApiAuthenticate.Filters
+{
+   public class BasicAuthenticationAttribute : AuthorizationFilterAttribute
+   {
+      public override void OnAuthorization(HttpActionContext actionContext)
+      {
+         var authHeader = actionContext.Request.Headers.Authorization;
+
+         if (authHeader != null)
+         {
+            var authenticationToken = actionContext.Request.Headers.Authorization.Parameter;
+            var decodedAuthenticationToken = Encoding.UTF8.GetString(Convert.FromBase64String(authenticationToken));
+            var usernamePasswordArray = decodedAuthenticationToken.Split(':');
+            var userName = usernamePasswordArray[0];
+            var password = usernamePasswordArray[1];
+
+            // Replace this with your own system of security / means of validating credentials
+            var isValid = userName == "andy" &amp;&amp; password == "password";
+
+            if (isValid)
+            {
+               var principal = new GenericPrincipal(new GenericIdentity(userName), null);
+               Thread.CurrentPrincipal = principal;
+
+               actionContext.Response =
+                  actionContext.Request.CreateResponse(HttpStatusCode.OK,
+                     "User " + userName + " successfully authenticated");
+
+               return;
+            }            
+         }   
+         
+         HandleUnathorized(actionContext);    
+      }
+
+      private static void HandleUnathorized(HttpActionContext actionContext)
+      {
+         actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized);
+         actionContext.Response.Headers.Add("WWW-Authenticate", "Basic Scheme='Data' location = 'http://localhost:");
+      }
+   }
+}
+</pre><p><strong>Step 3: Add the filter in your WebApiConfig file</strong></p><p><strong>WebApiConfig.cs</strong></p><pre class="brush: csharp; title: ; notranslate" title="">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Web.Http;
+using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json.Serialization;
+using WebApiAuthenticate.Filters;
+
+namespace WebApiAuthenticate
+{
+    public static class WebApiConfig
+    {
+        public static void Register(HttpConfiguration config)
+        {
+            // Web API configuration and services        
+         
+            // Web API routes
+            config.MapHttpAttributeRoutes();
+
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Filters.Add(new BasicAuthenticationAttribute());
+      }
+    }
+}
+</pre><p><strong>Step 4: Ensure basic authentication filter is applied in Values controller</strong></p><pre class="brush: csharp; title: ; notranslate" title="">
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Web.Http;
+using WebApiAuthenticate.Filters;
+
+namespace WebApiAuthenticate.Controllers
+{
+    [BasicAuthentication]
+    [RequireHttps]
+    public class ValuesController : ApiController
+    {
+         // GET api/values
+         public IEnumerable&lt;string&gt; Get()
+         {
+            return new string[] { "value1", "value2" };
+         }
+
+         // GET api/values/5
+         public string Get(int id)
+         {
+            return id.ToString();
+         }
+
+         // POST api/values
+         public HttpResponseMessage Post()
+         {
+            var response = Request.CreateResponse&lt;string&gt;(System.Net.HttpStatusCode.Created, "Your first POST request!");
+            return response;
+         }
+         public HttpResponseMessage Post(int id)
+         {
+         
+            var response = Request.CreateResponse&lt;string&gt;(System.Net.HttpStatusCode.Created, id.ToString());
+            return response;
+         }
+
+         // PUT api/values/5
+         public void Put(int id, [FromBody]string value)
+         {
+         }
+
+         // DELETE api/values/5
+         public void Delete(int id)
+         {
+         }
+    }
+}
+</pre><p><strong>Step 5: Create some example credentials</strong></p><p>Example username/password credentials separated by ‘:’ are</p><p>andy:password in this example.</p><p>Obtain the Base64 encoding of “andy:password” using <a href="https://www.base64encode.org/">https://www.base64encode.org/</a></p><p>Giving the text “YW5keTpwYXNzd29yZA==” as shown:</p><p><a href="/wp-content/uploads/2018/03/WebAuth4.png"><img decoding="async" class="alignnone size-full wp-image-8215" src="" alt="" width="550" height="531" data-layzr="/wp-content/uploads/2018/03/WebAuth4.png"></a></p><p><strong>Step 6: Test</strong></p><p><strong>Using Postman:</strong></p><p><a href="/wp-content/uploads/2018/03/WebAuth5.png"><img decoding="async" class="alignnone size-full wp-image-8218" src="" alt="" width="782" height="691" data-layzr="/wp-content/uploads/2018/03/WebAuth5.png"></a></p><p><strong>Using Fiddler</strong></p><p>In the Compose window I make sure the Basic Authentication is set, along with the Base-64 encrypted username:password pair:</p><p>Host: localhost:53977<br>
+Authorization: Basic YW5keTpwYXNzd29yZA==<br>
+Content-Length: 0</p><p><a href="/wp-content/uploads/2018/03/WebAuth6.png"><img decoding="async" class="alignnone size-full wp-image-8223" src="" alt="" width="1150" height="766" data-layzr="/wp-content/uploads/2018/03/WebAuth6.png"></a></p><p>On pressing the Execute button we can read the request response contained in the ‘Raw’ window:</p><p><a href="/wp-content/uploads/2018/03/WebAuth7.png"><img decoding="async" class="alignnone size-full wp-image-8224" src="" alt="" width="1150" height="766" data-layzr="/wp-content/uploads/2018/03/WebAuth7.png"></a></p><p>And to allow it to return the values, just remove the response code from BasicAuthenticationAttribute class as shown:</p><pre class="brush: csharp; title: ; notranslate" title="">
+using System;
+using System.Net;
+using System.Net.Http;
+using System.Security.Principal;
+using System.Text;
+using System.Threading;
+using System.Web.Http.Filters;
+
+namespace WebApiAuthenticate.Filters
+{
+   public class BasicAuthenticationAttribute : AuthorizationFilterAttribute
+   {
+      public override void OnAuthorization(HttpActionContext actionContext)
+      {
+         var authHeader = actionContext.Request.Headers.Authorization;
+
+         if (authHeader != null)
+         {
+            var authenticationToken = actionContext.Request.Headers.Authorization.Parameter;
+            var decodedAuthenticationToken = Encoding.UTF8.GetString(Convert.FromBase64String(authenticationToken));
+            var usernamePasswordArray = decodedAuthenticationToken.Split(':');
+            var userName = usernamePasswordArray[0];
+            var password = usernamePasswordArray[1];
+
+            // Replace this with your own system of security / means of validating credentials
+            var isValid = userName == "andy" &amp;&amp; password == "password";
+
+            if (isValid)
+            {
+               var principal = new GenericPrincipal(new GenericIdentity(userName), null);
+               Thread.CurrentPrincipal = principal;              
+
+               return;
+            }            
+         }   
+         
+         HandleUnathorized(actionContext);    
+      }
+
+      private static void HandleUnathorized(HttpActionContext actionContext)
+      {
+         actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized);
+         actionContext.Response.Headers.Add("WWW-Authenticate", "Basic Scheme='Data' location = 'http://localhost:");
+      }
+   }
+}
+</pre><p>So that on re-running the GET command in Fiddler we get the values returned as shown:</p><p><a href="/wp-content/uploads/2018/03/WebAuth8.png"><img decoding="async" class="alignnone size-full wp-image-8229" src="" alt="" width="1150" height="766" data-layzr="/wp-content/uploads/2018/03/WebAuth8.png"></a></p><p><strong>Consuming the Web Api web service from a console application</strong></p><p>A good way of debugging your web service is to consume it from a console app.</p><p>Run the Web Api project in one instance of Visual Studio, and in another run the console application as shown:</p><pre class="brush: csharp; title: ; notranslate" title="">
+using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
+
+namespace WebApiClient
+{
+   class Program
+   {
+      public static void Main(string[] args)
+      {
+         Console.WriteLine("Enter to continue");
+         Console.ReadLine();
+         DoIt();
+         Console.ReadLine();
+      }
+
+      private static async void DoIt()
+      {
+         using (var stringContent = new StringContent("{ \"firstName\": \"Andy\" }", System.Text.Encoding.UTF8,
+            "application/json"))
+         using (var client = new HttpClient())
+         {
+            try
+            {               
+               client.DefaultRequestHeaders.Authorization =
+                   new AuthenticationHeaderValue(
+                       "Basic",
+                       Convert.ToBase64String(
+                           System.Text.Encoding.ASCII.GetBytes(
+                               string.Format("{0}:{1}", "andy", "password"))));
+
+               // 1. Consume the POST command
+               var response = await client.PostAsync("https://localhost:44363/api/values/33", stringContent);
+               var result = await response.Content.ReadAsStringAsync();
+               Console.WriteLine("Result from POST command: " + result);
+               
+               // 2. Consume the GET command
+               response = await client.GetAsync("https://localhost:44363/api/values/33");
+               if (response.IsSuccessStatusCode)
+               {
+                  var id = await response.Content.ReadAsStringAsync();
+                  Console.WriteLine("Result from GET command: " + result);
+               }
+            }
+            catch (Exception ex)
+            {
+               Console.ForegroundColor = ConsoleColor.Red;
+               Console.WriteLine(ex.Message);
+               Console.ResetColor();
+            }
+         }
+      }
+   }
+}
+</pre><p>Giving the following output:</p><p>
+</p><div id="attachment_8876" style="width: 591px" class="wp-caption alignnone"><a href="/wp-content/uploads/2018/03/consumeWebService.png"><img decoding="async" aria-describedby="caption-attachment-8876" class="size-full wp-image-8876" src="" alt="Consume web api service " width="581" height="335" data-layzr="/wp-content/uploads/2018/03/consumeWebService.png"></a><p id="caption-attachment-8876" class="wp-caption-text">Consume web api service</p></div>
+
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '8207'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2018/using-basic-authentication-in-a-web-api-application/&amp;media=&amp;description=Using%20basic%20authentication%20in%20a%20Web%20API%20application" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2016/using-the-gecko-web-browser-in-a-c-winforms-project/" title="Using the Gecko Web Browser in a C# Winforms Project" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using the Gecko Web Browser in a C# Winforms Project"></div>
+                                                                        <h4 class="title front-view-title">Using the Gecko Web Browser in a C# Winforms Project</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2016/applying-reset-stylesheets-to-html-using-css/" title="Applying reset stylesheets to HTML using CSS" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Applying reset stylesheets to HTML using CSS"></div>
+                                                                        <h4 class="title front-view-title">Applying reset stylesheets to HTML using CSS</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2017/using-hierarchicaldatatemplate-with-treeview-in-wpf-mvvm/" title="Using HierarchicalDataTemplate with TreeView in WPF / MVVM" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img width="190" height="120" src="" class="attachment-truepixel-related size-truepixel-related wp-post-image" alt="Using HierarchicalDataTemplate with TreeView in WPF / MVVM" title="Using HierarchicalDataTemplate with TreeView in WPF / MVVM" decoding="async" data-layzr="/wp-content/uploads/2017/05/wpftree2-190x120.jpg"></div>                                                <h4 class="title front-view-title">Using HierarchicalDataTemplate with TreeView in WPF / MVVM</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-52738">
+    		                    <div id="comment-52738" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/42a06ccf06ed30aaa3a62a77ddfa63ebf3e26a87bdeddb3e2760c90c11992b5e?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/42a06ccf06ed30aaa3a62a77ddfa63ebf3e26a87bdeddb3e2760c90c11992b5e?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Michael Hildebrandt</span></span>                                                            <span class="ago">28 January 2019</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thank you Andy!<br>
+This is exactly what I was looking for.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2018/using-basic-authentication-in-a-web-api-application/?replytocom=52738#respond" data-commentid="52738" data-postid="8207" data-belowelement="comment-52738" data-respondelement="respond" data-replyto="Reply to Michael Hildebrandt" aria-label="Reply to Michael Hildebrandt">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    </ol><ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-52739">
+    		                    <div id="comment-52739" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">28 January 2019</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Nice one!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2018/using-basic-authentication-in-a-web-api-application/?replytocom=52739#respond" data-commentid="52739" data-postid="8207" data-belowelement="comment-52739" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-54016">
+    		                    <div id="comment-54016" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">2 July 2019</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Cool.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2018/using-basic-authentication-in-a-web-api-application/?replytocom=54016#respond" data-commentid="54016" data-postid="8207" data-belowelement="comment-54016" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-53776">
+    		                    <div id="comment-53776" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/a9d7030893657199197aa3c2a5201545a97bb7d60734f52faa7a286cf4b257c9?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/a9d7030893657199197aa3c2a5201545a97bb7d60734f52faa7a286cf4b257c9?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="http://www.aquacomm.com.au/" class="url" rel="ugc external nofollow">glen</a></span></span>                                                            <span class="ago">30 May 2019</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Mate, thanks for making this so simple.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2018/using-basic-authentication-in-a-web-api-application/?replytocom=53776#respond" data-commentid="53776" data-postid="8207" data-belowelement="comment-53776" data-respondelement="respond" data-replyto="Reply to glen" aria-label="Reply to glen">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-53846">
+    		                    <div id="comment-53846" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/123d519dd48b463cdd33d3d433f86bc5db50e51e65a7a468c58c801fee552399?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/123d519dd48b463cdd33d3d433f86bc5db50e51e65a7a468c58c801fee552399?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Somitha</span></span>                                                            <span class="ago">19 June 2019</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Great article. Made my day.<br>
+Just to add, If you want [AllowAnonymous] to work, add this<br>
+          private static bool SkipAuthorization(HttpActionContext actionContext)<br>
+          {<br>
+               Contract.Assert(actionContext != null);<br>
+               return actionContext.ActionDescriptor.GetCustomAttributes().Any()<br>
+                       || actionContext.ControllerContext.ControllerDescriptor.GetCustomAttributes().Any();<br>
+             }<br>
+           public override void OnAuthorization(HttpActionContext actionContext)<br>
+            {<br>
+                 if (SkipAuthorization(actionContext)) return;<br>
+                 …………………………<br>
+                 ………………….<br>
+                  }</p>
+<p>I have a Login endpoint which is marked with  [AllowAnonymous], Also it is better to store the details in a Cookie in Login endpoint.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2018/using-basic-authentication-in-a-web-api-application/?replytocom=53846#respond" data-commentid="53846" data-postid="8207" data-belowelement="comment-53846" data-respondelement="respond" data-replyto="Reply to Somitha" aria-label="Reply to Somitha">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-54014">
+    		                    <div id="comment-54014" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/dbec93977dd1fa26da9f7a93f676ac5c63f87ba15b227ff0ac51c15a6e80a454?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/dbec93977dd1fa26da9f7a93f676ac5c63f87ba15b227ff0ac51c15a6e80a454?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Dan Colgan</span></span>                                                            <span class="ago">2 July 2019</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi.  I like this very much.  Thank you for the kick start.  I do have a question though.  I’m new to c# so it might be a stupid question.  When I change the password to be invalid it evaluates correctly as unauthorized but the value of  ‘var result = await response.Content.ReadAsStringAsync();’  is not returning anything… in other words “result” is empty.  Shouldn’t it have the value of the response in it?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2018/using-basic-authentication-in-a-web-api-application/?replytocom=54014#respond" data-commentid="54014" data-postid="8207" data-belowelement="comment-54014" data-respondelement="respond" data-replyto="Reply to Dan Colgan" aria-label="Reply to Dan Colgan">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-54015">
+    		                    <div id="comment-54015" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">2 July 2019</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Dan yes you are probably right the return string should at least contain some kind of response.  I did this as a minimalist example and I will revisit this post when I get the chance. Thanks.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2018/using-basic-authentication-in-a-web-api-application/?replytocom=54015#respond" data-commentid="54015" data-postid="8207" data-belowelement="comment-54015" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-54555">
+    		                    <div id="comment-54555" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/c2b1f6d0c9071937b715efa58f50e0021e0606fdd744597800cca83b8e08e4c1?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/c2b1f6d0c9071937b715efa58f50e0021e0606fdd744597800cca83b8e08e4c1?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Gasper</span></span>                                                            <span class="ago">19 September 2019</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Great post!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2018/using-basic-authentication-in-a-web-api-application/?replytocom=54555#respond" data-commentid="54555" data-postid="8207" data-belowelement="comment-54555" data-respondelement="respond" data-replyto="Reply to Gasper" aria-label="Reply to Gasper">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-54605">
+    		                    <div id="comment-54605" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/468e09614dc464ae186e45ed88e2fe9f5cc7ac7a0f66bea035eb10b73533e308?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/468e09614dc464ae186e45ed88e2fe9f5cc7ac7a0f66bea035eb10b73533e308?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Fernando</span></span>                                                            <span class="ago">26 September 2019</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks for your share!!</p>
+<p>Best regards!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2018/using-basic-authentication-in-a-web-api-application/?replytocom=54605#respond" data-commentid="54605" data-postid="8207" data-belowelement="comment-54605" data-respondelement="respond" data-replyto="Reply to Fernando" aria-label="Reply to Fernando">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-55138">
+    		                    <div id="comment-55138" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/a3b816fd3196f5bc2151a07a1d7863ba72f32c30fd4f5bb601293d062ab1723c?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/a3b816fd3196f5bc2151a07a1d7863ba72f32c30fd4f5bb601293d062ab1723c?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">sreedevi</span></span>                                                            <span class="ago">5 December 2019</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thank you so much. This is what i was looking for. You made my day. 🙂</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2018/using-basic-authentication-in-a-web-api-application/?replytocom=55138#respond" data-commentid="55138" data-postid="8207" data-belowelement="comment-55138" data-respondelement="respond" data-replyto="Reply to sreedevi" aria-label="Reply to sreedevi">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-55145">
+    		                    <div id="comment-55145" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">7 December 2019</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Awesome!  Thanks for the feedback.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2018/using-basic-authentication-in-a-web-api-application/?replytocom=55145#respond" data-commentid="55145" data-postid="8207" data-belowelement="comment-55145" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-59444">
+    		                    <div id="comment-59444" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/40374b1ed54ec9eb90f36047b68a9c688e7fe1df14c754d30be9bd2ccd5babe3?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/40374b1ed54ec9eb90f36047b68a9c688e7fe1df14c754d30be9bd2ccd5babe3?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Peter</span></span>                                                            <span class="ago">27 August 2021</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>At each API call, OnAuthorization is each time called twice. According to <a href="https://stackoverflow.com/questions/20849343/why-is-onauthorization-called-twice-in-my-custom-authorizationfilterattribute" rel="nofollow ugc">https://stackoverflow.com/questions/20849343/why-is-onauthorization-called-twice-in-my-custom-authorizationfilterattribute</a> you should not add the config.Filters.Add(new BasicAuthenticationAttribute()); call in Register and only use the [BasicAuthentication]<br>
+When I do that then indeed the authorization is only done once.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2018/using-basic-authentication-in-a-web-api-application/?replytocom=59444#respond" data-commentid="59444" data-postid="8207" data-belowelement="comment-59444" data-respondelement="respond" data-replyto="Reply to Peter" aria-label="Reply to Peter">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			
+		</div>
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2018/using-basic-authentication-in-a-web-api-application/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="8207" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-csharp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>Dragging shapes with the mouse in WPF / MVVM – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Dragging shapes with the mouse in WPF / MVVM Comments Feed" href="/2020/dragging-shapes-with-the-mouse-in-wpf-mvvm/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2020%2Fdragging-shapes-with-the-mouse-in-wpf-mvvm%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2020%2Fdragging-shapes-with-the-mouse-in-wpf-mvvm%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/9219"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2020/dragging-shapes-with-the-mouse-in-wpf-mvvm/">
+<link rel="shortlink" href="/?p=9219">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-9219 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-9219" class="g post post-9219 type-post status-publish format-standard has-post-thumbnail hentry category-c-net-2 tag-mvvm has_thumb">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/c-net-2/" itemprop="item"><span itemprop="name">C# / .Net / WPF</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Dragging shapes with the mouse in WPF / MVVM</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">Dragging shapes with the mouse in WPF / MVVM</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>3 January 2020</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/c-net-2/" title="View all posts in C# / .Net / WPF">C# / .Net / WPF</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2020/dragging-shapes-with-the-mouse-in-wpf-mvvm/#comments" itemprop="interactionCount">1 Comment</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p>In a recent project I was interested in Dragging shapes with the mouse in a WPF / MVVM <a href="https://visualstudio.microsoft.com/">Visual Studio</a> project.</p><p>This post contains an example on how to drag a rectangle from from one canvas location to another using the WPF / MVVM architecture.</p><p>This project uses Microsoft Visual Studio Community 2019.</p><p><strong>Step 1: Create a new WPF project:</strong></p><p>
+</p><div id="attachment_9221" style="width: 910px" class="wp-caption alignnone"><a href="/wp-content/uploads/2020/01/draganddropWPF1.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-9221" class="wp-image-9221 size-full" src="" alt="Dragging shapes with the mouse" width="900" height="624" data-layzr="/wp-content/uploads/2020/01/draganddropWPF1.png"></a><p id="caption-attachment-9221" class="wp-caption-text">Dragging shapes with the mouse</p></div>
+<p><strong>Step 2: Add event-handling and event-raising infrastructure</strong></p><p>Just add the following classes to your project:</p><p><strong>EventArgs.cs</strong></p><pre class="brush: csharp; title: ; notranslate" title="">
+using System;
+
+namespace Canvas1
+{
+    public class EventArgs&lt;T&gt; : EventArgs
+    {
+        public EventArgs(T value)
+        {
+            Value = value;
+        }
+
+        public T Value { get; private set; }
+    }
+}
+</pre><p><strong>EventRaiser.cs</strong></p><pre class="brush: csharp; title: ; notranslate" title="">
+using System;
+
+namespace Canvas1
+{
+    public static class EventRaiser
+    {
+        public static void Raise(this EventHandler handler, object sender)
+        {
+            handler?.Invoke(sender, EventArgs.Empty);
+        }
+
+        public static void Raise&lt;T&gt;(this EventHandler&lt;EventArgs&lt;T&gt;&gt; handler, object sender, T value)
+        {
+            handler?.Invoke(sender, new EventArgs&lt;T&gt;(value));
+        }
+
+        public static void Raise&lt;T&gt;(this EventHandler&lt;T&gt; handler, object sender, T value) where T : EventArgs
+        {
+            handler?.Invoke(sender, value);
+        }
+
+        public static void Raise&lt;T&gt;(this EventHandler&lt;EventArgs&lt;T&gt;&gt; handler, object sender, EventArgs&lt;T&gt; value)
+        {
+            handler?.Invoke(sender, value);
+        }
+    }
+}
+</pre><p><strong>RelayCommand.cs</strong></p><pre class="brush: csharp; title: ; notranslate" title="">
+using System;
+using System.Windows.Input;
+
+namespace Canvas1
+{
+    public class RelayCommand&lt;T&gt; : ICommand
+    {
+        private readonly Predicate&lt;T&gt; _canExecute;
+        private readonly Action&lt;T&gt; _execute;
+
+        public RelayCommand(Action&lt;T&gt; execute)
+           : this(execute, null)
+        {
+            _execute = execute;
+        }
+
+        public RelayCommand(Action&lt;T&gt; execute, Predicate&lt;T&gt; canExecute)
+        {
+            if (execute == null)
+                throw new ArgumentNullException(nameof(execute));
+            _execute = execute;
+            _canExecute = canExecute;
+        }
+
+        #region ICommand Members
+
+        public bool CanExecute(object parameter)
+        {
+            return (_canExecute == null) || _canExecute((T)parameter);
+        }
+
+        public void Execute(object parameter)
+        {
+            _execute((T)parameter);
+        }
+
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        #endregion
+    }
+
+    public class RelayCommand : ICommand
+    {
+        private readonly Predicate&lt;object&gt; _canExecute;
+        private readonly Action&lt;object&gt; _execute;
+
+        public RelayCommand(Action&lt;object&gt; execute)
+           : this(execute, null)
+        {
+            _execute = execute;
+        }
+
+        public RelayCommand(Action&lt;object&gt; execute, Predicate&lt;object&gt; canExecute)
+        {
+            if (execute == null)
+                throw new ArgumentNullException("execute");
+            _execute = execute;
+            _canExecute = canExecute;
+        }
+
+        #region ICommand Members
+
+        public bool CanExecute(object parameter)
+        {
+            return (_canExecute == null) || _canExecute(parameter);
+        }
+
+        public void Execute(object parameter)
+        {
+            _execute(parameter);
+        }
+
+        // Ensures WPF commanding infrastructure asks all RelayCommand objects whether their
+        // associated views should be enabled whenever a command is invoked 
+        public event EventHandler CanExecuteChanged
+        {
+            add
+            {
+                CommandManager.RequerySuggested += value;
+                CanExecuteChangedInternal += value;
+            }
+            remove
+            {
+                CommandManager.RequerySuggested -= value;
+                CanExecuteChangedInternal -= value;
+            }
+        }
+
+        #endregion
+
+        private event EventHandler CanExecuteChangedInternal;
+
+        public void RaiseCanExecuteChanged()
+        {
+            CanExecuteChangedInternal.Raise(this);
+        }
+    }
+}
+</pre><p><strong>Step 3: Use a dependency property to obtain mouse x,y coordinates</strong></p><p><strong>MouseBehaviour.cs</strong></p><pre class="brush: csharp; title: ; notranslate" title="">
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Interactivity;
+
+namespace Canvas1
+{
+    public class MouseBehaviour : Behavior&lt;Panel&gt;
+    {
+        public static readonly DependencyProperty MouseYProperty = DependencyProperty.Register(
+           "MouseY", typeof(double), typeof(MouseBehaviour), new PropertyMetadata(default(double)));
+
+        public static readonly DependencyProperty MouseXProperty = DependencyProperty.Register(
+           "MouseX", typeof(double), typeof(MouseBehaviour), new PropertyMetadata(default(double)));      
+
+        public double MouseY
+        {
+            get { return (double)GetValue(MouseYProperty); }
+            set { SetValue(MouseYProperty, value); }
+        }
+
+        public double MouseX
+        {
+            get { return (double)GetValue(MouseXProperty); }
+            set { SetValue(MouseXProperty, value); }
+        }
+
+        protected override void OnAttached()
+        {
+            AssociatedObject.MouseMove += AssociatedObjectOnMouseMove;            
+        }
+          
+        protected override void OnDetaching()
+        {
+            AssociatedObject.MouseMove -= AssociatedObjectOnMouseMove;
+        }
+
+        private void AssociatedObjectOnMouseMove(object sender, MouseEventArgs mouseEventArgs)
+        {
+            var pos = mouseEventArgs.GetPosition(AssociatedObject);
+            MouseX = pos.X;
+            MouseY = pos.Y;
+        }
+    }
+}
+</pre><p><strong>Step 4: Add necessary references</strong></p><p>In this example we need to add a reference to System.Windows.Interactivity.</p><p>This will allow us to continuously monitor the mouse position as it is being moved around the screen.</p><p>Right-click your References folder and select Add reference… (Sometimes this library will need to be installed via NuGet package manager)</p><p><a href="/wp-content/uploads/2017/05/MousePositionMvvm2.jpg"><img decoding="async" class="alignnone size-full wp-image-7761" src="" alt="" width="700" height="350" data-layzr="/wp-content/uploads/2017/05/MousePositionMvvm2.jpg"></a></p><p><strong>Step 5: Add the Main Window View Model (MVVM) class</strong></p><p><strong>MainWindowViewModel.cs</strong></p><pre class="brush: csharp; title: ; notranslate" title="">
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Windows.Input;
+
+namespace Canvas1
+{
+    public class MainWindowViewModel : INotifyPropertyChanged
+    {
+        bool captured = false;
+
+        public ICommand _leftButtonDownCommand;
+        public ICommand _leftButtonUpCommand;
+        public ICommand _previewMouseMove;
+        public ICommand _leftMouseButtonUp;             
+
+        public MainWindowViewModel()
+        {
+            PanelX = 100;
+            PanelY = 100;
+            RectX = PanelX - 50.0;
+            RectY = PanelY - 50.0;
+        }               
+
+        public ICommand PreviewMouseMove
+        {
+            get
+            {
+                return _previewMouseMove ?? (_previewMouseMove = new RelayCommand(
+                   x =&gt;
+                   {
+                       if (captured)
+                       {
+                           RectX = PanelX - 50.0;
+                           RectY = PanelY - 50.0;
+                       }                    
+                   }));
+            }
+        }
+
+        public ICommand LeftMouseButtonUp
+        {
+            get
+            {
+                return _leftMouseButtonUp ?? (_leftMouseButtonUp = new RelayCommand(
+                   x =&gt;
+                   {
+                       captured = false;
+                   }));
+            }
+        }
+
+        public ICommand LeftMouseButtonDown
+        {
+            get
+            {
+                return _leftButtonDownCommand ?? (_leftButtonDownCommand = new RelayCommand(
+                   x =&gt;
+                   {                      
+                       captured = true;                      
+                   }));
+            }
+        }        
+
+        private double _panelX;
+        private double _panelY;       
+        private double _rectX;
+        private double _rectY;       
+
+        public double RectX
+        {
+            get { return _rectX; }
+            set
+            {
+                if (value.Equals(_rectX)) return;
+                _rectX = value;
+                OnPropertyChanged("RectX");
+            }
+        }
+
+        public double RectY
+        {
+            get { return _rectY; }
+            set
+            {
+                if (value.Equals(_rectY)) return;
+                _rectY = value;
+                OnPropertyChanged("RectY");
+            }
+        }   
+
+        public double PanelX
+        {
+            get { return _panelX; }
+            set
+            {
+                if (value.Equals(_panelX)) return;
+                _panelX = value;
+                OnPropertyChanged("PanelX");
+            }
+        }
+
+        public double PanelY
+        {
+            get { return _panelY; }
+            set
+            {
+                if (value.Equals(_panelY)) return;
+                _panelY = value;
+                OnPropertyChanged("PanelY");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            VerifyPropertyName(propertyName);
+            var handler = PropertyChanged;
+            handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        [Conditional("DEBUG")]
+        private void VerifyPropertyName(string propertyName)
+        {
+            if (TypeDescriptor.GetProperties(this)[propertyName] == null)
+                throw new ArgumentNullException(GetType().Name + " does not contain property: " + propertyName);
+        }
+    }
+}
+</pre><p><strong>Step 6: Create an example WPF window</strong></p><p><strong>MainWindow.xaml</strong></p><pre class="brush: csharp; title: ; notranslate" title="">
+&lt;Window x:Class="Canvas1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Canvas1"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="525"&gt;
+
+    &lt;Window.DataContext&gt;
+        &lt;local:MainWindowViewModel /&gt;
+    &lt;/Window.DataContext&gt;
+
+    &lt;Grid&gt;
+        &lt;DockPanel&gt;
+            &lt;!--Un-comment if you want to view the coordinates--&gt;
+            &lt;!--&lt;StackPanel DockPanel.Dock="Top" Orientation="Horizontal"&gt;
+                &lt;TextBlock Text="{Binding PanelX, StringFormat='X={0}'}" /&gt;
+                &lt;TextBlock Text="{Binding PanelY, StringFormat='y={0}'}" /&gt;
+            &lt;/StackPanel&gt;--&gt;         
+
+            &lt;Canvas x:Name="LayoutRoot" Background="White"&gt;
+
+                &lt;i:Interaction.Behaviors&gt;
+                    &lt;local:MouseBehaviour 
+                        MouseX="{Binding PanelX, Mode=OneWayToSource}"
+                        MouseY="{Binding PanelY, Mode=OneWayToSource}"
+                        /&gt;
+                &lt;/i:Interaction.Behaviors&gt;
+
+                &lt;Rectangle 
+                    x:Name="testSquare" 
+                    Fill="Red" Height="100" 
+                    Stroke="Black" 
+                    Width="100" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Bottom"
+                    Canvas.Left="{Binding RectX, Mode=TwoWay}" 
+                    Canvas.Top="{Binding RectY, Mode=TwoWay}"  &gt;
+
+                    &lt;i:Interaction.Triggers&gt;
+                        &lt;i:EventTrigger EventName="PreviewMouseDown" &gt;
+                            &lt;i:InvokeCommandAction 
+                                Command="{Binding ElementName=testSquare, Path=DataContext.LeftMouseButtonDown}" 
+                                CommandParameter="{Binding}" /&gt;
+                        &lt;/i:EventTrigger&gt;
+
+                        &lt;i:EventTrigger EventName="PreviewMouseUp" &gt;
+                            &lt;i:InvokeCommandAction 
+                                Command="{Binding ElementName=testSquare, Path=DataContext.LeftMouseButtonUp}" 
+                                CommandParameter="{Binding}" /&gt;
+                        &lt;/i:EventTrigger&gt;
+
+                        &lt;i:EventTrigger EventName="PreviewMouseMove" &gt;
+                            &lt;i:InvokeCommandAction 
+                                Command="{Binding ElementName=testSquare, Path=DataContext.PreviewMouseMove}" 
+                                CommandParameter="{Binding}" /&gt;
+                        &lt;/i:EventTrigger&gt;
+                    &lt;/i:Interaction.Triggers&gt;
+
+                &lt;/Rectangle&gt;
+            &lt;/Canvas&gt;
+        &lt;/DockPanel&gt;
+    &lt;/Grid&gt;
+&lt;/Window&gt;
+</pre><p><strong>Demonstration:</strong></p><p>Video of application as follows:</p><p><iframe title="DragAndDropWpfMvvm" width="602" height="452" src="https://www.youtube.com/embed/WFy5JlL2OWY?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '9219'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2020/dragging-shapes-with-the-mouse-in-wpf-mvvm/&amp;media=/wp-content/uploads/2017/05/MousePositionMvvm2.jpg&amp;description=Dragging%20shapes%20with%20the%20mouse%20in%20WPF%20/%20MVVM" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2016/displaying-a-wpf-application-icon-in-the-notification-area/" title="Displaying a WPF application icon in the notification area" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Displaying a WPF application icon in the notification area"></div>
+                                                                        <h4 class="title front-view-title">Displaying a WPF application icon in the notification area</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2018/applying-a-genetic-algorithm-to-the-quadratic-assignment-problem-in-c/" title="Applying a genetic algorithm to the quadratic assignment problem in C#" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Applying a genetic algorithm to the quadratic assignment problem in C#"></div>
+                                                                        <h4 class="title front-view-title">Applying a genetic algorithm to the quadratic assignment problem in C#</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2017/detecting-mouseover-events-in-wpf-mvvm/" title="Detecting ‘MouseOver’ events in WPF / MVVM" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Detecting ‘MouseOver’ events in WPF / MVVM"></div>
+                                                                        <h4 class="title front-view-title">Detecting ‘MouseOver’ events in WPF / MVVM</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-57412">
+    		                    <div id="comment-57412" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/a2b98beeea0d8b8f3dd8a4869b9135782873b6781d6b41daad286cd5b58f61af?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/a2b98beeea0d8b8f3dd8a4869b9135782873b6781d6b41daad286cd5b58f61af?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Oscar</span></span>                                                            <span class="ago">15 December 2020</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Nice!</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			</ol>
+		</div>
+
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-csharp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

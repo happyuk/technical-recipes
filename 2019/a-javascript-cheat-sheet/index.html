@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>A JavaScript cheat sheet – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » A JavaScript cheat sheet Comments Feed" href="/2019/a-javascript-cheat-sheet/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2019%2Fa-javascript-cheat-sheet%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2019%2Fa-javascript-cheat-sheet%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/9155"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2019/a-javascript-cheat-sheet/">
+<link rel="shortlink" href="/?p=9155">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-9155 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-9155" class="g post post-9155 type-post status-publish format-standard hentry category-javascript">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/javascript/" itemprop="item"><span itemprop="name">JavaScript</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">A JavaScript cheat sheet</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">A JavaScript cheat sheet</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>4 December 2019</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/javascript/" title="View all posts in JavaScript">JavaScript</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2019/a-javascript-cheat-sheet/#respond" itemprop="interactionCount">No Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p><strong>1. slice()</strong></p><p><a href="https://www.w3schools.com/jsref/jsref_splice.asp">The splice() method adds/removes items to/from an array, and returns the removed item(s).</a></p><pre class="brush: jscript; title: ; notranslate" title="">
+const words: string[] = ['abc', 'xyz', '123', 'the', 'cat', 'sat', 'on', 'the', 'mat'];
+const splicedWords = words.splice(3);
+console.log('Spliced array: ' + splicedWords);
+console.log('Original array: ' + words);
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+Spliced array: the,cat,sat,on,the,mat
+Original array: abc,xyz,123
+</pre><p>Note that on using splice() the original array is impacted.</p><p>The contents of the original array can be modified by adding or removing elements too, such as in the following example. Remove the word ‘the’ from the selected index index in the list and insert the words [‘this’, ‘other’] instead:</p><pre class="brush: jscript; title: ; notranslate" title="">
+const words: string[] = ['the', 'cat', 'sat', 'on', 'the', 'mat'];
+words.splice(4, 1, 'this', 'other');
+console.log('Words: ' + words);
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+Words: the,cat,sat,on,this,other,mat
+</pre><p><strong>2. map()</strong></p><p>Think of map() as a kind of <em>for</em> loop for transforming values.</p><p>Some examples of map() can also be <a href="/2019/using-map-reduce-and-filter-in-javascript/">found here</a>.</p><p>In this example we use map() to create an array of word lengths:</p><pre class="brush: jscript; title: ; notranslate" title="">
+const materials : string[] = [
+      'Hydrogen',
+      'Helium',
+      'Lithium',
+      'Beryllium'
+    ];
+
+const wordLengths : number[] = materials.map(material =&gt; material.length);    
+console.log('Word lengths: ' + wordLengths);
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+Word lengths: 8,6,7,9
+</pre><p>You can use map() to transform values in order to return an array of object literals, such as in this example to return a set of objects containing squares and doubles:</p><pre class="brush: jscript; title: ; notranslate" title="">
+const squaresDoubles = [1, 2, 3, 4, 5].map(val =&gt; ({ square: val *  val, double: val * 2}));
+console.log(squaresDoubles);
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+0: {square: 1, double: 2}
+1: {square: 4, double: 4}
+2: {square: 9, double: 6}
+3: {square: 16, double: 8}
+4: {square: 25, double: 10}
+</pre><p>Another example of using map() to return an array of object literals containing upper and lower case renditions of words:</p><pre class="brush: jscript; title: ; notranslate" title="">
+var texts = ["aBc", "Xyz"];
+
+var result: { lowercase: string; uppercase: string }[] = texts.map(
+  text =&gt; ({
+   lowercase: text.toLowerCase(),
+   uppercase: text.toUpperCase()
+  })
+);
+
+console.log(result);
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+0:
+lowercase: "abc"
+uppercase: "ABC"
+1:
+lowercase: "xyz"
+uppercase: "XYZ"
+</pre><p><strong>3. Correct way of cloning arrays</strong></p><p>Use = […myArray]</p><p>Arrays in JavaScript are reference values, so when you try to copy it using a simple assignment (‘=’) it copies the <em>reference </em>to the original array and not the <em>value </em>of the array. </p><p>To create a real copy of an array, copy over the value of the array under a new value variable. That way this new array does not reference to the old array address in memory.</p><pre class="brush: jscript; title: ; notranslate" title="">
+const array: string[] = ["1", "2", "3", "4"];
+const clone1 = array;
+
+console.log(clone1);
+console.log(clone1 === array);
+
+const clone2 = [...array];
+console.log(clone2);
+console.log(clone2 === array);
+</pre><p><strong>4. Using object literals</strong></p><p>Using object literals in place of switch statements.</p><p>Object literals are a great way of replacing switch statements with code looks a lot cleaner and more concise.<br>
+A function containing a switch statement to determine a particular outcome might look as follows:</p><pre class="brush: jscript; title: ; notranslate" title="">
+private getChosenValueText(value: string) {
+    let returnText: string = "";
+    switch (value) {
+      case "apples": {
+        returnText = "apples chosen";
+        break;
+      }
+
+      case "oranges": {
+        returnText = "oranges chosen";
+        break;
+      }
+
+      case "pears": {
+        returnText = "pears chosen";
+        break;
+      }
+    }
+
+    return returnText;
+}
+
+console.log(this.getChosenValueText("apples"));
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+apples chosen
+</pre><p>Replaced with the more concise object literal:</p><pre class="brush: jscript; title: ; notranslate" title="">
+private getChosenValueTextObjectLiteral(value: string) {
+    return {
+      apples: "apples chosen",
+      oranges: "oranges chosen",
+      pears: "pears chosen"
+    }[value];
+}
+
+console.log(this.getChosenValueTextObjectLiteral("apples"));
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+apples chosen
+</pre><p>GREAT piece of code to convert an array into a map object:</p><p><a href="https://medium.com/dailyjs/rewriting-javascript-converting-an-array-of-objects-to-an-object-ec579cafbfc7">https://medium.com/dailyjs/rewriting-javascript-converting-an-array-of-objects-to-an-object-ec579cafbfc7</a></p><pre class="brush: jscript; title: ; notranslate" title="">
+const arrayToObject = (arr: Tab[], keyField: string) =&gt;
+      Object.assign({}, ...arr.map(item =&gt; ({ [item[keyField]]: item })));
+console.log(arrayToObject(tabs, "name"));
+</pre><p>Where Tab is a class containing fields “name”, “other”, “offsetWidth”<br>
+Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+{one: Tab, two: Tab, three: Tab}
+  one: Tab {offsetWidth: 1, name: "one", other: "one2"}
+  three: Tab {offsetWidth: 111, name: "three", other: "three2"}
+  two: Tab {offsetWidth: 11, name: "two", other: "two2"}
+</pre><p>Iterating over object literals – <a href="https://stackoverflow.com/questions/9354834/javascript-iterate-over-object-literal-values">stack overflow link</a>.</p><pre class="brush: jscript; title: ; notranslate" title="">
+var obj = {
+    'foo': 1,
+    'bar': 2
+};
+
+for (var key in obj) {
+    console.log(obj[key]);
+}
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+1
+2
+</pre><p><strong>5. Using callbacks</strong></p><p>A simple example to execute a function that takes a message string and a callback function as arguments.</p><p>The callback function itself can also take arguments using the bind methods:</p><pre class="brush: jscript; title: ; notranslate" title="">
+private doStuff(message: string, callback: (args?: any) =&gt; void): void {
+    alert(message);
+    callback();
+}
+
+private alertFinished(message: string): void {
+    alert(message);
+}
+
+execute(length: number): void {
+    this.doStuff(
+      "Doing stuff...",
+      this.alertFinished.bind(this, "Finished doing stuff")
+    );
+}
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+Doing stuff...
+Finished doing stuff.
+</pre><p>You can initialise a callback and call it at any time:</p><pre class="brush: jscript; title: ; notranslate" title="">
+callback: (args?: any) =&gt; void = () =&gt; {
+    console.log("Hello");
+};
+
+...
+
+someFunction() : void {
+   callback();
+}
+</pre><p>And also the same example but with a string argument passed to it:</p><pre class="brush: jscript; title: ; notranslate" title="">
+callback: (args?: any) =&gt; void = val =&gt; {
+    console.log(val as string);
+};
+
+...
+
+someFunction() : void {
+   callback('hello');
+}
+</pre><p>Another example of passing a callback as a function parameter.<br>
+This time as a parameter passed to the some() function for determining if an item in a list satifies a logical condition.</p><pre class="brush: jscript; title: ; notranslate" title="">
+const callbackGreaterThanValue : (item: number, value : number) =&gt; boolean = 
+(item, value) =&gt; {
+    return item &gt; value;
+}
+
+const items : number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+console.log(items.some(item =&gt; callbackGreaterThanValue(item, 2)) ?
+ 'Yes' : 'No');
+console.log(items.some(item =&gt; callbackGreaterThanValue(item, 200)) ?
+ 'Yes' : 'No');
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+Yes
+No
+</pre><p><strong>6. Template literals (previously Template strings)</strong></p><p>Template literals are string literals allowing embedded expressions</p><p>Example:</p><pre class="brush: jscript; title: ; notranslate" title="">
+const flag: boolean = true;
+console.log(`${flag ? "ON" : "OFF"}`);
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+ON
+</pre><p><strong>7. Using reduce()</strong></p><p>Executes a reducer function that you provide on each array element, resulting in a single output value.</p><p>Two different approaches, either using a private function or directly.  Both give the same output.</p><pre class="brush: jscript; title: ; notranslate" title="">
+private getSum(total: number, num: number) {
+    return total + num;
+}
+
+var numbers = [15.5, 2.3, 1.1, 4.7];
+const total1 = numbers.reduce(this.getSum, 0);
+
+// total - defaults to zero, num is each value in the array
+const total2 = numbers.reduce((total, num) =&gt; total + num);
+
+console.log(total1);
+console.log(total2);
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+23.6
+23.6
+</pre><p>To find the total of a property within an object array:</p><pre class="brush: jscript; title: ; notranslate" title="">
+const tabs: Tab[] = [new Tab(1), new Tab(11), new Tab(111)];
+
+const totalWidths: number = tabs.reduce(
+  (total, tab) =&gt; total + tab.offsetWidth,
+  0
+);
+
+console.log(totalWidths);
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+123
+</pre><p><strong>8. Using replace()</strong></p><p>Pass it an argument representing the string to be replaced, or a regular expression.</p><p>Simple replace – replaces 1st occurrence only</p><pre class="brush: jscript; title: ; notranslate" title="">
+console.log("123,321,456,789,456,432".replace(/,/, " "));
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+123 321,456,789,456,432
+</pre><p>Global replace – all occurrences</p><pre class="brush: jscript; title: ; notranslate" title="">
+console.log("123,321,456,789,456,432".replace(/,/g, " "));
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+123 321 456 789 456 432
+</pre><p>Global replace – all occurrences, including repeated occurrences</p><pre class="brush: jscript; title: ; notranslate" title="">
+console.log("123,,321,456,789,,,,,456,432".replace(/,+/g, " "));
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+123 321 456 789 456 432
+</pre><p>Global replace – all words ending with (case insensitive) “at” including whitespaces after it, if any, with an empty string, </p><pre class="brush: jscript; title: ; notranslate" title="">
+const replace: string = "the cAt Sat on the mat".replace(
+      /[A-Za-z]at[ ]{0,1}/gi,
+      ""
+    );
+
+console.log(replace);
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+the on the 
+</pre><p><strong>9. Using split()</strong></p><p>Splits a string into an array of sub-strings using the delimiting string passed to it.</p><pre class="brush: jscript; title: ; notranslate" title="">
+const texts: string[] = "123 345 222 47 999".split(" ");
+console.log(texts);
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+0: "123"
+1: "345"
+2: "222"
+3: "47"
+4: "999"
+</pre><p><strong>10. Using repeat()</strong></p><p>Builds a new string according to the specified number of copies of the string on which this function has been called.</p><pre class="brush: jscript; title: ; notranslate" title="">
+const text: string = "abracadabra".repeat(2);
+console.log(text);
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+abracadabraabracadabra
+</pre><p><strong>11. Using join()</strong></p><p>Joins the elements of an array into a single string.   An optional separator string can be used, which if omitted, separates the elements with  comma.</p><pre class="brush: jscript; title: ; notranslate" title="">
+const texts: string[] = ["1", "11", "111", "1111", "11111"];
+const text: string = texts.join();
+console.log(text);
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+1,11,111,1111,11111
+</pre><p><strong>12. Using filter()</strong></p><p>To check if array contains object with specific attribute value:</p><p>Hat-tip: <a href="/2021/getting-started-with-tesseract-optical-character-recognition-ocr-library-in-visual-studio/">https://stackoverflow.com/questions/8217419/how-to-determine-if-javascript-array-contains-an-object-with-an-attribute-that-e</a></p><pre class="brush: jscript; title: ; notranslate" title="">
+const vendors = [
+    {
+      Name: 'Jeff',
+      ID: 'ABC'
+     },
+    {
+      Name: 'Peter',
+      ID: 'DEF'
+    } //and so on goes array... 
+];
+</pre><p>Just use the <strong>filter</strong> function to obtain those elements matching the attribute value:</p><pre class="brush: jscript; title: ; notranslate" title="">
+vendors.filter(vendor =&gt; vendor.Name === "Jeff");
+</pre><p>To obtain objects whose ‘name’ property exists in a given string array.</p><p>Use the <strong>filter</strong> function to obtain those elements whose ‘name’ property is included in the ‘maleSet’ string array.</p><pre class="brush: jscript; title: ; notranslate" title="">
+const maleSet : string[] = ['bill', 'john', 'dave'];
+const totalSet : { id: string, name: string }[] = [{id: '1', name: 'xyz'}, 
+{id : '2', name: 'julie'}, {id: '3', name: 'meghan'}, {id : '4', name: 'bill'}, 
+{id: '5', name: 'john'}, {id:'6', name: 'dave'}];
+
+const filteredSet : any = totalSet.filter(item =&gt; maleSet.includes(item.name));
+console.log(filteredSet)
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+[LOG]: [{
+  "id": "4",
+  "name": "bill"
+}, {
+  "id": "5",
+  "name": "john"
+}, {
+  "id": "6",
+  "name": "dave"
+}] 
+</pre><p><strong>13. Using some() to test whether at least one element in the array satisfies a boolean condition</strong></p><p>In this example we use some() to return if any of the value in the array of numbers is greater than a given value:</p><pre class="brush: jscript; title: ; notranslate" title="">
+const items : number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const hasItems : boolean = hasItemsGreaterThanValue(items, 200);
+console.log(hasItems ? 'Yes' : 'No');
+
+function hasItemsGreaterThanValue(items : number[], value: number) : boolean {
+  return items.some(item =&gt; item &gt; value);
+}
+</pre><p>Output:</p><pre class="brush: plain; title: ; notranslate" title="">
+'No'
+</pre>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '9155'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2019/a-javascript-cheat-sheet/&amp;media=&amp;description=A%20JavaScript%20cheat%20sheet" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2019/using-map-reduce-and-filter-in-javascript/" title="Using .map(), .reduce() and .filter() in JavaScript" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using .map(), .reduce() and .filter() in JavaScript"></div>
+                                                                        <h4 class="title front-view-title">Using .map(), .reduce() and .filter() in JavaScript</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2019/getting-started-with-aurelia-in-visual-studio-code/" title="Getting started with Aurelia in Visual Studio Code" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Getting started with Aurelia in Visual Studio Code"></div>
+                                                                        <h4 class="title front-view-title">Getting started with Aurelia in Visual Studio Code</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2019/getting-started-with-aurelia-dialog/" title="Getting started with Aurelia Dialog" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Getting started with Aurelia Dialog"></div>
+                                                                        <h4 class="title front-view-title">Getting started with Aurelia Dialog</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2019/a-javascript-cheat-sheet/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="9155" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-jscript-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJScript.js"></script>
+<script id="syntaxhighlighter-brush-plain-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

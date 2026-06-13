@@ -1,0 +1,6277 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>Code Samples – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Code Samples Comments Feed" href="/books/cpp-book/code/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2Fbooks%2Fcpp-book%2Fcode%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2Fbooks%2Fcpp-book%2Fcode%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/pages/5775"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/books/cpp-book/code/">
+<link rel="shortlink" href="/?p=5775">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular page-template-default page page-id-5775 page-child parent-pageid-5858 wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+			<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-5775" class="g post post-5775 page type-page status-publish">
+					<div class="single_page">
+						<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/books/" itemprop="item"><span itemprop="name">Books</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/books/cpp-book/" itemprop="item"><span itemprop="name">C++ Book</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Code Samples</span><meta itemprop="position" content="3"></div></div>						<header>
+							<h1 class="title entry-title">Code Samples</h1>
+						</header>
+						<div class="post-content box mark-links entry-content">
+							
+							<h1 id="Chapter-1">Chapter 1<h3 id="Simple-Window">Simple Window</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;windows.h&gt;
+#include &lt;set&gt;
+
+#define WIN32_LEAN_AND_MEAN 
+
+const unsigned radius = 3;
+int xPos = 0;
+int yPos = 0;
+typedef std::pair&lt;int, int&gt; coordinate;
+typedef std::set&lt;coordinate&gt;::const_iterator coord_iter;
+
+// Step 4: Process any message sent to the Window
+LRESULT CALLBACK WndProc(HWND hwnd, 
+                         UINT message,
+                         WPARAM wParam,
+                         LPARAM lParam)
+{
+    PAINTSTRUCT paintStruct;
+    HDC hDC; 
+    HBRUSH hOldBrush, hNewBrush;
+    static std::set&lt;coordinate&gt; coords;
+    
+    switch( message )
+    {
+        case WM_CREATE: 
+            return 0;
+            break;
+
+        case WM_CLOSE: 
+            PostQuitMessage(0);
+            return 0;
+            break;
+        
+        case WM_PAINT: 
+            // Paint the set of circles
+            hDC = BeginPaint( hwnd, &amp;paintStruct );
+            hNewBrush = CreateSolidBrush(RGB(255, 255, 0));
+            hOldBrush = (HBRUSH) SelectObject(hDC, hNewBrush);
+
+            for ( coord_iter it = coords.begin(); 
+                  it != coords.end(); 
+                  ++it )
+            {
+                const int x = (*it).first;
+                const int y = (*it).second;
+                Ellipse( hDC, x - radius, y + radius, x + radius, y - radius );
+            }
+
+            SelectObject(hDC, hOldBrush);
+            DeleteObject(hNewBrush);
+            EndPaint(hwnd, &amp;paintStruct);
+            return 0;
+            break;
+
+        case WM_MOUSEMOVE:
+            // Store the mouse cursor position at every movement
+            xPos = LOWORD(lParam); 
+            yPos = HIWORD(lParam); 
+            break;
+
+        case WM_LBUTTONDOWN:
+            // Store unique set of mouse coordinates and redraw
+            coords.insert( std::make_pair( xPos, yPos ) );
+            InvalidateRect(hwnd, NULL, TRUE);   
+            break;
+
+        default:
+            break;
+    }
+
+    return DefWindowProc( hwnd, message, wParam, lParam );
+}
+
+int APIENTRY WinMain(HINSTANCE hInstance,
+                     HINSTANCE hPrevInstance,
+                     LPSTR     lpCmdLine,
+                     int       nCmdShow)
+{
+    WNDCLASSEX  windowClass;        // window class
+    HWND        hwnd;               // window handle
+    MSG         msg;                // message
+    
+    // Step 1: Create the Windows class, exit if unsuccessful
+    windowClass.cbSize = sizeof( WNDCLASSEX );
+    windowClass.style = CS_HREDRAW | CS_VREDRAW;
+    windowClass.lpfnWndProc = WndProc;
+    windowClass.cbClsExtra = 0;
+    windowClass.cbWndExtra = 0;
+    windowClass.hInstance = hInstance;
+    windowClass.hIcon = LoadIcon( NULL, IDI_APPLICATION );
+    windowClass.hCursor = LoadCursor( NULL, IDC_ARROW );
+    windowClass.hbrBackground = (HBRUSH) GetStockObject( WHITE_BRUSH );
+    windowClass.lpszMenuName = NULL;
+    windowClass.lpszClassName = "MyClass";
+    windowClass.hIconSm = LoadIcon( NULL, IDI_WINLOGO );
+    
+    // Step 2: Register the window, exit if unsuccessful
+    if ( !RegisterClassEx(&amp;windowClass) ) return 0;
+    
+    // Step 3: Create the window, exit if unsuccessful
+    if ( !CreateWindowEx(
+            NULL,                       // extended style
+            "MyClass",                  // class name
+            "My First Window",          // app name
+            WS_OVERLAPPEDWINDOW | WS_VISIBLE | WS_SYSMENU,  // window style
+            50,                     // x coordinate
+            50,                     // y coordinate
+            250,                    // width
+            250,                    // height
+            NULL,                   // handle to parent
+            NULL,                   // handle to menu
+            hInstance,              // application instance
+            NULL ) ) return 0;      // no extra parameter's
+    
+    // Step 4: Enter the main message loop and event handling
+    while(GetMessage(&amp;msg, NULL, 0, 0) &gt; 0)
+    {
+        TranslateMessage(&amp;msg);
+        DispatchMessage(&amp;msg);
+    }
+    
+    return msg.wParam;
+}
+</pre><h3 id="Programmatic-Dialog">Programmatic Dialog</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;windows.h&gt;
+#include "resource.h"
+
+HWND hWnd;
+LRESULT CALLBACK DlgProc(HWND hWnd, 
+                         UINT Msg, 
+                         WPARAM wParam, 
+                         LPARAM lParam);
+
+INT WINAPI WinMain( HINSTANCE hInstance, 
+                    HINSTANCE hPrevInstance,
+                    LPSTR lpCmdLine, 
+                    int nCmdShow )
+{
+    DialogBox( hInstance, 
+               MAKEINTRESOURCE( IDD_DIALOG1 ),
+               hWnd, 
+               reinterpret_cast&lt;DLGPROC&gt;( DlgProc ) );
+
+    return FALSE;
+}
+
+LRESULT CALLBACK DlgProc(HWND hWndDlg, 
+                         UINT Msg, 
+                         WPARAM wParam, 
+LPARAM lParam)
+{
+    switch(Msg)
+    {
+    case WM_INITDIALOG:
+        return TRUE;
+
+    case WM_COMMAND:
+        switch(wParam)
+        {
+        case IDOK:
+            EndDialog(hWndDlg, 0);
+            return TRUE;
+        }
+        break;
+    }
+
+    return FALSE;
+}
+</pre><h3 id="LVITEM">LVITEM Structure</h3><pre class="brush: cpp; title: ; notranslate" title="">
+typedef struct _LVITEM
+{
+	UINT mask;
+	int iItem;
+	int iSubItem;
+	UINT state;
+	UINT stateMask;
+	LPTSTR pszText;
+	int cchTextMax;
+	int iImage;
+	LPARAM lParam;
+	#if (_WIN32_IE &gt;= 0x0300)
+		int iIndent;
+	#endif
+} LVITEM, FAR *LPLVITEM;
+</pre><h3 id="Editable-List-Control-1">CEditableListCtrl Class</h3><pre class="brush: cpp; title: ; notranslate" title="">
+class CEditableListCtrl : public CListCtrl  
+{  
+public:  
+    int GetRowFromPoint( CPoint &amp;point, int *col ) const;  
+    CEdit* EditSubLabel( int nItem, int nCol );  
+  
+    void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);  
+    void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);  
+  
+    void OnEndLabelEdit(NMHDR* pNMHDR, LRESULT* pResult);  
+    void OnLButtonDown(UINT nFlags, CPoint point);  
+};  
+</pre><h3 id="Editable-List-Control-2">CEditableListCtrl::GetRowFromPoint</h3><pre class="brush: cpp; title: ; notranslate" title="">
+int CEditableListCtrl::GetRowFromPoint( CPoint &amp;point, int *col ) const  
+{  
+    int column = 0;   
+    int row = HitTest( point, NULL );     
+      
+    if( col ) *col = 0;       
+      
+    // Make sure that the ListView is in LVS_REPORT   
+    if( ( GetWindowLong( m_hWnd, GWL_STYLE ) &amp; LVS_TYPEMASK ) != LVS_REPORT )  
+    {  
+        return row;  
+    }  
+      
+    // Get the top and bottom row visible     
+    row = GetTopIndex();      
+    int bottom = row + GetCountPerPage();  
+  
+    if( bottom &gt; GetItemCount() )  
+    {         
+        bottom = GetItemCount();          
+    }  
+      
+    // Get the number of columns      
+    CHeaderCtrl* pHeader = (CHeaderCtrl*)GetDlgItem( 0 ); 
+    
+    int nColumnCount = pHeader-&gt;GetItemCount();  
+      
+    // Loop through the visible rows      
+    for( ; row &lt;= bottom; row++ )      
+    {         
+        // Get bounding rectangle of item and check whether point falls in it.  
+        CRect rect;       
+        GetItemRect( row, &amp;rect, LVIR_BOUNDS );
+
+        if( rect.PtInRect(point) )        
+        {             
+            // Find the column        
+            for( column = 0; column &lt; nColumnCount; column++ ) { int colwidth = GetColumnWidth( column ); if(point.x &gt;= rect.left &amp;&amp; point.x &lt;= (rect.left + colwidth ))  
+                {                     
+                    if( col ) *col = column;                      
+                    return row;               
+                }                                   
+                rect.left += colwidth;  
+            }         
+        }     
+    }     
+          
+    return -1; 
+}
+</pre><h3 id="Editable-List-Control-3">CEditableListCtrl::EditSubLabel</h3><pre class="brush: cpp; title: ; notranslate" title="">
+CEdit* CEditableListCtrl::EditSubLabel( int nItem, int nCol )  
+{     
+    // The returned pointer should not be saved, make sure item visible  
+    if( !EnsureVisible( nItem, TRUE ) ) return NULL;      
+      
+    // Make sure that column number is valid      
+    CHeaderCtrl* pHeader = (CHeaderCtrl*)GetDlgItem(0);   
+    int nColumnCount = pHeader-&gt;GetItemCount();  
+    if( nCol &gt;= nColumnCount || GetColumnWidth(nCol) &lt; 5 ) return NULL;     
+      
+    // Get the column offset          
+    int offset = 0;  
+    for( int i = 0; i &lt; nCol; i++ ) {  
+        offset += GetColumnWidth( i );    
+    }  
+      
+    CRect rect;   
+    GetItemRect( nItem, &amp;rect, LVIR_BOUNDS );  
+      
+    // Scroll horizontally if we need to expose the column    
+    CRect rcClient;   
+    GetClientRect( &amp;rcClient );   
+  
+    if( offset + rect.left &lt; 0 || offset + rect.left &gt; rcClient.right )  
+    {         
+        CSize size;       
+        size.cx = offset + rect.left;         
+        size.cy = 0;          
+        Scroll( size );  
+        rect.left -= size.cx;     
+    }     
+      
+    // Get Column alignment   
+    LV_COLUMN lvcol;  
+    lvcol.mask = LVCF_FMT;    
+    GetColumn( nCol, &amp;lvcol );    
+    DWORD dwStyle ;   
+      
+    if( (lvcol.fmt&amp;LVCFMT_JUSTIFYMASK) == LVCFMT_LEFT ) {  
+        dwStyle = ES_LEFT;  
+    }  
+    else if( (lvcol.fmt&amp;LVCFMT_JUSTIFYMASK) == LVCFMT_RIGHT ) {  
+        dwStyle = ES_RIGHT;   
+    }  
+    else {  
+        dwStyle = ES_CENTER;      
+    }  
+      
+    rect.left += offset+4;  ¬
+    rect.right = rect.left + GetColumnWidth( nCol ) - 3 ;     
+      
+    if( rect.right &gt; rcClient.right) {  
+        rect.right = rcClient.right;  
+    }  
+      
+    dwStyle |= WS_BORDER | WS_CHILD | WS_VISIBLE | ES_AUTOHSCROLL;  
+  
+    CEdit *pEdit = new CInPlaceEdit(nItem, nCol, GetItemText( nItem, nCol ));  
+    pEdit-&gt;Create( dwStyle, rect, this, IDC_LIST1 );    
+      
+    return pEdit;  
+}  
+</pre><h3 id="Editable-List-Control-4">CEditableListCtrl::OnLButtonDown</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CEditableListCtrl::OnLButtonDown(UINT nFlags, CPoint point)  
+{     
+    int index;    
+    
+    CListCtrl::OnLButtonDown(nFlags, point);  
+  
+    ModifyStyle(0, LVS_EDITLABELS);  
+      
+    int colnum;   
+      
+    if( ( index = GetRowFromPoint( point, &amp;colnum ) ) != -1 )     
+    {         
+        UINT flag = LVIS_FOCUSED;  
+          
+        if( (GetItemState( index, flag ) &amp; flag) == flag )         
+        {             
+            // Add check for LVS_EDITLABELS           
+            if( GetWindowLong(m_hWnd, GWL_STYLE) &amp; LVS_EDITLABELS )  
+            {  
+                EditSubLabel( index, colnum );  
+            }  
+        }         
+        else  
+        {  
+            SetItemState( 
+index, 
+LVIS_SELECTED | LVIS_FOCUSED, 
+LVIS_SELECTED | LVIS_FOCUSED);    
+        }  
+    }     
+}  
+</pre><h3 id="Editable-List-Control-5">CInPlaceEdit Class</h3><pre class="brush: cpp; title: ; notranslate" title="">
+class CInPlaceEdit : public CEdit   
+{  
+public:   
+    CInPlaceEdit(int iItem, int iSubItem, CString sInitText);   
+          
+    // ClassWizard generated virtual function overrides   
+    //{{AFX_VIRTUAL(CInPlaceEdit)     
+    public: virtual BOOL PreTranslateMessage(MSG* pMsg);      
+    //}}AFX_VIRTUAL  
+          
+public: virtual ~CInPlaceEdit();  
+          
+    // Generated message map functions  
+protected:    
+    //{{AFX_MSG(CInPlaceEdit)     
+    afx_msg void OnKillFocus(CWnd* pNewWnd);      
+    afx_msg void OnNcDestroy();  
+    afx_msg void OnChar(UINT nChar, UINT nRepCnt, UINT nFlags);   
+    afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);      
+    //}}AFX_MSG       
+      
+    DECLARE_MESSAGE_MAP()  
+  
+private:      
+    int m_iItem;      
+    int m_iSubItem;   
+    CString m_sInitText;      
+    BOOL    m_bESC;  
+};  
+</pre><h3 id="Editable-List-Control-6">CInPlaceEdit Implementation</h3><pre class="brush: cpp; title: ; notranslate" title="">
+CInPlaceEdit::CInPlaceEdit(int iItem, int iSubItem, CString sInitText):m_sInitText( sInitText )  
+{     
+    m_iItem = iItem;  
+    m_iSubItem = iSubItem;    
+    m_bESC = FALSE;  
+}   
+  
+CInPlaceEdit::~CInPlaceEdit(){}    
+  
+BEGIN_MESSAGE_MAP(CInPlaceEdit, CEdit)  
+    //{{AFX_MSG_MAP(CInPlaceEdit)     
+    ON_WM_KILLFOCUS()     
+    ON_WM_NCDESTROY()     
+    ON_WM_CHAR()      
+    ON_WM_CREATE()  
+    //}}AFX_MSG_MAP  
+END_MESSAGE_MAP()   
+      
+//CInPlaceEdit message handlers  
+// Translate window messages before they are dispatched to the TranslateMessage and DispatchMessage Windows functions.  
+BOOL CInPlaceEdit::PreTranslateMessage(MSG* pMsg)  
+{     
+    if( pMsg-&gt;message == WM_KEYDOWN )      
+    {  
+        if(pMsg-&gt;wParam == VK_RETURN || 
+           pMsg-&gt;wParam == VK_DELETE || 
+           pMsg-&gt;wParam == VK_ESCAPE || 
+           GetKeyState( VK_CONTROL ) )  
+        {             
+            ::TranslateMessage(pMsg);             
+            ::DispatchMessage(pMsg);              
+            return TRUE;                  
+            // DO NOT process further         
+        }  
+    }     
+      
+    return CEdit::PreTranslateMessage(pMsg);  
+}   
+      
+// Called immediately before losing the input focus  
+void CInPlaceEdit::OnKillFocus(CWnd* pNewWnd)  
+{     
+    CEdit::OnKillFocus(pNewWnd);   
+    CString str;      
+    GetWindowText(str);
+    DestroyWindow();  
+}  
+  
+// Called when nonclient area is being destroyed  
+void CInPlaceEdit::OnNcDestroy()  
+{     
+    CEdit::OnNcDestroy();  
+    delete this;  
+}    
+  
+// Called for nonsystem character keystrokes  
+void CInPlaceEdit::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)  
+{     
+    if( nChar == VK_ESCAPE || nChar == VK_RETURN)     
+    {         
+        if( nChar == VK_ESCAPE )  
+        {  
+            m_bESC = TRUE;  
+        }  
+  
+        GetParent()-&gt;SetFocus();       
+        return;   
+    }    
+      
+    CEdit::OnChar(nChar, nRepCnt, nFlags);    
+      
+    // Resize edit control if needed   
+    CString str;      
+    GetWindowText( str );     
+    CWindowDC dc(this);   
+    CFont *pFont = GetParent()-&gt;GetFont();  
+    CFont *pFontDC = dc.SelectObject( pFont );    
+    CSize size = dc.GetTextExtent( str );     
+    dc.SelectObject( pFontDC );   
+    size.cx += 5;                
+    // Get the client rectangle   
+    CRect rect, parentrect;   
+    GetClientRect( &amp;rect );  
+    GetParent()-&gt;GetClientRect( &amp;parentrect );   
+      
+    // Transform rectangle to parent coordinates      
+    ClientToScreen( &amp;rect );      
+    GetParent()-&gt;ScreenToClient( &amp;rect );      
+      
+    // Check whether control needs resizing and if sufficient space to grow  
+    if( size.cx &gt; rect.Width() )   
+    {         
+        if( size.cx + rect.left &lt; parentrect.right ) { rect.right = rect.left + size.cx; } else { rect.right = parentrect.right; } MoveWindow( &amp;rect ); } // Construct list control item data LV_DISPINFO dispinfo; dispinfo.hdr.hwndFrom = GetParent()-&gt;m_hWnd;   
+    dispinfo.hdr.idFrom = GetDlgCtrlID();     
+    dispinfo.hdr.code = LVN_ENDLABELEDIT;     
+    dispinfo.item.mask = LVIF_TEXT;  
+    dispinfo.item.iItem = m_iItem;    
+    dispinfo.item.iSubItem = m_iSubItem;      
+    dispinfo.item.pszText = m_bESC ? NULL : LPTSTR((LPCTSTR)str);     
+    dispinfo.item.cchTextMax = str.GetLength();       
+  
+    // Send this Notification to parent of ListView ctrl      
+    CWnd* pWndViewAttachmentsDlg = GetParent()-&gt;GetParent();  
+    if ( pWndViewAttachmentsDlg )  
+    {  
+        pWndViewAttachmentsDlg-&gt;SendMessage( 
+WM_NOTIFY_DESCRIPTION_EDITED,   
+                                       	GetParent()-&gt;GetDlgCtrlID(),   
+                                    	(LPARAM)&amp;dispinfo );  
+    }  
+}  
+  
+// Called when application requests the Windows window be created by calling
+// Create/CreateEx member function.  
+int CInPlaceEdit::OnCreate(LPCREATESTRUCT lpCreateStruct)  
+{     
+    if (CEdit::OnCreate(lpCreateStruct) == -1)  
+    {  
+        return -1;  
+    }  
+      
+    // Set the proper font    
+    CFont* font = GetParent()-&gt;GetFont();      
+    SetFont( font );   
+    SetWindowText( m_sInitText );     
+    SetFocus();   
+    SetSel( 0, -1 );      
+    return 0;  
+}  
+</pre><h3 id="Editable-List-Control-7">CEditableListControlDlg::DoDataExchange</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CEditableListControlDlg::DoDataExchange(CDataExchange* pDX)  
+{  
+    CDialogEx::DoDataExchange(pDX);  
+  
+    DDX_Control(pDX, IDC_LIST1, m_EditableList);  
+}  
+</pre><h3 id="Editable-List-Control-8">CEditableListControlDlg::OnInitDialog</h3><pre class="brush: cpp; title: ; notranslate" title="">
+BOOL CEditableListControlDlg::OnInitDialog()
+{
+    CDialogEx::OnInitDialog();
+
+    // Add "About..." menu item to system menu.
+
+    // IDM_ABOUTBOX must be in the system command range.
+    ASSERT((IDM_ABOUTBOX &amp; 0xFFF0) == IDM_ABOUTBOX);
+    ASSERT(IDM_ABOUTBOX &lt; 0xF000); CMenu* pSysMenu = GetSystemMenu(FALSE); if (pSysMenu != NULL) { BOOL bNameValid; CString strAboutMenu; bNameValid = strAboutMenu.LoadString(IDS_ABOUTBOX); ASSERT(bNameValid); if (!strAboutMenu.IsEmpty()) { pSysMenu-&gt;AppendMenu(MF_SEPARATOR);
+            pSysMenu-&gt;AppendMenu(MF_STRING, IDM_ABOUTBOX, strAboutMenu);
+        }
+    }
+
+    // Set the icon for this dialog.  The framework does this automatically
+    //  when the application's main window is not a dialog
+    SetIcon(m_hIcon, TRUE);         // Set big icon
+    SetIcon(m_hIcon, FALSE);        // Set small icon
+
+    // TODO: Add extra initialization here
+    CRect rect;
+    CWnd *pWnd = this-&gt;GetDlgItem( IDC_LIST1 );
+    pWnd-&gt;GetWindowRect(&amp;rect);
+    this-&gt;ScreenToClient(&amp;rect); //optional step - see below
+    m_xoffset = rect.left;
+    m_yoffset = rect.top;
+
+    LVCOLUMN lvColumn;
+    int nCol;
+
+    lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
+    lvColumn.fmt = LVCFMT_LEFT;
+    lvColumn.cx = 150;
+    lvColumn.pszText = "Name";
+    nCol = m_EditableList.InsertColumn(0, &amp;lvColumn);
+    
+    lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
+    lvColumn.fmt = LVCFMT_CENTER;
+    lvColumn.cx = 150;
+    lvColumn.pszText = "Occupation";
+    m_EditableList.InsertColumn(1, &amp;lvColumn);
+
+    lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
+    lvColumn.fmt = LVCFMT_LEFT;
+    lvColumn.cx = 150;
+    lvColumn.pszText = "Country";
+    m_EditableList.InsertColumn(2, &amp;lvColumn);
+
+    m_EditableList.SetExtendedStyle(m_EditableList.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EDITLABELS);
+    
+    // Insert a few example list items
+    int l_iItem = m_EditableList.InsertItem(LVIF_TEXT|LVIF_STATE, 0, "Andrew", 0, LVIS_SELECTED, 0, 0);     
+    m_EditableList.SetItemText( l_iItem, 1, "Bricklayer" );
+    m_EditableList.SetItemText( l_iItem, 2, "Australia" );
+
+    l_iItem = m_EditableList.InsertItem(LVIF_TEXT|LVIF_STATE, 0, "Peter", 0, LVIS_SELECTED, 0, 0);      
+    m_EditableList.SetItemText( l_iItem, 1, "Lecturer" );
+    m_EditableList.SetItemText( l_iItem, 2, "New Zealand" );
+
+    l_iItem = m_EditableList.InsertItem(LVIF_TEXT|LVIF_STATE, 0, "Richard", 0, LVIS_SELECTED, 0, 0);        
+    m_EditableList.SetItemText( l_iItem, 1, "Dentist" );
+    m_EditableList.SetItemText( l_iItem, 2, "Botswana" );
+
+    return TRUE;  // return TRUE  unless you set the focus to a control
+}
+</pre><h3 id="Editable-List-Control-9">BEGIN_MESSAGE_MAP(CEditableListControlDlg, CDialogEx)</h3><pre class="brush: cpp; title: ; notranslate" title="">
+BEGIN_MESSAGE_MAP(CEditableListControlDlg, CDialogEx)
+    ON_WM_SYSCOMMAND()
+    ON_WM_PAINT()
+    ON_WM_QUERYDRAGICON()
+    ON_NOTIFY(NM_CLICK, IDC_LIST1, OnNMClickList)
+    ON_MESSAGE(WM_NOTIFY_DESCRIPTION_EDITED, OnNotifyDescriptionEdited)
+END_MESSAGE_MAP()
+</pre><h3 id="Editable-List-Control-10">CEditableListControlDlg::OnNMClickList</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CEditableListControlDlg::OnNMClickList(NMHDR *pNMHDR, LRESULT *pResult)
+{
+    m_fClickedList = true;
+    m_EditableList.OnLButtonDown( MK_LBUTTON, InterviewListCursorPosition() );
+    *pResult = 0;
+}
+</pre><h3 id="Editable-List-Control-11">CEditableListControlDlg::OnNotifyDescriptionEdited</h3><pre class="brush: cpp; title: ; notranslate" title="">
+LRESULT CEditableListControlDlg::OnNotifyDescriptionEdited(
+WPARAM wParam, 
+LPARAM lParam)
+{
+    // Get the changed Description field text via the callback
+    LV_DISPINFO* dispinfo = reinterpret_cast&lt;LV_DISPINFO*&gt;(lParam); 
+
+    // Persist the selected attachment details upon updating its text
+    m_EditableList.SetItemText( 
+dispinfo-&gt;item.iItem, 
+dispinfo-&gt;item.iSubItem, 
+dispinfo-&gt;item.pszText );
+
+    return 0;
+}
+</pre><h1 id="Chapter-2">Chapter 2</h1><h3 id="CWebBrowserDlg-OnBnClickedButton">CWebBrowserDlg::OnBnClickedButton</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CWebBrowserDlg::OnBnClickedButton()
+{
+	CString l_strURL;
+	m_URL.GetWindowTextA( l_strURL );
+	m_WebBrowser.Navigate( l_strURL, 0, 0, 0, 0 );
+}
+</pre><h3 id="FTP-Defaults">FTP Defaults</h3><pre class="brush: cpp; title: ; notranslate" title="">
+CString l_strFtpLocation = "ftp.funet.fi";
+m_FtpLocation.SetWindowTextA( l_strFtpLocation );
+CString l_strFilePath = "pub/standards/RFC/rfc959.txt";
+m_FilePath.SetWindowTextA( l_strFilePath );
+</pre><h3 id="CFTPDlg-OnBnClickedDownload">CFTPDlg::OnBnClickedDownload</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CFTPDlg::OnBnClickedDownload()
+{
+	CString strFtpLocation, strFilePath;
+	m_FtpLocation.GetWindowTextA( strFtpLocation );
+	m_FilePath.GetWindowTextA( strFilePath );
+	int nPosition = strFilePath.ReverseFind( '/' );
+ 
+	CString strFileName = nPosition == -1 ?
+	strFilePath : strFilePath.Mid( nPosition + 1 );
+ 
+	CString strFtpFilePath = strFtpLocation + "/" + strFilePath;
+	CString strDestinationPath = "C:temp";
+ 
+	CInternetSession* pInternetSession = new CInternetSession();
+	CFtpConnection* pFTPConnection = NULL;
+ 
+	if ( NULL == pInternetSession )
+	{
+		MessageBox( NULL, "Could not establish Internet session", MB_OK );
+	}
+ 
+	pFTPConnection = pInternetSession-&gt;GetFtpConnection( strFtpLocation );
+ 
+	if ( NULL == pFTPConnection )
+	{
+		MessageBox( NULL, "Could not establish FTP connection", MB_OK );
+	}
+ 
+	Sleep( 5000 );
+ 
+	BOOL success = pFTPConnection-&gt;GetFile(
+	strFilePath,
+	strDestinationPath + "" + strFileName,
+	FALSE,
+	FILE_ATTRIBUTE_NORMAL,
+	FTP_TRANSFER_TYPE_ASCII,
+	INTERNET_FLAG_DONT_CACHE );
+ 
+	if ( TRUE == success )
+	{
+		m_FtpLocation.SetWindowTextA( strFtpFilePath );
+		CString strDownloadMessage = strFileName +
+		" successfully downloaded to " +
+		strDestinationPath;
+		m_StatusText.SetWindowTextA( strDownloadMessage );
+	}
+	else
+	{
+		m_StatusText.SetWindowTextA( "Download failed." );
+	}
+ 
+	UpdateData( FALSE );
+	pFTPConnection-&gt;Close();
+	pInternetSession-&gt;Close();
+}
+</pre><h3 id="FTP-Full">FTP Full Listing</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;dshow.h&gt;
+#include &lt;iostream&gt;
+#pragma comment(lib,"Strmiids.lib")
+ 
+void main()
+{
+	IGraphBuilder *pGraph = NULL;
+	IMediaControl *pControl = NULL;
+	IMediaEvent *pEvent = NULL;
+ 
+	// Initialize the COM library.
+	HRESULT hr = CoInitialize( NULL );
+	if ( FAILED( hr ) )
+	{
+		std::cout &lt;&lt; "Could not initialize COM library" &lt;&lt; std::endl;
+		return;
+	}
+ 
+	// Create the filter graph manager and query for interfaces.
+	hr = CoCreateInstance(
+			CLSID_FilterGraph,
+			NULL,
+			CLSCTX_INPROC_SERVER,
+			IID_IGraphBuilder,
+			(void **)&amp;pGraph );
+ 
+	if ( FAILED( hr ) )
+	{
+		std::cout &lt;&lt; "Could not create the Filter Graph Manager."
+		&lt;&lt; std::endl;
+		return;
+	}
+ 
+	hr = pGraph-&gt;QueryInterface( IID_IMediaControl, (void **)&amp;pControl );
+	hr = pGraph-&gt;QueryInterface( IID_IMediaEvent, (void **)&amp;pEvent);
+ 
+	// Build and run graph. NOTE: change path to an actual file on your system
+	hr = pGraph-&gt;RenderFile( L"C:tempSong.mp4", NULL );
+ 
+	if ( SUCCEEDED( hr ) )
+	{
+		hr = pControl-&gt;Run();
+		if ( SUCCEEDED( hr ) )
+		{
+			long evCode;
+			pEvent-&gt;WaitForCompletion( INFINITE, &amp;evCode );
+		}
+	}
+ 
+	pControl-&gt;Release();
+	pEvent-&gt;Release();
+	pGraph-&gt;Release();
+	CoUninitialize();
+}
+</pre><h3 id="MathFuncsDll">Math Functions</h3><pre class="brush: cpp; title: ; notranslate" title="">
+// MathFuncsDll.h
+namespace MathFuncs
+{
+   class MyMathFuncs
+   {
+      public:
+      // Returns a + b
+      static __declspec(dllexport) double Add(double a, double b);
+      // Returns a - b
+      static __declspec(dllexport) double Subtract(double a, double b);
+      // Returns a * b
+      static __declspec(dllexport) double Multiply(double a, double b);
+      // Returns a / b
+      // Throws DivideByZeroException if b is 0
+      static __declspec(dllexport) double Divide(double a, double b);
+   };
+}
+</pre><h3 id="MathFuncsDll-2">Example Functions</h3><pre class="brush: cpp; title: ; notranslate" title="">
+// MathFuncsDll.cpp
+// compile with: /EHsc /LD
+#include "MathFuncsDll.h"
+#include &lt;stdexcept&gt;
+using namespace std;
+namespace MathFuncs
+{
+	double MyMathFuncs::Add(double a, double b)
+	{
+		return a + b;
+	}
+	double MyMathFuncs::Subtract(double a, double b)
+	{
+		return a - b;
+	}
+	double MyMathFuncs::Multiply(double a, double b)
+	{
+		return a * b;
+	}
+	double MyMathFuncs::Divide(double a, double b)
+	{
+		if (b == 0)
+		{
+			throw new invalid_argument("b cannot be zero!");
+		}
+		return a / b;
+	}
+}
+</pre><h3 id="MathFuncsDll-3">MyExecRefsDll.cpp</h3><pre class="brush: cpp; title: ; notranslate" title="">
+// MyExecRefsDll.cpp
+// compile with: /EHsc /link MathFuncsDll.lib
+#include &lt;iostream&gt;
+#include "MathFuncsDll.h"
+using namespace std;
+int main()
+{
+	double a = 7.4;
+	int b = 99;
+
+	cout &lt;&lt; "a + b = " &lt;&lt; MathFuncs::MyMathFuncs::Add(a, b) &lt;&lt; endl;
+	cout &lt;&lt; "a - b = " &lt;&lt; MathFuncs::MyMathFuncs::Subtract(a, b) &lt;&lt; endl;
+	cout &lt;&lt; "a * b = " &lt;&lt; MathFuncs::MyMathFuncs::Multiply(a, b) &lt;&lt; endl;
+	cout &lt;&lt; "a / b = " &lt;&lt; MathFuncs::MyMathFuncs::Divide(a, b) &lt;&lt; endl;
+
+	return 0;
+}
+</pre><h3 id="MathFuncsDll-4">CSerializeSDIexampleView::OnChar</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CSerializeSDIexampleView::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	// TODO: Add your message handler code here and/or call default
+	CSerializeSDIexampleDoc* pDoc = GetDocument();
+	ASSERT_VALID(pDoc);
+	if ( nChar == 8 )
+	{
+		int length = pDoc-&gt;m_strData.GetLength();
+		CString str = pDoc-&gt;m_strData.Left( length - 1 );
+		pDoc-&gt;m_strData = str;
+	}
+	else
+	{
+		CString str;
+		str.Format( TEXT( "%c" ), nChar );
+		pDoc-&gt;m_strData += str;
+	}
+	Invalidate();
+	CView::OnChar(nChar, nRepCnt, nFlags);
+}
+</pre><h3 id="MathFuncsDll-5">CSerializeSDIexampleView::OnDraw</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CSerializeSDIexampleView::OnDraw(CDC* pDC)
+{
+	CSerializeSDIexampleDoc* pDoc = GetDocument();
+	ASSERT_VALID(pDoc);
+	if (!pDoc)
+		return;
+	pDC-&gt;TextOut( 0, 0, pDoc-&gt;m_strData );
+}
+</pre><h3 id="MathFuncsDll-6">CSerializeSDIexampleDoc::Serialize</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CSerializeSDIexampleDoc::Serialize(CArchive&amp; ar)
+{
+	if (ar.IsStoring())
+	{
+		ar &lt;&lt; m_strData;
+	}
+	else
+	{
+		ar &gt;&gt; m_strData;
+	}
+}
+</pre><h3 id="MathFuncsDll-7">CSerializeSDIexampleView::OnChar</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CSerializeSDIexampleView::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	// TODO: Add your message handler code here and/or call default
+	CSerializeSDIexampleDoc* pDoc = GetDocument();
+	ASSERT_VALID(pDoc);
+	if ( nChar == 8 )
+	{
+		int length = pDoc-&gt;m_strData.GetLength();
+		CString str = pDoc-&gt;m_strData.Left( length - 1 );
+		pDoc-&gt;m_strData = str;
+	}
+	else
+	{
+		CString str;
+		str.Format( TEXT( "%c" ), nChar );
+		pDoc-&gt;m_strData += str;
+	}
+ 
+	Invalidate();
+	pDoc-&gt;SetModifiedFlag();
+	CView::OnChar(nChar, nRepCnt, nFlags);
+}
+</pre><h1 id="Chapter-3">Chapter 3</h1><h3 id="Boost-Format">Boost Format</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;iostream&gt;
+#include &lt;boost/format.hpp&gt;
+
+int main()
+{
+	unsigned int arr[ 5 ] = { 0x05, 0x04, 0xAA, 0x0F, 0x0D };
+	std::cout &lt;&lt; boost::format("%02X-%02X-%02X-%02X-%02X")
+				% arr[0]
+				% arr[1]
+				% arr[2]
+				% arr[3]
+				% arr[4]
+			  &lt;&lt; endl;
+}
+</pre><h3 id="Boost-Regex">Boost Regex</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;boost/regex.hpp&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;sstream&gt;
+int main()
+{
+	// Regex to match YYYY-MM-DD dates
+	static const boost::regex date_regex("([0-9][0-9][0-9][0-9])-([1-9]|0[1-9]|1[012])-([1-9]|[0-2][1-9]|3[01])");
+ 
+	std::string input = "2014-08-28";
+	boost::smatch char_matches;
+ 
+	if ( boost::regex_match( input, char_matches, date_regex ) )
+	{
+		std::stringstream ss_match;
+ 
+		ss_match &lt;&lt; char_matches[1]
+				 &lt;&lt; "-"
+				 &lt;&lt; char_matches[2]
+				 &lt;&lt; "-"
+				 &lt;&lt; char_matches[3];
+		std::cout &lt;&lt; ss_match.str();
+	}
+	else
+	{
+		std::cout &lt;&lt; "First example should have matched the regex.n";
+	}
+}
+</pre><h3 id="Boost-Date-Time">Boost Date-Time</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;boost/format.hpp&gt;
+#include &lt;boost/date_time.hpp&gt;
+#include &lt;iostream&gt;
+ 
+int main()
+{
+	const boost::posix_time::ptime now =
+	boost::posix_time::second_clock::local_time();
+ 
+	const boost::wformat f = boost::wformat( L"%02d.%02d.%s %02d:%02d" )
+							% now.date().year_month_day().day.as_number()
+							% now.date().year_month_day().month.as_number()
+							% now.date().year_month_day().year
+							% now.time_of_day().hours()
+							% now.time_of_day().minutes();
+ 
+	std::wcout &lt;&lt; f.str() &lt;&lt; std::endl;
+}
+</pre><h3 id="Boost-Serialization">Boost Serialization</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;vector&gt;
+#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+#include "boost/serialization/vector.hpp"
+#include "boost/archive/text_oarchive.hpp"
+#include "boost/archive/text_iarchive.hpp"
+ 
+class Info
+{
+private:
+	// Allow serialization to access non-public data members.
+	friend class boost::serialization::access;
+ 
+	// Serialize the std::vector member of Info
+	template&lt;class Archive&gt;
+	void serialize(Archive &amp; ar, const unsigned int version)
+	{
+	    ar &amp; filenames;
+	}
+ 
+	std::vector&lt;std::string&gt; filenames;
+ 
+public:
+	void AddFilename( const std::string&amp; filename );
+	void Print() const;
+};
+ 
+void Info::Print() const
+{
+	std::copy(filenames.begin(),
+	filenames.end(),
+	std::ostream_iterator&lt;std::string&gt;(std::cout, "n"));
+}
+ 
+void Info::AddFilename( const std::string&amp; filename )
+{
+	filenames.push_back( filename );
+}
+ 
+int main(int argc, char** argv)
+{
+	Info info;
+	info.AddFilename( "ThisFile.txt" );
+	info.AddFilename( "ThatFile.txt" );
+	info.AddFilename( "OtherFile.txt" );
+ 
+	// Save filename data contained in Info object
+	{
+		// Create an output archive
+		std::ofstream ofs( "store.dat" );
+		boost::archive::text_oarchive ar(ofs);
+ 
+		// Save the data
+		ar &amp; info;
+	}
+ 
+	// Restore from saved data and print to verify contents
+	Info restored_info;
+	{
+		// Create and input archive
+		std::ifstream ifs( "store.dat" );
+		boost::archive::text_iarchive ar(ifs);
+ 
+		// Load the data
+		ar &amp; restored_info;
+	}
+	restored_info.Print();
+	return 0;
+}
+</pre><h3 id="Boost-Lexical-Cast">Boost Lexical Cast</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;boost/lexical_cast.hpp&gt;
+#include &lt;iostream&gt;
+ 
+int main()
+{
+	try
+	{
+		std::cout &lt;&lt; boost::lexical_cast&lt;double&gt;("3.141592") &lt;&lt; "n";
+	}
+	catch( boost::bad_lexical_cast const&amp; e )
+	{
+		std::cout &lt;&lt; "Error: " &lt;&lt; e.what() &lt;&lt; "n";
+	}
+	return 0;
+}
+</pre><h3 id="Boost-FileSystem">Boost File System</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;boost/filesystem.hpp&gt;
+#include &lt;boost/foreach.hpp&gt;
+#include &lt;iostream&gt;
+
+int main()
+{
+	boost::filesystem::path targetDir( "C:MyStuff" );
+	boost::filesystem::directory_iterator it( targetDir ), eod;
+	
+	BOOST_FOREACH(boost::filesystem::path const &amp;p, std::make_pair( it, eod ) )
+	{
+		if( is_regular_file( p ) ) 
+		{
+			std::string filename = p.filename().string();
+			std::cout &lt;&lt; filename &lt;&lt; std::endl;
+		}
+	}
+
+	return 0;
+}
+</pre><h1 id="Chapter-4">Chapter 4</h1><h3 id="DenseGraph">Graph Structure</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;vector&gt;
+ 
+// This code is from "Algorithms in C++, Third Edition,"
+// by Robert Sedgewick, Addison-Wesley, 2002.
+class Edge
+{
+public:
+	int v, w;
+	double wt;
+	Edge(int v = -1, int w = -1, double wt = 0.0) :
+	v(v), w(w), wt(wt) { }
+};
+ 
+typedef std::shared_ptr&lt;Edge&gt; EdgePtr;
+template &lt;class Edge&gt;
+class DenseGRAPH
+{
+private:
+	int Vcnt, Ecnt;
+	bool digraph;
+	std::vector &lt;std::vector&lt;EdgePtr&gt;&gt; adj;
+ 
+public:
+	DenseGRAPH(int V, bool digraph = false) :
+	adj(V),
+	Vcnt(V),
+	Ecnt(0),
+	digraph(digraph)
+	{
+		for ( int i = 0; i &lt; V; i++ ) 
+			adj[i].resize( V );
+	}
+ 
+	int V() const { return Vcnt; }
+	int E() const { return Ecnt; }
+ 
+	bool directed() const { return digraph; }
+
+	void insert( EdgePtr e )
+	{
+		int v = e-&gt;v;
+		int w = e-&gt;w;
+		if (adj[v][w] == 0) 
+			Ecnt++;
+		adj[v][w] = e;
+		if (!digraph) 
+			adj[w][v] = e;
+	}
+ 
+	void remove(EdgePtr e)
+	{
+		int v = e-&gt;v;
+		int w = e-&gt;w;
+ 
+		if (adj[v][w] != 0)
+			Ecnt--;
+ 
+		adj[v][w] = 0;
+ 
+		if (!digraph)
+			adj[w][v] = 0;
+	}
+ 
+	EdgePtr edge(int v, int w) const
+	{ 
+		return adj[v][w]; 
+	}
+ 
+	class adjIterator;
+	friend class adjIterator;
+};
+ 
+template &lt;class Edge&gt;
+class DenseGRAPH&lt;Edge&gt;::adjIterator
+{
+private:
+ 
+	const DenseGRAPH &amp;G;
+	int i, v;
+ 
+public:
+	adjIterator(const DenseGRAPH&lt;Edge&gt; &amp;G, int v) :
+		G(G),
+		v(v),
+		i(0) {}
+ 
+	EdgePtr beg() { i = -1; return nxt(); }
+ 
+	EdgePtr nxt()
+	{
+		for (i++; i &lt; G.V(); i++)
+			if (G.edge(v, i))
+				return G.adj[v][i];
+		return 0;
+	}
+
+	bool end() const { return i &gt;= G.V(); }
+};
+</pre><h3 id="GraphExample">Graph Example</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "Graph.h"
+#include &lt;iostream&gt;
+
+int main()
+{
+	Graph&lt;Edge&gt;* graph = new Graph&lt;Edge&gt;( 5, false );
+ 
+	graph-&gt;insert( EdgePtr( new Edge( 0, 1 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 1, 2 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 2, 3 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 3, 4 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 0, 4 ) ) );
+ 
+	std::cout &lt;&lt; "No. vertices = " &lt;&lt; graph-&gt;V() &lt;&lt; std::endl;
+	std::cout &lt;&lt; "No. edges = " &lt;&lt; graph-&gt;E() &lt;&lt; std::endl;
+
+	EdgePtr edgePtr = graph-&gt;edge( 2, 3 );
+
+	return 0;
+}
+</pre><h3 id="ShortestPathTree">Shortest Path Tree</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "Graph.h"
+ 
+template &lt;class Graph, class Edge&gt;
+class SPT
+{
+private:
+	const Graph &amp;G;
+	std::vector&lt;double&gt; wt;
+	std::vector&lt;EdgePtr&gt; spt;
+ 
+public:
+	SPT(const Graph&amp; G, int s) :
+		G(G),
+		spt(G.V()),
+		wt(G.V(), G.V())
+	{
+		PQi&lt;double&gt; pQ(G.V(), wt);
+ 
+		for (int v = 0; v &lt; G.V(); v++)
+		{
+			pQ.insert(v);
+		}
+
+		wt[s] = 0.0;
+		pQ.lower(s);
+ 
+		while (!pQ.empty())
+		{
+			int v = pQ.getmin();
+			if ( v != s &amp;&amp; spt[v] == 0 ) 
+				return;
+ 
+			typename Graph::adjIterator A(G, v);
+			for ( EdgePtr e = A.beg(); !A.end(); e = A.nxt() )
+			{
+				int w = e-&gt;w;
+				double P = wt[v] + e-&gt;wt;
+
+				if ( P &lt; wt[w] )
+				{
+					wt[w] = P;
+					pQ.lower(w);
+					spt[w] = e;
+				}
+			}
+		}
+	}
+
+	EdgePtr pathR(int v) const
+	{
+		return spt[v];
+	}
+ 
+	double dist(int v) const
+	{
+		return wt[v];
+	}
+};
+</pre><h3 id="GraphExample2">Graph Example</h3><pre class="brush: cpp; title: ; notranslate" title="">
+std::auto_ptr&lt; Graph&lt;Edge&gt; &gt; graph( new Graph&lt;Edge&gt;( 8, true ) );
+ 
+graph-&gt;insert( EdgePtr( new Edge( 1, 6, 1.0 ) ) );
+graph-&gt;insert( EdgePtr( new Edge( 1, 2, 2.5 ) ) );
+graph-&gt;insert( EdgePtr( new Edge( 1, 4, 3.0 ) ) );
+graph-&gt;insert( EdgePtr( new Edge( 1, 5, 0.5 ) ) );
+graph-&gt;insert( EdgePtr( new Edge( 2, 1, 0.5 ) ) );
+graph-&gt;insert( EdgePtr( new Edge( 2, 3, 3.0 ) ) );
+graph-&gt;insert( EdgePtr( new Edge( 2, 4, 2.0 ) ) );
+graph-&gt;insert( EdgePtr( new Edge( 2, 5, 2.5 ) ) );
+graph-&gt;insert( EdgePtr( new Edge( 3, 4, 1.0 ) ) );
+graph-&gt;insert( EdgePtr( new Edge( 3, 7, 1.5 ) ) );
+graph-&gt;insert( EdgePtr( new Edge( 4, 5, 1.0 ) ) );
+graph-&gt;insert( EdgePtr( new Edge( 5, 4, 0.5 ) ) );
+graph-&gt;insert( EdgePtr( new Edge( 5, 6, 0.5 ) ) );
+graph-&gt;insert( EdgePtr( new Edge( 5, 7, 1.5 ) ) );
+graph-&gt;insert( EdgePtr( new Edge( 7, 6, 1.0 ) ) );
+</pre><h3 id="FindShortestPath">Find Shortest Path</h3><pre class="brush: cpp; title: ; notranslate" title="">
+// Find shortest path between nodes 2-&gt;7
+int source = 2;
+int target = 7;
+ 
+std::stack&lt;int&gt; path;
+ 
+SPT&lt;Graph&lt;Edge&gt;, Edge&gt; sp( *graph, source );
+while ( true )
+{
+	EdgePtr e = sp.pathR( target );
+	path.push( target );
+ 
+	if ( target == source )
+		break;
+ 
+	target = e-&gt;v;
+}
+ 
+// Print the path nodes
+while ( !path.empty() )
+{
+	std::cout &lt;&lt; path.top() &lt;&lt; " ";
+	path.pop();
+}
+</pre><h3 id="TestGraphConnectivity">Test Graph Connectivity</h3><pre class="brush: cpp; title: ; notranslate" title="">
+// A recursive function to print DFS starting from v
+void Graph::DFSUtil(int v, bool visited[])
+{
+	// Mark the current node as visited and print it
+	visited[v] = true;
+ 
+	typename Graph::adjIterator A(*this, v);
+	for ( EdgePtr e = A.beg(); !A.end(); e = A.nxt() ) 
+	{
+		int w = e-&gt;w == v ? e-&gt;v : e-&gt;w;
+		if ( !visited[ w ] ) 
+			DFSUtil( w, visited );
+	}
+}
+ 
+// Function that returns reverse (or transpose) of this graph
+Graph* Graph::getTranspose()
+{
+	Graph&lt;Edge&gt;* g = new Graph&lt;Edge&gt;(Vcnt, digraph);
+ 
+	for (int v = 0; v &lt; Vcnt; v++)
+	{
+		typename Graph::adjIterator A(*this, v);
+
+		for ( EdgePtr e = A.beg(); !A.end(); e = A.nxt() ) 
+		{
+			int w = e-&gt;w;
+			g-&gt;insert( EdgePtr( new Edge( w, v ) ) );
+		}
+	}
+	return g;
+}
+ 
+// The main function that returns true if graph is strongly connected
+bool Graph::isSC()
+{
+	// Step 1: Mark all the vertices as not visited (For first DFS)
+	for (int i = 0; i &lt; Vcnt; i++) 
+		visited[i] = false;
+ 
+	// Step 2: Do DFS traversal starting from first vertex.
+	DFSUtil(0, visited);
+ 
+	// If DFS traversal doesn’t visit all vertices, then return false.
+	for (int i = 0; i &lt; Vcnt; i++)
+		if (visited[i] == false) 
+			return false;
+ 
+	// Step 3: Create a reversed graph
+	Graph* gr = getTranspose();
+ 
+	// Step 4: Mark all the vertices as not visited (For second DFS)
+	for(int i = 0; i &lt; Vcnt; i++) 
+		visited[i] = false;
+ 
+	// Step 5: Do DFS for reversed graph starting from first vertex.
+	// Staring Vertex must be same starting point of first DFS
+	gr-&gt;DFSUtil(0, visited);
+ 
+	// If all vertices are not visited in second DFS, return false
+	for (int i = 0; i &lt; Vcnt; i++)
+		if (visited[i] == false) 
+			return false;
+ 
+	return true;
+}
+</pre><h3 id="RunConnectivityExamples">Running the connectivity examples</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "Graph.h"
+#include &lt;iostream&gt;
+ 
+int main()
+{
+	// Example 1: disconnected un-directed graph:
+	//
+	// 0 3
+	// /  /
+	// 1 2 4
+	// nodes [3,4] disconnected from nodes [0,1,2]
+	Graph&lt;Edge&gt; g1( 5, false );
+	g1.insert( EdgePtr( new Edge(0, 1) ) );
+	g1.insert( EdgePtr( new Edge(0, 2) ) );
+	g1.insert( EdgePtr( new Edge(3, 4) ) );
+	g1.isSC() ? std::cout &lt;&lt; "Yesn" : std::cout &lt;&lt; "Non";
+	// Example 2: disconnected (directed) graph:
+	//
+	// 3 &lt;- 2 &lt;- 1 -&gt; 0 &lt;- 4
+	// eg 1 can communicate with [2,3,0] but not 4
+	Graph&lt;Edge&gt; g2( 5, true );
+	g2.insert( EdgePtr( new Edge(1, 0) ) );
+	g2.insert( EdgePtr( new Edge(4, 0) ) );
+	g2.insert( EdgePtr( new Edge(1, 2) ) );
+	g2.insert( EdgePtr( new Edge(2, 3) ) );
+	g2.isSC() ? std::cout &lt;&lt; "Yesn" : std::cout &lt;&lt; "Non";
+	// Example 3: connected (un-directed) graph:
+	//
+	// 3 &lt;-&gt; 2 &lt;-&gt; 1 &lt;-&gt; 0 &lt;-&gt; 4
+	// All nodes can communicate with any other node
+	Graph&lt;Edge&gt; g3( 5, false );
+	g3.insert( EdgePtr( new Edge(1, 0) ) );
+	g3.insert( EdgePtr( new Edge(4, 0) ) );
+	g3.insert( EdgePtr( new Edge(1, 2) ) );
+	g3.insert( EdgePtr( new Edge(2, 3) ) );
+	g3.isSC() ? std::cout &lt;&lt; "Yesn" :
+	std::cout &lt;&lt; "Non";
+	// Example 4: connected directed graph
+	//
+	// 0 -&gt; 1 -&gt; 2 -&gt; 3 -&gt; 0
+	//
+	// 4 -&gt; 2 -&gt; 4
+	// All nodes can communicate with any other node
+	Graph&lt;Edge&gt; g4( 5, true );
+	g4.insert( EdgePtr( new Edge(0, 1) ) );
+	g4.insert( EdgePtr( new Edge(1, 2) ) );
+	g4.insert( EdgePtr( new Edge(2, 3) ) );
+	g4.insert( EdgePtr( new Edge(3, 0) ) );
+	g4.insert( EdgePtr( new Edge(2, 4) ) );
+	g4.insert( EdgePtr( new Edge(4, 2) ) );
+	g4.isSC() ? std::cout &lt;&lt; "Yesn" :
+	std::cout &lt;&lt; "Non";
+	return 0;
+}
+</pre><h3 id="Graph-h">Graph.h</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;memory&gt;
+ 
+// This code is from "Algorithms in C++, Third Edition,"
+// by Robert Sedgewick, Addison-Wesley, 2002.
+class Edge
+{
+	public:
+	int v, w;
+	double wt;
+	Edge(int v = -1, int w = -1, double wt = 0.0) :
+		v(v), w(w), wt(wt) {}
+};
+ 
+typedef std::shared_ptr&lt;Edge&gt; EdgePtr;
+ 
+struct EdgeSort
+{
+	bool operator() ( const EdgePtr&amp; ep1, const EdgePtr&amp; ep2 )
+	{
+		return ep1-&gt;wt &lt; ep2-&gt;wt;
+	}
+};
+ 
+template &lt;class Edge&gt;
+class DenseGRAPH
+{
+private:
+	int Vcnt, Ecnt;
+	bool digraph;
+	std::vector &lt;std::vector&lt;EdgePtr&gt;&gt; adj;
+ 
+public:
+	DenseGRAPH(int V, bool digraph = false) :
+	adj(V),
+	Vcnt(V),
+	Ecnt(0),
+	digraph(digraph)
+	{
+		for ( int i = 0; i &lt; V; i++ ) 
+			adj[i].resize( V );
+	}
+ 
+	int V() const { return Vcnt; }
+	int E() const { return Ecnt; }
+ 
+	bool directed() const { return digraph; }
+	
+	void insert( EdgePtr e )
+	{
+		int v = e-&gt;v;
+		int w = e-&gt;w;
+		if (adj[v][w] == 0) 
+			Ecnt++;
+		adj[v][w] = e;
+		if (!digraph) 
+			adj[w][v] = e;
+	}
+ 
+	void remove(EdgePtr e)
+	{
+		int v = e-&gt;v;
+		int w = e-&gt;w;
+ 
+		if (adj[v][w] != 0)
+		Ecnt--;
+ 
+		adj[v][w] = 0;
+ 
+		if (!digraph) 
+			adj[w][v] = 0;
+	}
+ 
+	EdgePtr edge(int v, int w) const
+	{ 
+		return adj[v][w]; 
+	}
+ 
+	// Get the weighted edges
+	void edges( std::vector&lt;EdgePtr&gt;&amp; edges )
+	{
+		for( int u = 0; u &lt; V(); ++u )
+		{
+			DenseGRAPH&lt;Edge&gt;::adjIterator A(*this, u);
+ 
+			for ( EdgePtr e = A.beg(); !A.end(); e = A.nxt() )
+			{
+				if ( NULL != e )
+				{
+					edges.push_back( e );
+				}
+			}
+		}
+	}
+ 
+	class adjIterator;
+	friend class adjIterator;
+};
+ 
+template &lt;class Edge&gt;
+class DenseGRAPH&lt;Edge&gt;::adjIterator
+{
+private:
+ 
+	const DenseGRAPH &amp;G;
+	int i, v;
+ 
+public:
+	adjIterator(const DenseGRAPH&lt;Edge&gt; &amp;G, int v) :
+		G(G),
+		v(v),
+		i(0) {}
+ 
+	EdgePtr beg() { i = -1; return nxt(); }
+ 
+	EdgePtr nxt()
+	{
+		for (i++; i &lt; G.V(); i++)
+			if (G.edge(v, i))
+				return G.adj[v][i];
+		return 0;
+	}
+ 
+	bool end() const { return i &gt;= G.V(); }
+};
+</pre><h3 id="Main-cpp">Main.cpp</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "Graph.h"
+#include &lt;iostream&gt;
+ 
+// A structure to represent a subset for union-find
+struct subset
+{
+	int parent;
+	int rank;
+};
+
+typedef subset Subset;
+ 
+// A utility function to find set of an element i
+// (uses path compression technique)
+int Find( Subset subsets[], int i )
+{
+	// find root and make root as parent of i (path compression)
+	if (subsets[i].parent != i)
+	subsets[i].parent = Find(subsets, subsets[i].parent);
+	return subsets[i].parent;
+}
+ 
+// A function that does union of two sets of x and y by rank
+void Union( Subset subsets[], int x, int y )
+{
+	int xroot = Find( subsets, x );
+	int yroot = Find( subsets, y );
+	
+	// Attach smaller rank tree under root of high rank tree
+	// (Union by Rank)
+	if ( subsets[xroot].rank &lt; subsets[yroot].rank )
+	{
+		subsets[xroot].parent = yroot;
+	}
+	else if (subsets[xroot].rank &gt; subsets[yroot].rank)
+	{
+		subsets[yroot].parent = xroot;
+	}
+	else
+	{
+		// If ranks are same, then make one as root and increment
+		// its rank by one
+		subsets[yroot].parent = xroot;
+		subsets[xroot].rank++;
+	}
+}
+ 
+// The main function to construct MST using Kruskal's algorithm
+void KruskalMST( DenseGRAPH&lt;Edge&gt;* graph, std::vector&lt;EdgePtr&gt;&amp; mst )
+{
+	const int V = graph-&gt;V();
+	
+	// Sort edges in non-decreasing order of their weight
+	std::vector&lt;EdgePtr&gt; edges;
+	graph-&gt;edges( edges );
+	std::sort(edges.begin(), edges.end(), EdgeSort() );
+	
+	// Allocate memory for creating V ssubsets
+	std::unique_ptr&lt;subset[]&gt; subsets( new subset[ V ]() );
+	
+	// Create V subsets with single elements
+	for ( int v = 0; v &lt; V; ++v )
+	{
+		subsets[v].parent = v;
+		subsets[v].rank = 0;
+	}
+	for ( std::vector&lt;EdgePtr&gt;::iterator it = edges.begin();
+			it != edges.end(); ++it )
+	{
+		EdgePtr edgePtr = *it;
+ 
+		int x = Find( subsets.get(), edgePtr-&gt;v );
+		int y = Find( subsets.get(), edgePtr-&gt;w );
+ 
+		// If including this edge does't cause cycle, include it
+		// in result and increment the index of result for next edge
+		if ( x != y )
+		{
+			mst.push_back( edgePtr );
+			Union( subsets.get(), x, y );
+		}
+	}
+}
+ 
+int main()
+{
+	DenseGRAPH&lt;Edge&gt;* graph = new DenseGRAPH&lt;Edge&gt;( 11, true );
+ 
+	graph-&gt;insert( EdgePtr( new Edge( 0, 1, 1.0 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 0, 2, 0.6) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 0, 3, 1.0 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 0, 4, 1.0 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 0, 5, 1.1 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 1, 4, 1.8 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 1, 10, 1.9 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 2, 3, 2.1 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 2, 5, 2.3) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 2, 6, 1.7 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 3, 4, 1.7 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 5, 6, 0.5 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 5, 7, 0.7 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 5, 8, 0.9 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 5, 9, 0.9 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 5, 10, 1.0 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 6, 7, 1.9 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 7, 8, 1.7 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 8, 9, 1.6 ) ) );
+	graph-&gt;insert( EdgePtr( new Edge( 9, 10, 2.2 ) ) );
+ 
+	std::vector&lt;EdgePtr&gt; mst;
+	KruskalMST( graph, mst );
+ 
+	for ( std::vector&lt;EdgePtr&gt;::const_iterator it = mst.begin();
+			it != mst.end(); ++it )
+	{
+		std::cout &lt;&lt; it-&gt;get()-&gt;v &lt;&lt; " "
+				  &lt;&lt; it-&gt;get()-&gt;w &lt;&lt; " "
+				  &lt;&lt; it-&gt;get()-&gt;wt &lt;&lt; std::endl;
+	}
+ 
+	return 0;
+}
+</pre><h1 id="Chapter-5">Chapter 5</h1><h3 id="Soduku">Soduku Solver</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;vector&gt;
+#include &lt;set&gt;
+#include &lt;algorithm&gt;
+#include &lt;ctime&gt;
+#include &lt;iostream&gt;
+ 
+const int UNASSIGNED = 0;
+const int N = 9;
+ 
+class Grid
+{
+private:
+	std::vector&lt;unsigned&gt; grid;
+	std::set&lt;unsigned&gt; locations;
+	unsigned sizeSquared;
+ 
+public:
+	Grid()
+	{
+		sizeSquared = N * N;
+		grid.resize( sizeSquared );
+	}
+ 
+	void Copy( unsigned matrix[N][N] )
+	{
+	for (int row = 0; row &lt; N; ++row ) 
+	{
+		for ( int col = 0; col &lt; N; ++col ) 
+		{
+			grid[ row + col * N ] = matrix[ row ][ col ];
+		}
+	}
+}
+ 
+void Print() const
+{
+	for ( int row = 0; row &lt; N; row++ ) 
+	{
+		for (int col = 0; col &lt; N; col++)
+			std::cout &lt;&lt; grid[ row + col * N ] &lt;&lt; " ";
+		std::cout &lt;&lt; std::endl;
+	}
+
+	std::cout &lt;&lt; std::endl;
+}
+ 
+bool Solve()
+{
+	int row, col;
+	if (!HasUnassignedLocations(row, col)) 
+		return true;
+
+	// consider digits 1 to 9
+	for ( int num = 1; num &lt;= 9; num++ ) 
+	{
+		if ( IsFeasible( row, col, num ) ) 
+		{
+			grid[ row + col * N ] = num;
+			if (Solve())
+			{
+				return true;
+			}
+
+			// Try again
+			grid[ row + col * N ] = UNASSIGNED;
+		}
+	}
+
+	return false;
+}
+ 
+private:
+ 
+bool HasUnassignedLocations( int &amp;row, int &amp;col )
+{
+	for (row = 0; row &lt; N; row++)
+		for (col = 0; col &lt; N; col++)
+			if (grid[row + col * N] == UNASSIGNED)
+				return true;
+ 
+	return false;
+}
+ 
+bool IsFeasible(int row, int col, int num)
+{
+	// Check if number not already placed in current row, col, 3x3 box
+	return !InRow(row, num) &amp;&amp;
+		   !InColumn(col, num) &amp;&amp;
+	       !In3x3Box(row - row%3 , col - col%3, num);
+}
+ 
+bool InRow(int row, int num)
+{
+	for (int col = 0; col &lt; N; col++)
+		if (grid[row + col * N] == num)
+			return true;
+
+	return false;
+}
+bool InColumn( int col, int num )
+{
+	for (int row = 0; row &lt; N; row++)
+		if (grid[row + col * N] == num)
+			return true;
+
+	return false;
+}
+ 
+bool In3x3Box( int boxStartRow, int boxStartCol, int num )
+{
+	for (int row = 0; row &lt; 3; row++)
+		for (int col = 0; col &lt; 3; col++)
+		{
+			int rown = row+boxStartRow;
+			int coln = col+boxStartCol;
+ 
+			if (grid[rown + coln * N] == num)
+				return true;
+		}
+		return false;
+	}
+};
+ 
+int main()
+{
+	Grid gr;
+ 
+	unsigned grid[N][N] = {{0, 7, 4, 3, 0, 2, 0, 0, 0},
+						   {0, 0, 0, 0, 0, 5, 0, 4, 0},
+						   {0, 0, 0, 6, 0, 7, 9, 0, 0},
+						   {0, 5, 6, 0, 0, 0, 7, 9, 0},
+						   {3, 0, 0, 0, 0, 0, 0, 0, 5},
+						   {0, 2, 7, 0, 0, 0, 6, 8, 0},
+						   {0, 0, 5, 7, 0, 1, 0, 0, 0},
+						   {0, 1, 0, 2, 0, 0, 0, 0, 0},
+						   {0, 0, 0, 4, 0, 8, 1, 6, 0}};
+ 
+	gr.Copy( grid );
+	std::cout &lt;&lt; "Initial Puzzle:" &lt;&lt; std::endl &lt;&lt; std::endl;
+	gr.Print();
+ 
+	if ( true == gr.Solve() )
+	{
+		std::cout &lt;&lt; "Solved Puzzle:" &lt;&lt; std::endl &lt;&lt; std::endl;
+		gr.Print();
+	}
+	else
+	{
+		std::cout &lt;&lt; "No solution exists";
+	}
+
+	return 0;
+}
+</pre><h1 id="Chapter-6">Chapter 6</h1><h3 id="ExpressionParser-h">ExpressionParser.h</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;algorithm&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;list&gt;
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;iterator&gt;
+#include &lt;queue&gt;
+#include &lt;stack&gt;
+#include &lt;sstream&gt;
+#include &lt;locale&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;math.h&gt;
+ 
+class ExpressionParser
+{
+public:
+ 
+	ExpressionParser( const std::string&amp; input );
+
+	bool MatchingParetheses();
+	bool Evaluate( const std::vector&lt;std::string&gt;&amp; rpn, std::string&amp; result );
+	bool InfixToRPN( std::vector&lt;std::string&gt;&amp; inputs );
+ 
+private:
+ 
+	void ReplaceAll( std::string&amp; str,
+	const std::string&amp; from,
+	const std::string&amp; to );
+ 
+	void Tokenize( std::list&lt;std::string&gt;&amp; tokens,
+	const std::string&amp; delimiter );
+private:
+ 
+	std::string m_strInput;
+};
+</pre><h3 id="ExpressionParser-cpp">ExpressionParser.cpp</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "ExpressionParser.h"
+ 
+const std::string charSet[] = { "(", ")", "%", "+", "-", "*", "/", "^", "," };
+ 
+const double pi = 3.1415927;
+const double e = 2.71828182846;
+ 
+template&lt;class BidirIt&gt;
+BidirIt Prev(BidirIt it,
+             typename std::iterator_traits&lt;BidirIt&gt;::difference_type n = 1)
+{
+	std::advance(it, -n);
+	return it;
+}
+ 
+int Modulo(int num, int div)
+{
+	int mod = num % div;
+	return ( num &gt;= 0 || mod == 0 ) ? mod : div + mod;
+}
+ 
+unsigned int OpArgCount( const std::string&amp; s )
+{
+	unsigned int val = 1;
+ 
+	if ( s == "*" || s == "/" || s == "%" ||
+		 s == "+" || s == "-" || s == "=" ||
+		 s == "^" || s == "POW" )
+	{
+		val = 2;
+	}
+	else if ( s == "!" )
+	{
+		val = 1;
+	}
+
+	return val;
+}
+ 
+// Return operator precedence
+int OpPrecedence(const std::string&amp; s)
+{
+	int precedence = 1;
+ 
+	if ( s == "!" )
+		precedence = 4;
+	else if ( s == "*" || s == "/" || s == "%" )
+		precedence = 3;
+	else if ( s == "+" || s == "-" )
+		precedence = 2;
+	else if ( s == "=" )
+		precedence = 1;
+	return precedence;
+}
+ 
+// Return true if left associative; false otherwise
+bool OpLeftAssoc( const std::string&amp; s )
+{
+	bool opLeftAssoc = false;
+	if ( s == "*" || s == "/" ||
+		 s == "%" || s == "+" || s == "-" )
+	{
+		opLeftAssoc = true;
+	}
+	else if ( s == "=" || s == "!" )
+	{
+		opLeftAssoc = false;
+	}
+	return opLeftAssoc;
+}
+ 
+// Is token an operator
+bool IsOperator( const std::string&amp; s )
+{
+	return s == "+" || s == "-" ||
+		   s == "/" || s == "*" ||
+		   s == "!" || s == "%" ||
+		   s == "=";
+}
+ 
+// Is token a function argument separator eg comma
+bool IsComma( const std::string&amp; s )
+{
+	return s == ",";
+}
+ 
+// Convert string into all uppercase
+std::string UpperCase( std::string input )
+{
+	for ( std::string::iterator it = input.begin();
+			it != input.end(); ++it )
+		*it = toupper(*it);
+ 
+	return input;
+}
+ 
+// Is token PI
+bool IsPi( const std::string&amp; s )
+{
+	if ( UpperCase( s ) == "PI" )
+		return true;
+ 
+	return false;
+}
+ 
+// Is token Euler's constant
+bool IsE( const std::string&amp; s )
+{
+	if ( UpperCase( s ) == "E" )
+	{
+		return true;
+	}
+ 
+	return false;
+}
+ 
+ 
+// Is the token a function
+bool IsFunction( const std::string&amp; s )
+{
+	std::string str = UpperCase( s );
+ 
+	bool isFunction = false;
+	if ( str.find( "^" ) != std::string::npos ||
+		 str.find( "SIN" ) != std::string::npos ||
+		 str.find( "COS" ) != std::string::npos ||
+		 str.find( "TAN" ) != std::string::npos ||
+		 str.find( "LN" ) != std::string::npos ||
+		 str.find( "LOG" ) != std::string::npos ||
+		 str.find( "EXP" ) != std::string::npos ||
+		 str.find( "POW" ) != std::string::npos ||
+		 str.find( "SQRT" ) != std::string::npos )
+		 {
+			isFunction = true;
+		 }
+ 
+	return isFunction;
+}
+ 
+// Is the number a float
+bool IsFloat( const std::string&amp; s )
+{
+	std::istringstream iss( s );
+	float f;
+	iss &gt;&gt; std::noskipws &gt;&gt; f;
+ 
+	return iss.eof() &amp;&amp; !iss.fail();
+}
+ 
+// Is the string a number
+bool IsNumber( const std::string&amp; s )
+{
+	std::string::const_iterator it = s.begin();
+ 
+	while ( it != s.end() &amp;&amp; std::isdigit(*it, std::locale() ) )
+	{
+		++it;
+	}
+ 
+	return !s.empty() &amp;&amp; it == s.end();
+}
+ 
+ExpressionParser::ExpressionParser( const std::string&amp; input )
+{
+	m_strInput = input;
+}
+ 
+// Determine if matching number of left and right parentheses
+bool ExpressionParser::MatchingParetheses()
+{
+	const size_t nLeft = std::count( m_strInput.begin(),
+	m_strInput.end(), '(');
+ 
+	const size_t nRight = std::count( m_strInput.begin(),
+	m_strInput.end(), ')');
+ 
+	return nLeft == nRight &amp;&amp; !m_strInput.empty();
+}
+ 
+// Split selected text into delimited vector array of strings
+void ExpressionParser::Tokenize( std::list&lt;std::string&gt;&amp; tokens,
+           const std::string&amp; delimiter )
+{
+	// Insert whitepaces before and after each special characters
+	size_t size = sizeof( charSet ) / sizeof( std::string );
+	for ( int i = 0; i &lt; static_cast&lt;int&gt;( size ); i++ ) {
+		std::string s = charSet[ i ];
+	
+		ReplaceAll( m_strInput, s, " " + s + " " );
+	}
+ 
+	size_t next_pos = 0;
+	size_t init_pos = m_strInput.find_first_not_of( delimiter, next_pos );
+	while ( next_pos != std::string::npos &amp;&amp;
+		init_pos != std::string::npos ) 
+	{
+		next_pos = m_strInput.find( delimiter, init_pos );
+		std::string token = m_strInput.substr( init_pos, next_pos - init_pos );
+		tokens.push_back( token );
+		init_pos = m_strInput.find_first_not_of( delimiter, next_pos );
+	}
+ 
+	std::string firstToken = tokens.front();
+	if ( firstToken == "-" ) 
+	{
+		std::list&lt;std::string&gt;::iterator it = tokens.begin();
+		it++;
+
+		if ( it == tokens.end() ) 
+			return;
+	
+		std::string nextToken = *( it );
+	
+		if ( IsNumber( nextToken ) || IsFloat( nextToken ) ) 
+		{
+			tokens.pop_front();
+			tokens.front() = firstToken + nextToken;
+		}
+		else if ( nextToken == "(" || IsFunction( nextToken ) ) 
+		{
+			tokens.front() = firstToken + "1";
+			tokens.insert( it, "*" );
+		}
+
+		// minus minus is a plus
+		else if ( nextToken == "-" &amp;&amp; firstToken == "-" ) 
+		{
+			std::list&lt;std::string&gt;::iterator nit = it;
+			std::advance ( nit, -1 );
+			tokens.erase( it );
+			tokens.erase( nit );
+		}
+	}
+
+	// Deal with minus sign after opening parenthesis or operator
+	typedef std::list&lt;std::string&gt;::iterator t_iter;
+	std::string prevToken = "";
+	
+	for ( t_iter it = tokens.begin(); it != Prev( tokens.end() ); it++ ) 
+	{
+		std::string token = *it;
+		std::list&lt;std::string&gt;::iterator nit = it;
+		std::advance ( nit, 1 );
+		
+		if ( nit == tokens.end() ) 
+			break;
+		std::string ntoken = *nit;
+
+		if ( token == "-" &amp;&amp; prevToken == "(" ) 
+		{
+			if ( IsNumber( ntoken ) || IsFloat( ntoken ) ) 
+			{
+				tokens.erase( nit );
+				*it = "-" + ntoken;
+				token = *it;
+			}
+		}
+		else if ( token == "-" &amp;&amp;
+			( IsOperator( prevToken ) || prevToken == "^" || prevToken == "%" ) ) 
+		{
+			// Minus minus becomes a plus
+			if ( token == "-" &amp;&amp; prevToken == "-" ) 
+			{
+				std::list&lt;std::string&gt;::iterator nit = it;
+				std::list&lt;std::string&gt;::iterator nnit = nit;
+				nnit++;
+				std::advance ( nit, -1 );
+				tokens.erase( it );
+				*nit = "+";
+				std::list&lt;std::string&gt;::iterator pnit = nit;
+				std::advance ( pnit, -1 );
+ 
+				if ( IsOperator( *pnit ) || *pnit == "(" )
+					tokens.erase( nit );
+ 
+				token = *nnit; it = nnit;
+ 
+				if ( it == Prev( tokens.end() ) ) 
+					break;
+			}
+			else if ( IsNumber( ntoken ) ||
+						IsFloat( ntoken ) ||
+					IsFunction( ntoken ) ) 
+			{
+				bool exit = false;
+				if ( nit == Prev( tokens.end() ) )
+					exit = true;
+
+				tokens.erase( nit );
+				*it = "-" + ntoken;
+				token = *it;
+
+				if ( exit ) 
+					break;
+			}
+			else if ( ntoken == "(" ) 
+			{
+				*it = "-1";
+				token = *it;
+				tokens.insert( nit, "*" );
+			}
+		}
+
+		prevToken = token;
+	}
+
+	// Deal with minus sign before opening parenthesis
+	prevToken = ""; t_iter prevIt;
+	
+	for ( t_iter it = tokens.begin(); it != tokens.end(); it++ ) 
+	{
+		std::string token = *it;
+		if ( token == "(" &amp;&amp; prevToken == "-" ) 
+		{
+			tokens.insert( it, "1" );
+			tokens.insert( it, "*" );
+		}
+		prevToken = token;
+		prevIt = it;
+	}
+}
+ 
+// Replace all instances of selected string with replacement string
+void ExpressionParser::ReplaceAll( std::string&amp; str, const std::string&amp; from,
+						const std::string&amp; to )
+{
+	size_t start_pos = 0;
+ 
+	while( (start_pos = str.find(from, start_pos)) != std::string::npos)
+	{
+		str.replace(start_pos, from.length(), to);
+		start_pos += to.length();
+	}
+}
+ 
+// Deduce the numerical result from the RPN string passed to it
+bool ExpressionParser::Evaluate( const std::vector&lt;std::string&gt;&amp; rpn,
+				std::string&amp; result )
+{
+	typedef std::vector&lt;std::string&gt;::const_iterator rpn_iter;
+ 
+	std::stack&lt;std::string&gt; stack;
+ 
+	for ( rpn_iter it = rpn.begin(); it != rpn.end(); it++ )
+	{
+		std::string token = *it;
+	
+		if( IsNumber( token ) || IsFloat( token ) ||
+			IsPi( token ) || IsE( token ) )
+		{
+			if ( IsPi( token ) )
+			{
+				std::stringstream s;
+				s &lt;&lt; pi;
+				token = s.str();
+			}
+			else if ( IsE( token ) )
+			{
+				std::stringstream s;
+				s &lt;&lt; e;
+				token = s.str();
+			}
+			stack.push( token );
+		}
+		else if( IsOperator( token ) || IsFunction( token ) )
+		{
+			double result = 0.0;
+			unsigned int nargs = OpArgCount( UpperCase( token ) );
+			bool isUnary = false;
+			unsigned int stackArgs = stack.size();
+			std::vector&lt;double&gt; args;
+	
+			if( stackArgs &lt; nargs)
+			{
+				// For dealing with unary '-' or unary '+'
+				if ( stackArgs == 1 &amp;&amp;
+					nargs == 2 &amp;&amp; ( token == "+" || token == "-" ) )
+				{
+					std::string value = stack.top();
+					result = strtod( value.c_str(), NULL );
+					stack.pop(); isUnary = true;
+				}
+				else 
+				{ // (Error) Insufficient values in the expression.
+					return false;
+				}
+			}
+			else
+			{
+				// Else, Pop the top n values from the stack.
+				while ( nargs &gt; 0 )
+				{
+					std::string value = stack.top();
+					double d = strtod( value.c_str(), NULL );
+					args.push_back( d );
+					stack.pop(); 
+					nargs--;
+				}
+			}
+
+			// Evaluate the operator, with the values as arguments.
+			if ( IsOperator( token ) &amp;&amp; !isUnary )
+			{
+				double d2 = args[ 0 ];
+				double d1 = args[ 1 ];
+				if ( token == "+" ) 
+				{
+					result = d1 + d2;
+				}
+				else if ( token == "-" ) 
+				{
+					result = d1 - d2;
+				}
+				else if ( token == "*" ) 
+				{
+					result = d1 * d2;
+				}
+				else if ( token == "/" ) 
+				{
+					result = d1 / d2;
+				}
+				else if ( token == "%" ) 
+				{
+					int i2 = (int) args[ 0 ];
+					int i1 = (int) args[ 1 ];
+					double iresult = Modulo( i1, i2 );
+					result = iresult;
+				}
+			}
+			else if ( IsFunction( token ) )
+			{
+				double d0 = args[ 0 ];
+				std::string capToken = UpperCase( token );
+				double mult = token.find( "-" ) != std::string::npos ? -1 : 1;
+			
+				if ( capToken.find( "SIN" ) != std::string::npos ) 
+				{
+					result = sin( d0 );
+				}
+				else if ( capToken.find( "COS" ) != std::string::npos ) 
+				{
+					result = cos( d0 );
+				}
+				else if ( capToken.find( "TAN" ) != std::string::npos ) 
+				{
+					result = tan( d0 );
+				}
+				else if ( capToken.find( "LN" ) != std::string::npos ) 
+				{
+					result = log( d0 );
+				}
+				else if ( capToken.find( "LOG" ) != std::string::npos )
+				{
+					result = log10( d0 );
+				}
+				else if ( capToken.find( "EXP" ) != std::string::npos ) 
+				{
+					result = exp( d0 );
+				}
+				else if ( capToken.find( "^" ) != std::string::npos ) 
+				{
+					double d2 = args[ 0 ]; 
+					double d1 = args[ 1 ];
+					if ( d1 &lt; 0 ) 
+						mult = -1.0;
+					result = pow( (double) d1, d2);
+				}
+				else if ( capToken.find( "POW" ) != std::string::npos )
+				{
+					double d2 = args[ 0 ]; 
+					double d1 = args[ 1 ];
+					result = pow( d1, d2);
+				}
+				else if ( capToken.find( "SQRT" ) != std::string::npos )
+				{
+					result = sqrt( d0 );
+				}
+				result *= mult;
+			}
+			// Push the returned results, if any, back onto the stack
+			if ( result == (long) result )
+			{
+				result = long( result );
+			}
+ 
+			std::stringstream s; s &lt;&lt; result;
+			stack.push( s.str() );
+		}
+	}
+	if ( stack.size() == 1 )
+	{
+		result = stack.top();
+ 
+		double res = strtod( result.c_str(), NULL );
+		if ( res == (long) res )
+		{
+			long lres = (long) res;
+			std::stringstream s;
+			s &lt;&lt; lres;
+			result = s.str();
+		}
+ 
+		return true;
+	}
+ 
+	return false; // (Error) The user input has too many values
+}
+ 
+// Convert infix expression format into reverse Polish notation
+bool ExpressionParser::InfixToRPN( std::vector&lt;std::string&gt;&amp; inputs )
+{
+	typedef std::list&lt;std::string&gt;::const_iterator tok_iter;
+ 
+	std::list&lt;std::string&gt; infix;
+	std::stack&lt;std::string&gt; stack;
+	std::queue&lt;std::string&gt; outputQueue;
+	Tokenize( infix, " " );
+	bool success = true;
+
+	for ( tok_iter it = infix.begin(); it != infix.end(); it++ )
+	{
+		std::string token = *it;
+		if ( IsNumber( token ) ||
+			IsFloat( token ) ||
+			IsPi( token ) ||
+			IsE( token ) )
+		{
+		outputQueue.push( token );
+		}
+		else if ( IsFunction( token ) )
+		{
+		stack.push( token );
+		}
+		else if ( IsComma( token ) )
+		{
+			std::string stackToken = stack.top();
+			while ( stackToken != "(" )
+			{
+				outputQueue.push( stackToken );
+				stack.pop(); stackToken = stack.top();
+			}
+			if ( stackToken == "(" )
+			{
+			success = true;
+			}
+			else
+			{
+			success = false;
+			}
+		}
+		else if ( IsOperator( token ) )
+		{
+			while( !stack.empty() &amp;&amp;
+					IsOperator( stack.top() ) &amp;&amp;
+					( ( OpLeftAssoc( token ) &amp;&amp; OpPrecedence( token ) == OpPrecedence( stack.top() ) ) ||
+					( OpPrecedence( token ) &lt; OpPrecedence( stack.top() ) ) ) ) 
+			{
+				std::string stackToken = stack.top();
+				stack.pop(); outputQueue.push( stackToken );
+			}
+			stack.push( token );
+		}
+		else if ( token == "(" )
+		{
+			stack.push(token);
+		}
+		else if ( token == ")" )
+		{
+			while ( !stack.empty() &amp;&amp; stack.top() != "(" )
+			{
+				outputQueue.push( stack.top() );
+				stack.pop();
+			}
+			if ( !stack.empty() )
+			{
+				std::string stackToken = stack.top();
+				if ( stackToken != "(" )
+					success = false;
+			}
+			else
+			{
+				return false;
+			}
+			stack.pop();
+			if ( !stack.empty() )
+			{
+				std::string stackToken = stack.top();
+				if ( IsFunction( stackToken ) )
+				{
+					outputQueue.push( stackToken );
+					stack.pop();
+				}
+			}
+		}
+	}
+	while ( !stack.empty() )
+	{
+		outputQueue.push( stack.top() );
+		stack.pop();
+	}
+			
+	while ( !outputQueue.empty() ) 
+	{
+		std::string token = outputQueue.front();
+		inputs.push_back( token );
+		outputQueue.pop();
+	}
+	
+	return success;
+}
+</pre><h3 id="Expression-main-cpp">main.cpp</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "ExpressionParser.h"
+#include &lt;assert.h&gt;
+#include &lt;sstream&gt;
+ 
+// Print iterators in a generic way
+template&lt;typename T, typename InputIterator&gt;
+void Print( const std::string&amp; message,
+const InputIterator&amp; itbegin,
+const InputIterator&amp; itend,
+const std::string&amp; delimiter)
+{
+	std::cout &lt;&lt; message &lt;&lt; std::endl;
+	std::copy(itbegin, itend,
+	std::ostream_iterator&lt;T&gt;(std::cout, delimiter.c_str()));
+	std::cout &lt;&lt; std::endl;
+}
+ 
+std::pair&lt;std::string, double&gt; tests[] =
+{
+	std::make_pair&lt;std::string, double&gt;( "((2*(6-1))/2)*4", 20.0 ),
+	std::make_pair&lt;std::string, double&gt;( "-11 ^ -7", 5.13158e-08 ),
+	std::make_pair&lt;std::string, double&gt;( "-1*- sin( Pi / -2)", -1.0 ),
+	std::make_pair&lt;std::string, double&gt;( "-8 + 5", -3.0 ),
+	std::make_pair&lt;std::string, double&gt;( "2--2", 4.0 ),
+	std::make_pair&lt;std::string, double&gt;( "34.5*(23+1.5)/2", 422.625 ),
+	std::make_pair&lt;std::string, double&gt;( "3/2 + 4*(12+3)", 61.5 ),
+	std::make_pair&lt;std::string, double&gt;( "pow(2, 3)", 8 ),
+	std::make_pair&lt;std::string, double&gt;( "((2*(6-1))/2)*4", 20 ),
+	std::make_pair&lt;std::string, double&gt;( "ln(2)+3^5", 243.693147181 ),
+	std::make_pair&lt;std::string, double&gt;( "-8+3", -5 ),
+	std::make_pair&lt;std::string, double&gt;( "2.5^3", 15.625 ),
+	std::make_pair&lt;std::string, double&gt;( "SQRT(4 )", 2 ),
+	std::make_pair&lt;std::string, double&gt;( "5 + (-1 + 2 )", 6 ),
+	std::make_pair&lt;std::string, double&gt;( "-(2+3)*(4*-10-1)+100", 305 ),
+	std::make_pair&lt;std::string, double&gt;( "(2+3)*-(4*10-1)+100", -95 ),
+	std::make_pair&lt;std::string, double&gt;( "1 - (-2^2) - 1", 4 ),
+	std::make_pair&lt;std::string, double&gt;( "1 - (--2^2) -- 1", -2 ),
+	std::make_pair&lt;std::string, double&gt;( "(4*-10-1)", -41 ),
+	std::make_pair&lt;std::string, double&gt;( "-(2+3)*(4*-10-1)", 205 ),
+	std::make_pair&lt;std::string, double&gt;( "-3/2 + 4*-( 12+3)", -61.5 ),
+	std::make_pair&lt;std::string, double&gt;( "-3/2 + 4*(-12-3)", -61.5 ),
+	std::make_pair&lt;std::string, double&gt;( "-3/2 + -4*(-12-3)", 58.5 ),
+	std::make_pair&lt;std::string, double&gt;( "1--cos(PI)", 0.0 ),
+};
+ 
+double string_to_double( const std::string&amp; s )
+{
+	std::istringstream i(s);
+	double x;
+	if (!(i &gt;&gt; x))
+		return 0;
+	return x;
+}
+ 
+int main(int argc, char** argv)
+{
+	std::string result;
+	size_t test_size = sizeof( tests ) / sizeof( tests[ 0 ] );
+ 
+	for ( int i = 0; i &lt; test_size; ++i )
+	{
+		std::string originalInput = tests[ i ].first;
+		double expected_result = tests[ i ].second;
+ 
+		Print&lt;char, std::string::iterator&gt;(
+			"Input expression:",
+			originalInput.begin(),
+			originalInput.end(), "" );
+ 
+		ExpressionParser parser( originalInput );
+ 
+		if ( !parser.MatchingParetheses() )
+		{
+			std::cout &lt;&lt; "Error: mismatched parentheses or empty input"
+					  &lt;&lt; std::endl;
+			return 1;
+		}
+ 
+		std::vector&lt;std::string&gt; RPN;
+		if ( parser.InfixToRPN( RPN ) )
+		{
+			Print&lt;std::string, std::vector&lt;std::string&gt;::const_iterator&gt;(
+				"RPN tokens: ", RPN.begin(),
+				RPN.end(),
+				" " );
+ 
+			std::string str_result;
+ 
+			if ( parser.Evaluate( RPN, str_result ) )
+			{
+				std::cout &lt;&lt; "Result = " &lt;&lt; str_result &lt;&lt; std::endl;
+				std::cout &lt;&lt; std::endl;
+		
+				double result = string_to_double( str_result );
+ 
+				// Compare expected vs actual to within a precision: 1
+				assert( fabs(result-expected_result) &lt; 0.001 );
+			}
+		}
+		else
+		{
+			std::cout &lt;&lt; "Error: mismatched parentheses" &lt;&lt; std::endl;
+		}
+	}
+	return 0;
+}
+</pre><h1 id="Chapter-7">Chapter 7</h1><h3 id="Chromosome-h">Chromosome.h</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#pragma once
+ 
+const int chrSize = 64;
+ 
+class Chromosome
+{
+public:
+ 
+	Chromosome(void);
+	~Chromosome(void);
+ 
+	void SetFitness( const double&amp; value );
+	void SetChromosome( const int&amp; index, const unsigned char&amp; value );
+	unsigned char GetChromosome( const int&amp; index );
+	double GetFitness() const;
+	int size() const;
+ 
+	void Print( const int&amp; index ) const;
+ 
+private:
+ 
+	unsigned char chr[ chrSize ];
+	double fitness;
+};
+</pre><h3 id="GeneticAlgorithm-h">GeneticAlgorithm.h</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#pragma once
+ 
+#include "Population.h"
+#include "Log.h"
+ 
+class GeneticAlgorithm
+{
+public:
+ 
+GeneticAlgorithm(void);
+~GeneticAlgorithm(void);
+ 
+void Initialize( const int&amp; enc,
+const int&amp; crate,
+const int&amp; mrate,
+const int&amp; psize,
+const int&amp; iter,
+const int&amp; csize,
+const int&amp; tsize,
+const std::string&amp; path );
+void Run();
+ 
+private:
+ 
+void CreatePopulation();
+double Evaluate();
+void Crossover();
+void Mutate();
+void Select();
+ 
+void SetParameters( const int&amp; enc,
+const int&amp; crate,
+const int&amp; mrate,
+const int&amp; psize,
+const int&amp; iter,
+const int&amp; csize,
+const int&amp; tsize );
+ 
+void LogResult( const double&amp; result,
+const int&amp; iter,
+const int&amp; count );
+ 
+private:
+ 
+int encoding;
+int mutationRate;
+int crossoverRate;
+int populationSize;
+int numberIterations;
+int chromosomeSize;
+int tournamentSize;
+ 
+int bestFitnessIndex;
+double bestFitness;
+float best_x;
+float best_y;
+ 
+Population pop;
+Log log;
+};
+</pre><h3 id="Log-h">Log.h</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#pragma once
+#include &lt;fstream&gt;
+ 
+class Log
+{
+public:
+ 
+   Log();
+   Log( char* );
+~  Log();
+   void Write( char* txt );
+   void Open( const char* );
+ 
+private:
+   std::ofstream m_stream;
+};
+</pre><h3 id="Population-h">Population.h</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#pragma once
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include "Chromosome.h"
+ 
+const double infinity = 9999999999999;
+ 
+class Population
+{
+public:
+	enum Encoding {
+	GRAY = 0,
+	IEEE_754,
+	};
+ 
+	Population(void);
+	~Population(void);
+ 
+	void SetChromosomeEncoding( const int&amp; type );
+	void SetChromosomeSize( const int&amp; size );
+	void CreateRandomPopulation( const int&amp; size );
+	void Crossover( const int&amp; index1,
+	const int&amp; index2,
+	const int&amp; point );
+	void Crossover( const int&amp; index1,
+	const int&amp; index2,
+	const int&amp; point1,
+	const int&amp; point2 );
+	void Mutation( const int&amp; index );
+	double EvaluatePopulation( float&amp; bx, float&amp; by );
+	double CalcChromosomeFitness( const int&amp; index,
+	float&amp; xv,
+	float&amp; yv);
+	double GetChromosomeFitness( const int&amp; index ) const;
+	void CopyChromosome( const int&amp; source, const int&amp; dest );
+ 
+private:
+	Chromosome* CreateRandomChromosome();
+	std::string GetXstring( Chromosome* chr );
+	std::string GetYstring( Chromosome* chr );
+	float GetFloat32_IEEE754( std::string Binary );
+	float GetFloat32_Gray( std::string Binary );
+	int Binary32ToHex( std::string Binary );
+	double CalculateFitnessFunction( const float&amp; x,
+	const float&amp; y );
+	double CalcChromosomeFitness_IEEE754( const int&amp; index,
+	float&amp; xv, float&amp; yv);
+ 
+	double CalcChromosomeFitnessGray( const int&amp; index,
+	float&amp; xv, float&amp; yv );
+	std::string Gray2Bin( std::string gray );
+	long Bin2Dec( std::string bin );
+ 
+	private:
+	std::vector&lt; Chromosome* &gt; pop;
+	int chrSize;
+	int encoding;
+};
+</pre><h3 id="Chromosome-cpp">Chromosome.cpp</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "Chromosome.h"
+#include &lt;iostream&gt;
+ 
+// Constructor
+Chromosome::Chromosome(void) {}
+ 
+// Destructor
+Chromosome::~Chromosome(void) {}
+ 
+// Set chromosome element
+void Chromosome::SetChromosome( const int&amp; index, const unsigned char&amp; value )
+{
+if ( index &lt; 0 || index &gt;= chrSize ) return;
+chr[ index ] = value;
+}
+ 
+// Get chromosome element
+unsigned char Chromosome::GetChromosome( const int&amp; index )
+{
+unsigned char element = chr[ index ];
+return element;
+}
+ 
+// Set fitness of chromosome
+void Chromosome::SetFitness( const double&amp; value )
+{
+fitness = value;
+}
+ 
+// Get chromosome fitness
+double Chromosome::GetFitness() const
+{
+return fitness;
+}
+ 
+// Get number of elements in the chromosome
+int Chromosome::size() const
+{
+return chrSize;
+}
+// Output the chromosome and its fitness
+void Chromosome::Print( const int&amp; index ) const
+{
+std::string str;
+for ( int i = 0; i &lt; chrSize; i++ ) {
+unsigned char value = chr[ i ];
+str.append( value == 0 ? "0" : "1" );
+}
+std::cout &lt;&lt; index &lt;&lt; "t" &lt;&lt; str.c_str() &lt;&lt; "t" &lt;&lt; fitness &lt;&lt; std::endl;
+}
+</pre><h3 id="GeneticAlgorithm-cpp">GeneticAlgorithm.cpp</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "GeneticAlgorithm.h"
+#include &lt;sstream&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;math.h&gt;
+ 
+const std::string filepath = "C:dumpbest.txt";
+ 
+GeneticAlgorithm::GeneticAlgorithm(void)
+{
+	// Give it some default parameters
+	encoding = 0;
+	mutationRate = 5;
+	crossoverRate = 90;
+	populationSize = 100;
+	numberIterations = 10000;
+	chromosomeSize = 64;
+	tournamentSize = populationSize / 5;
+	bestFitness = infinity;
+}
+ 
+GeneticAlgorithm::~GeneticAlgorithm(void)
+{}
+ 
+// Initialize parameters, generate population etc
+void GeneticAlgorithm::Initialize( const int&amp; enc,
+							const int&amp; crate,
+							const int&amp; mrate,
+							const int&amp; psize,
+							const int&amp; iter,
+							const int&amp; csize,
+							const int&amp; tsize,
+							const std::string&amp; path )
+{
+	SetParameters( enc, crate, mrate, psize, iter, csize, tsize );
+	CreatePopulation();
+	log.Open( path.c_str() );
+}
+ 
+// Run the genetic algorithm
+void GeneticAlgorithm::Run()
+{
+	for ( int i = 0; i &lt; numberIterations; i++ ) 
+	{
+		LogResult( Evaluate(), i, 10 );
+		Select();
+		Crossover();
+		Mutate();
+	}
+}
+ 
+// Evaulate fitnesses of population chromosomes
+double GeneticAlgorithm::Evaluate()
+{
+	float bx = -1;
+	float by = -1;
+	double best = pop.EvaluatePopulation( bx, by );
+	if ( best &lt; bestFitness ) 
+	{
+		bestFitness = best;
+		best_x = bx;
+		best_y = by;
+	}
+	return bestFitness;
+}
+ 
+// Apply crossover to selected chromosome pairs
+void GeneticAlgorithm::Crossover()
+{
+	for ( int i = 0; i &lt; populationSize; i++ ) 
+	{
+		int r = rand() % 100;
+ 
+		if ( r &lt; crossoverRate ) 
+		{
+			int index1 = rand() % populationSize;
+			int index2 = rand() % populationSize;
+			while ( index1 == index2 ) 
+			{
+				index2 = rand() % populationSize;
+			}
+ 
+			// Get crossover points
+			// Point1: 0 - 31
+			int point1 = rand() % chromosomeSize / 2;
+ 
+			// Point1: 32 - 64
+			int point2 = chromosomeSize / 2 +
+			rand() % ( chromosomeSize / 2 );
+ 
+			while ( point1 == point2 ) {
+				point2 = chromosomeSize / 2 +
+				rand() % ( chromosomeSize / 2 );
+			}
+ 
+			if ( point1 &gt; point2 ) 
+			{
+				int tmp = point1;
+				point1 = point2;
+				point2 = tmp;
+			}
+ 
+			// Do 1-point crossover
+			pop.Crossover( index1, index2, point1, point2 );
+		}
+	}
+}
+ 
+// Mutate selected chromosomes
+void GeneticAlgorithm::Mutate()
+{
+	for ( int i = 0; i &lt; populationSize; i++ ) 
+	{
+		int r = rand() % 100;
+			if ( r &lt; mutationRate ) 
+			{
+				pop.Mutation( i );
+		}
+	}
+}
+ 
+// Select population chromosomes according to fitness
+// Using a pairwise tournament selection mechanism
+void GeneticAlgorithm::Select()
+{
+	// For each pair of chromosomes selected
+	int i = 0;
+	while ( i &lt; tournamentSize ) 
+	{
+		// Get the chromosome pair for tournament selection
+		int index1 = rand() % populationSize;
+		int index2 = rand() % populationSize;
+ 
+		while ( index1 == index2 ) 
+		{
+			index2 = rand() % populationSize;
+		}
+ 
+		double fitness1 = fabs( pop.GetChromosomeFitness( index1 ) );
+		double fitness2 = fabs( pop.GetChromosomeFitness( index2 ) );
+ 
+		// We seek to find [x,y] that minimizes this function
+		// The bigget the value returned, the lower its fitness
+		if ( fitness1 &gt; fitness2 )
+		{
+			// Copy chromosome 1 elements into chromosome 2
+			pop.CopyChromosome( index2, index1 );
+		}
+		else 
+		{
+			// Copy chromosome 2 elements into chromosome 1
+			pop.CopyChromosome( index1, index2 );
+		}
+		i++;
+	}
+}
+ 
+// Set mutation rate, population size etc
+void GeneticAlgorithm::SetParameters( const int&amp; enc,
+						const int&amp; crate,
+						const int&amp; mrate,
+						const int&amp; psize,
+						const int&amp; iter,
+						const int&amp; csize,
+						const int&amp; tsize )
+{
+	mutationRate = mrate;
+	crossoverRate = crate;
+	populationSize = psize;
+	numberIterations = iter;
+	chromosomeSize = csize;
+	tournamentSize = tsize;
+	pop.SetChromosomeEncoding( enc );
+}
+ 
+// Create initial random population of chromosomes
+void GeneticAlgorithm::CreatePopulation()
+{
+	pop.CreateRandomPopulation( populationSize );
+}
+ 
+// Log the value to a text file
+void GeneticAlgorithm::LogResult( const double&amp; result,
+	const int&amp; iter,
+	const int&amp; count )
+{
+	if ( iter % count == 0 ) 
+	{
+		std::stringstream ss;
+		ss &lt;&lt; iter &lt;&lt; "t" &lt;&lt; result &lt;&lt; "t" &lt;&lt; best_x &lt;&lt; "t" &lt;&lt; best_y;
+		log.Write( (char*) ss.str().c_str() );
+	}
+}
+</pre><h3 id="Log-cpp">Log.cpp</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "Log.h"
+ 
+Log::Log()
+{}
+ 
+Log::Log( char* filename )
+{
+   m_stream.open( filename, std::fstream::app );
+}
+ 
+void Log::Write( char* txt )
+{
+   m_stream &lt;&lt; txt &lt;&lt; std::endl;
+}
+ 
+Log::~Log()
+{
+   m_stream.close();
+}
+ 
+// Open the log file for writing
+void Log::Open( const char* filename )
+{
+   m_stream.open( filename, std::fstream::app );
+}
+</pre><h3 id="Population-cpp">Population.cpp</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "Population.h"
+#include &lt;bitset&gt;
+#include &lt;iostream&gt;
+#include &lt;math.h&gt;
+#include &lt;stdlib.h&gt;
+ 
+const int divisor_32 = 4294967295; // 2 ^ 32 - 1
+const int divisor_31 = 2147483647; // 2 ^ 31 - 1
+ 
+Population::Population(void)
+{
+	// Set default chromosome size
+	chrSize = 64;
+}
+ 
+Population::~Population(void)
+{
+	int size = (int) pop.size();
+	for ( int i = 0; i &lt; size; i++ ) 
+	{
+		Chromosome* chr = pop.at( i );
+		if ( chr ) 
+		{
+		delete chr;
+		}
+	}
+	pop.clear();
+}
+ 
+// Set the type of chromosomal encoding used: IEEE 754, Gray etc
+void Population::SetChromosomeEncoding( const int&amp; type )
+{
+	encoding = type;
+}
+ 
+// Create initial arbitrary population of chromosomes
+void Population::CreateRandomPopulation( const int&amp; size )
+{
+	for ( int i = 0; i &lt; size; i++ ) 
+	{
+		Chromosome* chr = CreateRandomChromosome();
+		pop.push_back( chr );
+	}
+}
+ 
+// Apply one-point crossover to selected chromosome pair
+void Population::Crossover( const int&amp; index1, const int&amp; index2,
+					const int&amp; point )
+{
+	if ( point &lt; 0 || point &gt;= chrSize ) 
+		return;
+
+	Chromosome* chr1 = pop.at( index1 );
+	Chromosome* chr2 = pop.at( index2 );
+ 
+	for ( int i = point; i &lt; chrSize; i++ ) 
+	{
+		unsigned char v1 = chr1-&gt;GetChromosome( i );
+		unsigned char v2 = chr2-&gt;GetChromosome( i );
+		chr1-&gt;SetChromosome( index1, v2 );
+		chr2-&gt;SetChromosome( index1, v1 );
+	}
+}
+ 
+// Apply one-point crossover to selected chromosome pair
+void Population::Crossover( const int&amp; index1, const int&amp; index2,
+					const int&amp; point1, const int&amp; point2 )
+{
+	if ( point1 &lt; 0 || point1 &gt;= chrSize ) 
+		return;
+	if ( point2 &lt; 0 || point2 &gt;= chrSize ) 
+		return;
+	
+	int p1 = point1;
+	int p2 = point2;
+
+	if ( p1 &gt; p2 ) 
+	{
+		int tmp = p1;
+		p1 = p2;
+		p2 = tmp;
+	}
+ 
+	Chromosome* chr1 = pop.at( index1 );
+	Chromosome* chr2 = pop.at( index2 );
+ 
+	// Do crossover on x portion of chromosome:
+	// either before or after point p1
+	int start = 0;
+	int end = p1;
+	if ( rand() % 100 &lt; 50 ) {
+		start = p1;
+		end = chrSize / 2;
+	}
+ 
+	for ( int i = start; i &lt; end; i++ ) {
+		unsigned char v1 = chr1-&gt;GetChromosome( i );
+		unsigned char v2 = chr2-&gt;GetChromosome( i );
+		chr1-&gt;SetChromosome( i, v2 );
+		chr2-&gt;SetChromosome( i, v1 );
+	}
+ 
+	// Do crossover on x portion of chromosome
+	// either before or after point p2
+	start = 0;
+	end = p2;
+	if ( rand() % 100 &lt; 50 ) {
+		start = p2;
+		end = chrSize;
+	}
+	for ( int i = start; i &lt; end; i++ ) {
+		chr1-&gt;SetChromosome( i, chr2-&gt;GetChromosome( i ) );
+		chr2-&gt;SetChromosome( i, chr1-&gt;GetChromosome( i ) );
+	}
+}
+ 
+// Apply mutation to selected chromosome: x part or y part
+void Population::Mutation( const int&amp; index )
+{
+	Chromosome* chr = pop.at( index );
+	bool xpart = rand() % 100 &lt; 50 ? true : false;
+	int start = xpart ? 0 : chrSize / 2;
+	int end = xpart ? chrSize / 2 : chrSize;
+ 
+	for ( int i = start; i &lt; end; i++ ) {
+		unsigned char value = chr-&gt;GetChromosome( i );
+		value = value == 0 ? 1 : 0;
+		chr-&gt;SetChromosome( i, value );
+	}
+}
+ 
+// Evaluate the population fitnesses
+double Population::EvaluatePopulation( float&amp; bx, float&amp; by )
+{
+	double totalFitness = 0.0;
+	//double aveFitness = 0.0;
+	double bestFitness = infinity;
+	int bestFitnessIndex = 0;
+ 
+	for ( int i = 0; i &lt; (int) pop.size(); i++ ) {
+		float x, y;
+		double fitness = CalcChromosomeFitness( i, x, y );
+		Chromosome* chr = pop.at( i );
+		chr-&gt;SetFitness( fitness );
+ 
+		// Output the chromosome (optional - comment out if desired)
+		chr-&gt;Print( i );
+		totalFitness += fitness;
+ 
+		// Store best solution
+		if ( i == 0 ) 
+			bestFitness = fitness;
+		if ( fitness &lt; bestFitness ) {
+			bestFitness = fitness;
+			bestFitnessIndex = i;
+			bx= x;
+			by= y;
+		}
+	}
+ 
+	std::cout &lt;&lt; "nn";
+	//aveFitness = totalFitness / pop.size();
+	return bestFitness;
+}
+ 
+// Create an arbitrary random chromosome
+Chromosome* Population::CreateRandomChromosome()
+{
+	Chromosome* chr = new Chromosome();
+ 
+	// Randomize chromosome elements
+	for ( int i = 0; i &lt; chr-&gt;size(); i++ )
+	{
+	unsigned char value = rand() % 100 &lt; 50 ? 0 : 1;
+ 
+	chr-&gt;SetChromosome( i, value );
+	}
+ 
+return chr;
+}
+ 
+ 
+// Calculate chromosome fitness according to chromosome encoding used
+double Population::CalcChromosomeFitness(
+		const int&amp; index,
+		float&amp; xv,
+		float&amp; yv)
+{
+	if ( encoding == GRAY )
+	{
+		return CalcChromosomeFitnessGray( index, xv, yv );
+	}
+	else
+	{
+		return CalcChromosomeFitness_IEEE754( index, xv, yv );
+	}
+}
+ 
+ 
+// Get fitness of selected chromosome according to IEEE 754 coding
+double Population::CalcChromosomeFitness_IEEE754(
+	const int&amp; index,
+	float&amp; xv,
+	float&amp; yv )
+{
+	// Get the chromosome elements
+	Chromosome* chr = pop.at( index );
+ 
+	// Put the first 32 bits (X) into a string
+	std::string xstr = GetXstring( chr );
+ 
+	// Get x value by converting from IEEE 754 into decimal
+	float x = GetFloat32_IEEE754( xstr );
+ 
+	// Put the next 32 bits (Y) into a string
+	std::string ystr = GetYstring( chr );
+ 
+	// Get y value by converting from IEEE 754 into decimal
+	float y = GetFloat32_IEEE754( ystr );
+	double fitness = CalculateFitnessFunction( x, y );
+ 
+	// Return the chromosome fitness
+	xv = x;
+	yv = y;
+ 
+	return fitness;
+}
+ 
+// Get fitness of selected chromosome according to Gray coding
+double Population::CalcChromosomeFitnessGray(
+			const int&amp; index,
+			float&amp; xv,
+			float&amp; yv )
+{
+	// Get the chromosome elements
+	Chromosome* chr = pop.at( index );
+ 
+	// Put the first 32 bits (X) into a string
+	std::string xstr = GetXstring( chr );
+ 
+	// Get x value by converting from Gray into decimal
+	float x = GetFloat32_Gray( xstr );
+ 
+	// Put the next 32 bits (Y) into a string
+	std::string ystr = GetYstring( chr );
+ 
+	// Get y value by converting from Gray into decimal
+	float y = GetFloat32_Gray( ystr );
+	double fitness = CalculateFitnessFunction( x, y );
+ 
+	// Return the chromosome fitness
+	xv = x; yv = y;
+ 
+	return fitness;
+}
+ 
+// Set the size of the chromosome
+void Population::SetChromosomeSize( const int&amp; size )
+{
+	chrSize = size;
+}
+ 
+// Get the 'X' string portion of tye chromsome
+std::string Population::GetXstring( Chromosome* chr )
+{
+	std::string xstr;
+ 
+	for ( int i = 0; i &lt; chrSize / 2; i++ )
+	{
+		unsigned char value = chr-&gt;GetChromosome( i );
+		xstr.append( value == 0 ? "0" : "1" );
+	}
+ 
+	return xstr;
+}
+ 
+// Get the 'Y' string portion of the chromsome
+std::string Population::GetYstring( Chromosome* chr )
+{
+	std::string ystr;
+	int start = chrSize / 2;
+ 
+	for ( int i = start; i &lt; chrSize; i++ )
+	{
+		unsigned char value = chr-&gt;GetChromosome( i );
+		ystr.append( value == 0 ? "0" : "1" );
+	}
+ 
+	return ystr;
+}
+
+// Convert 32-bit binary into the decimal
+// IEEE 754 encoding for 32 bit binary string
+float Population::GetFloat32_IEEE754( std::string Binary )
+{
+	int HexNumber = Binary32ToHex( Binary );
+	bool negative = !!(HexNumber &amp; 0x80000000);
+	int exponent = (HexNumber &amp; 0x7f800000) &gt;&gt; 23;
+	int sign = negative ? -1 : 1;
+ 
+	// Subtract 127 from the exponent
+	exponent -= 127;
+ 
+	// Convert mantissa into decimal using last 23 bits
+	int power = -1;
+	float total = 0.0;
+ 
+	for ( int i = 0; i &lt; 23; i++ )
+	{
+		int c = Binary[ i + 9 ] - '0';
+		total += (float) c * (float) pow( 2.0, power );
+		power--;
+	}
+	total += 1.0;
+	float value = sign * (float) pow( 2.0, exponent ) * total;
+	return value;
+}
+ 
+// Convert 32-bit gray encoding into the decimal equivalent
+float Population::GetFloat32_Gray( std::string Binary )
+{
+	// Get sign bit
+	int sign = Binary.at( 0 ) == '0' ? 1 : -1;
+ 
+	// Get remaining string
+	std::string rem = Binary.substr( 1 );
+	std::string bin = Gray2Bin( rem );
+	long bin_val = Bin2Dec( bin );
+	float val = (float) bin_val / (float) divisor_31;
+	val *= sign;
+ 
+	return val;
+}
+ 
+// Convert the 32-bit binary encoding into hexadecimal
+int Population::Binary32ToHex( std::string Binary )
+{
+	std::bitset&lt;32&gt; set(Binary);
+	int hex = set.to_ulong();
+	return hex;
+}
+ 
+// Calculate the overall fitness, f(x, y)
+double Population::CalculateFitnessFunction( const float&amp; x,
+				const float&amp; y )
+{
+	// Rosenbrock: (1-x)^2 + 100(y-x*x)^2
+	// (see http://en.wikipedia.org/wiki/Rosenbrock_function)
+ 
+	double fitness = ( pow( (double)( 1.0 - x ), 2 ) ) +
+	100 * ( pow( (double) ( y - ( x * x ) ), 2 ) ) ;
+ 
+	return fitness;
+}
+// Get fitness of selected chromosome
+double Population::GetChromosomeFitness( const int&amp; index ) const
+{
+	// Get the chromosome
+	Chromosome* chr = pop.at( index );
+ 
+	return chr-&gt;GetFitness();
+}
+ 
+// Copy the contents of the source chromosome into destination
+void Population::CopyChromosome( const int&amp; source, const int&amp; dest )
+{
+	// Get the chromosomes
+	Chromosome* chr1 = pop.at( source );
+	Chromosome* chr2 = pop.at( dest );
+ 
+	// Copy elements and fitness of source chromosome
+	// into the destination chromosome
+	for ( int i = 0; i &lt; chrSize; i++ ) 
+	{
+		// Get source chromosome element
+		unsigned char value = chr1-&gt;GetChromosome( i );
+		// Write this element value into the destination element
+		chr2-&gt;SetChromosome( i, value );
+	}
+ 
+	// Set the destination chromosome fitness
+	double fitness = chr1-&gt;GetFitness();
+	chr2-&gt;SetFitness( fitness );
+}
+ 
+// Convert gray encoding into binary
+std::string Population::Gray2Bin( std::string gray )
+{
+	int len = gray.length();
+	std::string bin = gray;
+ 
+	for ( int i = len - 2; i &gt;= 0; i-- )
+	{
+		int bk = bin.at( i + 1 ) - '0';
+		int gi = gray.at( i + 1 ) - '0';
+ 
+		if ( bk == 0 )
+		{
+			bin[ i ] = gi == 1 ? '1' : '0';
+		}
+		else
+		{
+			bin[ i ] = gi == 1 ? '0' : '1';
+		}
+	}
+ 
+	return bin;
+}
+ 
+// Binary to int
+long Population::Bin2Dec( std::string bin )
+{
+	char * ptr;
+	long parsed = strtol( bin.c_str(), &amp; ptr, 2 );
+ 
+	return parsed;
+}
+</pre><h3 id="GA-Main-cpp">main.cpp</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "Log.h"
+#include &lt;sstream&gt;
+#include "GeneticAlgorithm.h"
+ 
+const int encoding_type = 0;
+const int crossover_rate = 70;
+const int mutation_rate = 5;
+const int population_size = 100;
+const int number_iterations = 10000;
+const int chromosome_size = 64;
+const int tournament_size = population_size / 4;
+ 
+int main()
+{
+	// Run the GA!
+	GeneticAlgorithm ga;
+ 
+	ga.Initialize( encoding_type,
+	crossover_rate,
+	mutation_rate,
+	population_size,
+	number_iterations,
+	chromosome_size,
+	tournament_size,
+	"C:dumpbest.txt" );
+	ga.Run();
+ 
+	return 0;
+}
+</pre><h1 id="Chapter-8">Chapter 8</h1><h3 id="CoordMatrix-h">CoordMatrix.h</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#pragma once
+#include &lt;vector&gt;
+#include &lt;map&gt;
+#include &lt;fstream&gt;
+#include &lt;tuple&gt;
+#include &lt;string&gt;
+ 
+class CoordMatrix
+{
+public:
+ 
+	enum EDGE_WEIGHT_TYPE
+	{
+		ATT = 0
+	};
+ 
+	CoordMatrix();
+	~CoordMatrix();
+ 
+	void Initialize( std::string filepath );
+ 
+	int CalcPseudoEuclidDistance(
+					const int&amp; x1,
+					const int&amp; x2,
+					const int&amp; y1,
+					const int&amp; y2 );
+ 
+	double Distance( const int&amp; c1, const int&amp; c2 );
+	int size() const;
+	int GetX( const int&amp; index ) const;
+	int GetY( const int&amp; index ) const;
+	int GetMinX() const;
+	int GetMinY() const;
+	int GetMaxX() const;
+	int GetMaxY() const; 
+	std::string GetFileTitle() const;
+ 
+private:
+	void tokenize( std::vector&lt;std::string&gt;&amp; tokens,
+	const std::string&amp; text,
+	const std::string&amp; delimiter );
+	void SetDistanceMatrix();
+	void Reset();
+ 
+	std::vector&lt; std::pair&lt;int, int&gt; &gt; coords;
+	std::map&lt; std::pair&lt;int,int&gt;, double &gt; distMatrix;
+	std::string title;
+ 
+	int minx, miny;
+	int maxx, maxy;
+	int edge_weight_type;
+};
+</pre><h3 id="CoordMatrix-cpp">CoordMatrix.cpp</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "StdAfx.h"
+#include "CoordMatrix.h"
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;sstream&gt;
+#include &lt;cmath&gt;
+ 
+const int infinity = 99999999;
+#define round(n) ((int)((n)+0.5))
+ 
+CoordMatrix::CoordMatrix()
+{
+	minx = infinity; miny = infinity;
+	maxx = -infinity; maxy = -infinity;
+	edge_weight_type = ATT;
+	title = "";
+}
+ 
+CoordMatrix::~CoordMatrix() {}
+ 
+// Initialise cost / distance matrix from input file
+void CoordMatrix::Initialize( std::string filepath )
+{
+	Reset();
+	minx = infinity;
+	miny = infinity;
+	maxx = infinity * -1;
+	maxy = infinity * -1;
+ 
+	std::vector&lt; std::pair&lt;int, int&gt; &gt;().swap( coords );
+	std::ifstream file;
+ 
+	file.open( filepath.c_str() );
+ 
+	if ( !file )
+	{
+		std::cout &lt;&lt; "Error in opening text/tsp filen";
+		return;
+	}
+
+	int line = 0;
+	while( !file.eof() )
+	{
+		line++;
+		char buf[ 255 ];
+		file.getline( buf, 128 );
+		std::vector&lt;std::string&gt; tokens;
+		std::string text( buf );
+		tokenize( tokens, text, " " );
+ 
+		if ( tokens.at( 0 ) == "NAME" )
+		{
+			title = tokens.at( 2 );
+		}
+		if ( tokens.at( 0 ) == "EDGE_WEIGHT_TYPE" )
+		{
+			if ( tokens.at( 2 ) == "ATT" )
+			{
+				edge_weight_type = ATT;
+			}
+		}
+
+		if (line &lt; 7 || ( tokens.size() == 1 &amp;&amp; text != "EOF"))
+			continue;
+
+		if ( text == "EOF" )
+			break;
+ 
+		int node = atoi( tokens.at( 0 ).c_str() );
+		int x = atoi( tokens.at( 1 ).c_str() );
+		int y = atoi( tokens.at( 2 ).c_str() );
+ 
+		std::pair&lt;int,int&gt; n( x, y );
+		coords.push_back( n );
+ 
+		if ( x &gt; maxx ) maxx = x;
+		if ( y &gt; maxy ) maxy = y;
+		if ( x &lt; minx ) minx = x;
+		if ( y &lt; miny ) miny = y;
+	}
+
+	file.close();
+	SetDistanceMatrix();
+}
+ 
+// Get Euclidean distance between two cities
+double CoordMatrix::Distance( const int&amp; c1, const int&amp; c2 )
+{
+	if ( c1 &lt; c2 )
+	{
+		std::pair&lt;int,int&gt; p( c1, c2 );
+		return distMatrix[ p ];
+	}
+	else
+	{
+		std::pair&lt;int,int&gt; p( c2, c1 );
+		return distMatrix[ p ];
+	}
+}
+ 
+// Reset the distance matrix
+void CoordMatrix::Reset()
+{
+	std::vector&lt; std::pair&lt;int, int&gt; &gt;().swap( coords );
+	std::map&lt; std::pair&lt;int,int&gt;, double &gt;().swap( distMatrix );
+}
+ 
+// Tokenize the input string
+void CoordMatrix::tokenize( std::vector&lt;std::string&gt;&amp; tokens,
+					const std::string&amp; text,
+					const std::string&amp; delimiter )
+{
+	size_t next_pos = 0;
+	size_t init_pos = text.find_first_not_of( delimiter, next_pos );
+	
+	while ( next_pos != std::string::npos &amp;&amp;
+			init_pos != std::string::npos ) 
+	{
+		next_pos = text.find( delimiter, init_pos );
+		std::string token = text.substr( init_pos, next_pos - init_pos );
+		tokens.push_back( token );
+		init_pos = text.find_first_not_of( delimiter, next_pos );
+	}
+}
+ 
+// Get number of items contained in matrix
+int CoordMatrix::size() const
+{ 
+	return (int) coords.size(); 
+}
+ 
+// Get selected x coordinate
+int CoordMatrix::GetX( const int&amp; index ) const
+{
+	std::pair&lt;int,int&gt; n = coords.at( index );
+	return n.first;
+}
+ 
+// Get selected y coordinate
+int CoordMatrix::GetY( const int&amp; index ) const
+{
+	std::pair&lt;int,int&gt; n = coords.at( index );
+	return n.second;
+}
+ 
+// Get minimum x coordinate
+int CoordMatrix::GetMinX() const
+{ 
+	return minx; 
+}
+ 
+// Get minimum y coordinate
+int CoordMatrix::GetMinY() const
+{ 
+	return miny; 
+}
+ 
+// Get maximum x coordinate
+int CoordMatrix::GetMaxX() const
+{ 
+	return maxx; 
+}
+ 
+// Get maximum y coordinate
+int CoordMatrix::GetMaxY() const
+{ 
+	return maxy; 
+}
+ 
+// Get the file name
+std::string CoordMatrix::GetFileTitle() const
+{ 
+	return title; 
+}
+ 
+// Set up distance matrix between node pairs
+void CoordMatrix::SetDistanceMatrix()
+{
+	for ( int i = 0; i &lt; (int) coords.size() - 1; i++ )
+	{
+		std::pair&lt;int,int&gt; p1 = coords.at( i );
+		int x1 = p1.first; int y1 = p1.second;
+		for ( int j = i + 1; j &lt; (int) coords.size(); j++ )
+		{
+			std::pair&lt;int,int&gt; p2 = coords.at( j );
+			int x2 = p2.first; int y2 = p2.second;
+			double dist = 0.0;
+ 
+		if ( edge_weight_type == ATT )
+		{
+			dist = CalcPseudoEuclidDistance( x1, x2, y1, y2 );
+		}
+		else
+		{
+			dist = (double) sqrt( (double) ( x1 - x2 ) * ( x1 - x2 ) +
+			(double) ( y1 - y2 ) * ( y1 - y2 ) );
+		}
+			std::pair&lt; int, int &gt; p( i, j );
+			distMatrix[ p ] = dist;
+		}
+	}
+}
+
+// For edge weight type 'ATT'
+// Pseudo Euclidean distance
+int CoordMatrix::CalcPseudoEuclidDistance( const int&amp; x1,
+						const int&amp; x2,
+						const int&amp; y1,
+						const int&amp; y2 )
+{
+	int dij = 0;
+	int xd = x1 - x2; int yd = y1 - y2;
+	double rij = sqrt( (xd*xd + yd*yd) / 10.0 );
+	int tij = round( rij );
+	if ( tij &lt; rij )
+		dij = tij + 1;
+	else
+		dij = tij;
+ 
+	return dij;
+}
+</pre><h3 id="Tour-h">Tour.h</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#pragma once
+#include "CoordMatrix.h"
+#include &lt;vector&gt;
+#include &lt;set&gt;
+ 
+class Tour
+{
+public:
+	Tour();
+	Tour( const Tour&amp; t );
+	Tour&amp; operator=( const Tour&amp; t );
+ 
+	~Tour();
+ 
+	void DoTwoOpt( const int&amp; c1, const int&amp; c2,
+	const int&amp; c3, const int&amp; c4 );
+ 
+	double TourDistance() const;
+	int TourSize() const;
+	int GetCity( const int&amp; index );
+	void SetCity( const int&amp; index, const int&amp; value );
+	void SetMatrix( CoordMatrix* mat );
+	void CreateRandomTour();
+	void CreateTour();
+	void CreateNearestNeighbourTour();
+	void Reset();
+	void SetCities( const std::vector&lt;int&gt;&amp; v );
+ 
+	private:
+	double Distance( const int&amp; c1, const int&amp; c2 ) const;
+	int GetNearestNeighbour( const int&amp; c, std::set&lt;int&gt;&amp; cset );
+ 
+private:
+ 
+	std::vector&lt; int &gt; cities;
+	CoordMatrix* matrix;
+};
+</pre><h3 id="Tour-cpp">Tour.cpp</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "StdAfx.h"
+#include "Tour.h"
+#include &lt;algorithm&gt;
+#include &lt;functional&gt;
+ 
+Tour::Tour(){}
+Tour::~Tour(){}
+ 
+Tour::Tour( const Tour&amp; t )
+{ 
+	cities = t.cities; 
+}
+ 
+Tour&amp; Tour::operator=( const Tour&amp; t )
+{
+	if ( this != &amp;t )
+		cities = t.cities;
+	return *this;
+}
+ 
+void Tour::DoTwoOpt( const int&amp; c1, const int&amp; c2,
+			const int&amp; c3, const int&amp; c4 )
+{
+	if ( c3 == c1 || c3 == c2 || c4 == c1 || c4 == c2 )
+		return;
+ 
+	int c1old = cities.at( c1 );
+	int c2old = cities.at( c2 );
+	int c3old = cities.at( c3 );
+	int c4old = cities.at( c4 );
+	double old_distance = TourDistance();
+	int tmp = cities.at( c2 );
+	cities[ c2 ] = cities.at( c3 );
+	cities[ c3 ] = tmp;
+	double new_distance = TourDistance();
+ 
+	if ( new_distance &gt; old_distance )
+	{
+		cities[ c1 ] = c1old;
+		cities[ c2 ] = c2old;
+		cities[ c3 ] = c3old;
+		cities[ c4 ] = c4old;
+	}
+}
+ 
+// Get total distance of tour
+double Tour::TourDistance() const
+{
+	double dist = 0.0;
+	int size = (int) cities.size();
+	int c1, c2;
+	for ( int i = 0; i &lt; size - 1; i++ ) {
+	c1 = cities.at( i );
+	c2 = cities.at( i + 1 );
+	dist += Distance( c1, c2 );
+	}
+	c1 = cities.at( size - 1 );
+	c2 = cities.at( 0 );
+	dist += Distance( c1, c2 );
+	return dist;
+}
+ 
+// Generate arbitrary tour
+void Tour::CreateRandomTour()
+{
+	Reset();
+	for ( int i = 0; i &lt; matrix-&gt;size(); i++ )
+		cities.push_back( i );
+ 
+	random_shuffle( cities.begin() + 1, cities.end() );
+}
+ 
+// Generate arbitrary tour
+void Tour::CreateTour()
+{
+	Reset();
+	for ( int i = 0; i &lt; matrix-&gt;size(); i++ )
+		cities.push_back( i );
+}
+ 
+// Get distance bewteen selected cities
+double Tour::Distance( const int&amp; c1,
+				const int&amp; c2 ) const
+{ 
+	return matrix-&gt;Distance( c1, c2 ); 
+}
+ 
+// Set pointer to cost / distance matrix object
+void Tour::SetMatrix( CoordMatrix* mat )
+{ 
+	matrix = mat; 
+}
+ 
+// Reset existing tour data
+void Tour::Reset()
+{ 
+	std::vector&lt; int &gt;().swap( cities ); 
+}
+ 
+// Return the number of cities in the tour
+int Tour::TourSize() const
+{ 
+	return (int) cities.size(); 
+}
+ 
+// Get the tour city, given the index passed to it
+int Tour::GetCity( const int&amp; index )
+{
+	int node = cities.at( index );
+	return node;
+}
+ 
+// Get tour from the set of nearest neighbours
+void Tour::CreateNearestNeighbourTour()
+{
+	Reset();
+	std::set&lt;int&gt; city_set;
+	std::set&lt;int&gt;::iterator it;
+ 
+	for ( int i = 0; i &lt; matrix-&gt;size(); i++ )
+		city_set.insert( i );
+ 
+	int city = 0;
+	for ( int i = 1; i &lt;= matrix-&gt;size(); i++ )
+	{
+		cities.push_back( city );
+		it = city_set.find( city );
+ 
+		city_set.erase( it );
+		city = GetNearestNeighbour( city, city_set );
+	}
+}
+ 
+int Tour::GetNearestNeighbour( const int&amp; c, std::set&lt;int&gt;&amp; cset )
+{
+	int city = 0;
+	double min_dist = 99999999;
+	std::set&lt;int&gt;::iterator cit;
+
+	for ( cit = cset.begin(); cit != cset.end(); cit++ ) 
+	{
+		int n = *cit;
+		if ( n == c ) 
+			continue;
+		double dist = Distance( c, n );
+		if ( dist &lt; min_dist ) 
+		{
+			city = n;
+			min_dist = dist;
+		}
+	}
+	return city;
+}
+ 
+void Tour::SetCities( const std::vector&lt;int&gt;&amp; v )
+{ 
+	cities = v;
+}
+ 
+void Tour::SetCity( const int&amp; index, const int&amp; value )
+{ 
+	cities[ index ] = value; 
+}
+</pre><h3 id="TSPAlgorithm-h">TSPAlgorithm.h</h3><pre class="brush: cpp; title: ; notranslate" title="">
+
+#pragma once
+#include "Tour.h"
+#include &lt;string&gt;
+ 
+class Observer;
+ 
+class TSPalgorithm
+{
+public:
+	TSPalgorithm(void);
+	~TSPalgorithm(void);
+ 
+	void Initialize( const int&amp; iterations, CoordMatrix* mat );
+	void TwoOptSwap( const int&amp; i, const int&amp; k );
+	void Run();
+	int GetTourCity( const int&amp; index );
+	void AddObserver( Observer* ob );
+	void Notify( const int&amp; dist );
+ 
+private:
+ 
+	void TwoOpt();
+	Tour tour, new_tour;
+	int iterations;
+	std::vector&lt;Observer*&gt; ob_set;
+};
+ 
+class Observer
+{
+public:
+	virtual void UpdateDisplay( const float&amp; dist ) = 0;
+};
+</pre><h3 id="TSPAlgorithm-cpp">TSPAlgorithm.cpp</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "StdAfx.h"
+#include "TSPalgorithm.h"
+ 
+TSPalgorithm::TSPalgorithm()
+{}
+ 
+TSPalgorithm::~TSPalgorithm()
+{}
+ 
+// Set up TSP problem to run
+void TSPalgorithm::Initialize(
+			const int&amp; iter,
+			CoordMatrix* mat )
+{
+	tour.SetMatrix( mat );
+	new_tour.SetMatrix( mat );
+	iterations = iter;
+}
+ 
+// Run the optimization algorithm
+void TSPalgorithm::Run()
+{
+	tour.Reset();
+	tour.CreateNearestNeighbourTour();
+	TwoOpt();
+}
+ 
+// Get the tour node, given the index
+int TSPalgorithm::GetTourCity( const int&amp; index )
+{
+	return tour.GetCity( index );
+}
+ 
+// Notify observers of changes
+void TSPalgorithm::Notify( const int&amp; dist )
+{
+	for ( std::vector&lt;Observer*&gt;::iterator it = ob_set.begin();
+		 it != ob_set.end(); it++ )
+	{
+		(*it)-&gt;UpdateDisplay( dist );
+	}
+}
+ 
+// Add observer
+void TSPalgorithm::AddObserver( Observer* ob )
+{
+	ob_set.push_back( ob );
+}
+ 
+// Do all 2-opt combinations
+void TSPalgorithm::TwoOpt()
+{
+	int size = tour.TourSize();
+	new_tour = tour;
+ 
+	bool improve = true;
+	double best_distance, new_distance;
+ 
+	while ( improve )
+	{
+		best_distance = tour.TourDistance();
+		improve = false;
+ 
+		for ( int i = 0; i &lt; size - 1; i++ )
+		{
+			for ( int k = i + 1; k &lt; size; k++)
+			{
+				TwoOptSwap( i, k );
+				new_distance = new_tour.TourDistance();
+ 
+				if ( new_distance &lt; best_distance )
+				{
+					improve = true;
+					tour = new_tour;
+					best_distance = new_distance;
+					Notify( tour.TourDistance() );
+					i = size;
+					break;
+				}
+			}
+		}
+	}
+}
+ 
+void TSPalgorithm::TwoOptSwap( const int&amp; i, const int&amp; k )
+{
+	for ( int c = 0; c &lt;= i - 1; ++c )
+	{
+		new_tour.SetCity( c, tour.GetCity( c ) );
+	}
+ 
+	int dec = 0;
+ 
+	for ( int c = i; c &lt;= k; ++c )
+	{
+		new_tour.SetCity( c, tour.GetCity( k - dec ) );
+		dec++;
+	}
+ 
+	for ( int c = k + 1; c &lt; tour.TourSize(); ++c )
+	{
+		new_tour.SetCity( c, tour.GetCity( c ) );
+	}
+}
+</pre><h3 id="MakeString-h">MakeString.h</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;fstream&gt;
+#include &lt;sstream&gt;
+#include &lt;string&gt;
+ 
+class make_string
+{
+public:
+	template &lt;typename T&gt;
+	make_string&amp; operator&lt;&lt;( T const &amp; datum )
+	{
+		buffer_ &lt;&lt; datum;
+		return *this;
+	}
+	operator std::string () const
+	{ 
+		return buffer_.str(); 
+	}
+private:
+	std::ostringstream buffer_;
+};
+</pre><h3 id="CTwoOptDlg-DoDataExchange">CTwoOptDlg::DoDataExchange</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CTwoOptDlg::DoDataExchange(CDataExchange* pDX)
+{
+   CDialogEx::DoDataExchange(pDX);
+   DDX_Control(pDX, IDC_DISTANCE, m_Distance);
+   DDX_Control(pDX, IDC_TOUR, m_Tour);
+}
+</pre><h3 id="CTwoOptDlg-OnBnClickedRun">CTwoOptDlg::OnBnClickedRun</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CTwoOptDlg::OnBnClickedRun()
+{
+    alg.Run();
+    hasRun = true;
+    RedrawWindow( 0, 0, RDW_INVALIDATE | RDW_UPDATENOW | RDW_ERASE );
+}
+</pre><h3 id="CTwoOptDlg-OnBnClickedOpen-Update">CTwoOptDlg::OnBnClickedOpen</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CTwoOptDlg::OnBnClickedOpen()
+{
+    CPaintDC dc(this);
+    CRect rect;
+    GetClientRect(&amp;rect);
+ 
+    // Open the file opening dialog
+	CFileDialog fileDlg(
+					TRUE,
+					NULL,
+					NULL,
+					OFN_HIDEREADONLY | OFN_FILEMUSTEXIST,
+					(LPCTSTR) ".tsp Files(*.tsp)|*.tsp||",
+					this );
+ 
+	fileDlg.m_ofn.lpstrTitle = (LPCSTR)"Loading TSP Problem";
+ 
+	INT_PTR result = fileDlg.DoModal();
+	CString path = fileDlg.GetPathName();
+ 
+	if ( result == IDOK )
+	{
+		// Reset matrix data contents
+		CT2CA pszConvertedAnsiString( path );
+		std::string path_str( pszConvertedAnsiString );
+		mat.Initialize( path_str );
+		hasRun = false;
+ 
+		(AfxGetMainWnd( ))-&gt;SetWindowText(mat.GetFileTitle().c_str());
+	}
+}
+</pre><h3 id="CTwoOptDlg-OnPaint">CTwoOptDlg::OnPaint</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CTwoOptDlg::OnPaint()
+{
+	// device context for painting
+	CPaintDC dc(this);
+ 
+	if (IsIconic())
+	{
+		SendMessage(
+		WM_ICONERASEBKGND,
+		reinterpret_cast&lt;WPARAM&gt;(dc.GetSafeHdc()), 0);
+ 
+		// Center icon in client rectangle
+		int cxIcon = GetSystemMetrics(SM_CXICON);
+		int cyIcon = GetSystemMetrics(SM_CYICON);
+		CRect rect;
+		GetClientRect(&amp;rect);
+		int x = (rect.Width() - cxIcon + 1) / 2;
+		int y = (rect.Height() - cyIcon + 1) / 2;
+ 
+		// Draw the icon
+		dc.DrawIcon(x, y, m_hIcon);
+	}
+	else
+	{
+		if ( mat.size() &lt; 1 ) 
+			return;
+ 
+		CRect rect;
+		GetClientRect(&amp;rect);
+ 
+		int rectx1 = rect.left + 20;
+		int rectx2 = rect.right - 150;
+		int recty1 = rect.top + 20;
+		int recty2 = rect.bottom - 140;
+ 
+		CPen pen( PS_SOLID, 1, RGB( 0, 0, 0 ) );
+		dc.SelectStockObject(BLACK_BRUSH);
+ 
+		int tour_size = mat.size();
+ 
+		for ( count = 0; count &lt; tour_size; count++ )
+		{
+			xc1 = mat.GetX( count );
+			yc1 = mat.GetY( count );
+			xn1 = (float) ( xc1 - mat.GetMinX() ) /
+			(float) ( mat.GetMaxX() - mat.GetMinX() );
+ 
+			yn1 = (float) ( yc1 - mat.GetMinY() ) /
+			(float) ( mat.GetMaxY() - mat.GetMinY() );
+ 
+			xcoord1 = rectx1 + (int) (float) ( xn1 * abs( rectx1 - rectx2 ) );
+			ycoord1 = recty2 - (int) (float) ( yn1 * abs( recty1 - recty2 ) );
+			dc.Ellipse( xcoord1 - 2, ycoord1 - 2, xcoord1 + 2, ycoord1 + 2 );
+			if ( hasRun &amp;&amp; count &lt; tour_size - 1 )
+			{
+				cc1 = alg.GetTourCity( count );
+				cc2 = alg.GetTourCity( count + 1 );
+ 
+				xc1 = mat.GetX( cc1 );
+				yc1 = mat.GetY( cc1 );
+				xc2 = mat.GetX( cc2 );
+				yc2 = mat.GetY( cc2 );
+ 
+				xn1 = (float) ( xc1 - mat.GetMinX() ) /
+					  (float) ( mat.GetMaxX() - mat.GetMinX() );
+				yn1 = (float) ( yc1 - mat.GetMinY() ) /
+				      (float) ( mat.GetMaxY() - mat.GetMinY() );
+				xn2 = (float) ( xc2 - mat.GetMinX() ) /
+				      (float) ( mat.GetMaxX() - mat.GetMinX() );
+				yn2 = (float) ( yc2 - mat.GetMinY() ) /
+				      (float) ( mat.GetMaxY() - mat.GetMinY() );
+ 
+				xcoord1 = rectx1 + (int)(float)(xn1 * abs( rectx1 - rectx2));
+				ycoord1 = recty2 - (int)(float)(yn1 * abs( recty1 - recty2));
+				xcoord2 = rectx1 + (int)(float)(xn2 * abs( rectx1 - rectx2));
+				ycoord2 = recty2 - (int)(float)(yn2 * abs( recty1 - recty2));
+ 
+				dc.MoveTo( xcoord1, ycoord1 );
+				dc.LineTo( xcoord2, ycoord2 );
+			}
+		}
+ 
+		if ( hasRun )
+		{
+			cc1 = alg.GetTourCity( tour_size - 1 );
+			cc2 = alg.GetTourCity( 0 );
+			xc1 = mat.GetX( cc1 );
+			yc1 = mat.GetY( cc1 );
+			xc2 = mat.GetX( cc2 );
+			yc2 = mat.GetY( cc2 );
+ 
+			xn1 = (float) ( xc1 - mat.GetMinX() ) /
+			      (float) ( mat.GetMaxX() - mat.GetMinX() );
+			yn1 = (float) ( yc1 - mat.GetMinY() ) /
+			      (float) ( mat.GetMaxY() - mat.GetMinY() );
+			xn2 = (float) ( xc2 - mat.GetMinX() ) /
+			      (float) ( mat.GetMaxX() - mat.GetMinX() );
+			yn2 = (float) ( yc2 - mat.GetMinY() ) /
+			      (float) ( mat.GetMaxY() - mat.GetMinY() );
+ 
+			xcoord1 = rectx1 + (int) (float) ( xn1 * abs( rectx1 - rectx2 ) );
+			ycoord1 = recty2 - (int) (float) ( yn1 * abs( recty1 - recty2 ) );
+			xcoord2 = rectx1 + (int) (float) ( xn2 * abs( rectx1 - rectx2 ) );
+			ycoord2 = recty2 - (int) (float) ( yn2 * abs( recty1 - recty2 ) );
+			dc.MoveTo( xcoord1, ycoord1 );
+			dc.LineTo( xcoord2, ycoord2 );
+		}
+ 
+		CDialogEx::OnPaint();
+	}
+}
+</pre><h3 id="RefreshDisplay">Refresh Display</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CTwoOptDlg::Init( TSPalgorithm* tsp )
+{
+	alg.AddObserver( this );
+}
+ 
+void CTwoOptDlg::UpdateDisplay( const float&amp; dist )
+{
+	hasRun = true;
+ 
+	std::string s = make_string() &lt;&lt; "Total distance: "
+								  &lt;&lt; dist;
+ 
+	m_Distance.SetWindowText( s.c_str() );
+ 
+	int tour_size = mat.size();
+ 
+	std::string tour = make_string() &lt;&lt; "Tour:n";
+	std::string t;
+ 
+	for ( int i = 0; i &lt; tour_size; i++ )
+	{
+		t = make_string() &lt;&lt; alg.GetTourCity( i ) + 1
+		&lt;&lt; "-";
+ 
+		tour.append( t );
+ 
+		if ( i &gt; 0 &amp;&amp; i % 35 == 0 )
+		{
+			tour.append( "n" );
+		}
+	}
+ 
+	t = make_string() &lt;&lt; alg.GetTourCity( 0 ) + 1;
+	tour.append( t );
+ 
+	m_Tour.SetWindowText( tour.c_str() );
+	RedrawWindow(
+		0,
+		0,
+		RDW_INVALIDATE | RDW_UPDATENOW | RDW_ERASE );
+}
+</pre><h3 id="UpdateOnInitDialog">Update OnInitDialog</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "stdafx.h"
+#include "Two-Opt.h"
+#include "Two-OptDlg.h"
+#include "MakeString.h"
+#include &lt;fstream&gt;
+#include &lt;sstream&gt;
+#include &lt;string&gt;
+#include "afxdialogex.h"
+ 
+BOOL CTwoOptDlg::OnInitDialog()
+{
+	CDialogEx::OnInitDialog();
+	SetIcon(m_hIcon, TRUE); // Set big icon
+	SetIcon(m_hIcon, FALSE); // Set small icon
+ 
+	Init( &amp;alg );
+	alg.Initialize( 10000, &amp;mat );
+	hasRun = false;
+	font.CreatePointFont(100, _T("Arial"));
+	m_Distance.SetFont(&amp;font);
+	m_Tour.SetFont(&amp;font);
+	GetDlgItem(IDC_DISTANCE)-&gt;SetFont(&amp;font);
+	GetDlgItem(IDC_TOUR)-&gt;SetFont(&amp;font);
+ 
+	return TRUE; // return TRUE unless you set the focus to a control
+}
+</pre><h3 id="Modify-CTwoOptDlg">Modify CTwoOptDlg</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#pragma once
+#include "TSPalgorithm.h"
+#include "CoordMatrix.h"
+#include "afxwin.h"
+ 
+// CTwoOptDlg dialog
+class CTwoOptDlg : public CDialogEx, Observer
+{
+	// Construction
+	public:
+	CTwoOptDlg(CWnd* pParent = NULL);
+ 
+	// Dialog Data
+	enum { IDD = IDD_TWOOPT_DIALOG };
+	protected:
+	virtual void DoDataExchange(CDataExchange* pDX);
+ 
+	// Implementation
+	protected:
+	HICON m_hIcon;
+ 
+	// Generated message map functions
+	virtual BOOL OnInitDialog();
+	afx_msg void OnPaint();
+	afx_msg HCURSOR OnQueryDragIcon();
+	DECLARE_MESSAGE_MAP()
+	public:
+	afx_msg void OnBnClickedOk();
+	afx_msg void OnBnClickedOpen();
+	afx_msg void OnBnClickedRun();
+ 
+	void Init( TSPalgorithm* tsp );
+	void UpdateDisplay( const float&amp; dist );
+	private:
+	TSPalgorithm alg;
+	CoordMatrix mat;
+	bool hasRun;
+	int cc1, cc2, xc1, xc2, yc1, yc2;
+	float xn1, xn2, yn1, yn2;
+	int xcoord1, xcoord2, ycoord1, ycoord2;
+	int x1, y1, count;
+	CStatic m_Distance, m_Tour;
+	LOGFONT lf;
+	CFont font;
+};
+</pre><h3 id="CTwoOptDlg-OnBnClickedRun">CTwoOptDlg::OnBnClickedRun</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CTwoOptDlg::OnBnClickedRun()
+{
+   alg.Run();
+   hasRun = true;
+   RedrawWindow( 0, 0, RDW_INVALIDATE | RDW_UPDATENOW | RDW_ERASE );
+}
+</pre><h3 id="CTwoOptDlg-OnBnClickedOpen">CTwoOptDlg::OnBnClickedOpen</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CTwoOptDlg::OnBnClickedOpen()
+{
+	CPaintDC dc(this);
+	CRect rect;
+	GetClientRect(&amp;rect);
+ 
+	// Open the file opening dialog
+	CFileDialog fileDlg(
+					TRUE,
+					NULL,
+					NULL,
+					OFN_HIDEREADONLY | OFN_FILEMUSTEXIST,
+					(LPCTSTR) ".tsp Files(*.tsp)|*.tsp||",
+					this );
+ 
+	fileDlg.m_ofn.lpstrTitle = (LPCSTR)"Loading TSP Problem";
+ 
+	INT_PTR result = fileDlg.DoModal();
+	CString path = fileDlg.GetPathName();
+ 
+	if ( result == IDOK )
+	{
+		// Reset matrix data contents
+		CT2CA pszConvertedAnsiString( path );
+		std::string path_str( pszConvertedAnsiString );
+		mat.Initialize( path_str );
+		hasRun = false;
+ 
+		(AfxGetMainWnd( ))-&gt;SetWindowText(mat.GetFileTitle().c_str());
+	}
+}
+</pre><h3 id="CTwoOptDlg-OnPaint-Modified">CTwoOptDlg::OnPaint</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CTwoOptDlg::OnPaint()
+{
+	// device context for painting
+	CPaintDC dc(this);
+ 
+	if (IsIconic())
+	{
+		SendMessage(WM_ICONERASEBKGND,
+			reinterpret_cast&lt;WPARAM&gt;(dc.GetSafeHdc()), 0);
+ 
+		// Center icon in client rectangle
+		int cxIcon = GetSystemMetrics(SM_CXICON);
+		int cyIcon = GetSystemMetrics(SM_CYICON);
+		CRect rect;
+		GetClientRect(&amp;rect);
+		int x = (rect.Width() - cxIcon + 1) / 2;
+		int y = (rect.Height() - cyIcon + 1) / 2;
+ 
+		// Draw the icon
+		dc.DrawIcon(x, y, m_hIcon);
+	}
+	else
+	{
+		if ( mat.size() &lt; 1 ) 
+			return;
+ 
+		CRect rect;
+		GetClientRect(&amp;rect);
+ 
+		int rectx1 = rect.left + 20;
+		int rectx2 = rect.right - 150;
+		int recty1 = rect.top + 20;
+		int recty2 = rect.bottom - 140;
+ 
+		CPen pen( PS_SOLID, 1, RGB( 0, 0, 0 ) );
+		dc.SelectStockObject(BLACK_BRUSH);
+ 
+		int tour_size = mat.size();
+ 
+		for ( count = 0; count &lt; tour_size; count++ )
+		{
+			xc1 = mat.GetX( count );
+			yc1 = mat.GetY( count );
+ 
+			xn1 = (float) ( xc1 - mat.GetMinX() ) /
+			(float) ( mat.GetMaxX() - mat.GetMinX() );
+ 
+			yn1 = (float) ( yc1 - mat.GetMinY() ) /
+			(float) ( mat.GetMaxY() - mat.GetMinY() );
+ 
+			xcoord1 = rectx1 + (int) (float) ( xn1 * abs( rectx1 - rectx2 ) );
+			ycoord1 = recty2 - (int) (float) ( yn1 * abs( recty1 - recty2 ) );
+			dc.Ellipse( xcoord1 - 2, ycoord1 - 2, xcoord1 + 2, ycoord1 + 2 );
+
+			if ( hasRun &amp;&amp; count &lt; tour_size - 1 )
+			{
+				cc1 = alg.GetTourCity( count );
+				cc2 = alg.GetTourCity( count + 1 );
+ 
+				xc1 = mat.GetX( cc1 );
+				yc1 = mat.GetY( cc1 );
+				xc2 = mat.GetX( cc2 );
+				yc2 = mat.GetY( cc2 );
+ 
+				xn1 = (float) ( xc1 - mat.GetMinX() ) /
+					(float) ( mat.GetMaxX() - mat.GetMinX() );
+				yn1 = (float) ( yc1 - mat.GetMinY() ) /
+					(float) ( mat.GetMaxY() - mat.GetMinY() );
+				xn2 = (float) ( xc2 - mat.GetMinX() ) /
+					(float) ( mat.GetMaxX() - mat.GetMinX() );
+				yn2 = (float) ( yc2 - mat.GetMinY() ) /
+					(float) ( mat.GetMaxY() - mat.GetMinY() );
+ 
+				xcoord1 = rectx1 + (int)(float)(xn1 * abs( rectx1 - rectx2));
+				ycoord1 = recty2 - (int)(float)(yn1 * abs( recty1 - recty2));
+				xcoord2 = rectx1 + (int)(float)(xn2 * abs( rectx1 - rectx2));
+				ycoord2 = recty2 - (int)(float)(yn2 * abs( recty1 - recty2));
+ 
+				dc.MoveTo( xcoord1, ycoord1 );
+				dc.LineTo( xcoord2, ycoord2 );
+			}
+		}
+ 
+		if ( hasRun )
+		{
+			cc1 = alg.GetTourCity( tour_size - 1 );
+			cc2 = alg.GetTourCity( 0 );
+ 
+			xc1 = mat.GetX( cc1 );
+			yc1 = mat.GetY( cc1 );
+ 
+			xc2 = mat.GetX( cc2 );
+			yc2 = mat.GetY( cc2 );
+ 
+			xn1 = (float) ( xc1 - mat.GetMinX() ) /
+				(float) ( mat.GetMaxX() - mat.GetMinX() );
+			yn1 = (float) ( yc1 - mat.GetMinY() ) /
+				(float) ( mat.GetMaxY() - mat.GetMinY() );
+			xn2 = (float) ( xc2 - mat.GetMinX() ) /
+				(float) ( mat.GetMaxX() - mat.GetMinX() );
+			yn2 = (float) ( yc2 - mat.GetMinY() ) /
+				(float) ( mat.GetMaxY() - mat.GetMinY() );
+ 
+			xcoord1 = rectx1 + (int) (float) ( xn1 * abs( rectx1 - rectx2 ) );
+			ycoord1 = recty2 - (int) (float) ( yn1 * abs( recty1 - recty2 ) );
+			xcoord2 = rectx1 + (int) (float) ( xn2 * abs( rectx1 - rectx2 ) );
+			ycoord2 = recty2 - (int) (float) ( yn2 * abs( recty1 - recty2 ) );
+			dc.MoveTo( xcoord1, ycoord1 );
+			dc.LineTo( xcoord2, ycoord2 );
+		}
+ 
+		CDialogEx::OnPaint();
+	}
+}
+</pre><h3 id="Initialize-Observer">Initialize Observer</h3><pre class="brush: cpp; title: ; notranslate" title="">
+void CTwoOptDlg::Init( TSPalgorithm* tsp )
+{
+	alg.AddObserver( this );
+}
+ 
+void CTwoOptDlg::UpdateDisplay( const float&amp; dist )
+{
+	hasRun = true;
+ 
+	std::string s = make_string() &lt;&lt; "Total distance: "
+								  &lt;&lt; dist;
+ 
+	m_Distance.SetWindowText( s.c_str() );
+ 
+	int tour_size = mat.size();
+ 
+	std::string tour = make_string() &lt;&lt; "Tour:n";
+	std::string t;
+ 
+	for ( int i = 0; i &lt; tour_size; i++ )
+	{
+		t = make_string() &lt;&lt; alg.GetTourCity( i ) + 1
+						  &lt;&lt; "-";
+ 
+		tour.append( t );
+ 
+		if ( i &gt; 0 &amp;&amp; i % 35 == 0 )
+		{
+			tour.append( "n" );
+		}
+	}
+ 
+	t = make_string() &lt;&lt; alg.GetTourCity( 0 ) + 1;
+	tour.append( t );
+ 
+	m_Tour.SetWindowText( tour.c_str() );
+	RedrawWindow(
+		0,
+		0,
+		RDW_INVALIDATE | RDW_UPDATENOW | RDW_ERASE );
+}
+</pre><h3 id="AddHeaders">Add Headers to CTwoOptDlg</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "stdafx.h"
+#include "Two-Opt.h"
+#include "Two-OptDlg.h"
+#include "MakeString.h"
+#include &lt;fstream&gt;
+#include &lt;sstream&gt;
+#include &lt;string&gt;
+#include "afxdialogex.h"
+ 
+BOOL CTwoOptDlg::OnInitDialog()
+{
+	CDialogEx::OnInitDialog();
+	SetIcon(m_hIcon, TRUE); // Set big icon
+	SetIcon(m_hIcon, FALSE); // Set small icon
+ 
+	Init( &amp;alg );
+	alg.Initialize( 10000, &amp;mat );
+	hasRun = false;
+	font.CreatePointFont(100, _T("Arial"));
+	m_Distance.SetFont(&amp;font);
+	m_Tour.SetFont(&amp;font);
+	GetDlgItem(IDC_DISTANCE)-&gt;SetFont(&amp;font);
+	GetDlgItem(IDC_TOUR)-&gt;SetFont(&amp;font);
+ 
+	return TRUE; // return TRUE unless you set the focus to a control
+}
+</pre><h3 id="AddVariables">Add variables and methods</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#pragma once
+#include "TSPalgorithm.h"
+#include "CoordMatrix.h"
+#include "afxwin.h"
+ 
+// CTwoOptDlg dialog
+class CTwoOptDlg : public CDialogEx, Observer
+{
+	// Construction
+public:
+	CTwoOptDlg(CWnd* pParent = NULL);
+ 
+	// Dialog Data
+	enum { IDD = IDD_TWOOPT_DIALOG };
+protected:
+	virtual void DoDataExchange(CDataExchange* pDX);
+ 
+	// Implementation
+protected:
+	HICON m_hIcon;
+ 
+	// Generated message map functions
+	virtual BOOL OnInitDialog();
+	afx_msg void OnPaint();
+	afx_msg HCURSOR OnQueryDragIcon();
+	DECLARE_MESSAGE_MAP()
+
+public:
+	afx_msg void OnBnClickedOk();
+	afx_msg void OnBnClickedOpen();
+	afx_msg void OnBnClickedRun();
+ 
+	void Init( TSPalgorithm* tsp );
+	void UpdateDisplay( const float&amp; dist );
+
+private:
+	TSPalgorithm alg;
+	CoordMatrix mat;
+	bool hasRun;
+	int cc1, cc2, xc1, xc2, yc1, yc2;
+	float xn1, xn2, yn1, yn2;
+	int xcoord1, xcoord2, ycoord1, ycoord2;
+	int x1, y1, count;
+	CStatic m_Distance, m_Tour;
+	LOGFONT lf;
+	CFont font;
+};
+</pre><h1 id="Chapter-9">Chapter 9</h1><h3 id="AllPaths-1">Example Usage 1</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "Algorithm.h"
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+const Link&lt;int&gt; linkset[] = { Link&lt;int&gt;( 1, 2 ),
+							  Link&lt;int&gt;( 1, 3 ),
+							  Link&lt;int&gt;( 1, 4 ),
+							  Link&lt;int&gt;( 2, 1 ),
+							  Link&lt;int&gt;( 2, 4 ),
+							  Link&lt;int&gt;( 2, 3 ),
+							  Link&lt;int&gt;( 3, 5 ),
+							  Link&lt;int&gt;( 4, 5 ),
+							  Link&lt;int&gt;( 5, 3 ) };
+
+const size_t size = sizeof( linkset ) / sizeof( linkset[ 0 ] ) ;
+const std::vector&lt;Link&lt;int&gt;&gt; links (linkset, linkset + size );
+
+int main()
+{
+	// Create network from interconnections given
+	Network nw( links, false );
+	// Create the algorithm object
+	Algorithm algorithm( &amp;nw );
+	// Get all paths between nodes 2 and 5
+	algorithm.GetAllPaths( &amp;nw, 2, 5, -1, -1 );
+	// Output the set of paths found
+	nw.ShowPaths();
+
+	return 0;
+}
+</pre><h3 id="AllPaths-2">Example Usage 2</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "Algorithm.h"
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+const Link&lt;int&gt; linkset[] = {	Link&lt;int&gt;( 1, 2 ),
+								Link&lt;int&gt;( 1, 4 ),
+								Link&lt;int&gt;( 1, 7 ),
+								Link&lt;int&gt;( 2, 4 ),
+								Link&lt;int&gt;( 2, 3 ),
+								Link&lt;int&gt;( 3, 5 ),
+								Link&lt;int&gt;( 3, 8 ),
+								Link&lt;int&gt;( 4, 5 ),
+								Link&lt;int&gt;( 4, 9 ),
+								Link&lt;int&gt;( 5, 6 ),
+								Link&lt;int&gt;( 5, 7 ),
+								Link&lt;int&gt;( 5, 9 ),
+								Link&lt;int&gt;( 6, 8 ),
+								Link&lt;int&gt;( 6, 10 ),
+								Link&lt;int&gt;( 7, 8 ),
+								Link&lt;int&gt;( 8, 10 ),
+								Link&lt;int&gt;( 9, 10 ) };
+
+const size_t size = sizeof( linkset ) / sizeof( linkset[ 0 ] ) ;
+const std::vector&lt;Link&lt;int&gt;&gt; links (linkset, linkset + size );
+
+int main()
+{
+	// Create network from interconnections given
+	Network nw( links, true );
+	// Create the algorithm object
+	Algorithm algorithm( &amp;nw );
+	// Get all paths between nodes 2 and 5
+	algorithm.GetAllPaths( &amp;nw, 2, 5, -1, -1 );
+	// Output the set of paths found
+	nw.ShowPaths();
+
+	return 0;
+}
+</pre><h3 id="AllPaths-3">Example Usage 3</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "Algorithm.h"
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+const Link&lt;std::string&gt; linkset[] =
+{	Link&lt;std::string&gt;( "Bristol", "London" ),
+	Link&lt;std::string&gt;( "Bristol", "Cardiff" ),
+	Link&lt;std::string&gt;( "Oxford", "Cardiff" ),
+	Link&lt;std::string&gt;( "Glasgow", "Manchester" ),
+	Link&lt;std::string&gt;( "Manchester", "Leeds" ),
+	Link&lt;std::string&gt;( "Manchester", "Cardiff" ),
+	Link&lt;std::string&gt;( "Glasgow", "Edinburgh" ),
+	Link&lt;std::string&gt;( "Edinburgh", "Newcastle" ),
+	Link&lt;std::string&gt;( "Leeds", "London" ),
+	Link&lt;std::string&gt;( "Newcastle", "Leeds" ) 
+};
+
+const size_t size = sizeof( linkset ) / sizeof( linkset[ 0 ] ) ;
+const std::vector&lt;Link&lt;std::string&gt;&gt; links (linkset, linkset + size );
+
+int main()
+{
+	// Create network from interconnections given
+	Network nw( links, true );
+	// Create the algorithm object
+	Algorithm algorithm( &amp;nw );
+	// Get all paths between nodes Bristol and Bath
+	algorithm.GetAllPaths( &amp;nw, "Bristol", "Edinburgh", -1, -1 );
+	// Output the set of paths found
+	nw.ShowPaths();
+
+	return 0;
+}
+</pre><h3 id="AllPaths-4">Example Usage 4</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include "Algorithm.h"
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+const Link&lt;int&gt; linkset[] = {	Link&lt;int&gt;( 1, 2 ),
+								Link&lt;int&gt;( 1, 3 ),
+								Link&lt;int&gt;( 1, 4 ),
+								Link&lt;int&gt;( 2, 1 ),
+								Link&lt;int&gt;( 2, 4 ),
+								Link&lt;int&gt;( 2, 3 ),
+								Link&lt;int&gt;( 3, 5 ),
+								Link&lt;int&gt;( 4, 5 ),
+								Link&lt;int&gt;( 5, 3 ) };
+
+const size_t size = sizeof( linkset ) / sizeof( linkset[ 0 ] ) ;
+const std::vector&lt;Link&lt;int&gt;&gt; links (linkset, linkset + size );
+
+int main()
+{
+	// Create network from interconnections given
+	Network nw( links, true );
+	// Create the algorithm object
+	Algorithm algorithm( &amp;nw );
+	// Get all paths between nodes 2 and 5
+	algorithm.GetAllPaths( &amp;nw, 2, 2, -1, -1 );
+	// Output the set of paths found
+	nw.ShowPaths();
+
+	return 0;
+}
+</pre><h3 id="AllPathsFullCode">Full Code Listing</h3><pre class="brush: cpp; title: ; notranslate" title="">
+//Graph.h
+ 
+#pragma once
+#include "PriorityQueue.h"
+#include &lt;vector&gt;
+#include &lt;memory&gt;
+ 
+class Edge
+{
+	public:
+	int v, w;
+	double wt;
+	Edge(int v = -1, int w = -1, double wt = 0.0) :
+		v(v), w(w), wt(wt) { }
+};
+ 
+typedef std::shared_ptr&lt;Edge&gt; EdgePtr;
+ 
+template &lt;class Edge&gt;
+class DenseGRAPH
+{
+	private:
+	int Vcnt, Ecnt;
+	bool digraph;
+	std::vector &lt;std::vector &lt;EdgePtr&gt;&gt; adj;
+ 
+public:
+	DenseGRAPH(int V, bool digraph = false) :
+	adj(V), Vcnt(V), Ecnt(0), digraph(digraph)
+	{
+		for ( int i = 0; i &lt; V; i++ ) 
+		{
+		adj[ i ].resize( V );
+		}
+	}
+ 
+	int V() const { return Vcnt; }
+	int E() const { return Ecnt; }
+	bool directed() const { return digraph; }
+ 
+	void insert( EdgePtr e )
+	{
+		int v = e-&gt;v;
+		int w = e-&gt;w;
+		if (adj[v][w] == 0) Ecnt++;
+		adj[v][w] = e;
+ 
+		if (!digraph)
+		adj[w][v] = e;
+	}
+ 
+	void remove(EdgePtr e)
+	{
+		int v = e-&gt;v; 
+		int w = e-&gt;w;
+
+		if (adj[v][w] != 0) 
+			Ecnt--;
+		adj[v][w] = 0;
+		if (!digraph) 
+			adj[w][v] = 0;
+	}
+ 
+	EdgePtr edge(int v, int w) const
+	{
+		return adj[v][w];
+	}
+ 
+	class adjIterator;
+	friend class adjIterator;
+};
+ 
+template &lt;class Edge&gt;
+class DenseGRAPH&lt;Edge&gt;::adjIterator
+{
+private:
+	const DenseGRAPH &amp;G;
+	int i, v;
+ 
+public:
+	adjIterator(const DenseGRAPH&lt;Edge&gt; &amp;G, int v) :
+	G(G), v(v), i(0) {}
+	EdgePtr beg() { i = -1; return nxt(); }
+	EdgePtr nxt()
+	{
+		for (i++; i &lt; G.V(); i++)
+			if (G.edge(v, i))
+				return G.adj[v][i];
+		return 0;
+	}
+ 
+	bool end() const { return i &gt;= G.V(); }
+};
+ 
+// PriorityQueue.h
+ 
+#include &lt;memory&gt;
+#include &lt;vector&gt;
+ 
+template &lt;class keyType&gt;
+class PriorityQueue
+{
+private:
+	int d, N;
+	std::vector&lt;int&gt; pq, qp;
+	const std::vector&lt;keyType&gt; &amp;a;
+ 
+void Exchange(int i, int j)
+{
+	int t = pq[i];
+	pq[i] = pq[j];
+	pq[j] = t;
+	qp[pq[i]] = i;
+	qp[pq[j]] = j;
+}
+ 
+void fixUp(int k)
+{
+	while ( k &gt; 1 &amp;&amp; a[pq[(k+d-2)/d]] &gt; a[pq[k]] )
+	{
+		Exchange(k, (k+d-2)/d);
+		k = (k+d-2)/d;
+	}
+}
+ 
+	void fixDown(int k, int N)
+	{
+		int j;
+		while ((j = d*(k-1)+2) &lt;= N)
+		{
+			for (int i = j+1; i &lt; j+d &amp;&amp; i &lt;= N; i++)
+				if (a[pq[j]] &gt; a[pq[i]])
+					j = i;
+			if (!(a[pq[k]] &gt; a[pq[j]]))
+				break;
+			Exchange(k, j);
+			k = j;
+		}
+	}
+
+public:
+	PriorityQueue(int N, const std::vector&lt;keyType&gt; &amp;a, int d = 3) :
+		a(a), pq(N+1, 0), qp(N+1, 0), N(0), d(d) {}
+ 
+	int empty() const { return N == 0; }
+	void insert(int v)
+	{
+		pq[++N] = v;
+		qp[v] = N;
+		fixUp(N);
+	}
+ 
+	int getmin()
+	{
+		Exchange( 1, N );
+		fixDown(1, N-1);
+		return pq[N--];
+	}
+ 
+	void lower(int k)
+	{
+		fixUp(qp[k]);
+	}
+};
+ 
+// Network.h
+ 
+#pragma once
+#include "Graph.h"
+#include &lt;vector&gt;
+#include &lt;map&gt;
+#include &lt;string&gt;
+ 
+typedef std::vector&lt;int&gt; Path;
+typedef std::vector&lt;Path&gt; PathSet;
+typedef std::vector&lt;Path&gt;::const_iterator Paths;
+ 
+template&lt; class T &gt;
+class Link
+{
+private:
+	T from;
+	T to;
+	double weight;
+public:
+	Link( const T&amp; from, const T&amp; to, const double &amp;weight = 1.0 ) :
+		from( from ), to( to ), weight( weight ) {}
+	
+	const T&amp; From() const
+	{ return from; }
+	const T&amp; To() const
+	{ return to; }
+	const double&amp; Weight() const
+	{ return weight; }
+};
+ 
+class Network
+{
+private:
+	DenseGRAPH&lt;Edge&gt;* graph;
+	PathSet pathset;
+	std::map&lt;std::string, int &gt; label2index;
+	std::map&lt;int, std::string &gt; index2label;
+	public:
+	Network() {}
+	Network( const std::vector&lt;Link&lt;std::string&gt; &gt;&amp; links,
+	const bool&amp; bi = false );
+	Network( const std::vector&lt;Link&lt;int&gt; &gt;&amp; links,
+	const bool&amp; bi = false );
+	~Network();
+	void AddPath( const Path&amp; p );
+	void ShowPaths() const;
+	int NodeIndex( const std::string&amp; label ) const;
+	std::vector&lt;int&gt; GetAdjNodeIDs( const int&amp; n ) const;
+};
+ 
+// Network.cpp
+ 
+#include "Network.h"
+#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+#include &lt;iterator&gt;
+#include &lt;algorithm&gt;
+#include &lt;set&gt;
+#include &lt;stack&gt;
+ 
+Network::~Network()
+{
+	if ( graph != NULL ) 
+	{
+		delete graph;
+		graph = NULL;
+	}
+}
+ 
+Network::Network( const std::vector&lt;Link&lt;std::string&gt;&gt;&amp; links,
+				  const bool&amp; bi_connected )
+{
+	typedef std::vector&lt;Link&lt;std::string&gt;&gt;::const_iterator v_iter;
+	label2index.clear();
+	index2label.clear();
+	std::set&lt;std::string&gt; unique_id_str;
+ 
+	for ( v_iter it = links.begin(); it != links.end(); ++it ) 
+	{
+		const Link&lt;std::string&gt; l = (*it);
+		std::string first = l.From();
+		std::string second = l.To();
+		unique_id_str.insert( first );
+		unique_id_str.insert( second );
+	}
+ 
+	int i = 0;
+	for ( std::set&lt;std::string&gt;::const_iterator it = unique_id_str.begin();
+		it != unique_id_str.end(); ++it )
+	{
+		std::string label = (*it);
+		index2label[ i ] = label;
+		label2index[ label ] = i;
+		i++;
+	}
+
+	std::set&lt;int&gt; unique_ids;
+	const int nodes = unique_id_str.size();
+	graph = new DenseGRAPH&lt;Edge&gt;( nodes + 1, !bi_connected );
+	
+	for ( v_iter it = links.begin(); it != links.end(); ++it )
+	{
+		const Link&lt;std::string&gt; l = (*it);
+		std::string first = l.From();
+		std::string second = l.To();
+		int s = label2index.find( first )-&gt;second;
+		int d = label2index.find( second )-&gt;second;
+		double weight = l.Weight();
+		EdgePtr e( new Edge( s, d, weight ) );
+		graph-&gt;insert( e );
+	}
+}
+ 
+Network::Network( const std::vector&lt;Link&lt;int&gt;&gt;&amp; links,
+				  const bool&amp; bi_connected )
+{
+	typedef std::vector&lt;Link&lt;int&gt;&gt;::const_iterator v_iter;
+	label2index.clear();
+	index2label.clear();
+	std::set&lt;std::string&gt; unique_id_str;
+ 
+	for ( v_iter it = links.begin(); it != links.end(); ++it )
+	{
+		const Link&lt;int&gt; l = (*it);
+		int first = l.From();
+		int second = l.To();
+		std::string strFirst = static_cast&lt;std::ostringstream*&gt;(
+		&amp;(std::ostringstream() &lt;&lt; first ) )-&gt;str();
+		std::string strSecond = static_cast&lt;std::ostringstream*&gt;(
+		&amp;(std::ostringstream() &lt;&lt; second ) )-&gt;str();
+ 
+		unique_id_str.insert( strFirst );
+		unique_id_str.insert( strSecond );
+	}
+ 
+	int i = 0;
+ 
+	for ( std::set&lt;std::string&gt;::const_iterator it = unique_id_str.begin();
+		it != unique_id_str.end(); ++it )
+	{
+		std::string label = (*it);
+		index2label[ i ] = label;
+		label2index[ label ] = i;
+		i++;
+	}
+
+	std::set&lt;int&gt; unique_ids;
+	const int nodes = unique_id_str.size();
+	graph = new DenseGRAPH&lt;Edge&gt;( nodes + 1, !bi_connected );
+
+	for ( v_iter it = links.begin(); it != links.end(); ++it ) 
+	{
+		const Link&lt;int&gt; l = (*it);
+		int first = l.From();
+		int second = l.To();
+		std::string strFirst = static_cast&lt;std::ostringstream*&gt;(
+			&amp;(std::ostringstream() &lt;&lt; first ))-&gt;str();
+		std::string strSecond = static_cast&lt;std::ostringstream*&gt;(
+			&amp;(std::ostringstream() &lt;&lt; second ))-&gt;str();
+ 
+		int s = label2index.find( strFirst )-&gt;second;
+		int d = label2index.find( strSecond )-&gt;second;
+		double weight = l.Weight();
+ 
+		EdgePtr e( new Edge( s, d, weight ) );
+		graph-&gt;insert( e );
+	}
+}
+ 
+void Network::AddPath( const Path&amp; p )
+{
+	pathset.push_back( p );
+}
+ 
+// Get the set of nodes adjacent to this node
+std::vector&lt; int &gt; Network::GetAdjNodeIDs( const int&amp; n ) const
+{
+	std::vector&lt; int &gt; adj;
+	DenseGRAPH&lt;Edge&gt;::adjIterator A(*graph, n );
+	for ( EdgePtr e = A.beg(); !A.end(); e = A.nxt() ) 
+	{
+		const int s = e-&gt;v;
+		const int d = e-&gt;w;
+		if ( !graph-&gt;directed() &amp;&amp; ( s == n || d == n ) ) {
+			adj.push_back( s == n ? d : s );
+		}
+		else if ( s == n ) 
+		{
+			adj.push_back( d );
+		}
+	}
+	return adj;
+}
+
+// Output the set of paths found
+void Network::ShowPaths() const
+{
+	for ( Paths paths = pathset.begin();
+		  paths != pathset.end(); ++paths )
+	{
+		Path path = *paths;
+		for ( std::vector&lt;int&gt;::const_iterator it = path.begin();
+		it != path.end(); ++it )
+		{
+			int n = (*it);
+			std::string node_str = index2label.find( n )-&gt;second;
+			std::cout &lt;&lt; node_str &lt;&lt; " ";
+		}
+		std::cout &lt;&lt; std::endl;
+	}
+}
+ 
+int Network::NodeIndex( const std::string&amp; label ) const
+{
+	int n = label2index.find( label )-&gt;second;
+	return n;
+}
+ 
+// Algorithm.h
+ 
+#include "Network.h"
+#ifndef ALGORITHM_H
+#define ALGORITHM_H
+ 
+class Algorithm
+{
+public:
+	Algorithm() {}
+	Algorithm( Network* network );
+ 
+	void GetAllPaths( Network* network,
+	const std::string&amp; start,
+	const std::string&amp; target,
+	const int&amp; max_hops,
+	const int&amp; min_hops );
+ 
+	void GetAllPaths( Network* network,
+	const int&amp; start,
+	const int&amp; target,
+	const int&amp; max_hops,
+	const int&amp; min_hops );
+	private:
+	void DepthFirst( Network* network,
+	Path&amp; visited,
+	const int&amp; end,
+	const int&amp; max_hops,
+	const int&amp; min_hops );
+ 
+	void SetNetwork( Network* network );
+	bool ContainsNode( Path&amp; nodes, const int&amp; node );
+	Network *nw;
+	int startNodeId;
+};
+ 
+#endif /* ALGORITHM_H */
+ 
+// Algorithm.cpp
+ 
+#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+#include &lt;iterator&gt;
+#include "Algorithm.h"
+ 
+Algorithm::Algorithm( Network* network )
+{
+	SetNetwork( network );
+}
+ 
+void Algorithm::SetNetwork( Network* network )
+{
+	nw = network;
+}
+ 
+// Algorithm to recursively search for all paths between
+// chosen source - destination nodes
+void Algorithm::DepthFirst(
+					Network* network,
+					Path&amp; visited,
+					const int&amp; end,
+					const int&amp; max_hops,
+					const int&amp; min_hops)
+{
+	const int back = visited.back();
+	std::vector&lt; int &gt; adjNode = network-&gt;GetAdjNodeIDs( back );
+ 
+	// Examine adjacent nodes
+	for ( std::vector&lt;int&gt;::const_iterator node_it = adjNode.begin();
+			node_it != adjNode.end(); node_it++ )
+	{
+		const int node = (*node_it);
+ 
+		bool startEqualTarget = ContainsNode( visited, node ) &amp;&amp;
+		startNodeId == end &amp;&amp;
+		node == startNodeId;
+ 
+		if ( ContainsNode( visited, node ) &amp;&amp; !startEqualTarget )
+			continue;
+ 
+		if ( node == end )
+		{
+			visited.push_back( *node_it );
+ 
+			// Get hop count for this path
+			const int size = (int) visited.size();
+			const int hops = size - 1;
+ 
+			if ( ( max_hops &lt; 1 || hops &lt;= max_hops ) &amp;&amp; hops &gt;= min_hops )
+			{
+				Path path( visited.begin(), visited.begin() + size );
+				network-&gt;AddPath( path );
+			}
+
+			visited.erase( visited.begin() + hops );
+			break;
+		}
+	}
+ 
+	// in breadth-first, recursion needs to come after visiting adjacent nodes
+	for ( std::vector&lt;int&gt;::const_iterator node_it = adjNode.begin();
+			node_it != adjNode.end(); node_it++ )
+	{
+		int node = (*node_it);
+ 
+		if ( ContainsNode( visited, node ) || node == end )
+			continue;
+		visited.push_back( node );
+		DepthFirst( network, visited, end, max_hops, min_hops );
+		int n = (int) visited.size() - 1;
+		visited.erase( visited.begin() + n );
+	}
+}
+ 
+bool Algorithm::ContainsNode( Path&amp; nodes, const int&amp; node )
+{
+	for ( std::vector&lt;int&gt;::const_iterator nodes_it = nodes.begin();
+		nodes_it != nodes.end(); nodes_it++ )
+	{
+		if ( (*nodes_it) == node ) 
+			return true;
+	}
+	return false;
+}
+ 
+void Algorithm::GetAllPaths( Network* network,
+				const std::string&amp; start,
+				const std::string&amp; target,
+				const int&amp; max_hops,
+				const int&amp; min_hops )
+{
+	int s = network-&gt;NodeIndex( start );
+	int d = network-&gt;NodeIndex( target );
+	startNodeId = s;
+	Path visited;
+	visited.push_back( s );
+	DepthFirst( network, visited, d, max_hops, min_hops );
+}
+ 
+void Algorithm::GetAllPaths( Network* network,
+					const int&amp; start,
+					const int&amp; target,
+					const int&amp; max_hops,
+					const int&amp; min_hops )
+{
+	std::string strFirst = static_cast&lt;std::ostringstream*&gt;(
+		&amp;(std::ostringstream() &lt;&lt; start ) )-&gt;str();
+	std::string strSecond = static_cast&lt;std::ostringstream*&gt;(
+		&amp;(std::ostringstream() &lt;&lt; target ) )-&gt;str();
+ 
+	int s = network-&gt;NodeIndex( strFirst );
+	int d = network-&gt;NodeIndex( strSecond );
+ 
+	startNodeId = s;
+	Path visited;
+	visited.push_back( s );
+	DepthFirst( network, visited, d, max_hops, min_hops );
+}
+</pre><h1 id="Chapter-10">Chapter 10</h1><h3 id="std-vector">std::vector</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;iterator&gt;
+ 
+int main()
+{
+	const int values[] = { 1, 11, 111, 1111 };
+	const size_t size = sizeof( values ) / sizeof( values[ 0 ] );
+	std::vector&lt;int&gt; v( values, values + size );
+	v.push_back( 11111 );
+ 
+	std::cout &lt;&lt; "vector: ";
+	std::copy( v.begin(),
+	v.end(),
+	std::ostream_iterator&lt;int&gt;( std::cout, " " ) );
+ 
+	return 0;
+}
+</pre><h3 id="std-list">std::list</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;list&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;iterator&gt;
+ 
+int main()
+{
+	typedef std::list&lt;std::string&gt;::iterator list_it;
+	std::list&lt;std::string&gt; list1;
+	std::list&lt;std::string&gt; list2;
+	list1.push_front( "A" );
+	list1.push_back( "E" );
+	list1.push_back( "F" );
+	list1.insert( ++list1.begin(), "B" );
+	list2.push_front( "C" );
+	list2.push_front( "D" );
+ 
+	// Transfer (splice) elements from list2 into list1.
+	list_it it = list1.begin();
+	std::advance( it, 2 );
+	list1.splice( it, list2 );
+	std::cout &lt;&lt; "list1: ";
+ 
+	std::copy( list1.begin(), list1.end(),
+	std::ostream_iterator&lt;std::string&gt;( std::cout, " " ) );
+ 
+	return 0;
+}
+</pre><h3 id="std-set">std::set</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;set&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;iterator&gt;
+
+int main()
+{
+	// Initialise sample sets
+	int vals1[] = { 4, 2, 1 };
+	int vals2[] = { 1, 7, 5, 2 };
+	int size1 = sizeof( vals1 ) / sizeof ( vals1[ 0 ] );
+	int size2 = sizeof( vals2 ) / sizeof ( vals2[ 0 ] );
+ 
+	std::set&lt;int&gt; s1( vals1, vals1 + size1 );
+	std::set&lt;int&gt; s2( vals2, vals2 + size2 );
+
+	// Find the intersection, providing it with an output iterator
+	std::set&lt;int&gt; intersect;
+	set_intersection(	s1.begin(),
+						s1.end(),
+						s2.begin(),
+						s2.end(),
+						std::inserter(intersect,intersect.begin()) );
+
+	std::cout &lt;&lt; "intersection: ";
+	
+	std::copy( intersect.begin(),
+		intersect.end(),
+		std::ostream_iterator&lt;int&gt;( std::cout, " " ) );
+
+	return 0;
+}
+</pre><h3 id="OrderedSet">Ordered Set</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;set&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+ 
+typedef std::set&lt;std::string&gt;::iterator Iter;
+class OrderedSet
+{
+private:
+	std::set&lt;std::string&gt; setItems;
+	std::vector&lt;Iter&gt; setOrder;
+ 
+public:
+	OrderedSet() {}
+ 
+	void insert( const std::string&amp; item )
+	{
+		setItems.insert( item );
+		Iter it = setItems.find( item );
+		setOrder.push_back( it );
+	}
+ 
+	int order( const std::string&amp; item )
+	{
+		Iter it = setItems.find( item );
+		std::vector&lt;Iter&gt;::iterator order_it =
+		std::find( setOrder.begin(), setOrder.end(), it );
+ 
+		return order_it - setOrder.begin();
+	}
+};
+
+int main()
+{
+	OrderedSet orderedSet;
+ 
+	orderedSet.insert( "Bravo" );
+	orderedSet.insert( "Alpha" );
+	orderedSet.insert( "Charlie" );
+	orderedSet.insert( "Delta" );
+ 
+	std::cout &lt;&lt; "Order = "
+			  &lt;&lt; orderedSet.order("Alpha")
+			  &lt;&lt; std::endl;
+ 
+	return 0;
+}
+</pre><h3 id="std-map">std::map</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;map&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+ 
+int main()
+{
+	typedef std::map&lt;std::string, int&gt; ResultsMap;
+	ResultsMap rmap;
+	rmap.insert( ResultsMap::value_type( "Physics", 88 ) );
+	rmap.insert( ResultsMap::value_type( "Math", 67 ) );
+	rmap.insert( ResultsMap::value_type( "English", 67 ) );
+ 
+	// operator[] usage ("add or update")
+	rmap[ "Math" ] = 90;
+	std::for_each( rmap.begin(), rmap.end(),
+				[](std::pair&lt;const std::string, int&gt;&amp; map)
+	{
+		std::cout &lt;&lt; map.first &lt;&lt; " " &lt;&lt; map.second &lt;&lt; std::endl;
+	});
+ 
+	return 0;
+}
+</pre><h3 id="std-multimap">std::multimap</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;map&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+ 
+int main()
+{
+	typedef std::multimap&lt;std::string, int&gt; ResultsMap;
+	typedef std::multimap&lt;std::string, int&gt;::const_iterator ResultsIter;
+	ResultsMap rmap;
+ 
+	rmap.insert( ResultsMap::value_type( "Geography", 87 ) );
+	rmap.insert( ResultsMap::value_type( "Physics", 57 ) );
+	rmap.insert( ResultsMap::value_type( "Physics", 69 ) );
+	rmap.insert( ResultsMap::value_type( "Physics", 45 ) );
+ 
+	const std::string subject = "Physics";
+	const std::pair&lt;ResultsIter, ResultsIter&gt; group =
+	rmap.equal_range( subject );
+
+	std::cout &lt;&lt; subject &lt;&lt; " =&gt;";
+
+	std::for_each( group.first, group.second,
+			[](const std::pair&lt;const std::string, int&gt;&amp; gr)
+			{
+				std::cout &lt;&lt; gr.second &lt;&lt; " ";
+			});
+ 
+	return 0;
+}
+</pre><h3 id="std-foreach">std::for_each</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+ 
+struct Token
+{
+	std::string txt;
+	Token( std::string s ) : txt( s ) {}
+};
+ 
+class Append
+{
+private:
+	std::string txt;
+public:
+	Append() : txt("") {}
+ 
+	void operator() (const Token &amp;x)
+	{ txt.append( x.txt + " " ); }
+ 
+	std::string Word() const
+	{ return txt; }
+};
+ 
+int main()
+{
+	std::vector&lt;Token&gt; tokens;
+	tokens.push_back( Token( "Hello" ) );
+	tokens.push_back( Token( "and" ) );
+	tokens.push_back( Token( "welcome!" ) );
+ 
+	std::cout &lt;&lt; std::for_each(
+						tokens.begin(),
+						tokens.end(),
+						Append() ).Word()
+				&lt;&lt; std::endl;
+ 
+	return 0;
+}
+</pre><h3 id="std-sort">std::sort</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;iostream&gt;
+#include &lt;ostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;memory&gt;
+ 
+// A base class to hold, return and output a value
+class Item
+{
+	int val;
+ 
+public:
+	Item( const int&amp; val ) : val( val ) {}
+	virtual char* ItemName() = 0;
+	int GetVal() { return val; }
+	void OutputToStream( std::ostream&amp; os )
+	{
+		os &lt;&lt; ItemName() &lt;&lt; "t" &lt;&lt; val &lt;&lt; std::endl;
+	}
+};
+ 
+// Derived class - "old"
+class OldItem : public Item
+{
+public:
+	OldItem( const int&amp; val ) : Item( val ) { }
+	char* ItemName() { return (char*) "Old: "; }
+};
+ 
+// Derived class - "new"
+class NewItem : public Item
+{
+public:
+	NewItem( const int&amp; val ) : Item( val ) {}
+ 
+	char* ItemName()
+	{
+	return (char*) "New: ";
+	}
+};
+ 
+// Auto pointer to de-allocate Item objects in case you are forgetful.
+typedef std::unique_ptr&lt;Item&gt; ItemPtr;
+ 
+// Specify how we want to sort the data:
+struct Ascending
+{
+	bool operator() ( const ItemPtr&amp; start, const ItemPtr&amp; end )
+	{
+		return start-&gt;GetVal() &lt; end-&gt;GetVal();
+	}
+};
+ 
+int main()
+{
+	std::vector&lt; ItemPtr &gt; itemVector;
+ 
+	itemVector.push_back( static_cast&lt;ItemPtr&gt;( new OldItem( 43 ) ) );
+	itemVector.push_back( static_cast&lt;ItemPtr&gt;( new NewItem( 34 ) ) );
+	itemVector.push_back( static_cast&lt;ItemPtr&gt;( new NewItem( 443 ) ) );
+	itemVector.push_back( static_cast&lt;ItemPtr&gt;( new OldItem( 433 ) ) );
+	itemVector.push_back( static_cast&lt;ItemPtr&gt;( new OldItem( 343 ) ) );
+ 
+	// Sort values in ascending order...
+	std::sort(
+	itemVector.begin(),
+	itemVector.end(),
+	Ascending() );
+ 
+	std::for_each( itemVector.begin(), itemVector.end(), []( ItemPtr&amp; item )
+	{
+		item-&gt;OutputToStream( std::cout );
+	});
+ 
+	return 0;
+}
+</pre><h3 id="std-copy">std::copy</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;iterator&gt;
+#include &lt;iostream&gt;
+ 
+class descending
+{
+public:
+	bool operator()( int x, int y ) const
+	{ 
+		return x &gt; y; 
+	}
+};
+
+int main()
+{
+	int values[] = { 100, 101, -2, 23, 1010, 44, 55, 3 };
+	const size_t size = sizeof( values ) / sizeof( values[ 0 ] );
+	std::vector&lt;int&gt; v( values, values + size );
+	
+	std::sort( v.begin(), v.end(), descending() );
+	
+	std::copy(	v.begin(),
+				v.end(),
+				std::ostream_iterator&lt;int&gt;( std::cout, " " ) );
+	
+	return 0;
+}
+</pre><h3 id="std-transform">std::transform</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;iterator&gt;
+ 
+template&lt;typename T, typename InputIterator&gt;
+void Print(std::ostream&amp; ostr, InputIterator itbegin, InputIterator itend,
+			const std::string&amp; delimiter)
+{
+	std::copy(itbegin, itend,
+	std::ostream_iterator&lt;T&gt;(ostr, delimiter.c_str()));
+}
+
+template&lt;class T&gt;
+class IncreaseByVal
+{
+public:
+	T operator()( T a, T b ) const
+	{
+		return a + b; 
+	}
+};
+
+int main()
+{
+	int x[] = { 1, 2, 3, 4, 5 };
+	int y[] = { 1, 2, 3, 4, 5 };
+ 
+	std::transform( x,
+					x + sizeof( x ) / sizeof( x[ 0 ] ),
+					y,
+					x,
+					IncreaseByVal&lt;int&gt;() );
+ 
+	Print&lt;int, int[]&gt;(	std::cout,
+						x,
+						x + sizeof( x ) / sizeof( x[ 0 ] ),
+						" " );
+	return 0;
+}
+</pre><h3 id="Jaccard">Jaccard Index</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;iterator&gt;
+#include &lt;string&gt;
+ 
+class Token
+{
+private:
+	std::string str;
+ 
+public:
+	Token() {}
+	Token( std::string val ) : str( val ) {}
+	std::string Word() const
+	{ 
+		return str; 
+	}
+};
+ 
+struct Ascending
+{
+	bool operator() ( const Token&amp; start, const Token&amp; end )
+	{
+		return start.Word() &lt; end.Word();
+	}
+};
+ 
+int main()
+{
+	std::string str1[] = { "The", "crazy", "cat", "sat", "on", "the", "mat" };
+	std::string str2[] = { "The", "cat", "sat", "on", "the", "red", "mat" };
+ 
+	std::vector&lt;Token&gt;::iterator tok_intersect, tok_union;
+ 
+	int size1 = sizeof( str1 ) / sizeof( str1[ 0 ] );
+	int size2 = sizeof( str2 ) / sizeof( str2[ 0 ] );
+ 
+	std::vector&lt;Token&gt; tokens1( str1, str1 + size1 );
+	std::vector&lt;Token&gt; tokens2( str2, str2 + size2 );
+	std::vector&lt;Token&gt; tokens( size1 + size2 );
+ 
+	std::sort( tokens1.begin(), tokens1.end(), Ascending() );
+	std::sort( tokens2.begin(), tokens2.end(), Ascending() );
+ 
+	tok_intersect = std::set_intersection(
+	tokens1.begin(),
+	tokens1.end(),
+	tokens2.begin(),
+	tokens2.end(),
+	tokens.begin(),
+	Ascending() );
+ 
+	int intersect_size = int( tok_intersect - tokens.begin() );
+ 
+	tok_union = std::set_union (
+	tokens1.begin(),
+	tokens1.end(),
+	tokens2.begin(),
+	tokens2.end(),
+	tokens.begin(),
+	Ascending() );
+ 
+	int union_size = int( tok_union - tokens.begin() );
+ 
+	double JaccardIndex = (double) intersect_size / (double) union_size;
+ 
+	std::cout &lt;&lt; "Jaccard Index = "
+	&lt;&lt; JaccardIndex
+	&lt;&lt; std::endl;
+ 
+	return 0;
+}
+</pre><h3 id="Tokenize">Tokenize</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;sstream&gt;
+#include &lt;algorithm&gt;
+#include &lt;iterator&gt;
+#include &lt;vector&gt;
+ 
+template&lt;typename T, typename InputIterator&gt;
+void Print( std::ostream&amp; ostr,
+			InputIterator itbegin,
+			InputIterator itend,
+			const std::string&amp; delimiter )
+{
+	std::copy( itbegin,
+	itend,
+	std::ostream_iterator&lt;T&gt;( ostr, delimiter.c_str() ) );
+}
+ 
+int main()
+{
+	typedef std::vector&lt;std::string&gt;::iterator str_iter;
+ 
+	std::string txt = "The cat sat on the mat...";
+	std::istringstream iss( txt );
+	std::vector&lt;std::string&gt; tokens;
+
+	std::copy(	std::istream_iterator&lt;std::string&gt;(iss),
+				std::istream_iterator&lt;std::string&gt;(),
+				std::back_inserter&lt;std::vector&lt;std::string&gt;&gt;( tokens ) );
+ 
+	// Print the vector std::string items
+	Print&lt;std::string, str_iter&gt;(	std::cout,
+									tokens.begin(),
+									tokens.end(),
+									" " );
+}
+</pre><h3 id="MultiArray">Multi-Array</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;vector&gt;
+#include &lt;stdlib.h&gt;
+ 
+const size_t HEIGHT = 5;
+const size_t WIDTH = 3;
+const size_t DEPTH = 7;
+ 
+int main()
+{
+	std::vector&lt;std::vector&lt;std::vector&lt;double&gt;&gt;&gt; array3D;
+ 
+	// Allocate array dimensions by doing the resizing: HEIGHT x WIDTH
+	array3D.resize( HEIGHT );
+	for ( int i = 0; i &lt; static_cast&lt;int&gt;( HEIGHT ); ++i )
+	{
+		array3D[ i ].resize( WIDTH );
+ 
+		for ( int j = 0; j &lt; static_cast&lt;int&gt;( WIDTH ); ++j )
+		{
+		array3D[ i ][ j ].resize( DEPTH );
+		}
+	}
+ 
+	// Initialize with some values
+	array3D[ 1 ][ 2 ][ 5 ] = 3.2;
+	array3D[ 2 ][ 0 ][ 3 ] = 4.1;
+ 
+	return 0;
+}
+</pre><h3 id="MapSort">Map Sort</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;map&gt;
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+typedef std::pair&lt;std::pair&lt;int,int&gt;, double&gt; data_t;
+std::map&lt;std::pair&lt;int,int&gt;, double&gt; link_map;
+std::map&lt;std::pair&lt;int,int&gt;, double&gt;::iterator link_it;
+
+template&lt;class T&gt;
+struct less_second : std::binary_function&lt;T,T,bool&gt;
+{
+	inline bool operator()( const T&amp; lhs, const T&amp; rhs )
+	{
+		return lhs.second &lt; rhs.second;
+	}
+};
+
+// Initialize and sort vector with data_t items from link_map
+std::vector&lt;data_t&gt; sorted_edges()
+{
+	std::vector&lt; data_t &gt; vec(
+					link_map.begin(),
+					link_map.end() );
+ 
+	std::sort(
+			vec.begin(),
+			vec.end(),
+			less_second&lt;data_t&gt;());
+	
+	return vec;
+}
+
+void PrintLinkMap()
+{
+	std::cout &lt;&lt; std::endl;
+ 
+	std::for_each( link_map.begin(), link_map.end(),
+			[]( std::pair&lt; const std::pair&lt;int,int&gt;, double &gt;&amp; lmap )
+	{
+		std::cout &lt;&lt; lmap.first.first &lt;&lt; " "
+		&lt;&lt; lmap.first.second &lt;&lt; " "
+		&lt;&lt; lmap.second &lt;&lt; std::endl;
+	});
+}
+
+void PrintSortedEdges( const std::vector&lt;data_t&gt;&amp; vec )
+{
+	std::cout &lt;&lt; std::endl;
+ 
+	std::for_each( vec.begin(), vec.end(), []( const data_t&amp; dt )
+	{
+		std::cout &lt;&lt; dt.first.first &lt;&lt; " "
+		&lt;&lt; dt.first.second &lt;&lt; " "
+		&lt;&lt; dt.second
+		&lt;&lt; std::endl;
+	});
+}
+
+int main()
+{
+	// Create mapping between node pairs and weights
+	link_map[ std::pair&lt;int,int&gt;(0,1) ] = 1.1;
+	link_map[ std::pair&lt;int,int&gt;(1,2) ] = 0.1;
+	link_map[ std::pair&lt;int,int&gt;(2,3) ] = 6.2;
+	link_map[ std::pair&lt;int,int&gt;(3,4) ] = 3.4;
+	link_map[ std::pair&lt;int,int&gt;(4,5) ] = 5.7;
+	link_map[ std::pair&lt;int,int&gt;(5,6) ] = 2.2;
+	link_map[ std::pair&lt;int,int&gt;(0,8) ] = 1.8;
+	PrintLinkMap();
+
+	// Sort the mapping according to link weight
+	std::vector&lt;data_t&gt; vec = sorted_edges();
+	PrintSortedEdges( vec );
+	return 0;
+}
+</pre><h3 id="Permutations">Permutations</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;iterator&gt;
+#include &lt;string.h&gt;
+ 
+int main()
+{
+	char str[] = "abcd";
+	const size_t len = strlen( str );
+ 
+	do
+	{
+		std::copy( str,
+		str + len,
+		std::ostream_iterator&lt;char&gt;( std::cout ) );
+		std::cout &lt;&lt; std::endl;
+	}
+	while ( std::next_permutation( str, str + len ) );
+}
+</pre><h3 id="WordCount">Word Count</h3><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+#include &lt;fstream&gt;
+#include &lt;algorithm&gt;
+#include &lt;map&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;iterator&gt;
+ 
+template &lt;class T&gt;
+struct less_second : std::binary_function&lt;T, T, bool&gt;
+{
+	bool operator()( const T&amp; lhs, const T&amp; rhs )
+	{ 
+		return lhs.second.value &lt; rhs.second.value; 
+	}
+};
+
+class WordCounter
+{
+public:
+	int value;
+	WordCounter() : value( 0 ) {}
+	void operator++ (int) { value++; }
+};
+
+// Remove unwanted characters from a string
+bool filter(char c)
+{
+	return isalpha( c ) == 0;
+}
+
+const std::string path = "Hamlet.txt";
+
+int main()
+{
+	typedef std::pair&lt;std::string, WordCounter &gt; word_mapping;
+	std::map&lt;std::string, WordCounter&gt; counter;
+	std::ifstream input;
+	input.open( path.c_str() );
+	
+	if ( !input )
+	{
+		std::cout &lt;&lt; "Error in opening filen";
+		return 0;
+	}
+
+	std::string tok;
+
+	while ( true )
+	{
+		input &gt;&gt; tok;
+		// Remove ?, !, etc characters etc from string
+		tok.resize( std::remove_if( tok.begin(),
+					tok.end(),
+					filter ) - tok.begin() );
+ 
+		if ( tok == "" || tok == "t" || tok == "n" )
+			continue;
+		if ( input )
+		{
+			counter[ tok ]++;
+		}
+		else 
+			break;
+	}
+
+	std::map&lt; std::string, WordCounter,std::less&lt;std::string&gt; &gt;::iterator it;
+	
+	// And then sort and display the result:
+	std::vector&lt; word_mapping &gt; result( counter.begin(), counter.end() );
+	std::sort( result.begin(), result.end(), less_second&lt;word_mapping&gt;() );
+	std::for_each( result.begin(), result.end(), []( const word_mapping&amp; wmp )
+	{
+		std::cout &lt;&lt; std::setw (20) &lt;&lt; wmp.first &lt;&lt; "t"
+				  &lt;&lt; wmp.second.value &lt;&lt; std::endl;
+	});
+
+	return 0;
+}
+</pre></h1>
+							
+													</div><!--.post-content box mark-links-->
+					</div>
+				</div>
+				<!-- You can start editing here. -->
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/books/cpp-book/code/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="5775" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-cpp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

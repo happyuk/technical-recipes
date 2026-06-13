@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>Using Ansible to Create, Delete and List Tenants – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Using Ansible to Create, Delete and List Tenants Comments Feed" href="/2022/using-ansible-to-create-delete-and-list-tenants/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2022%2Fusing-ansible-to-create-delete-and-list-tenants%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2022%2Fusing-ansible-to-create-delete-and-list-tenants%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/9947"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2022/using-ansible-to-create-delete-and-list-tenants/">
+<link rel="shortlink" href="/?p=9947">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-9947 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-9947" class="g post post-9947 type-post status-publish format-standard hentry category-cisco category-networks tag-ansible">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/cisco/" itemprop="item"><span itemprop="name">Cisco</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Using Ansible to Create, Delete and List Tenants</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">Using Ansible to Create, Delete and List Tenants</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>27 April 2022</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/cisco/" title="View all posts in Cisco">Cisco</a>, <a href="/category/networks/" title="View all posts in Networks">Networks</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2022/using-ansible-to-create-delete-and-list-tenants/#respond" itemprop="interactionCount">No Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p><strong>Prepare the Environment</strong></p><p>In this demonstration I am using Cygwin to run the python/ansible scripts in a Windows environment. All my attempts to install ansible via ‘pip install’ in a Windows failed, the number of Stack Overflow posts reporting this problem seems to concur with this.  </p><p>Handy hint: To cd to a windows C: drive in Cygwin use:</p><pre class="brush: plain; title: ; notranslate" title="">
+cd /cygdrive/c
+</pre><p>To use Ansible with the APIC sandbox host, you will need to first establish a few files before you can start writing your playbooks.</p><p>Verify that the installed ansible version is 2.8.x, and that it is using Python3:</p><p><a href="/wp-content/uploads/2022/04/ansible1-1.jpg"><img fetchpriority="high" decoding="async" src="" alt="" width="844" height="449" class="alignnone size-full wp-image-9948" data-layzr="/wp-content/uploads/2022/04/ansible1-1.jpg"></a></p><p><strong>Create ansible.cfg file</strong></p><p>This file is used by Ansible to tell it that the inventory file is called hosts (unless overridden), to disable gathering of facts by default, and to disable the saving of retry files when playbooks stop with errors:</p><p><strong>ansible.cfg</strong></p><pre class="brush: python; title: ; notranslate" title="">
+[defaults]
+
+# Use local hosts file
+inventory = hosts
+
+# Disable automatic facts gathering.
+gathering = explicit
+
+# Do not create retry files when tasks fail. Comment this if you need
+# the default behaviour.
+retry_files_enabled = False
+</pre><p><strong>hosts</strong></p><p>Open the hosts file and verify that the login credentials for Cisco APIC (sandbox version) are correct.</p><pre class="brush: python; title: ; notranslate" title="">
+[all:vars]
+# This is used to load the data model that feeds into
+# all of the playbooks in this collection from the local
+# file, i.e. vars/SNV_Retail.yml
+customer_name=SNV_Retail
+
+# The ACI Controllers
+[aci]
+apic ansible_host=sandboxapicdc.cisco.com
+
+[aci:vars]
+ansible_port=443
+# Login credentials
+ansible_user=admin
+ansible_password=!v3G@!4@Y
+# Set to true for production setups that use trusted certificates!
+validate_certs=false
+</pre><p><strong>Display the current list of Tenants</strong></p><p><strong>tenants.yml</strong></p><p>create a new file named tenants.yml. In this playbook, write a play with two tasks.<br>
+1. the aci_tenant module to query the list of tenants from the lab APIC. Use state parameter ‘query’ to tell the module what operation to perform on the fvTenant class.<br>
+2. use the debug module to print text to the terminal and the json_query filter ‘current[].fvTenant.attributes.name’ to extract a list of tenant names from the nested data returned by the API.</p><p>json_query is an Ansible Filter (https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#json-query-filter) that allows you to pull only certain subsets of data out of the complex nested structures. In this case, it queries for a list containing only attributes.name key values from all fvTenant dictionaries.</p><pre class="brush: python; title: ; notranslate" title="">
+---
+- name: LIST TENANTS
+  hosts: apic
+
+  tasks:
+
+    - name: List All Tenants
+      aci_tenant:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        state: query
+      delegate_to: localhost
+      register: apic_tenants
+
+    - name: Print Tenant List
+      debug:
+        msg: "{{ apic_tenants | json_query('current[].fvTenant.attributes.name') }}"
+[code]
+
+Run this playbook in verbose mode:
+
+[code language="text"]
+ansible-playbook -v tenants.yml
+</pre><p>Giving the following output containing the json output of the set of tenants:</p><p><a href="/wp-content/uploads/2022/04/ansible2-1.jpg"><img decoding="async" src="" alt="" width="844" height="687" class="alignnone size-full wp-image-9949" data-layzr="/wp-content/uploads/2022/04/ansible2-1.jpg"></a></p><p><strong>Create and list multiple Tenants</strong></p><p>Here we create a new playbook file to extend the tenants.yml playbook to create multiple tenants. Declare a vars variable called tenants_list below host, set a variable tenant_list, with the list of names ranging from Customer_01 to Customer_05.</p><p>Add a new task at the end of the playbook that executes the aci_tenant module for each tenant name in the tenants_list variable to create the tenants on the Cisco APIC.</p><p><strong>createAndListTenants.yml</strong></p><pre class="brush: python; title: ; notranslate" title="">
+---
+- name: CREATE AND LIST TENANTS
+  hosts: apic
+
+  vars:
+    tenants_list:
+      - Customer_01
+      - Customer_02
+      - Customer_03
+      - Customer_04
+      - Customer_05
+
+  tasks:
+    - name: List All Tenants
+      aci_tenant:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        state: query
+      delegate_to: localhost
+      register: apic_tenants
+
+    - name: Print Tenant List
+      debug:
+        msg: "{{ apic_tenants | json_query('current[].fvTenant.attributes.name') }}"
+
+    - name: Create Customer_0X Tenants
+      aci_tenant:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        tenant: "{{ item }}"
+        state: present
+      delegate_to: localhost
+      loop: "{{ tenants_list }}"
+
+    - name: List All Tenants
+      aci_tenant:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        state: query
+      delegate_to: localhost
+      register: apic_tenants
+
+    - name: Print Tenant List
+      debug:
+        msg: "{{ apic_tenants | json_query('current[].fvTenant.attributes.name') }}"
+</pre><p>On running ansible-playbook createAndListsTenants.yml we get the following output:</p><p><a href="/wp-content/uploads/2022/04/ansible3-1.jpg"><img decoding="async" src="" alt="" width="844" height="891" class="alignnone size-full wp-image-9950" data-layzr="/wp-content/uploads/2022/04/ansible3-1.jpg"></a></p><p>We can then confirm the tenant list in the APIC GUI:</p><p><a href="/wp-content/uploads/2022/04/ansible4-1.jpg"><img decoding="async" src="" alt="" width="1393" height="683" class="alignnone size-full wp-image-9951" data-layzr="/wp-content/uploads/2022/04/ansible4-1.jpg"></a></p><p>On running the createAndListTenants.yml playbook again see that the Create Customer_0X Tenants task reports ok instead of changed, given that all five tenants exist on the fabric, verifying that this module is idempotent (the outcome of the operation is the same regrdless of whether it is executed once or many times).</p><p><a href="/wp-content/uploads/2022/04/ansible5.jpg"><img decoding="async" src="" alt="" width="844" height="891" class="alignnone size-full wp-image-9952" data-layzr="/wp-content/uploads/2022/04/ansible5.jpg"></a></p><p><strong>Delete a Tenant</strong></p><p>The variable state is now set to absent.<br>
+This tells the aci_tenant module to delete the tenant from the Cisco APIC. Write a playbook named deleteTenant.yml with a task that deletes the Customer_05 tenant.</p><p>Add a new task at the end of the playbook that queries for the list of tenants and saves it to the apic_tenants variable. You can copy the task from the tenants.yml file.</p><p>This time, instead of simply printing the list of tenants using the debug module, add a task that uses set_fact variable to save the list of tenants to a new variable called apic_tenant_list. Then add another task Print Tenants List, that prints the apic_tenant_list variable using the debug module.</p><p>Finally, check that the Customer_05 tenant has indeed been deleted. Add a task that uses the assert module to check that Customer_05 is not found in the apic_tenant_list variable.</p><p><strong>deleteTenant.yml</strong></p><pre class="brush: python; title: ; notranslate" title="">
+---
+- name: DELETE AND LIST TENANTS
+  hosts: apic
+
+  tasks:
+    - name: Delete the Customer_05 Tenant
+      aci_tenant:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        tenant: "Customer_05"
+        state: absent
+      delegate_to: localhost
+
+    - name: List All Tenants
+      aci_tenant:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        state: query
+      delegate_to: localhost
+      register: apic_tenants
+
+    - name: Build Actual Tenant List
+      set_fact:
+        apic_tenant_list: "{{ apic_tenants | json_query('current[].fvTenant.attributes.name') }}"
+
+    - name: Print Tenant List
+      debug:
+        var: apic_tenant_list
+
+    - name: Check that Customer_05 has been deleted
+      assert:
+        that: not 'Customer_05' in apic_tenant_list
+        fail_msg: "Customer_05 tenant exists on the APIC!"
+        success_msg: "Customer_05 tenant does not exist on the APIC."
+</pre><p>Run the delete_tenant.yml playbook from the integrated terminal and confirm in the Cisco APIC Sandbox GUI that the Customer_05 tenant has been deleted.</p><p><a href="/wp-content/uploads/2022/04/ansible6.jpg"><img decoding="async" src="" alt="" width="844" height="653" class="alignnone size-full wp-image-9953" data-layzr="/wp-content/uploads/2022/04/ansible6.jpg"></a></p><p><strong>Delete a Tenant using REST</strong></p><p>Modify the first task (Delete the Customer_05 Tenant) to use the aci_rest module and delete the Customer_04 tenant.</p><p>the aci_rest module requires connection details for the Cisco APIC. Because this is a generic REST API call module, you must give it full details about what it should do (how you’ve sent HTTP requests using Postman or Python requests.)<br>
+In this case, it is fairly simple: the operation is delete (one of the three supported HTTP methods), and the path uniquely identifies the Customer_04 tenant (from its Distinguished Name /api/mo/uni/tn-Customer_04).</p><p><strong>deleteTenantRest.yml</strong></p><pre class="brush: python; title: ; notranslate" title="">
+---
+- name: DELETE AND LIST TENANTS
+  hosts: apic
+
+  tasks:
+    - name: Delete the Customer_04 Tenant
+      aci_rest:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        path: "/api/mo/uni/tn-Customer_04.json"
+        method: delete
+      delegate_to: localhost
+
+    - name: List All Tenants
+      aci_tenant:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        state: query
+      delegate_to: localhost
+      register: apic_tenants
+
+    - name: Build Actual Tenant List
+      set_fact:
+        apic_tenant_list: "{{ apic_tenants | json_query('current[].fvTenant.attributes.name') }}"
+
+    - name: Print Tenant List
+      debug:
+        var: apic_tenant_list
+
+    - name: Check that Customer_04 has been deleted
+      assert:
+        that: not 'Customer_04' in apic_tenant_list
+        fail_msg: "Customer_04 tenant exists on the APIC!"
+        success_msg: "Customer_04 tenant does not exist on the APIC."
+</pre><p>Save and run the deleteTenantRest.yml playbook and confirm that Customer_04 tenant has been deleted:</p><p><a href="/wp-content/uploads/2022/04/ansible7.jpg"><img decoding="async" src="" alt="" width="844" height="687" class="alignnone size-full wp-image-9954" data-layzr="/wp-content/uploads/2022/04/ansible7.jpg"></a></p><p><strong>Create a Tenant with aci_rest</strong></p><p>The aci_rest module supports querying (GET), creating/modifying/deleting (POST), and delete (DELETE) operations. Create the createAndListTenantsRest.yml script to ensure that the five tenants are created using aci_rest instead of aci_tenant.</p><p>Given that the aci_rest module does not know what objects it is manipulating, you must identify the API path, provide an operation type (method), and provide a payload if necessary.</p><p><strong>createAndListTenantsRest.yml</strong></p><pre class="brush: python; title: ; notranslate" title="">
+---
+- name: CREATE AND LIST TENANTS
+  hosts: apic
+
+  vars:
+    tenants_list:
+      - Customer_01
+      - Customer_02
+      - Customer_03
+      - Customer_04
+      - Customer_05
+
+  tasks:
+    - name: List All Tenants
+      aci_tenant:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        state: query
+      delegate_to: localhost
+      register: apic_tenants
+
+    - name: Print Tenant List
+      debug:
+        msg: "{{ apic_tenants | json_query('current[].fvTenant.attributes.name') }}"
+
+    - name: Create Customer_0X Tenants
+      aci_rest:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        path: /api/mo/uni.json
+        method: post
+        content:
+          fvTenant:
+            attributes:
+              name: "{{ item }}"
+              descr: "{{ item }} - Tenant managed by Ansible."
+      delegate_to: localhost
+      loop: "{{ tenants_list }}"
+
+
+    - name: List All Tenants
+      aci_tenant:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        state: query
+      delegate_to: localhost
+      register: apic_tenants
+
+    - name: Print Tenant List
+      debug:
+        msg: "{{ apic_tenants | json_query('current[].fvTenant.attributes.name') }}"
+</pre><p>We see that it initially lists the 3 tenants given that we have already deleted 04 and 05, and then the customers created using the REST commands rather than the ACI modules:</p><p><a href="/wp-content/uploads/2022/04/ansible8.jpg"><img decoding="async" src="" alt="" width="844" height="823" class="alignnone size-full wp-image-9955" data-layzr="/wp-content/uploads/2022/04/ansible8.jpg"></a></p><p><strong>Setting up new Tenants the NetDevOps way</strong></p><p>Create the file named SNV_Retail.yml, this contains all the data, dictionaries etc that we will need in out playbooks.  The bridge domain is defined and what details are needed to create it on the APIC, as well as bridge domain subnets that you will use with a separate module after the bridge domain is created.</p><p>This file also provides the domain type and provider fields required by this module. It is built as a dictionary lookup based on the domain name defined inside the EPG model. In this case, all EPGs are connected via the vCenter_VMM domain.</p><p>This file defines the contract details that are needed to create it on the APIC. Each contract can use one or more different filters.<br>
+The data model defines three contracts:</p><li>WebServices_CON using web_filter and icmp</li><li>EmailServices_CON using email_filter and icmp</li><li>StorageServices_CON using storage_filter and icmp</li><p>You may notice that the icmp filter was not defined previously. That is because it exists on the ACI fabric as it is a commonly used filter and you do not need to create a new one for the same function.</p><p><strong>SNV_Retail.yml</strong></p><pre class="brush: python; title: ; notranslate" title="">
+---
+# The top-level policy container, this tenant will contain
+# all of the other objects.
+tenant:
+  name: "SNV_Retail"
+  description: "SNV_Retail Hosted Customer Services - Managed by Ansible"
+  
+# VRFs must have a name and belong to their parent tenant.
+  vrfs:
+    - name: "UserServices_VRF"
+      description: "Managed by Ansible"
+  
+
+# Bridge Domains must have a name, belong to their parent tenant,
+# and are linked to a specific VRF. They may also include one or more
+# subnet definitions.
+  bridge_domains:
+    - name: "Services_BD"
+      description: "Managed by Ansible"
+      vrf: "UserServices_VRF"
+      subnet: "10.0.1.254/24"
+
+    - name: "Services_BD"
+      description: "Managed by Ansible"
+      vrf: "UserServices_VRF"
+      subnet: "10.0.2.254/24"
+
+    - name: "Services_BD"
+      description: "Managed by Ansible"
+      vrf: "UserServices_VRF"
+      subnet: "10.0.3.254/24"
+
+    - name: "Users_BD"
+      description: "Managed by Ansible"
+      vrf: "UserServices_VRF"
+      subnet: "10.0.4.254/24"
+
+
+# Application Profiles belong to their parent tenant and serve
+# as policy containers for EPGs and their relationships.
+  apps:
+    - name: "UserServices_APP"
+      description: "Managed by Ansible"
+
+# Endpoint Groups define Endpoint related policy (domain, BD) and allow for
+# contract bindings to implement security policies.
+  epgs:
+    - name: "Web_EPG"
+      description: "Managed by Ansible"
+      ap: "UserServices_APP"
+      bd: "Services_BD"
+      domain: "vCenter_VMM"
+
+    - name: "Email_EPG"
+      description: "Managed by Ansible"
+      ap: "UserServices_APP"
+      bd: "Services_BD"
+      domain: "vCenter_VMM"
+
+    - name: "Storage_EPG"
+      description: "Managed by Ansible"
+      ap: "UserServices_APP"
+      bd: "Services_BD"
+      domain: "vCenter_VMM"
+
+    - name: "Users_EPG"
+      description: "Managed by Ansible"
+      ap: "UserServices_APP"
+      bd: "Users_BD"
+      domain: "vCenter_VMM"
+
+# Filters define stateless traffic flows.
+  filters:
+    - name: "web_filter"
+      description: "Managed by Ansible"
+      entry: "http"
+      ethertype: "ip"
+      ip_protocol: "tcp"
+      destination_from: "80"
+      destination_to: "80"
+  
+    - name: "web_filter"
+      description: "Managed by Ansible"
+      entry: "https"
+      ethertype: "ip"
+      ip_protocol: "tcp"
+      destination_from: "443"
+      destination_to: "443"
+  
+    - name: "email_filter"
+      description: "Managed by Ansible"
+      entry: "smtp"
+      ethertype: "ip"
+      ip_protocol: "tcp"
+      destination_from: "25"
+      destination_to: "25"
+  
+    - name: "email_filter"
+      description: "Managed by Ansible"
+      entry: "smtps"
+      ethertype: "ip"
+      ip_protocol: "tcp"
+      destination_from: "587"
+      destination_to: "587"
+  
+    - name: "email_filter"
+      description: "Managed by Ansible"
+      entry: "imaps"
+      ethertype: "ip"
+      ip_protocol: "tcp"
+      destination_from: "993"
+      destination_to: "993"
+  
+    - name: "storage_filter"
+      description: "Managed by Ansible"
+      entry: "pgsql"
+      ethertype: "ip"
+      ip_protocol: "tcp"
+      destination_from: "5432"
+      destination_to: "5432"
+      
+  # Contracts define security and connectivity policies that
+  # that implement specific filters.
+  contracts:
+    - name: "WebServices_CON"
+      filter: "web_filter"
+      description: "Managed by Ansible"
+  
+    - name: "WebServices_CON"
+      filter: "icmp"
+      description: "Managed by Ansible"
+  
+    - name: "EmailServices_CON"
+      filter: "email_filter"
+      description: "Managed by Ansible"
+  
+    - name: "EmailServices_CON"
+      filter: "icmp"
+      description: "Managed by Ansible"
+  
+    - name: "StorageServices_CON"
+      filter: "storage_filter"
+      description: "Managed by Ansible"
+  
+    - name: "StorageServices_CON"
+      filter: "icmp"
+      description: "Managed by Ansible"
+    
+# EPGs can be providers and/or consumers for specific contracts, opening
+# up the traffic flow as per the filter definitions.
+  contract_bindings:
+    # Users_EPG -&gt; Web_EPG (HTTP, HTTPS)
+    - epg: "Users_EPG"
+      ap: "UserServices_APP"
+      contract: "WebServices_CON"
+      type: "consumer"
+  
+    - epg: "Web_EPG"
+      ap: "UserServices_APP"
+      contract: "WebServices_CON"
+      type: "provider"
+  
+    # Users_EPG -&gt; Email_EPG (25, 587, 993)
+    - epg: "Users_EPG"
+      ap: "UserServices_APP"
+      contract: "EmailServices_CON"
+      type: "consumer"
+  
+    - epg: "Email_EPG"
+      ap: "UserServices_APP"
+      contract: "EmailServices_CON"
+      type: "provider"
+  
+    # Web_EPG -&gt; Storage_EPG (5432)
+    # Email_EPG -&gt; Storage_EPG (5432)
+    - epg: "Web_EPG"
+      ap: "UserServices_APP"
+      contract: "StorageServices_CON"
+      type: "consumer"
+  
+    - epg: "Email_EPG"
+      ap: "UserServices_APP"
+      contract: "StorageServices_CON"
+      type: "consumer"
+  
+    - epg: "Storage_EPG"
+      ap: "UserServices_APP"
+      contract: "StorageServices_CON"
+      type: "provider"
+      
+domains:
+  vCenter_VMM:
+    domain_type: "vmm"
+    vm_provider: "vmware"
+</pre><p>Create the playbook 01_tenant_infra.yml. Each playbook will all run the predefined play named PRE-DEPLOYMENT SETUP AND VALIDATION at the beginning.<br>
+This ensures that when a playbook is run independently, or otherwise, all the necessary input variables are provided.<br>
+The first task simply asserts that the variables are defined—it is up to the user to ensure that they contain valid values.<br>
+The second task (Load Infrastructure Definition) looks for the tenant data model YAML file and loads its contents into the Ansible host vars dictionary created at run-time.</p><p>This playbook uses the data model to create a new tenant on the APIC, and then create child objects such as VRFs, bridge domains, and subnets. </p><p>Note that the plays subsequent to the PRE-DEPLOYMENT SETUP (CREATE TENANT INFRASTRUCTURE etc) are indented at the same level. </p><p>This Create Tenant task creates the tenant using the aci_tenant Ansible module. Note that you are using the tenant.name and tenant.description variables from the data model that the first play in this playbook has loaded.</p><p>The task to create a VRF is indented at the same level as the task that created the tenant.  It uses a loop that takes a list of VRFs as input. In the SNV_Retail.yml file the VRFs dictionary contains a list (denoted by the hyphen in YAML), although, in this case, it has only one element.<br>
+The aci_vrf module requires a name for the VRF object and to which tenant it belongs. Since you are in a loop, you can find it under item.name.</p><p>When creating the task to create bridge domains, also indent as before.  Each bridge domain belongs to the tenant object, has a name and a description, and a relationship with a VRF.<br>
+Use the aci_bd module and a loop to iterate over the tenant.bridge_domains dictionary to set the bridge domain and description for the VRFs.</p><p>To create the bridge domain subnets, the data model provides the subnet as one value, for example “10.0.1.254/24”. The aci_bd_subnet module uses two parameters, gateway and mask. To provide them, you need to split the previous string on the / character to extract 10.0.1.254 for the gateway and 24 for the mask.</p><p><strong>01_tenant_infra.yml</strong></p><pre class="brush: python; title: ; notranslate" title="">
+---
+
+- name: PRE-DEPLOYMENT SETUP AND VALIDATION
+  hosts: apic
+
+  tasks:
+
+    # All of these should be defined:
+    # ansible_host, ansible_port, ansible_user, ansible_password, validate_certs
+    # customer_name
+    - name: Test that connection details are defined
+      assert:
+        that:
+          - "ansible_host is defined"
+          - "ansible_port is defined"
+          - "ansible_user is defined"
+          - "ansible_password is defined"
+          - "validate_certs is defined"
+          - "customer_name is defined"
+        fail_msg: "Please ensure that these variables exist: ansible_host,
+          ansible_port, ansible_user, ansible_password, validate_certs
+          and customer_name!"
+        quiet: true
+
+    # These variables represent the data model and are used by
+    # the rest of the playbook to deploy the policy.
+    - name: Load Infrastructure Definition
+      include_vars:
+        file: "{{ customer_name }}.yml"
+
+
+- name: CREATE TENANT INFRASTRUCTURE
+  hosts: apic
+
+  tasks:
+
+    - name: Create Tenant
+      aci_tenant:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        tenant: "{{ tenant.name }}"
+        description: "{{ tenant.description }}"
+        state: present
+      delegate_to: localhost
+
+    - name: Create VRF
+      aci_vrf:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        tenant: "{{ tenant.name }}"
+        vrf: "{{ item.name }}"
+        description: "{{ item.description }}"
+        state: present
+      delegate_to: localhost
+      loop: "{{ tenant.vrfs }}"
+
+    - name: Create Bridge Domains
+      aci_bd:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        tenant: "{{ tenant.name }}"
+        vrf: "{{ item.vrf }}"
+        bd: "{{ item.name }}"
+        description: "{{ item.description }}"
+        state: present
+      delegate_to: localhost
+      loop: "{{ tenant.bridge_domains }}"
+
+    - name: Create Bridge Domain Subnets
+      aci_bd_subnet:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        tenant: "{{ tenant.name }}"
+        bd: "{{ item.name }}"
+        gateway: "{{ item.subnet.split('/') | first }}"
+        mask: "{{ item.subnet.split('/') | last }}"
+        description: "{{ item.description }}"
+        state: present
+      delegate_to: localhost
+      loop: "{{ tenant.bridge_domains }}"
+</pre><p>The second playbook will use the data model to create a new Application Profile belonging to the SNV_Retail Tenant on the APIC and then create the four Endpoint Groups (EPGs) for servers to use. Use the following diagram for reference when building ACI policy from the data model.</p><p><a href="/wp-content/uploads/2022/04/ansible10.jpg"><img decoding="async" src="" alt="" width="475" height="272" class="alignnone size-full wp-image-9974" data-layzr="/wp-content/uploads/2022/04/ansible10.jpg"></a></p><p><strong>02_epgs.yml</strong></p><p>The task to create an Application Profile, uses a loop statement that iterates throughout the tenant.apps dictionary and sets the ap and description for the current tenant.<br>
+An application profile belongs to a particular tenant, has a name (its unique identifier) and a description.</p><p>To create EPGs, add a loop statement that iterates throughout the tenant.epgs dictionary and sets the bd, ap, epg and description for the current tenant.</p><pre class="brush: python; title: ; notranslate" title="">
+---
+
+- name: PRE-DEPLOYMENT SETUP AND VALIDATION
+  hosts: apic
+
+  tasks:
+
+    # All of these should be defined:
+    # host_vars: ansible_host, ansible_port, ansible_user, ansible_password, validate_certs
+    # group_vars/all: customer_name
+    - name: Test that connection details are defined
+      assert:
+        that:
+          - "ansible_host is defined"
+          - "ansible_port is defined"
+          - "ansible_user is defined"
+          - "ansible_password is defined"
+          - "validate_certs is defined"
+          - "customer_name is defined"
+        fail_msg: "Please ensure that these variables exist: ansible_host,
+          ansible_port, ansible_user, ansible_password, validate_certs
+          and customer_name!"
+        quiet: true
+
+    # These variables represent the data model and are used by
+    # the rest of the playbook to deploy the policy.
+    - name: Load Infrastructure Definition
+      include_vars:
+        file: "{{ customer_name }}.yml"
+
+
+- name: CREATE APPLICATION PROFILES AND EPGS
+  hosts: apic
+
+  tasks:
+
+    - name: Create Application Profile
+      aci_ap:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        tenant: "{{ tenant.name }}"
+        ap: "{{ item.name }}"
+        description: "{{ item.description }}"
+        state: present
+      delegate_to: localhost
+      loop: "{{ tenant.apps }}"
+
+    - name: Create EPG
+      aci_epg:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        tenant: "{{ tenant.name }}"
+        bd: "{{ item.bd }}"
+        ap: "{{ item.ap }}"
+        epg: "{{ item.name }}"
+        description: "{{ item.description }}"
+        state: present
+      delegate_to: localhost
+      loop: "{{ tenant.epgs }}"
+
+    - name: Add a new physical domain to EPG binding
+      aci_epg_to_domain:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        tenant: "{{ tenant.name }}"
+        ap: "{{ item.ap }}"
+        epg: "{{ item.name }}"
+        domain: "{{ item.domain }}"
+        domain_type: "{{ domains[item.domain].domain_type }}"
+        vm_provider: "{{ domains[item.domain].vm_provider }}"
+        state: present
+      delegate_to: localhost
+      loop: "{{ tenant.epgs }}"
+</pre><p><strong>Create the Filters and the Contracts Between EPGs</strong></p><p>The next playbook uses the data model to create new ACI Filters (stateless ACL entries) for traffic such as Web (HTTP, HTTPS), Email (SMTP, SMTPS, IMAPS) and Database (PGSQL).<br>
+These filters are used to define contracts, which are an ACI policy construct that provisions connectivity and security policies between Endpoint Groups.<br>
+The Contracts are bound to existing EPGs as consumers or providers to actually apply the connectivity configuration on the ACI fabric.</p><p><strong>03_contracts.yml</strong></p><p>The filter entries are very similar to access list lines in that they match specific values of the Layer 2-4 headers.<br>
+The filter named web_filter has two entries: the first matches http (ip tcp port 80) and the second https (ip tcp port 443). Note that the names http and https are simply names set by yourself, it is the ethertype, ip_protocol, and the port numbers that identify the traffic.</p><p>First, you use the aci_filter module to create the filter. This is a container for filter entries, and it belongs to a specific tenant.<br>
+Then you use the aci_filter_entry module to create each filter entry as specified in the data model (reviewed in the previous step).<br>
+Note how each entry belongs to a particular tenant and filter (the parent objects) and uses all the required parameters to identify the traffic.</p><p>Use the aci_contract module to create the contract. This is a container for contract subjects, and it belongs to a specific tenant.<br>
+Then use the aci_contract_subject module to create each contract subject as specified in the data model (reviewed in the previous step).<br>
+While you can normally have multiple subjects under the same contract, this model design assumes only one and creates it by appending the -SUB string to the contract name.<br>
+Finally, the aci_contract_subject_to_filter module is used to add various filters to the contract subjects created.<br>
+As there are multiple filters per contract, a loop is needed to add them one by one.</p><p>Once all the filters and contracts have been created, add the EPGs to the contracts as either providers or consumers.<br>
+This task loops of the list of contract bindings as seen in the data model above and uses the aci_epg_to_contract module to create this relationship.</p><pre class="brush: python; title: ; notranslate" title="">
+---
+
+- name: PRE-DEPLOYMENT SETUP AND VALIDATION
+  hosts: apic
+
+  tasks:
+
+    # All of these should be defined:
+    # host_vars: ansible_host, ansible_port,
+    #            ansible_user, ansible_password, validate_certs
+    # group_vars/all: customer_name
+    - name: Test that connection details are defined
+      assert:
+        that:
+          - "ansible_host is defined"
+          - "ansible_port is defined"
+          - "ansible_user is defined"
+          - "ansible_password is defined"
+          - "validate_certs is defined"
+          - "customer_name is defined"
+        fail_msg: "Please ensure that these variables exist: ansible_host,
+          ansible_port, ansible_user, ansible_password, validate_certs
+          and customer_name!"
+        quiet: true
+
+    # These variables represent the data model and are used by
+    # the rest of the playbook to deploy the policy.
+    - name: Load Infrastructure Definition
+      include_vars:
+        file: "{{ customer_name }}.yml"
+
+- name: CREATE FILTERS AND FILTER ENTRIES
+  hosts: apic
+
+  tasks:
+    - name: Create Filter
+      aci_filter:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        tenant: "{{ tenant.name }}"
+        filter: "{{ item.name }}"
+        description: "{{ item.description }}"
+        state: present
+      delegate_to: localhost
+      loop: "{{ tenant.filters }}"
+
+    - name: Create Filter Entry
+      aci_filter_entry:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        tenant: "{{ tenant.name }}"
+        filter: "{{ item.name }}"
+        entry: "{{ item.entry }}"
+        ether_type: "{{ item.ethertype }}"
+        ip_protocol: "{{ item.ip_protocol }}"
+        dst_port_start: "{{ item.destination_from }}"
+        dst_port_end: "{{ item.destination_to }}"
+        description: "{{ item.description }}"
+        state: present
+      delegate_to: localhost
+      loop: "{{ tenant.filters }}"
+
+- name: CREATE CONTRACTS AND CONTRACT SUBJECTS
+  hosts: apic
+
+  tasks:
+    - name: Create Contract
+      aci_contract:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        tenant: "{{ tenant.name }}"
+        contract: "{{ item.name }}"
+        description: "{{ item.description }}"
+        state: present
+      delegate_to: localhost
+      loop: "{{ tenant.contracts }}"
+
+    - name: Create Contract Subject
+      aci_contract_subject:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        tenant: "{{ tenant.name }}"
+        contract: "{{ item.name }}"
+        subject: "{{ item.name }}-SUB"
+        description: "{{ item.description }}"
+        state: present
+      delegate_to: localhost
+      loop: "{{ tenant.contracts }}"
+
+    - name: Add Filter to Contract Subject
+      aci_contract_subject_to_filter:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        tenant: "{{ tenant.name }}"
+        contract: "{{ item.name }}"
+        subject: "{{ item.name }}-SUB"
+        filter: "{{ item.filter }}"
+        state: present
+      delegate_to: localhost
+      loop: "{{ tenant.contracts }}"00_master.yml
+
+
+- name: BIND CONTRACTS TO EPGS
+  hosts: apic
+
+  tasks:
+    - name: Add Contract to EPG
+      aci_epg_to_contract:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+
+        tenant: "{{ tenant.name }}"
+        ap: "{{ item.ap }}"
+        epg: "{{ item.epg }}"
+        contract: "{{ item.contract }}"
+        contract_type: "{{ item.type }}"
+        state: present
+      delegate_to: localhost
+      loop: "{{ tenant.contract_bindings }}"
+</pre><p>The 00_master.yml playbook simply aggregates all three playbooks in order, starting with the tenant infrastructure, then EPGs, and finally contracts.</p><p><strong>00_master.yml</strong></p><pre class="brush: python; title: ; notranslate" title="">
+---
+# All playbooks imported here are designed to also execute independently.
+# Note: The workflow is linear and each playbook depends on the policy
+# objects created by the playbooks before it.
+
+##### Step 1: Create a Tenant and its VRFs and Bridge Domains.
+- name: PROVISION TENANT INFRASTRUCTURE
+  import_playbook: 01_tenant_infra.yml
+
+##### Step 2: Create Application Profiles and Endpoint Groups.
+- name: PROVISION APPLICATION PROFILES AND EPGS
+  import_playbook: 02_epgs.yml
+
+##### Step 3: Create and apply the Security Policy (Contracts).
+- name: PROVISION SECURITY POLICY
+  import_playbook: 03_contracts.yml
+</pre><p>Run the command ‘ansible-playbook 00_master.yml’ to give the following output:</p><pre class="brush: python; title: ; notranslate" title="">
+$ ansible-playbook 00_master.yml
+
+PLAY [PRE-DEPLOYMENT SETUP AND VALIDATION] ***********************************************************************************************************************
+
+TASK [Test that connection details are defined] ******************************************************************************************************************
+ok: [apic]
+
+TASK [Load Infrastructure Definition] ****************************************************************************************************************************
+ok: [apic]
+
+PLAY [CREATE TENANT INFRASTRUCTURE] ******************************************************************************************************************************
+
+TASK [Create Tenant] *********************************************************************************************************************************************
+changed: [apic -&gt; localhost]
+
+TASK [Create VRF] ************************************************************************************************************************************************
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'UserServices_VRF', 'description': 'Managed by Ansible'})
+
+TASK [Create Bridge Domains] *************************************************************************************************************************************
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'Services_BD', 'description': 'Managed by Ansible', 'vrf': 'UserServices_VRF', 'subnet': '10.0.1.254/24'})
+ok: [apic -&gt; localhost] =&gt; (item={'name': 'Services_BD', 'description': 'Managed by Ansible', 'vrf': 'UserServices_VRF', 'subnet': '10.0.2.254/24'})
+ok: [apic -&gt; localhost] =&gt; (item={'name': 'Services_BD', 'description': 'Managed by Ansible', 'vrf': 'UserServices_VRF', 'subnet': '10.0.3.254/24'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'Users_BD', 'description': 'Managed by Ansible', 'vrf': 'UserServices_VRF', 'subnet': '10.0.4.254/24'})
+
+TASK [Create Bridge Domain Subnets] ******************************************************************************************************************************
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'Services_BD', 'description': 'Managed by Ansible', 'vrf': 'UserServices_VRF', 'subnet': '10.0.1.254/24'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'Services_BD', 'description': 'Managed by Ansible', 'vrf': 'UserServices_VRF', 'subnet': '10.0.2.254/24'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'Services_BD', 'description': 'Managed by Ansible', 'vrf': 'UserServices_VRF', 'subnet': '10.0.3.254/24'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'Users_BD', 'description': 'Managed by Ansible', 'vrf': 'UserServices_VRF', 'subnet': '10.0.4.254/24'})
+
+PLAY [PRE-DEPLOYMENT SETUP AND VALIDATION] ***********************************************************************************************************************
+
+TASK [Test that connection details are defined] ******************************************************************************************************************
+ok: [apic]
+
+TASK [Load Infrastructure Definition] ****************************************************************************************************************************
+ok: [apic]
+
+PLAY [CREATE APPLICATION PROFILES AND EPGS] **********************************************************************************************************************
+
+TASK [Create Application Profile] ********************************************************************************************************************************
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'UserServices_APP', 'description': 'Managed by Ansible'})
+
+TASK [Create EPG] ************************************************************************************************************************************************
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'Web_EPG', 'description': 'Managed by Ansible', 'ap': 'UserServices_APP', 'bd': 'Services_BD', 'domain': 'vCenter_VMM'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'Email_EPG', 'description': 'Managed by Ansible', 'ap': 'UserServices_APP', 'bd': 'Services_BD', 'domain': 'vCenter_VMM'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'Storage_EPG', 'description': 'Managed by Ansible', 'ap': 'UserServices_APP', 'bd': 'Services_BD', 'domain': 'vCenter_VMM'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'Users_EPG', 'description': 'Managed by Ansible', 'ap': 'UserServices_APP', 'bd': 'Users_BD', 'domain': 'vCenter_VMM'})
+
+TASK [Add a new physical domain to EPG binding] ******************************************************************************************************************
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'Web_EPG', 'description': 'Managed by Ansible', 'ap': 'UserServices_APP', 'bd': 'Services_BD', 'domain': 'vCenter_VMM'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'Email_EPG', 'description': 'Managed by Ansible', 'ap': 'UserServices_APP', 'bd': 'Services_BD', 'domain': 'vCenter_VMM'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'Storage_EPG', 'description': 'Managed by Ansible', 'ap': 'UserServices_APP', 'bd': 'Services_BD', 'domain': 'vCenter_VMM'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'Users_EPG', 'description': 'Managed by Ansible', 'ap': 'UserServices_APP', 'bd': 'Users_BD', 'domain': 'vCenter_VMM'})
+
+PLAY [PRE-DEPLOYMENT SETUP AND VALIDATION] ***********************************************************************************************************************
+
+TASK [Test that connection details are defined] ******************************************************************************************************************
+ok: [apic]
+
+TASK [Load Infrastructure Definition] ****************************************************************************************************************************
+ok: [apic]
+
+PLAY [CREATE FILTERS AND FILTER ENTRIES] *************************************************************************************************************************
+
+TASK [Create Filter] *********************************************************************************************************************************************
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'web_filter', 'description': 'Managed by Ansible', 'entry': 'http', 'ethertype': 'ip', 'ip_protocol': 'tcp', 'destination_from': '80', 'destination_to': '80'})
+ok: [apic -&gt; localhost] =&gt; (item={'name': 'web_filter', 'description': 'Managed by Ansible', 'entry': 'https', 'ethertype': 'ip', 'ip_protocol': 'tcp', 'destination_from': '443', 'destination_to': '443'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'email_filter', 'description': 'Managed by Ansible', 'entry': 'smtp', 'ethertype': 'ip', 'ip_protocol': 'tcp', 'destination_from': '25', 'destination_to': '25'})
+ok: [apic -&gt; localhost] =&gt; (item={'name': 'email_filter', 'description': 'Managed by Ansible', 'entry': 'smtps', 'ethertype': 'ip', 'ip_protocol': 'tcp', 'destination_from': '587', 'destination_to': '587'})
+ok: [apic -&gt; localhost] =&gt; (item={'name': 'email_filter', 'description': 'Managed by Ansible', 'entry': 'imaps', 'ethertype': 'ip', 'ip_protocol': 'tcp', 'destination_from': '993', 'destination_to': '993'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'storage_filter', 'description': 'Managed by Ansible', 'entry': 'pgsql', 'ethertype': 'ip', 'ip_protocol': 'tcp', 'destination_from': '5432', 'destination_to': '5432'})
+
+TASK [Create Filter Entry] ***************************************************************************************************************************************
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'web_filter', 'description': 'Managed by Ansible', 'entry': 'http', 'ethertype': 'ip', 'ip_protocol': 'tcp', 'destination_from': '80', 'destination_to': '80'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'web_filter', 'description': 'Managed by Ansible', 'entry': 'https', 'ethertype': 'ip', 'ip_protocol': 'tcp', 'destination_from': '443', 'destination_to': '443'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'email_filter', 'description': 'Managed by Ansible', 'entry': 'smtp', 'ethertype': 'ip', 'ip_protocol': 'tcp', 'destination_from': '25', 'destination_to': '25'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'email_filter', 'description': 'Managed by Ansible', 'entry': 'smtps', 'ethertype': 'ip', 'ip_protocol': 'tcp', 'destination_from': '587', 'destination_to': '587'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'email_filter', 'description': 'Managed by Ansible', 'entry': 'imaps', 'ethertype': 'ip', 'ip_protocol': 'tcp', 'destination_from': '993', 'destination_to': '993'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'storage_filter', 'description': 'Managed by Ansible', 'entry': 'pgsql', 'ethertype': 'ip', 'ip_protocol': 'tcp', 'destination_from': '5432', 'destination_to': '5432'})
+
+PLAY [CREATE CONTRACTS AND CONTRACT SUBJECTS] ********************************************************************************************************************
+
+TASK [Create Contract] *******************************************************************************************************************************************
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'WebServices_CON', 'filter': 'web_filter', 'description': 'Managed by Ansible'})
+ok: [apic -&gt; localhost] =&gt; (item={'name': 'WebServices_CON', 'filter': 'icmp', 'description': 'Managed by Ansible'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'EmailServices_CON', 'filter': 'email_filter', 'description': 'Managed by Ansible'})
+ok: [apic -&gt; localhost] =&gt; (item={'name': 'EmailServices_CON', 'filter': 'icmp', 'description': 'Managed by Ansible'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'StorageServices_CON', 'filter': 'storage_filter', 'description': 'Managed by Ansible'})
+ok: [apic -&gt; localhost] =&gt; (item={'name': 'StorageServices_CON', 'filter': 'icmp', 'description': 'Managed by Ansible'})
+
+TASK [Create Contract Subject] ***********************************************************************************************************************************
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'WebServices_CON', 'filter': 'web_filter', 'description': 'Managed by Ansible'})
+ok: [apic -&gt; localhost] =&gt; (item={'name': 'WebServices_CON', 'filter': 'icmp', 'description': 'Managed by Ansible'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'EmailServices_CON', 'filter': 'email_filter', 'description': 'Managed by Ansible'})
+ok: [apic -&gt; localhost] =&gt; (item={'name': 'EmailServices_CON', 'filter': 'icmp', 'description': 'Managed by Ansible'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'StorageServices_CON', 'filter': 'storage_filter', 'description': 'Managed by Ansible'})
+ok: [apic -&gt; localhost] =&gt; (item={'name': 'StorageServices_CON', 'filter': 'icmp', 'description': 'Managed by Ansible'})
+
+TASK [Add Filter to Contract Subject] ****************************************************************************************************************************
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'WebServices_CON', 'filter': 'web_filter', 'description': 'Managed by Ansible'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'WebServices_CON', 'filter': 'icmp', 'description': 'Managed by Ansible'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'EmailServices_CON', 'filter': 'email_filter', 'description': 'Managed by Ansible'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'EmailServices_CON', 'filter': 'icmp', 'description': 'Managed by Ansible'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'StorageServices_CON', 'filter': 'storage_filter', 'description': 'Managed by Ansible'})
+changed: [apic -&gt; localhost] =&gt; (item={'name': 'StorageServices_CON', 'filter': 'icmp', 'description': 'Managed by Ansible'})
+
+PLAY [BIND CONTRACTS TO EPGS] ************************************************************************************************************************************
+
+TASK [Add Contract to EPG] ***************************************************************************************************************************************
+changed: [apic -&gt; localhost] =&gt; (item={'epg': 'Users_EPG', 'ap': 'UserServices_APP', 'contract': 'WebServices_CON', 'type': 'consumer'})
+changed: [apic -&gt; localhost] =&gt; (item={'epg': 'Web_EPG', 'ap': 'UserServices_APP', 'contract': 'WebServices_CON', 'type': 'provider'})
+changed: [apic -&gt; localhost] =&gt; (item={'epg': 'Users_EPG', 'ap': 'UserServices_APP', 'contract': 'EmailServices_CON', 'type': 'consumer'})
+changed: [apic -&gt; localhost] =&gt; (item={'epg': 'Email_EPG', 'ap': 'UserServices_APP', 'contract': 'EmailServices_CON', 'type': 'provider'})
+changed: [apic -&gt; localhost] =&gt; (item={'epg': 'Web_EPG', 'ap': 'UserServices_APP', 'contract': 'StorageServices_CON', 'type': 'consumer'})
+changed: [apic -&gt; localhost] =&gt; (item={'epg': 'Email_EPG', 'ap': 'UserServices_APP', 'contract': 'StorageServices_CON', 'type': 'consumer'})
+changed: [apic -&gt; localhost] =&gt; (item={'epg': 'Storage_EPG', 'ap': 'UserServices_APP', 'contract': 'StorageServices_CON', 'type': 'provider'})
+
+PLAY RECAP *******************************************************************************************************************************************************
+apic                       : ok=19   changed=13   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+</pre><p>By using the the APIC Sandbox GUI we can verify that the tenant SNV_Retail has the expected EPG to contract relationship under the application profile Topology tab:</p><p><a href="/wp-content/uploads/2022/04/ansible9-1.jpg"><img decoding="async" src="" alt="" width="1421" height="728" class="alignnone size-full wp-image-9966" data-layzr="/wp-content/uploads/2022/04/ansible9-1.jpg"></a></p><p><strong>Generating a health report</strong></p><p>System health scores can be verified manually via the sandbox version of the Cisco APIC GUI by navigating to System &gt; Dashboard.<br>
+In the Tenants with Health ≤ section, move the slider to 100 to see the Tenants’ health.</p><p><strong>01_health_report.yml</strong></p><p>The first playbook 01_health_report.yml consists of three REST API queries to obtain the health scores from the JSON data, and add it to a report.</p><p>‘Get System Health’ sends a GET request to return the system health score and other information in JSON format.</p><p>The ‘Save Health Markdown Report’ section collects all the data from previous API requests (health_system, health_topology, and health_tenant variables), combines the data with the templates/health_report.j2 Jinja2 template, and saves a Markdown text file with the result to reports/fragments/01_health_report.md.</p><pre class="brush: python; title: ; notranslate" title="">
+---
+
+- name:  query fabric and build health report
+  hosts: apic
+  
+  tasks:
+    - name: Get System Health
+      aci_rest:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+        
+        path: "/api/mo/topology/health.json"
+        method: get
+      delegate_to: localhost
+      register: health_system
+      
+    - name: Print System Health Response Data
+      debug:
+        var: health_system
+        verbosity: 1
+      
+    - name: Get Topology Health
+      aci_rest:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+        
+        path: "/api/node/class/topSystem.json?rsp-subtree-include=health,required"
+        method: get
+      delegate_to: localhost
+      register: health_topology
+      
+    - name: Print Topology Health Response Data
+      debug:
+        var: health_topology
+        verbosity: 1
+        
+    - name: Get Tenant Health
+      aci_rest:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+        
+        path: "/api/mo/uni/tn-{{ customer_name }}.json?rsp-subtree-include=health"
+        method: get
+      delegate_to: localhost
+      register: health_tenant
+      
+    - name: Print Tenant Health Response Data
+      debug:
+        var: health_tenant
+        verbosity: 1
+        
+    - name: Save Health Markdown Report
+      template: 
+        src: "health_report.j2"
+        dest: "reports/fragments/01_health_report.md"
+      delegate_to: localhost
+</pre><p>Create a health_report.j2 file in the templates/ folder to createa Jinja2 template.<br>
+This will use for the System Health value from the Cisco API response and place it in your report.</p><p><strong>health_report.j2</strong></p><pre class="brush: plain; title: ; notranslate" title="">
+## ACI Health
+
+## System Health
+ - Current System Health: **{{ health_system.imdata[ 0 ].fabricHealthTotal.attributes.cur }}**
+
+{% if health_topology %}
+### Fabric Health
+
+{% for node in health_topology.imdata %}
+#### Node {{ node.topSystem.attributes.name }}
+
+ - Current Node Health: **{{ node.topSystem.children.0.healthInst.attributes.cur }}**
+ - Node **{{ node.topSystem.attributes.id }}** in **{{ node.topSystem.attributes.fabricDomain }}** with role **{{ node.topSystem.attributes.role }}** and serial number **{{ node.topSystem.attributes.serial }}**
+
+{% endfor %}
+{% endif %}
+
+## Tenant SNV_Retail Health
+ - Current Tenant Health: **{{ health_tenant.imdata[ 0 ].fvTenant.children[ 0 ].healthInst.attributes.cur }}**
+ - Description: **{{ health_tenant.imdata[ 0 ].fvTenant.attributes.descr }}**
+</pre><p>The 02_faults_report.yml playbook is a REST API query that retrieves all objects of the class faultSummary and provides a query parameter that tells the Cisco APIC to return the results ordered descending by their severity attribute. The results are stored in the faults_system variable.</p><p><strong>02_faults_report.yml</strong></p><p>The ‘Get Tenant Fault’ section lists the faults for a specific tenant, supplied dynamically from the inventory variable customer_name, in this case SNV_Retail.</p><pre class="brush: python; title: ; notranslate" title="">
+---
+
+- name:  QUERY FABRIC AND BUILD FAULTS REPORT
+  hosts: apic
+        
+  tasks:
+    - name: Get System Faults Summary
+      aci_rest:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+        
+        path: "/api/node/class/faultSummary.json?order-by=faultSummary.severity|desc"
+        method: get
+      delegate_to: localhost
+      register: faults_system
+      
+    - name: Print System Faults Summary Response Data
+      debug:
+        var: faults_system
+        verbosity: 1
+        
+    - name: Get Tenant Faults
+      aci_rest:
+        host: "{{ ansible_host }}"
+        port: "{{ ansible_port }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        validate_certs: "{{ validate_certs }}"
+        
+        path: "/api/mo/uni/tn-{{ customer_name }}.json?rsp-subtree-include=faults,subtree,no-scoped"
+        method: get
+      delegate_to: localhost
+      register: faults_tenant
+      
+    - name: Print Tenant Faults Response Data
+      debug:
+        var: faults_tenant
+        verbosity: 1
+        
+    - name: Save Faults Markdown Report
+      template: 
+        src: "faults_report.j2"
+        dest: "reports/fragments/03_faults_report.md"
+      delegate_to: localhost
+</pre><p>And the corresponding template file for the fault reports:</p><p><strong>faults_report.j2</strong></p><pre class="brush: python; title: ; notranslate" title="">
+### System Faults Summary
+
+Total number of fault categories: **{{ faults_system.totalCount }}**
+
+{% for fault in faults_system.imdata %}
+- Severity-**{{ fault.faultSummary.attributes.severity }}**/Type-**{{ fault.faultSummary.attributes.type }}**/Code-**{{ fault.faultSummary.attributes.code }}**/Domain-**{{ fault.faultSummary.attributes.domain }}**
+    + Cause: `{{ fault.faultSummary.attributes.cause }}`
+    + Count: **{{ fault.faultSummary.attributes.count }}**
+    + Description: {{ fault.faultSummary.attributes.descr }}
+{% endfor %}
+</pre><p>Finally we create a master report to aggregate the the reports generated from the previous playbooks.</p><p><strong>00_master.yml</strong></p><p>The assemble module takes all the files in the reports/fragments and concatenates them into the reports/infra_report.md file.</p><p>The fragments are taken in string sorting order, which is why the individual files are using a numbering system so that you can keep the ordering under control:</p><pre class="brush: plain; title: ; notranslate" title="">
+reports/fragments/
+├── 01_health_report.md
+└── 02_faults_report.md
+</pre><pre class="brush: python; title: ; notranslate" title="">
+---
+
+- name:  ENVIRONMENT SETUP AND VALIDATION
+  hosts: apic
+        
+  tasks:
+  
+    # All of these should be defined:
+    # ansible_host, ansible_port, ansible_user, ansible_password, validate_certs
+    # customer_name
+    - name: Test that connection details are defined  
+      assert:
+        that:
+          - 'ansible_host is defined'
+          - 'ansible_port is defined'
+          - 'ansible_user is defined'
+          - 'ansible_password is defined'
+          - 'validate_certs is defined'
+          - 'customer_name is defined'
+        fail_msg: "Please that these variables exist: ansible_host, 
+          ansible_port, ansible_user, ansible_password, validate_certs
+          and customer_name!"
+        quiet: true
+        
+    # Create the reports/fragments folders if they don't already exist
+    - name: Ensure the reports/fragments folder exists
+      file:
+        path: "reports/fragments"
+        state: "directory"
+      delegate_to: localhost
+      
+# All playbooks imported here are designed to also execute independently
+- name: ACI HEALTH REPORT
+  import_playbook: 01_health_report.yml
+  
+- name: ACI FAULTS REPORT
+  import_playbook: 02_faults_report.yml
+  
+# Put together all of the reports in one file
+- name: CONSOLIDATE REPORTS INTO FINAL DOCUMENT
+  hosts: localhost
+  tags: assemble
+  
+  tasks:
+    - name: Assemble the fragments into one file
+      assemble:
+        src: "reports/fragments"
+        dest: "reports/infra_report.md"
+</pre><p>View the generated final report reports/infra_report.md. You should see system faults and SNV_Retail tenant faults:</p><p><strong>infra_report.md</strong></p><pre class="brush: python; title: ; notranslate" title="">
+## ACI Health
+
+## System Health
+ - Current System Health: **0**
+
+### Fabric Health
+
+#### Node leaf-1
+
+ - Current Node Health: **90**
+ - Node **101** in **ACI Fabric1** with role **leaf** and serial number **TEP-1-101**
+
+#### Node leaf-2
+
+ - Current Node Health: **90**
+ - Node **102** in **ACI Fabric1** with role **leaf** and serial number **TEP-1-102**
+
+#### Node spine-1
+
+ - Current Node Health: **0**
+ - Node **201** in **ACI Fabric1** with role **spine** and serial number **TEP-1-103**
+
+
+## Tenant SNV_Retail Health
+ - Current Tenant Health: **100**
+ - Description: **SNV_Retail Hosted Customer Services - Managed by Ansible**
+### System Faults Summary
+
+Total number of fault categories: **30**
+
+- Severity-**critical**/Type-**operational**/Code-**F0104**/Domain-**infra**
+    + Cause: `port-down`
+    + Count: **1**
+    + Description: This fault occurs when a bond interface on a controller is in the link-down state.
+- Severity-**critical**/Type-**operational**/Code-**F103824**/Domain-**infra**
+    + Cause: `threshold-crossed`
+    + Count: **1**
+    + Description: Threshold crossing alert for class eqptTemp5min, property normalizedLast
+- Severity-**major**/Type-**config**/Code-**F3083**/Domain-**tenant**
+    + Cause: `config-error`
+    + Count: **44**
+    + Description: This fault occurs when multiple MACs have same IP address in the same VRF.
+- Severity-**major**/Type-**environmental**/Code-**F1318**/Domain-**infra**
+    + Cause: `equipment-psu-missing`
+    + Count: **3**
+    + Description: This fault occurs when PSU are not detected correctly
+- Severity-**minor**/Type-**config**/Code-**F0467**/Domain-**tenant**
+    + Cause: `configuration-failed`
+    + Count: **44**
+    + Description: This fault occurs when an End Point Group / End Point Security Group is incompletely or incorrectly configured.
+- Severity-**minor**/Type-**config**/Code-**F1295**/Domain-**infra**
+    + Cause: `configuration-failed`
+    + Count: **6**
+    + Description: This fault is raised when a Date and Time Policy (datetime:Pol) fails to apply due to configuration issues.
+- Severity-**minor**/Type-**operational**/Code-**F1651**/Domain-**infra**
+    + Cause: `export-data-failed`
+    + Count: **1**
+    + Description: This fault occurs when export operation for techsupport or core files did not succeed.
+- Severity-**minor**/Type-**config**/Code-**F0523**/Domain-**tenant**
+    + Cause: `configuration-failed`
+    + Count: **2**
+    + Description: This fault occurs when an End Point Group / End Point Security Group is incompletely or incorrectly configured.
+- Severity-**minor**/Type-**operational**/Code-**F4149**/Domain-**infra**
+    + Cause: `oper-state-change`
+    + Count: **1**
+    + Description: This fault occurs when you remove LC/FM/SUP/SC from the slot
+- Severity-**warning**/Type-**operational**/Code-**F1207**/Domain-**access**
+    + Cause: `protocol-arp-adjacency-down`
+    + Count: **1**
+    + Description: This fault occurs when the operational state of the arp adjacency is down
+- Severity-**warning**/Type-**operational**/Code-**F110344**/Domain-**infra**
+    + Cause: `threshold-crossed`
+    + Count: **22**
+    + Description: Threshold crossing alert for class l2IngrBytesPart5min, property dropRate
+- Severity-**warning**/Type-**operational**/Code-**F112128**/Domain-**infra**
+    + Cause: `threshold-crossed`
+    + Count: **27**
+    + Description: Threshold crossing alert for class l2IngrPkts5min, property dropRate
+- Severity-**warning**/Type-**operational**/Code-**F110473**/Domain-**infra**
+    + Cause: `threshold-crossed`
+    + Count: **4**
+    + Description: Threshold crossing alert for class l2IngrBytesAg15min, property dropRate
+- Severity-**warning**/Type-**operational**/Code-**F112425**/Domain-**infra**
+    + Cause: `threshold-crossed`
+    + Count: **4**
+    + Description: Threshold crossing alert for class l2IngrPktsAg15min, property dropRate
+- Severity-**warning**/Type-**config**/Code-**F1037**/Domain-**infra**
+    + Cause: `resolution-failed`
+    + Count: **2**
+    + Description: The object refers to an object that was not found.
+- Severity-**warning**/Type-**config**/Code-**F1014**/Domain-**infra**
+    + Cause: `resolution-failed`
+    + Count: **2**
+    + Description: The object refers to an object that was not found.
+- Severity-**warning**/Type-**operational**/Code-**F100696**/Domain-**infra**
+    + Cause: `threshold-crossed`
+    + Count: **18**
+    + Description: Threshold crossing alert for class eqptIngrDropPkts5min, property forwardingRate
+- Severity-**warning**/Type-**operational**/Code-**F1360**/Domain-**access**
+    + Cause: `protocol-coop-adjacency-down`
+    + Count: **2**
+    + Description: This fault occurs when the operational state of the coop adjacency is down
+- Severity-**warning**/Type-**config**/Code-**F3057**/Domain-**external**
+    + Cause: `product-not-registered`
+    + Count: **1**
+    + Description: This fault is raised when APIC Controller product is not registered with Cisco Smart Software Manager (CSSM).
+- Severity-**warning**/Type-**config**/Code-**F0956**/Domain-**infra**
+    + Cause: `resolution-failed`
+    + Count: **4**
+    + Description: The object refers to an object that was not found.
+- Severity-**warning**/Type-**operational**/Code-**F110176**/Domain-**infra**
+    + Cause: `threshold-crossed`
+    + Count: **27**
+    + Description: Threshold crossing alert for class l2IngrBytes5min, property dropRate
+- Severity-**warning**/Type-**operational**/Code-**F100264**/Domain-**infra**
+    + Cause: `threshold-crossed`
+    + Count: **18**
+    + Description: Threshold crossing alert for class eqptIngrDropPkts5min, property bufferRate
+- Severity-**warning**/Type-**operational**/Code-**F112296**/Domain-**infra**
+    + Cause: `threshold-crossed`
+    + Count: **22**
+    + Description: Threshold crossing alert for class l2IngrPktsPart5min, property dropRate
+- Severity-**warning**/Type-**config**/Code-**F0955**/Domain-**infra**
+    + Cause: `resolution-failed`
+    + Count: **2**
+    + Description: The object refers to an object that was not found.
+- Severity-**warning**/Type-**operational**/Code-**F96976**/Domain-**infra**
+    + Cause: `threshold-crossed`
+    + Count: **18**
+    + Description: Threshold crossing alert for class eqptEgrDropPkts5min, property errorRate
+- Severity-**warning**/Type-**config**/Code-**F1021**/Domain-**infra**
+    + Cause: `resolution-failed`
+    + Count: **1**
+    + Description: The object refers to an object that was not found.
+- Severity-**warning**/Type-**operational**/Code-**F96760**/Domain-**infra**
+    + Cause: `threshold-crossed`
+    + Count: **18**
+    + Description: Threshold crossing alert for class eqptEgrDropPkts5min, property bufferRate
+- Severity-**warning**/Type-**config**/Code-**F0981**/Domain-**infra**
+    + Cause: `resolution-failed`
+    + Count: **1**
+    + Description: The object refers to an object that was not found.
+- Severity-**warning**/Type-**operational**/Code-**F100480**/Domain-**infra**
+    + Cause: `threshold-crossed`
+    + Count: **18**
+    + Description: Threshold crossing alert for class eqptIngrDropPkts5min, property errorRate
+- Severity-**warning**/Type-**operational**/Code-**F381328**/Domain-**infra**
+    + Cause: `threshold-crossed`
+    + Count: **12**
+    + Description: Threshold crossing alert for class eqptIngrErrPkts5min, property crcLast
+
+</pre>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '9947'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2022/using-ansible-to-create-delete-and-list-tenants/&amp;media=&amp;description=Using%20Ansible%20to%20Create,%20Delete%20and%20List%20Tenants" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2022/using-postman-with-cisco-apic-rest-api/" title="Using Postman with Cisco APIC REST API" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using Postman with Cisco APIC REST API"></div>
+                                                                        <h4 class="title front-view-title">Using Postman with Cisco APIC REST API</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2022/using-python-with-cisco-apic-rest-api/" title="Using Python with Cisco APIC REST API" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using Python with Cisco APIC REST API"></div>
+                                                                        <h4 class="title front-view-title">Using Python with Cisco APIC REST API</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2022/using-ansible-automate-cisco-aci-in-windows/" title="Using Ansible to automate Cisco ACI in Windows" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using Ansible to automate Cisco ACI in Windows"></div>
+                                                                        <h4 class="title front-view-title">Using Ansible to automate Cisco ACI in Windows</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="pingback even thread-even depth-1" id="li-comment-61583">
+    		                    <div id="comment-61583">
+                        <div class="comment-author vcard">
+                            Pingback: <a href="https://www.route4all.com/2021/12/04/cisco-aci-automation-with-ansible/" class="url" rel="ugc external nofollow">Cisco ACI Automation with Ansible Links – Networking made in Germany</a>                                                            <span class="ago">7 May 2022</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                            </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			</ol>
+		</div>
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2022/using-ansible-to-create-delete-and-list-tenants/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="9947" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-plain-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js"></script>
+<script id="syntaxhighlighter-brush-python-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPython.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

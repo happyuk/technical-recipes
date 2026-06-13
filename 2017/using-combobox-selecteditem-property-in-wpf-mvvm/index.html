@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>Using the ComboBox SelectedItem property in WPF / MVVM – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Using the ComboBox SelectedItem property in WPF / MVVM Comments Feed" href="/2017/using-combobox-selecteditem-property-in-wpf-mvvm/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2017%2Fusing-combobox-selecteditem-property-in-wpf-mvvm%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2017%2Fusing-combobox-selecteditem-property-in-wpf-mvvm%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/7539"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2017/using-combobox-selecteditem-property-in-wpf-mvvm/">
+<link rel="shortlink" href="/?p=7539">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-7539 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-7539" class="g post post-7539 type-post status-publish format-standard hentry category-c-net-2">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/c-net-2/" itemprop="item"><span itemprop="name">C# / .Net / WPF</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Using the ComboBox SelectedItem property in WPF / MVVM</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">Using the ComboBox SelectedItem property in WPF / MVVM</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>27 January 2017</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/c-net-2/" title="View all posts in C# / .Net / WPF">C# / .Net / WPF</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2017/using-combobox-selecteditem-property-in-wpf-mvvm/#comments" itemprop="interactionCount">6 Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p>An implementation of using the WPF Combo Box using MVVM patterns. </p><p>The intention is to get a ComboBox control’s SelectedItem property to bind to an instance of a selected object, so that when the SelectedItem is changed, all other entities that are bound to it are also updated.  See this StackOverflow discussion for background information:</p><p><a href="http://stackoverflow.com/questions/11062297/wpf-mvvm-combobox-selecteditem">http://stackoverflow.com/questions/11062297/wpf-mvvm-combobox-selecteditem</a></p><p><strong>Step 1: Create a new WPF project:</strong></p><p><a href="/wp-content/uploads/2017/01/WpfComboBox1.jpg"><img fetchpriority="high" decoding="async" src="" alt="" width="800" height="450" class="alignnone size-full wp-image-7540" data-layzr="/wp-content/uploads/2017/01/WpfComboBox1.jpg"></a></p><p><strong>Step 2: Create your classes</strong></p><p>In my example I use a ‘Languages’ class that holds a language value, such as “English” and another string to identify it, such as “en”:</p><p><strong>Languages.cs</strong></p><pre class="brush: csharp; title: ; notranslate" title="">
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using WpfComboBox.Annotations;
+
+namespace WpfComboBox
+{
+    public class Language : INotifyPropertyChanged
+    {
+        private string _languageValue;
+        private string _languageId;
+
+        public string LanguageValue
+        {
+            get
+            {
+                return _languageValue;
+            }
+            set
+            {
+                _languageValue = value;
+                OnPropertyChanged(nameof(LanguageValue));
+            }
+        }
+
+        public string LanguageId
+        {
+            get
+            {
+                return _languageId;
+            }
+            set
+            {
+                _languageId = value;
+                OnPropertyChanged(nameof(LanguageId));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+}
+</pre><p>And also a ViewModel class:</p><p><strong>MainWindowViewModel.cs</strong></p><pre class="brush: csharp; title: ; notranslate" title="">
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using WpfComboBox.Annotations;
+
+namespace WpfComboBox
+{
+    public class MainWindowViewModel : INotifyPropertyChanged
+    {
+        private Language _currentSelection;
+        private string _labelText;
+
+        public MainWindowViewModel()
+        {
+            CurrentSelection = Languages.First();
+        }
+
+        public List&lt;Language&gt; Languages { get; } = new List&lt;Language&gt;
+        {
+            new Language {LanguageValue = "English", LanguageId = "en"},
+            new Language {LanguageValue = "German", LanguageId = "de"},
+            new Language {LanguageValue = "Italian", LanguageId = "it"}
+        };
+
+        public Language CurrentSelection
+        {
+            get { return _currentSelection; }
+            set
+            {
+                _currentSelection = value;
+                LabelText = "Current language selected: " + _currentSelection.LanguageValue;
+                OnPropertyChanged(nameof(CurrentSelection));
+            }
+        }
+
+        public string LabelText
+        {
+            get { return _labelText; }
+            set
+            {
+                _labelText = value;
+                OnPropertyChanged(nameof(LabelText));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+}
+</pre><p><strong>Step 3: Create your XAML view</strong></p><p>Update the MainWindow.xaml to create the window containing the ComboBox control, as well as a Label control to display the current<br>
+language being selected:</p><p><strong>MainWindow.xaml</strong></p><pre class="brush: xml; title: ; notranslate" title="">
+&lt;Window x:Class="WpfComboBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:WpfComboBox"
+        mc:Ignorable="d"
+        Title="Language Selection Combo Box" Height="250" Width="325"&gt;
+
+    &lt;Window.DataContext&gt;
+        &lt;viewModel:MainWindowViewModel /&gt;
+    &lt;/Window.DataContext&gt;
+
+    &lt;StackPanel
+        Width="300"
+        VerticalAlignment="Center"&gt;
+
+        &lt;Label
+            Height="60"
+            FontSize="14"
+            VerticalContentAlignment="Center"
+            Content="{Binding LabelText}" /&gt;
+
+        &lt;ComboBox
+            Height="50"
+            x:Name="LanguagesComboBox"
+            FontSize="14"
+            VerticalContentAlignment="Center"
+            ItemsSource="{Binding Path=Languages}"
+            DisplayMemberPath="LanguageValue"
+            SelectedValuePath="LanguageValue"
+            SelectedValue="{Binding CurrentSelection.LanguageValue}"
+            SelectedItem="{Binding CurrentSelection}" /&gt;
+    &lt;/StackPanel&gt;
+
+&lt;/Window&gt;
+</pre><p><strong>Step 4: Add the annotations file it needs</strong></p><p>This goes into the Properties, alongside AssemblyInfo.cs:</p><p><a href="/wp-content/uploads/2017/01/annotations.png"><img decoding="async" src="" alt="" width="240" height="321" class="alignnone size-full wp-image-8063" data-layzr="/wp-content/uploads/2017/01/annotations.png"></a></p><p><strong>Annotations.cs</strong></p><pre class="brush: csharp; title: ; notranslate" title="">
+/* MIT License
+
+Copyright (c) 2016 JetBrains http://www.jetbrains.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. */
+
+using System;
+
+#pragma warning disable 1591
+// ReSharper disable UnusedMember.Global
+// ReSharper disable MemberCanBePrivate.Global
+// ReSharper disable UnusedAutoPropertyAccessor.Global
+// ReSharper disable IntroduceOptionalParameters.Global
+// ReSharper disable MemberCanBeProtected.Global
+// ReSharper disable InconsistentNaming
+
+namespace WpfComboBox.Annotations
+{
+   /// &lt;summary&gt;
+   /// Indicates that the value of the marked element could be &lt;c&gt;null&lt;/c&gt; sometimes,
+   /// so the check for &lt;c&gt;null&lt;/c&gt; is necessary before its usage.
+   /// &lt;/summary&gt;
+   /// &lt;example&gt;&lt;code&gt;
+   /// [CanBeNull] object Test() =&gt; null;
+   /// 
+   /// void UseTest() {
+   ///   var p = Test();
+   ///   var s = p.ToString(); // Warning: Possible 'System.NullReferenceException'
+   /// }
+   /// &lt;/code&gt;&lt;/example&gt;
+   [AttributeUsage(
+      AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
+      AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event |
+      AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.GenericParameter)]
+   public sealed class CanBeNullAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// Indicates that the value of the marked element could never be &lt;c&gt;null&lt;/c&gt;.
+   /// &lt;/summary&gt;
+   /// &lt;example&gt;&lt;code&gt;
+   /// [NotNull] object Foo() {
+   ///   return null; // Warning: Possible 'null' assignment
+   /// }
+   /// &lt;/code&gt;&lt;/example&gt;
+   [AttributeUsage(
+      AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
+      AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event |
+      AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.GenericParameter)]
+   public sealed class NotNullAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// Can be appplied to symbols of types derived from IEnumerable as well as to symbols of Task
+   /// and Lazy classes to indicate that the value of a collection item, of the Task.Result property
+   /// or of the Lazy.Value property can never be null.
+   /// &lt;/summary&gt;
+   [AttributeUsage(
+      AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
+      AttributeTargets.Delegate | AttributeTargets.Field)]
+   public sealed class ItemNotNullAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// Can be appplied to symbols of types derived from IEnumerable as well as to symbols of Task
+   /// and Lazy classes to indicate that the value of a collection item, of the Task.Result property
+   /// or of the Lazy.Value property can be null.
+   /// &lt;/summary&gt;
+   [AttributeUsage(
+      AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
+      AttributeTargets.Delegate | AttributeTargets.Field)]
+   public sealed class ItemCanBeNullAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// Indicates that the marked method builds string by format pattern and (optional) arguments.
+   /// Parameter, which contains format string, should be given in constructor. The format string
+   /// should be in &lt;see cref="string.Format(IFormatProvider,string,object[])"/&gt;-like form.
+   /// &lt;/summary&gt;
+   /// &lt;example&gt;&lt;code&gt;
+   /// [StringFormatMethod("message")]
+   /// void ShowError(string message, params object[] args) { /* do something */ }
+   /// 
+   /// void Foo() {
+   ///   ShowError("Failed: {0}"); // Warning: Non-existing argument in format string
+   /// }
+   /// &lt;/code&gt;&lt;/example&gt;
+   [AttributeUsage(
+      AttributeTargets.Constructor | AttributeTargets.Method |
+      AttributeTargets.Property | AttributeTargets.Delegate)]
+   public sealed class StringFormatMethodAttribute : Attribute
+   {
+      /// &lt;param name="formatParameterName"&gt;
+      /// Specifies which parameter of an annotated method should be treated as format-string
+      /// &lt;/param&gt;
+      public StringFormatMethodAttribute([NotNull] string formatParameterName)
+      {
+         FormatParameterName = formatParameterName;
+      }
+
+      [NotNull]
+      public string FormatParameterName { get; private set; }
+   }
+
+   /// &lt;summary&gt;
+   /// For a parameter that is expected to be one of the limited set of values.
+   /// Specify fields of which type should be used as values for this parameter.
+   /// &lt;/summary&gt;
+   [AttributeUsage(
+      AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field,
+      AllowMultiple = true)]
+   public sealed class ValueProviderAttribute : Attribute
+   {
+      public ValueProviderAttribute([NotNull] string name)
+      {
+         Name = name;
+      }
+
+      [NotNull]
+      public string Name { get; private set; }
+   }
+
+   /// &lt;summary&gt;
+   /// Indicates that the function argument should be string literal and match one
+   /// of the parameters of the caller function. For example, ReSharper annotates
+   /// the parameter of &lt;see cref="System.ArgumentNullException"/&gt;.
+   /// &lt;/summary&gt;
+   /// &lt;example&gt;&lt;code&gt;
+   /// void Foo(string param) {
+   ///   if (param == null)
+   ///     throw new ArgumentNullException("par"); // Warning: Cannot resolve symbol
+   /// }
+   /// &lt;/code&gt;&lt;/example&gt;
+   [AttributeUsage(AttributeTargets.Parameter)]
+   public sealed class InvokerParameterNameAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// Indicates that the method is contained in a type that implements
+   /// &lt;c&gt;System.ComponentModel.INotifyPropertyChanged&lt;/c&gt; interface and this method
+   /// is used to notify that some property value changed.
+   /// &lt;/summary&gt;
+   /// &lt;remarks&gt;
+   /// The method should be non-static and conform to one of the supported signatures:
+   /// &lt;list&gt;
+   /// &lt;item&gt;&lt;c&gt;NotifyChanged(string)&lt;/c&gt;&lt;/item&gt;
+   /// &lt;item&gt;&lt;c&gt;NotifyChanged(params string[])&lt;/c&gt;&lt;/item&gt;
+   /// &lt;item&gt;&lt;c&gt;NotifyChanged{T}(Expression{Func{T}})&lt;/c&gt;&lt;/item&gt;
+   /// &lt;item&gt;&lt;c&gt;NotifyChanged{T,U}(Expression{Func{T,U}})&lt;/c&gt;&lt;/item&gt;
+   /// &lt;item&gt;&lt;c&gt;SetProperty{T}(ref T, T, string)&lt;/c&gt;&lt;/item&gt;
+   /// &lt;/list&gt;
+   /// &lt;/remarks&gt;
+   /// &lt;example&gt;&lt;code&gt;
+   /// public class Foo : INotifyPropertyChanged {
+   ///   public event PropertyChangedEventHandler PropertyChanged;
+   /// 
+   ///   [NotifyPropertyChangedInvocator]
+   ///   protected virtual void NotifyChanged(string propertyName) { ... }
+   ///
+   ///   string _name;
+   /// 
+   ///   public string Name {
+   ///     get { return _name; }
+   ///     set { _name = value; NotifyChanged("LastName"); /* Warning */ }
+   ///   }
+   /// }
+   /// &lt;/code&gt;
+   /// Examples of generated notifications:
+   /// &lt;list&gt;
+   /// &lt;item&gt;&lt;c&gt;NotifyChanged("Property")&lt;/c&gt;&lt;/item&gt;
+   /// &lt;item&gt;&lt;c&gt;NotifyChanged(() =&amp;gt; Property)&lt;/c&gt;&lt;/item&gt;
+   /// &lt;item&gt;&lt;c&gt;NotifyChanged((VM x) =&amp;gt; x.Property)&lt;/c&gt;&lt;/item&gt;
+   /// &lt;item&gt;&lt;c&gt;SetProperty(ref myField, value, "Property")&lt;/c&gt;&lt;/item&gt;
+   /// &lt;/list&gt;
+   /// &lt;/example&gt;
+   [AttributeUsage(AttributeTargets.Method)]
+   public sealed class NotifyPropertyChangedInvocatorAttribute : Attribute
+   {
+      public NotifyPropertyChangedInvocatorAttribute() { }
+      public NotifyPropertyChangedInvocatorAttribute([NotNull] string parameterName)
+      {
+         ParameterName = parameterName;
+      }
+
+      [CanBeNull]
+      public string ParameterName { get; private set; }
+   }
+
+   /// &lt;summary&gt;
+   /// Describes dependency between method input and output.
+   /// &lt;/summary&gt;
+   /// &lt;syntax&gt;
+   /// &lt;p&gt;Function Definition Table syntax:&lt;/p&gt;
+   /// &lt;list&gt;
+   /// &lt;item&gt;FDT      ::= FDTRow [;FDTRow]*&lt;/item&gt;
+   /// &lt;item&gt;FDTRow   ::= Input =&amp;gt; Output | Output &amp;lt;= Input&lt;/item&gt;
+   /// &lt;item&gt;Input    ::= ParameterName: Value [, Input]*&lt;/item&gt;
+   /// &lt;item&gt;Output   ::= [ParameterName: Value]* {halt|stop|void|nothing|Value}&lt;/item&gt;
+   /// &lt;item&gt;Value    ::= true | false | null | notnull | canbenull&lt;/item&gt;
+   /// &lt;/list&gt;
+   /// If method has single input parameter, it's name could be omitted.&lt;br/&gt;
+   /// Using &lt;c&gt;halt&lt;/c&gt; (or &lt;c&gt;void&lt;/c&gt;/&lt;c&gt;nothing&lt;/c&gt;, which is the same) for method output
+   /// means that the methos doesn't return normally (throws or terminates the process).&lt;br/&gt;
+   /// Value &lt;c&gt;canbenull&lt;/c&gt; is only applicable for output parameters.&lt;br/&gt;
+   /// You can use multiple &lt;c&gt;[ContractAnnotation]&lt;/c&gt; for each FDT row, or use single attribute
+   /// with rows separated by semicolon. There is no notion of order rows, all rows are checked
+   /// for applicability and applied per each program state tracked by R# analysis.&lt;br/&gt;
+   /// &lt;/syntax&gt;
+   /// &lt;examples&gt;&lt;list&gt;
+   /// &lt;item&gt;&lt;code&gt;
+   /// [ContractAnnotation("=&amp;gt; halt")]
+   /// public void TerminationMethod()
+   /// &lt;/code&gt;&lt;/item&gt;
+   /// &lt;item&gt;&lt;code&gt;
+   /// [ContractAnnotation("halt &amp;lt;= condition: false")]
+   /// public void Assert(bool condition, string text) // regular assertion method
+   /// &lt;/code&gt;&lt;/item&gt;
+   /// &lt;item&gt;&lt;code&gt;
+   /// [ContractAnnotation("s:null =&amp;gt; true")]
+   /// public bool IsNullOrEmpty(string s) // string.IsNullOrEmpty()
+   /// &lt;/code&gt;&lt;/item&gt;
+   /// &lt;item&gt;&lt;code&gt;
+   /// // A method that returns null if the parameter is null,
+   /// // and not null if the parameter is not null
+   /// [ContractAnnotation("null =&amp;gt; null; notnull =&amp;gt; notnull")]
+   /// public object Transform(object data) 
+   /// &lt;/code&gt;&lt;/item&gt;
+   /// &lt;item&gt;&lt;code&gt;
+   /// [ContractAnnotation("=&amp;gt; true, result: notnull; =&amp;gt; false, result: null")]
+   /// public bool TryParse(string s, out Person result)
+   /// &lt;/code&gt;&lt;/item&gt;
+   /// &lt;/list&gt;&lt;/examples&gt;
+   [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+   public sealed class ContractAnnotationAttribute : Attribute
+   {
+      public ContractAnnotationAttribute([NotNull] string contract)
+         : this(contract, false) { }
+
+      public ContractAnnotationAttribute([NotNull] string contract, bool forceFullStates)
+      {
+         Contract = contract;
+         ForceFullStates = forceFullStates;
+      }
+
+      [NotNull]
+      public string Contract { get; private set; }
+
+      public bool ForceFullStates { get; private set; }
+   }
+
+   /// &lt;summary&gt;
+   /// Indicates that marked element should be localized or not.
+   /// &lt;/summary&gt;
+   /// &lt;example&gt;&lt;code&gt;
+   /// [LocalizationRequiredAttribute(true)]
+   /// class Foo {
+   ///   string str = "my string"; // Warning: Localizable string
+   /// }
+   /// &lt;/code&gt;&lt;/example&gt;
+   [AttributeUsage(AttributeTargets.All)]
+   public sealed class LocalizationRequiredAttribute : Attribute
+   {
+      public LocalizationRequiredAttribute() : this(true) { }
+
+      public LocalizationRequiredAttribute(bool required)
+      {
+         Required = required;
+      }
+
+      public bool Required { get; private set; }
+   }
+
+   /// &lt;summary&gt;
+   /// Indicates that the value of the marked type (or its derivatives)
+   /// cannot be compared using '==' or '!=' operators and &lt;c&gt;Equals()&lt;/c&gt;
+   /// should be used instead. However, using '==' or '!=' for comparison
+   /// with &lt;c&gt;null&lt;/c&gt; is always permitted.
+   /// &lt;/summary&gt;
+   /// &lt;example&gt;&lt;code&gt;
+   /// [CannotApplyEqualityOperator]
+   /// class NoEquality { }
+   /// 
+   /// class UsesNoEquality {
+   ///   void Test() {
+   ///     var ca1 = new NoEquality();
+   ///     var ca2 = new NoEquality();
+   ///     if (ca1 != null) { // OK
+   ///       bool condition = ca1 == ca2; // Warning
+   ///     }
+   ///   }
+   /// }
+   /// &lt;/code&gt;&lt;/example&gt;
+   [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Struct)]
+   public sealed class CannotApplyEqualityOperatorAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// When applied to a target attribute, specifies a requirement for any type marked
+   /// with the target attribute to implement or inherit specific type or types.
+   /// &lt;/summary&gt;
+   /// &lt;example&gt;&lt;code&gt;
+   /// [BaseTypeRequired(typeof(IComponent)] // Specify requirement
+   /// class ComponentAttribute : Attribute { }
+   /// 
+   /// [Component] // ComponentAttribute requires implementing IComponent interface
+   /// class MyComponent : IComponent { }
+   /// &lt;/code&gt;&lt;/example&gt;
+   [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+   [BaseTypeRequired(typeof(Attribute))]
+   public sealed class BaseTypeRequiredAttribute : Attribute
+   {
+      public BaseTypeRequiredAttribute([NotNull] Type baseType)
+      {
+         BaseType = baseType;
+      }
+
+      [NotNull]
+      public Type BaseType { get; private set; }
+   }
+
+   /// &lt;summary&gt;
+   /// Indicates that the marked symbol is used implicitly (e.g. via reflection, in external library),
+   /// so this symbol will not be marked as unused (as well as by other usage inspections).
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.All)]
+   public sealed class UsedImplicitlyAttribute : Attribute
+   {
+      public UsedImplicitlyAttribute()
+         : this(ImplicitUseKindFlags.Default, ImplicitUseTargetFlags.Default) { }
+
+      public UsedImplicitlyAttribute(ImplicitUseKindFlags useKindFlags)
+         : this(useKindFlags, ImplicitUseTargetFlags.Default) { }
+
+      public UsedImplicitlyAttribute(ImplicitUseTargetFlags targetFlags)
+         : this(ImplicitUseKindFlags.Default, targetFlags) { }
+
+      public UsedImplicitlyAttribute(ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags)
+      {
+         UseKindFlags = useKindFlags;
+         TargetFlags = targetFlags;
+      }
+
+      public ImplicitUseKindFlags UseKindFlags { get; private set; }
+
+      public ImplicitUseTargetFlags TargetFlags { get; private set; }
+   }
+
+   /// &lt;summary&gt;
+   /// Should be used on attributes and causes ReSharper to not mark symbols marked with such attributes
+   /// as unused (as well as by other usage inspections)
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Class | AttributeTargets.GenericParameter)]
+   public sealed class MeansImplicitUseAttribute : Attribute
+   {
+      public MeansImplicitUseAttribute()
+         : this(ImplicitUseKindFlags.Default, ImplicitUseTargetFlags.Default) { }
+
+      public MeansImplicitUseAttribute(ImplicitUseKindFlags useKindFlags)
+         : this(useKindFlags, ImplicitUseTargetFlags.Default) { }
+
+      public MeansImplicitUseAttribute(ImplicitUseTargetFlags targetFlags)
+         : this(ImplicitUseKindFlags.Default, targetFlags) { }
+
+      public MeansImplicitUseAttribute(ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags)
+      {
+         UseKindFlags = useKindFlags;
+         TargetFlags = targetFlags;
+      }
+
+      [UsedImplicitly]
+      public ImplicitUseKindFlags UseKindFlags { get; private set; }
+
+      [UsedImplicitly]
+      public ImplicitUseTargetFlags TargetFlags { get; private set; }
+   }
+
+   [Flags]
+   public enum ImplicitUseKindFlags
+   {
+      Default = Access | Assign | InstantiatedWithFixedConstructorSignature,
+      /// &lt;summary&gt;Only entity marked with attribute considered used.&lt;/summary&gt;
+      Access = 1,
+      /// &lt;summary&gt;Indicates implicit assignment to a member.&lt;/summary&gt;
+      Assign = 2,
+      /// &lt;summary&gt;
+      /// Indicates implicit instantiation of a type with fixed constructor signature.
+      /// That means any unused constructor parameters won't be reported as such.
+      /// &lt;/summary&gt;
+      InstantiatedWithFixedConstructorSignature = 4,
+      /// &lt;summary&gt;Indicates implicit instantiation of a type.&lt;/summary&gt;
+      InstantiatedNoFixedConstructorSignature = 8,
+   }
+
+   /// &lt;summary&gt;
+   /// Specify what is considered used implicitly when marked
+   /// with &lt;see cref="MeansImplicitUseAttribute"/&gt; or &lt;see cref="UsedImplicitlyAttribute"/&gt;.
+   /// &lt;/summary&gt;
+   [Flags]
+   public enum ImplicitUseTargetFlags
+   {
+      Default = Itself,
+      Itself = 1,
+      /// &lt;summary&gt;Members of entity marked with attribute are considered used.&lt;/summary&gt;
+      Members = 2,
+      /// &lt;summary&gt;Entity marked with attribute and all its members considered used.&lt;/summary&gt;
+      WithMembers = Itself | Members
+   }
+
+   /// &lt;summary&gt;
+   /// This attribute is intended to mark publicly available API
+   /// which should not be removed and so is treated as used.
+   /// &lt;/summary&gt;
+   [MeansImplicitUse(ImplicitUseTargetFlags.WithMembers)]
+   public sealed class PublicAPIAttribute : Attribute
+   {
+      public PublicAPIAttribute() { }
+
+      public PublicAPIAttribute([NotNull] string comment)
+      {
+         Comment = comment;
+      }
+
+      [CanBeNull]
+      public string Comment { get; private set; }
+   }
+
+   /// &lt;summary&gt;
+   /// Tells code analysis engine if the parameter is completely handled when the invoked method is on stack.
+   /// If the parameter is a delegate, indicates that delegate is executed while the method is executed.
+   /// If the parameter is an enumerable, indicates that it is enumerated while the method is executed.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter)]
+   public sealed class InstantHandleAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// Indicates that a method does not make any observable state changes.
+   /// The same as &lt;c&gt;System.Diagnostics.Contracts.PureAttribute&lt;/c&gt;.
+   /// &lt;/summary&gt;
+   /// &lt;example&gt;&lt;code&gt;
+   /// [Pure] int Multiply(int x, int y) =&gt; x * y;
+   /// 
+   /// void M() {
+   ///   Multiply(123, 42); // Waring: Return value of pure method is not used
+   /// }
+   /// &lt;/code&gt;&lt;/example&gt;
+   [AttributeUsage(AttributeTargets.Method)]
+   public sealed class PureAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// Indicates that the return value of method invocation must be used.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Method)]
+   public sealed class MustUseReturnValueAttribute : Attribute
+   {
+      public MustUseReturnValueAttribute() { }
+
+      public MustUseReturnValueAttribute([NotNull] string justification)
+      {
+         Justification = justification;
+      }
+
+      [CanBeNull]
+      public string Justification { get; private set; }
+   }
+
+   /// &lt;summary&gt;
+   /// Indicates the type member or parameter of some type, that should be used instead of all other ways
+   /// to get the value that type. This annotation is useful when you have some "context" value evaluated
+   /// and stored somewhere, meaning that all other ways to get this value must be consolidated with existing one.
+   /// &lt;/summary&gt;
+   /// &lt;example&gt;&lt;code&gt;
+   /// class Foo {
+   ///   [ProvidesContext] IBarService _barService = ...;
+   /// 
+   ///   void ProcessNode(INode node) {
+   ///     DoSomething(node, node.GetGlobalServices().Bar);
+   ///     //              ^ Warning: use value of '_barService' field
+   ///   }
+   /// }
+   /// &lt;/code&gt;&lt;/example&gt;
+   [AttributeUsage(
+      AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Parameter | AttributeTargets.Method |
+      AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Struct | AttributeTargets.GenericParameter)]
+   public sealed class ProvidesContextAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// Indicates that a parameter is a path to a file or a folder within a web project.
+   /// Path can be relative or absolute, starting from web root (~).
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter)]
+   public sealed class PathReferenceAttribute : Attribute
+   {
+      public PathReferenceAttribute() { }
+
+      public PathReferenceAttribute([NotNull, PathReference] string basePath)
+      {
+         BasePath = basePath;
+      }
+
+      [CanBeNull]
+      public string BasePath { get; private set; }
+   }
+
+   /// &lt;summary&gt;
+   /// An extension method marked with this attribute is processed by ReSharper code completion
+   /// as a 'Source Template'. When extension method is completed over some expression, it's source code
+   /// is automatically expanded like a template at call site.
+   /// &lt;/summary&gt;
+   /// &lt;remarks&gt;
+   /// Template method body can contain valid source code and/or special comments starting with '$'.
+   /// Text inside these comments is added as source code when the template is applied. Template parameters
+   /// can be used either as additional method parameters or as identifiers wrapped in two '$' signs.
+   /// Use the &lt;see cref="MacroAttribute"/&gt; attribute to specify macros for parameters.
+   /// &lt;/remarks&gt;
+   /// &lt;example&gt;
+   /// In this example, the 'forEach' method is a source template available over all values
+   /// of enumerable types, producing ordinary C# 'foreach' statement and placing caret inside block:
+   /// &lt;code&gt;
+   /// [SourceTemplate]
+   /// public static void forEach&amp;lt;T&amp;gt;(this IEnumerable&amp;lt;T&amp;gt; xs) {
+   ///   foreach (var x in xs) {
+   ///      //$ $END$
+   ///   }
+   /// }
+   /// &lt;/code&gt;
+   /// &lt;/example&gt;
+   [AttributeUsage(AttributeTargets.Method)]
+   public sealed class SourceTemplateAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// Allows specifying a macro for a parameter of a &lt;see cref="SourceTemplateAttribute"&gt;source template&lt;/see&gt;.
+   /// &lt;/summary&gt;
+   /// &lt;remarks&gt;
+   /// You can apply the attribute on the whole method or on any of its additional parameters. The macro expression
+   /// is defined in the &lt;see cref="MacroAttribute.Expression"/&gt; property. When applied on a method, the target
+   /// template parameter is defined in the &lt;see cref="MacroAttribute.Target"/&gt; property. To apply the macro silently
+   /// for the parameter, set the &lt;see cref="MacroAttribute.Editable"/&gt; property value = -1.
+   /// &lt;/remarks&gt;
+   /// &lt;example&gt;
+   /// Applying the attribute on a source template method:
+   /// &lt;code&gt;
+   /// [SourceTemplate, Macro(Target = "item", Expression = "suggestVariableName()")]
+   /// public static void forEach&amp;lt;T&amp;gt;(this IEnumerable&amp;lt;T&amp;gt; collection) {
+   ///   foreach (var item in collection) {
+   ///     //$ $END$
+   ///   }
+   /// }
+   /// &lt;/code&gt;
+   /// Applying the attribute on a template method parameter:
+   /// &lt;code&gt;
+   /// [SourceTemplate]
+   /// public static void something(this Entity x, [Macro(Expression = "guid()", Editable = -1)] string newguid) {
+   ///   /*$ var $x$Id = "$newguid$" + x.ToString();
+   ///   x.DoSomething($x$Id); */
+   /// }
+   /// &lt;/code&gt;
+   /// &lt;/example&gt;
+   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method, AllowMultiple = true)]
+   public sealed class MacroAttribute : Attribute
+   {
+      /// &lt;summary&gt;
+      /// Allows specifying a macro that will be executed for a &lt;see cref="SourceTemplateAttribute"&gt;source template&lt;/see&gt;
+      /// parameter when the template is expanded.
+      /// &lt;/summary&gt;
+      [CanBeNull]
+      public string Expression { get; set; }
+
+      /// &lt;summary&gt;
+      /// Allows specifying which occurrence of the target parameter becomes editable when the template is deployed.
+      /// &lt;/summary&gt;
+      /// &lt;remarks&gt;
+      /// If the target parameter is used several times in the template, only one occurrence becomes editable;
+      /// other occurrences are changed synchronously. To specify the zero-based index of the editable occurrence,
+      /// use values &gt;= 0. To make the parameter non-editable when the template is expanded, use -1.
+      /// &lt;/remarks&gt;&gt;
+      public int Editable { get; set; }
+
+      /// &lt;summary&gt;
+      /// Identifies the target parameter of a &lt;see cref="SourceTemplateAttribute"&gt;source template&lt;/see&gt; if the
+      /// &lt;see cref="MacroAttribute"/&gt; is applied on a template method.
+      /// &lt;/summary&gt;
+      [CanBeNull]
+      public string Target { get; set; }
+   }
+
+   [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = true)]
+   public sealed class AspMvcAreaMasterLocationFormatAttribute : Attribute
+   {
+      public AspMvcAreaMasterLocationFormatAttribute([NotNull] string format)
+      {
+         Format = format;
+      }
+
+      [NotNull]
+      public string Format { get; private set; }
+   }
+
+   [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = true)]
+   public sealed class AspMvcAreaPartialViewLocationFormatAttribute : Attribute
+   {
+      public AspMvcAreaPartialViewLocationFormatAttribute([NotNull] string format)
+      {
+         Format = format;
+      }
+
+      [NotNull]
+      public string Format { get; private set; }
+   }
+
+   [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = true)]
+   public sealed class AspMvcAreaViewLocationFormatAttribute : Attribute
+   {
+      public AspMvcAreaViewLocationFormatAttribute([NotNull] string format)
+      {
+         Format = format;
+      }
+
+      [NotNull]
+      public string Format { get; private set; }
+   }
+
+   [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = true)]
+   public sealed class AspMvcMasterLocationFormatAttribute : Attribute
+   {
+      public AspMvcMasterLocationFormatAttribute([NotNull] string format)
+      {
+         Format = format;
+      }
+
+      [NotNull]
+      public string Format { get; private set; }
+   }
+
+   [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = true)]
+   public sealed class AspMvcPartialViewLocationFormatAttribute : Attribute
+   {
+      public AspMvcPartialViewLocationFormatAttribute([NotNull] string format)
+      {
+         Format = format;
+      }
+
+      [NotNull]
+      public string Format { get; private set; }
+   }
+
+   [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = true)]
+   public sealed class AspMvcViewLocationFormatAttribute : Attribute
+   {
+      public AspMvcViewLocationFormatAttribute([NotNull] string format)
+      {
+         Format = format;
+      }
+
+      [NotNull]
+      public string Format { get; private set; }
+   }
+
+   /// &lt;summary&gt;
+   /// ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+   /// is an MVC action. If applied to a method, the MVC action name is calculated
+   /// implicitly from the context. Use this attribute for custom wrappers similar to
+   /// &lt;c&gt;System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)&lt;/c&gt;.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
+   public sealed class AspMvcActionAttribute : Attribute
+   {
+      public AspMvcActionAttribute() { }
+
+      public AspMvcActionAttribute([NotNull] string anonymousProperty)
+      {
+         AnonymousProperty = anonymousProperty;
+      }
+
+      [CanBeNull]
+      public string AnonymousProperty { get; private set; }
+   }
+
+   /// &lt;summary&gt;
+   /// ASP.NET MVC attribute. Indicates that a parameter is an MVC area.
+   /// Use this attribute for custom wrappers similar to
+   /// &lt;c&gt;System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)&lt;/c&gt;.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter)]
+   public sealed class AspMvcAreaAttribute : Attribute
+   {
+      public AspMvcAreaAttribute() { }
+
+      public AspMvcAreaAttribute([NotNull] string anonymousProperty)
+      {
+         AnonymousProperty = anonymousProperty;
+      }
+
+      [CanBeNull]
+      public string AnonymousProperty { get; private set; }
+   }
+
+   /// &lt;summary&gt;
+   /// ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter is
+   /// an MVC controller. If applied to a method, the MVC controller name is calculated
+   /// implicitly from the context. Use this attribute for custom wrappers similar to
+   /// &lt;c&gt;System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String, String)&lt;/c&gt;.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
+   public sealed class AspMvcControllerAttribute : Attribute
+   {
+      public AspMvcControllerAttribute() { }
+
+      public AspMvcControllerAttribute([NotNull] string anonymousProperty)
+      {
+         AnonymousProperty = anonymousProperty;
+      }
+
+      [CanBeNull]
+      public string AnonymousProperty { get; private set; }
+   }
+
+   /// &lt;summary&gt;
+   /// ASP.NET MVC attribute. Indicates that a parameter is an MVC Master. Use this attribute
+   /// for custom wrappers similar to &lt;c&gt;System.Web.Mvc.Controller.View(String, String)&lt;/c&gt;.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter)]
+   public sealed class AspMvcMasterAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// ASP.NET MVC attribute. Indicates that a parameter is an MVC model type. Use this attribute
+   /// for custom wrappers similar to &lt;c&gt;System.Web.Mvc.Controller.View(String, Object)&lt;/c&gt;.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter)]
+   public sealed class AspMvcModelTypeAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter is an MVC
+   /// partial view. If applied to a method, the MVC partial view name is calculated implicitly
+   /// from the context. Use this attribute for custom wrappers similar to
+   /// &lt;c&gt;System.Web.Mvc.Html.RenderPartialExtensions.RenderPartial(HtmlHelper, String)&lt;/c&gt;.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
+   public sealed class AspMvcPartialViewAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// ASP.NET MVC attribute. Allows disabling inspections for MVC views within a class or a method.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+   public sealed class AspMvcSuppressViewErrorAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// ASP.NET MVC attribute. Indicates that a parameter is an MVC display template.
+   /// Use this attribute for custom wrappers similar to 
+   /// &lt;c&gt;System.Web.Mvc.Html.DisplayExtensions.DisplayForModel(HtmlHelper, String)&lt;/c&gt;.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter)]
+   public sealed class AspMvcDisplayTemplateAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// ASP.NET MVC attribute. Indicates that a parameter is an MVC editor template.
+   /// Use this attribute for custom wrappers similar to
+   /// &lt;c&gt;System.Web.Mvc.Html.EditorExtensions.EditorForModel(HtmlHelper, String)&lt;/c&gt;.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter)]
+   public sealed class AspMvcEditorTemplateAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// ASP.NET MVC attribute. Indicates that a parameter is an MVC template.
+   /// Use this attribute for custom wrappers similar to
+   /// &lt;c&gt;System.ComponentModel.DataAnnotations.UIHintAttribute(System.String)&lt;/c&gt;.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter)]
+   public sealed class AspMvcTemplateAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+   /// is an MVC view component. If applied to a method, the MVC view name is calculated implicitly
+   /// from the context. Use this attribute for custom wrappers similar to
+   /// &lt;c&gt;System.Web.Mvc.Controller.View(Object)&lt;/c&gt;.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
+   public sealed class AspMvcViewAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+   /// is an MVC view component name.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter)]
+   public sealed class AspMvcViewComponentAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+   /// is an MVC view component view. If applied to a method, the MVC view component view name is default.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
+   public sealed class AspMvcViewComponentViewAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// ASP.NET MVC attribute. When applied to a parameter of an attribute,
+   /// indicates that this parameter is an MVC action name.
+   /// &lt;/summary&gt;
+   /// &lt;example&gt;&lt;code&gt;
+   /// [ActionName("Foo")]
+   /// public ActionResult Login(string returnUrl) {
+   ///   ViewBag.ReturnUrl = Url.Action("Foo"); // OK
+   ///   return RedirectToAction("Bar"); // Error: Cannot resolve action
+   /// }
+   /// &lt;/code&gt;&lt;/example&gt;
+   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property)]
+   public sealed class AspMvcActionSelectorAttribute : Attribute { }
+
+   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field)]
+   public sealed class HtmlElementAttributesAttribute : Attribute
+   {
+      public HtmlElementAttributesAttribute() { }
+
+      public HtmlElementAttributesAttribute([NotNull] string name)
+      {
+         Name = name;
+      }
+
+      [CanBeNull]
+      public string Name { get; private set; }
+   }
+
+   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property)]
+   public sealed class HtmlAttributeValueAttribute : Attribute
+   {
+      public HtmlAttributeValueAttribute([NotNull] string name)
+      {
+         Name = name;
+      }
+
+      [NotNull]
+      public string Name { get; private set; }
+   }
+
+   /// &lt;summary&gt;
+   /// Razor attribute. Indicates that a parameter or a method is a Razor section.
+   /// Use this attribute for custom wrappers similar to 
+   /// &lt;c&gt;System.Web.WebPages.WebPageBase.RenderSection(String)&lt;/c&gt;.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
+   public sealed class RazorSectionAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// Indicates how method, constructor invocation or property access
+   /// over collection type affects content of the collection.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor | AttributeTargets.Property)]
+   public sealed class CollectionAccessAttribute : Attribute
+   {
+      public CollectionAccessAttribute(CollectionAccessType collectionAccessType)
+      {
+         CollectionAccessType = collectionAccessType;
+      }
+
+      public CollectionAccessType CollectionAccessType { get; private set; }
+   }
+
+   [Flags]
+   public enum CollectionAccessType
+   {
+      /// &lt;summary&gt;Method does not use or modify content of the collection.&lt;/summary&gt;
+      None = 0,
+      /// &lt;summary&gt;Method only reads content of the collection but does not modify it.&lt;/summary&gt;
+      Read = 1,
+      /// &lt;summary&gt;Method can change content of the collection but does not add new elements.&lt;/summary&gt;
+      ModifyExistingContent = 2,
+      /// &lt;summary&gt;Method can add new elements to the collection.&lt;/summary&gt;
+      UpdatedContent = ModifyExistingContent | 4
+   }
+
+   /// &lt;summary&gt;
+   /// Indicates that the marked method is assertion method, i.e. it halts control flow if
+   /// one of the conditions is satisfied. To set the condition, mark one of the parameters with 
+   /// &lt;see cref="AssertionConditionAttribute"/&gt; attribute.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Method)]
+   public sealed class AssertionMethodAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// Indicates the condition parameter of the assertion method. The method itself should be
+   /// marked by &lt;see cref="AssertionMethodAttribute"/&gt; attribute. The mandatory argument of
+   /// the attribute is the assertion type.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter)]
+   public sealed class AssertionConditionAttribute : Attribute
+   {
+      public AssertionConditionAttribute(AssertionConditionType conditionType)
+      {
+         ConditionType = conditionType;
+      }
+
+      public AssertionConditionType ConditionType { get; private set; }
+   }
+
+   /// &lt;summary&gt;
+   /// Specifies assertion type. If the assertion method argument satisfies the condition,
+   /// then the execution continues. Otherwise, execution is assumed to be halted.
+   /// &lt;/summary&gt;
+   public enum AssertionConditionType
+   {
+      /// &lt;summary&gt;Marked parameter should be evaluated to true.&lt;/summary&gt;
+      IS_TRUE = 0,
+      /// &lt;summary&gt;Marked parameter should be evaluated to false.&lt;/summary&gt;
+      IS_FALSE = 1,
+      /// &lt;summary&gt;Marked parameter should be evaluated to null value.&lt;/summary&gt;
+      IS_NULL = 2,
+      /// &lt;summary&gt;Marked parameter should be evaluated to not null value.&lt;/summary&gt;
+      IS_NOT_NULL = 3,
+   }
+
+   /// &lt;summary&gt;
+   /// Indicates that the marked method unconditionally terminates control flow execution.
+   /// For example, it could unconditionally throw exception.
+   /// &lt;/summary&gt;
+   [Obsolete("Use [ContractAnnotation('=&gt; halt')] instead")]
+   [AttributeUsage(AttributeTargets.Method)]
+   public sealed class TerminatesProgramAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// Indicates that method is pure LINQ method, with postponed enumeration (like Enumerable.Select,
+   /// .Where). This annotation allows inference of [InstantHandle] annotation for parameters
+   /// of delegate type by analyzing LINQ method chains.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Method)]
+   public sealed class LinqTunnelAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// Indicates that IEnumerable, passed as parameter, is not enumerated.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter)]
+   public sealed class NoEnumerationAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// Indicates that parameter is regular expression pattern.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Parameter)]
+   public sealed class RegexPatternAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// Prevents the Member Reordering feature from tossing members of the marked class.
+   /// &lt;/summary&gt;
+   /// &lt;remarks&gt;
+   /// The attribute must be mentioned in your member reordering patterns
+   /// &lt;/remarks&gt;
+   [AttributeUsage(
+      AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Struct | AttributeTargets.Enum)]
+   public sealed class NoReorderAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// XAML attribute. Indicates the type that has &lt;c&gt;ItemsSource&lt;/c&gt; property and should be treated
+   /// as &lt;c&gt;ItemsControl&lt;/c&gt;-derived type, to enable inner items &lt;c&gt;DataContext&lt;/c&gt; type resolve.
+   /// &lt;/summary&gt;
+   [AttributeUsage(AttributeTargets.Class)]
+   public sealed class XamlItemsControlAttribute : Attribute { }
+
+   /// &lt;summary&gt;
+   /// XAML attribute. Indicates the property of some &lt;c&gt;BindingBase&lt;/c&gt;-derived type, that
+   /// is used to bind some item of &lt;c&gt;ItemsControl&lt;/c&gt;-derived type. This annotation will
+   /// enable the &lt;c&gt;DataContext&lt;/c&gt; type resolve for XAML bindings for such properties.
+   /// &lt;/summary&gt;
+   /// &lt;remarks&gt;
+   /// Property should have the tree ancestor of the &lt;c&gt;ItemsControl&lt;/c&gt; type or
+   /// marked with the &lt;see cref="XamlItemsControlAttribute"/&gt; attribute.
+   /// &lt;/remarks&gt;
+   [AttributeUsage(AttributeTargets.Property)]
+   public sealed class XamlItemBindingOfItemsControlAttribute : Attribute { }
+
+   [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+   public sealed class AspChildControlTypeAttribute : Attribute
+   {
+      public AspChildControlTypeAttribute([NotNull] string tagName, [NotNull] Type controlType)
+      {
+         TagName = tagName;
+         ControlType = controlType;
+      }
+
+      [NotNull]
+      public string TagName { get; private set; }
+
+      [NotNull]
+      public Type ControlType { get; private set; }
+   }
+
+   [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method)]
+   public sealed class AspDataFieldAttribute : Attribute { }
+
+   [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method)]
+   public sealed class AspDataFieldsAttribute : Attribute { }
+
+   [AttributeUsage(AttributeTargets.Property)]
+   public sealed class AspMethodPropertyAttribute : Attribute { }
+
+   [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+   public sealed class AspRequiredAttributeAttribute : Attribute
+   {
+      public AspRequiredAttributeAttribute([NotNull] string attribute)
+      {
+         Attribute = attribute;
+      }
+
+      [NotNull]
+      public string Attribute { get; private set; }
+   }
+
+   [AttributeUsage(AttributeTargets.Property)]
+   public sealed class AspTypePropertyAttribute : Attribute
+   {
+      public bool CreateConstructorReferences { get; private set; }
+
+      public AspTypePropertyAttribute(bool createConstructorReferences)
+      {
+         CreateConstructorReferences = createConstructorReferences;
+      }
+   }
+
+   [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
+   public sealed class RazorImportNamespaceAttribute : Attribute
+   {
+      public RazorImportNamespaceAttribute([NotNull] string name)
+      {
+         Name = name;
+      }
+
+      [NotNull]
+      public string Name { get; private set; }
+   }
+
+   [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
+   public sealed class RazorInjectionAttribute : Attribute
+   {
+      public RazorInjectionAttribute([NotNull] string type, [NotNull] string fieldName)
+      {
+         Type = type;
+         FieldName = fieldName;
+      }
+
+      [NotNull]
+      public string Type { get; private set; }
+
+      [NotNull]
+      public string FieldName { get; private set; }
+   }
+
+   [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
+   public sealed class RazorDirectiveAttribute : Attribute
+   {
+      public RazorDirectiveAttribute([NotNull] string directive)
+      {
+         Directive = directive;
+      }
+
+      [NotNull]
+      public string Directive { get; private set; }
+   }
+
+   [AttributeUsage(AttributeTargets.Method)]
+   public sealed class RazorHelperCommonAttribute : Attribute { }
+
+   [AttributeUsage(AttributeTargets.Property)]
+   public sealed class RazorLayoutAttribute : Attribute { }
+
+   [AttributeUsage(AttributeTargets.Method)]
+   public sealed class RazorWriteLiteralMethodAttribute : Attribute { }
+
+   [AttributeUsage(AttributeTargets.Method)]
+   public sealed class RazorWriteMethodAttribute : Attribute { }
+
+   [AttributeUsage(AttributeTargets.Parameter)]
+   public sealed class RazorWriteMethodParameterAttribute : Attribute { }
+}
+</pre><p><strong>Step 5: Try it out</strong></p><p>For this very simple example that should be all there is to it.</p><p>On building and running the project notice the selected ComboBox item defaults to English”:</p><p><a href="/wp-content/uploads/2017/01/WpfComboBox2.jpg"><img decoding="async" src="" alt="" width="325" height="250" class="alignnone size-full wp-image-7543" data-layzr="/wp-content/uploads/2017/01/WpfComboBox2.jpg"></a></p><p>Notice that on selecting another language, the ComboBox control is populated with the list of languages that are initialsed in the MainWindowViewModel class:</p><p><a href="/wp-content/uploads/2017/01/WpfComboBox3.png"><img decoding="async" src="" alt="" width="325" height="250" class="alignnone size-full wp-image-7544" data-layzr="/wp-content/uploads/2017/01/WpfComboBox3.png"></a></p><p>And when we select another language, “Italian” for example, the dialog controls are updated accordingly:</p><p><a href="/wp-content/uploads/2017/01/WpfComboBox4.png"><img decoding="async" src="" alt="" width="325" height="250" class="alignnone size-full wp-image-7545" data-layzr="/wp-content/uploads/2017/01/WpfComboBox4.png"></a></p>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '7539'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2017/using-combobox-selecteditem-property-in-wpf-mvvm/&amp;media=&amp;description=Using%20the%20ComboBox%20SelectedItem%20property%20in%20WPF%20/%20MVVM" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2019/how-to-unit-test-a-net-core-project-using-xunit/" title="How to unit test a .NET Core project using xUnit" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="How to unit test a .NET Core project using xUnit"></div>
+                                                                        <h4 class="title front-view-title">How to unit test a .NET Core project using xUnit</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2017/detecting-mouseover-events-in-wpf-mvvm/" title="Detecting ‘MouseOver’ events in WPF / MVVM" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Detecting ‘MouseOver’ events in WPF / MVVM"></div>
+                                                                        <h4 class="title front-view-title">Detecting ‘MouseOver’ events in WPF / MVVM</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2018/applying-a-genetic-algorithm-to-the-quadratic-assignment-problem-in-c/" title="Applying a genetic algorithm to the quadratic assignment problem in C#" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Applying a genetic algorithm to the quadratic assignment problem in C#"></div>
+                                                                        <h4 class="title front-view-title">Applying a genetic algorithm to the quadratic assignment problem in C#</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-48400">
+    		                    <div id="comment-48400" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/900c23dff9a8857787fd2ddf23eaa4595130f9388a89a0b2eb088c770dc2ee8c?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/900c23dff9a8857787fd2ddf23eaa4595130f9388a89a0b2eb088c770dc2ee8c?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Jovan</span></span>                                                            <span class="ago">8 January 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Don’t work</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2017/using-combobox-selecteditem-property-in-wpf-mvvm/?replytocom=48400#respond" data-commentid="48400" data-postid="7539" data-belowelement="comment-48400" data-respondelement="respond" data-replyto="Reply to Jovan" aria-label="Reply to Jovan">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    </ol><ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-48401">
+    		                    <div id="comment-48401" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">8 January 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>It’s missing a step – to add the ‘Annotations.cs’ file (which in my project was auto-generated by ReSharper).<br>
+I have just updated this post to include this particular step.  Thanks for pointing this out.  I will send you an updated VS project.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2017/using-combobox-selecteditem-property-in-wpf-mvvm/?replytocom=48401#respond" data-commentid="48401" data-postid="7539" data-belowelement="comment-48401" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-48496">
+    		                    <div id="comment-48496" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/abf1284ea1cb0528c773d45f7293b551d85421a95854595df4a96764f6c23213?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/abf1284ea1cb0528c773d45f7293b551d85421a95854595df4a96764f6c23213?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">eric</span></span>                                                            <span class="ago">25 January 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>just a single combobox and u have to write so much …. whats wrong with microsoft? what about productivity?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2017/using-combobox-selecteditem-property-in-wpf-mvvm/?replytocom=48496#respond" data-commentid="48496" data-postid="7539" data-belowelement="comment-48496" data-respondelement="respond" data-replyto="Reply to eric" aria-label="Reply to eric">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-48497">
+    		                    <div id="comment-48497" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">25 January 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I get what you mean. This example is a bit of an exception.<br>
+The Annotations.cs was something auto-generated by ReSharper, which the project needed.  Some of the patterns crop up repeatedly once you’re used to them.<br>
+I’ll put out an example download if that makes it easier.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2017/using-combobox-selecteditem-property-in-wpf-mvvm/?replytocom=48497#respond" data-commentid="48497" data-postid="7539" data-belowelement="comment-48497" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-55822">
+    		                    <div id="comment-55822" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/e4fac07818287d6953aea12992a3a30326ddc84beb2e264049181504369333bb?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/e4fac07818287d6953aea12992a3a30326ddc84beb2e264049181504369333bb?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Miraziz</span></span>                                                            <span class="ago">24 March 2020</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>You may also use:<br>
+ComboBoxItem ComboItem = (ComboBoxItem)cmbDeviceDefinitionId.SelectedItem;<br>
+string name = ComboItem.Name;<br>
+or to get text content<br>
+string text = ComboItem.Content.ToString();</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2017/using-combobox-selecteditem-property-in-wpf-mvvm/?replytocom=55822#respond" data-commentid="55822" data-postid="7539" data-belowelement="comment-55822" data-respondelement="respond" data-replyto="Reply to Miraziz" aria-label="Reply to Miraziz">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-55823">
+    		                    <div id="comment-55823" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">24 March 2020</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thank you for your additional input.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2017/using-combobox-selecteditem-property-in-wpf-mvvm/?replytocom=55823#respond" data-commentid="55823" data-postid="7539" data-belowelement="comment-55823" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			
+		</div>
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2017/using-combobox-selecteditem-property-in-wpf-mvvm/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="7539" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-csharp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js"></script>
+<script id="syntaxhighlighter-brush-xml-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushXml.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

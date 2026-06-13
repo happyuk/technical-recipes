@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+Crawl-delay:3
+sitemap:https://technical-recipes.com/sitemap.xml
+sitemap:https://technical-recipes.com/sitemapindex.xml
+sitemap:https://technical-recipes.com/sitemapmobileindex.xml
+Sitemap:https://technical-recipes.com/sitemap-hot-2063785.xml
+Sitemap:https://technical-recipes.com/sitemap-hot-2061785.xml
+Sitemap:https://technical-recipes.com/sitemap-hot-2059785.xml
+Sitemap:https://technical-recipes.com/sitemap-hot-2057785.xml
+Sitemap:https://technical-recipes.com/sitemap-hot-2055785.xml
+Sitemap:https://technical-recipes.com/sitemap-hot-2053785.xml
+Sitemap:https://technical-recipes.com/sitemap-hot-2051785.xml
+Sitemap:https://technical-recipes.com/sitemap-hot-2049785.xml
+Sitemap:https://technical-recipes.com/sitemap-hot-2047785.xml
+Sitemap:https://technical-recipes.com/sitemap-hot-2045785.xml
+Sitemap:https://technical-recipes.com/sitemap-hot-2043785.xml
+Sitemap:https://technical-recipes.com/sitemap-hot-2041785.xml
+Sitemap:https://technical-recipes.com/sitemap-hot-2039785.xml
+Sitemap:https://technical-recipes.com/sitemap-hot-2037785.xml
+Sitemap:https://technical-recipes.com/sitemap-hot-2035785.xml
+Sitemap:https://technical-recipes.com/sitemap-hot-2033785.xml

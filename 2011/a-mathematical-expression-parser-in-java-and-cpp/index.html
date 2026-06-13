@@ -1,0 +1,2117 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>Mathematical Expression Parsers in Java and C++ – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Mathematical Expression Parsers in Java and C++ Comments Feed" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2011%2Fa-mathematical-expression-parser-in-java-and-cpp%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2011%2Fa-mathematical-expression-parser-in-java-and-cpp%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/1658"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/">
+<link rel="shortlink" href="/?p=1658">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-1658 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-1658" class="g post post-1658 type-post status-publish format-standard hentry category-c-mfc category-java tag-expression-parser tag-infix tag-java tag-mathematical tag-reverse-polish-notation tag-shunting-yard-algorithm">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/c-mfc/" itemprop="item"><span itemprop="name">C++ / MFC / STL</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">Mathematical Expression Parsers in Java and C++</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">Mathematical Expression Parsers in Java and C++</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>18 November 2011</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/c-mfc/" title="View all posts in C++ / MFC / STL">C++ / MFC / STL</a>, <a href="/category/java/" title="View all posts in Java">Java</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2011/a-mathematical-expression-parser-in-java-and-cpp/#comments" itemprop="interactionCount">44 Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p><strong>Basic Expression Parsing</strong></p><p><a href="#DownloadUpdate">Click here for advanced expression parsing</a></p><p>When writing your own calculator it is necessary to build a converter that can transform an input mathematical expression such as <code>( 1 + 8 ) – ( ( 3 * 4 ) / 2 )</code>, into a format that is more suited for evaluation by computers.  </p><p>When evaluating expressions such as the one above (known as “<a href="http://en.wikipedia.org/wiki/Infix_notation">infix notation</a>“), that which appears simple and intuitive to us humans, is usually not so straightforward to implement in a programming language.</p><p>The <a href="http://en.wikipedia.org/wiki/Shunting-yard_algorithm">shunting-yard algorithm</a> is a  method for parsing mathematical expressions written in infix notation to <a href="http://en.wikipedia.org/wiki/Reverse_Polish_notation">Reverse Polish Notation (RPN)</a>.  The RPN notation is different to infix notation in that every operator (+, -, * etc) comes <em>after</em> the operands (numbers) and there are no parentheses (brackets). </p><p> So <code>( 3 * 4 )</code> for example becomes <code>3 4 *</code>.</p><p>When given an input string in Reverse Polish Notation, it is then possible to employ a simple algorithm based around the use of a stack in order to evaluate the RPN expression and determine the mathematical result.</p><p><strong>The Shunting-yard algorithm</strong></p><p>This <a href="http://en.wikipedia.org/wiki/Shunting_yard_algorithm#The_algorithm_in_detail">pseudocode</a> shows how the shunting-yard algorithm converts an expression given in conventional infix notation into Reverse Polish Notation:</p><pre class="brush: plain; title: ; notranslate" title="">
+For each token
+{
+    If (token is a number)
+    {
+        Add number to the output queue
+    }
+	
+    If (token is an operator eg +,-,*...) 
+    {
+        While (stack not empty AND 
+               stack top element is an operator)
+        {
+            If ((token = left associative AND 
+                 precedence &lt;= stack top element) OR
+	        (token = right associative AND 
+                 precedence &lt; stack top element))
+            {
+	        Pop stack onto the output queue.  
+                Exit while loop.
+            }
+        }
+        Push token onto stack
+    }
+
+    If (token is left bracket '(')
+    {
+        Push token on to stack
+    }
+
+    If (token is right bracket ')')
+    {
+        While (stack not empty AND  
+               stack top element not a left bracket)
+        {
+            Pop the stack onto output queue            
+        }
+        Pop the stack
+    }
+}
+
+While (stack not empty)
+{
+    Pop stack onto output queue
+}
+</pre><p><strong>Implementing the the shunting-yard algorithm in Java</strong></p><p>The Java function to implement the shunting yard algorithm described above is as follows:</p><pre class="brush: java; title: ; notranslate" title="">
+    // Convert infix expression format into reverse Polish notation
+    public static String[] infixToRPN(String[] inputTokens) 
+    {
+        ArrayList&lt;String&gt; out = new ArrayList&lt;String&gt;();
+        Stack&lt;String&gt; stack = new Stack&lt;String&gt;();
+        
+        // For each tokens
+        for (String token : inputTokens) 
+        {
+            // If token is an operator
+            if (isOperator(token)) 
+            {  
+                // While stack not empty AND stack top element 
+                // is an operator
+                while (!stack.empty() &amp;&amp; isOperator(stack.peek())) 
+                {                    
+                    if ((isAssociative(token, LEFT_ASSOC)         &amp;&amp; 
+                         cmpPrecedence(token, stack.peek()) &lt;= 0) || 
+                        (isAssociative(token, RIGHT_ASSOC)        &amp;&amp; 
+                         cmpPrecedence(token, stack.peek()) &lt; 0)) 
+                    {
+                        out.add(stack.pop());   
+                        continue;
+                    }
+                    break;
+                }
+                // Push the new operator on the stack
+                stack.push(token);
+            } 
+            // If token is a left bracket '('
+            else if (token.equals("(")) 
+            {
+                stack.push(token);  // 
+            } 
+            // If token is a right bracket ')'
+            else if (token.equals(")")) 
+            {                
+                while (!stack.empty() &amp;&amp; !stack.peek().equals("(")) 
+                {
+                    out.add(stack.pop()); 
+                }
+                stack.pop(); 
+            } 
+            // If token is a number
+            else 
+            {
+                out.add(token); 
+            }
+        }
+        while (!stack.empty())
+        {
+            out.add(stack.pop()); 
+        }
+        String[] output = new String[out.size()];
+        return out.toArray(output);
+    }
+</pre><p><strong>Evaluating expressions in Reverse Polish Notation</strong></p><p>Once we have obtained our input expression string in RPN format, we evaluate the expression using a simple algorithm, also based around the use of a stack.  Pseudocode as follows:</p><pre class="brush: plain; title: ; notranslate" title="">
+For each token
+{
+    If (token is a number)
+    {
+        Push value onto stack
+    }
+
+    If (token is an operator)
+    {
+        Pop 2 top values from the stack
+        Evaluate operator using popped values as args
+        Push result onto stack
+    }
+}
+</pre><p>The single value remaining on the stack is the evaluation.  Java code for this is as follows:</p><pre class="brush: java; title: ; notranslate" title="">
+ public static double RPNtoDouble(String[] tokens)
+ {        
+    Stack&lt;String&gt; stack = new Stack&lt;String&gt;();
+        
+    // For each token
+    for (String token : tokens) 
+    {
+        // If the token is a number push it onto the stack
+        if (!isOperator(token)) 
+        {
+            stack.push(token);                
+        }
+        else
+        {
+            // Pop the two top entries
+            Double d2 = Double.valueOf( stack.pop() );
+            Double d1 = Double.valueOf( stack.pop() );
+                
+            //Get the result
+            Double result = token.compareTo("+") == 0 ? d1 + d2 : 
+                            token.compareTo("-") == 0 ? d1 - d2 :
+                            token.compareTo("*") == 0 ? d1 * d2 :
+                                                        d1 / d2;               
+                                
+            // Push result onto stack
+            stack.push( String.valueOf( result ));                                                
+        }                        
+    }        
+        
+    return Double.valueOf(stack.pop());
+}
+</pre><p><strong>Example</strong></p><p>Consider the expression </p><p><em><code>( 1 + 2 ) * ( 3 / 4 ) - ( 5 + 6 )</code></em>.  </p><p>Passing this as a string argument to the infixToRPN function will yield this RPN format:<br>
+<em><code><br>
+1 2 + 3 4 / * 5 6 + -</code></em>.</p><p>It is then simply a matter of evaluating the RPN format to give the desired mathematical result of <code>-8.75</code>.</p><p><strong>Putting it all together: Java Implementation of Basic Expression Parser</strong></p><p>Full Java code listing as follows:</p><pre class="brush: java; title: ; notranslate" title="">
+package expressionparser;
+
+import java.util.*;
+ 
+public class ExpressionParser 
+{
+    // Associativity constants for operators
+    private static final int LEFT_ASSOC  = 0;
+    private static final int RIGHT_ASSOC = 1;
+ 
+    // Operators
+    private static final Map&lt;String, int[]&gt; OPERATORS = new HashMap&lt;String, int[]&gt;();
+    static 
+    {
+        // Map&lt;"token", []{precendence, associativity}&gt;
+        OPERATORS.put("+", new int[] { 0, LEFT_ASSOC });
+        OPERATORS.put("-", new int[] { 0, LEFT_ASSOC });
+        OPERATORS.put("*", new int[] { 5, LEFT_ASSOC });
+        OPERATORS.put("/", new int[] { 5, LEFT_ASSOC });        
+    }
+ 
+    // Test if token is an operator
+    private static boolean isOperator(String token) 
+    {
+        return OPERATORS.containsKey(token);
+    }
+ 
+    // Test associativity of operator token
+    private static boolean isAssociative(String token, int type) 
+    {
+        if (!isOperator(token)) 
+        {
+            throw new IllegalArgumentException("Invalid token: " + token);
+        }
+        
+        if (OPERATORS.get(token)[1] == type) {
+            return true;
+        }
+        return false;
+    }
+ 
+    // Compare precedence of operators.    
+    private static final int cmpPrecedence(String token1, String token2) 
+    {
+        if (!isOperator(token1) || !isOperator(token2)) 
+        {
+            throw new IllegalArgumentException("Invalid tokens: " + token1
+                    + " " + token2);
+        }
+        return OPERATORS.get(token1)[0] - OPERATORS.get(token2)[0];
+    }
+ 
+    // Convert infix expression format into reverse Polish notation
+    public static String[] infixToRPN(String[] inputTokens) 
+    {
+        ArrayList&lt;String&gt; out = new ArrayList&lt;String&gt;();
+        Stack&lt;String&gt; stack = new Stack&lt;String&gt;();
+        
+        // For each token
+        for (String token : inputTokens) 
+        {
+            // If token is an operator
+            if (isOperator(token)) 
+            {  
+                // While stack not empty AND stack top element 
+                // is an operator
+                while (!stack.empty() &amp;&amp; isOperator(stack.peek())) 
+                {                    
+                    if ((isAssociative(token, LEFT_ASSOC)         &amp;&amp; 
+                         cmpPrecedence(token, stack.peek()) &lt;= 0) || 
+                        (isAssociative(token, RIGHT_ASSOC)        &amp;&amp; 
+                         cmpPrecedence(token, stack.peek()) &lt; 0)) 
+                    {
+                        out.add(stack.pop());   
+                        continue;
+                    }
+                    break;
+                }
+                // Push the new operator on the stack
+                stack.push(token);
+            } 
+            // If token is a left bracket '('
+            else if (token.equals("(")) 
+            {
+                stack.push(token);  // 
+            } 
+            // If token is a right bracket ')'
+            else if (token.equals(")")) 
+            {                
+                while (!stack.empty() &amp;&amp; !stack.peek().equals("(")) 
+                {
+                    out.add(stack.pop()); 
+                }
+                stack.pop(); 
+            } 
+            // If token is a number
+            else 
+            {
+                out.add(token); 
+            }
+        }
+        while (!stack.empty())
+        {
+            out.add(stack.pop()); 
+        }
+        String[] output = new String[out.size()];
+        return out.toArray(output);
+    }
+    
+    public static double RPNtoDouble(String[] tokens)
+    {        
+        Stack&lt;String&gt; stack = new Stack&lt;String&gt;();
+        
+        // For each token 
+        for (String token : tokens) 
+        {
+            // If the token is a value push it onto the stack
+            if (!isOperator(token)) 
+            {
+                stack.push(token);                
+            }
+            else
+            {
+                // Token is an operator: pop top two entries
+                Double d2 = Double.valueOf( stack.pop() );
+                Double d1 = Double.valueOf( stack.pop() );
+                
+                //Get the result
+                Double result = token.compareTo("+") == 0 ? d1 + d2 : 
+                                token.compareTo("-") == 0 ? d1 - d2 :
+                                token.compareTo("*") == 0 ? d1 * d2 :
+                                                            d1 / d2;               
+                                
+                // Push result onto stack
+                stack.push( String.valueOf( result ));                                                
+            }                        
+        }        
+        
+        return Double.valueOf(stack.pop());
+    }
+ 
+    public static void main(String[] args) {
+        String[] input = "( 1 + 2 ) * ( 3 / 4 ) - ( 5 + 6 )".split(" ");       
+        String[] output = infixToRPN(input);
+        
+        // Build output RPN string minus the commas
+         for (String token : output) {
+            System.out.print(token + " ");
+        }
+        
+        // Feed the RPN string to RPNtoDouble to give result
+        Double result = RPNtoDouble( output );                       
+    }
+}
+</pre><p><strong>C++ Implementation of Basic Expression Parser</strong></p><pre class="brush: cpp; title: ; notranslate" title="">
+#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+#include &lt;list&gt;
+#include &lt;stack&gt;
+#include &lt;map&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;iterator&gt;
+#include &lt;stdlib.h&gt;
+      
+const int LEFT_ASSOC  = 0;    
+const int RIGHT_ASSOC = 1; 
+      
+// Map the different operators: +, -, *, / etc  
+typedef std::map&lt; std::string, std::pair&lt; int,int &gt;&gt; OpMap;   
+typedef std::vector&lt;std::string&gt;::const_iterator cv_iter;
+typedef std::string::iterator s_iter;
+
+const OpMap::value_type assocs[] =   
+    {  OpMap::value_type( "+", std::make_pair&lt;int,int&gt;( 0, LEFT_ASSOC ) ),    
+       OpMap::value_type( "-", std::make_pair&lt;int,int&gt;( 0, LEFT_ASSOC ) ),      
+       OpMap::value_type( "*", std::make_pair&lt;int,int&gt;( 5, LEFT_ASSOC ) ),      
+       OpMap::value_type( "/", std::make_pair&lt;int,int&gt;( 5, LEFT_ASSOC ) ) };  
+
+const OpMap opmap( assocs, assocs + sizeof( assocs ) / sizeof( assocs[ 0 ] ) );  
+
+// Test if token is an pathensesis  
+bool isParenthesis( const std::string&amp; token)        
+{        
+    return token == "(" || token == ")";      
+}      
+
+// Test if token is an operator        
+bool isOperator( const std::string&amp; token)        
+{        
+    return token == "+" || token == "-" ||      
+           token == "*" || token == "/";      
+}      
+
+// Test associativity of operator token        
+bool isAssociative( const std::string&amp; token, const int&amp; type)        
+{            
+    const std::pair&lt;int,int&gt; p = opmap.find( token )-&gt;second;        
+    return p.second == type;        
+}        
+
+// Compare precedence of operators.        
+int cmpPrecedence( const std::string&amp; token1, const std::string&amp; token2 )        
+{        
+    const std::pair&lt;int,int&gt; p1 = opmap.find( token1 )-&gt;second;      
+    const std::pair&lt;int,int&gt; p2 = opmap.find( token2 )-&gt;second;      
+
+    return p1.first - p2.first;        
+}        
+
+// Convert infix expression format into reverse Polish notation        
+bool infixToRPN( const std::vector&lt;std::string&gt;&amp; inputTokens,   
+                 const int&amp; size,   
+                 std::vector&lt;std::string&gt;&amp; strArray )        
+{     
+    bool success = true;    
+
+    std::list&lt;std::string&gt; out;      
+    std::stack&lt;std::string&gt; stack;      
+
+    // While there are tokens to be read    
+    for ( int i = 0; i &lt; size; i++ )        
+    {      
+        // Read the token    
+        const std::string token = inputTokens[ i ];      
+
+        // If token is an operator        
+        if ( isOperator( token ) )  
+        {                    
+            // While there is an operator token, o2, at the top of the stack AND    
+            // either o1 is left-associative AND its precedence is equal to that of o2,    
+            // OR o1 has precedence less than that of o2,    
+            const std::string o1 = token;        
+
+            if ( !stack.empty() )    
+            {    
+                std::string o2 = stack.top();    
+
+                while ( isOperator( o2 ) &amp;&amp;        
+                        ( ( isAssociative( o1, LEFT_ASSOC ) &amp;&amp;  cmpPrecedence( o1, o2 ) == 0 ) ||    
+                        ( cmpPrecedence( o1, o2 ) &lt; 0 ) ) )    
+                {        
+                    // pop o2 off the stack, onto the output queue;                        
+                    stack.pop();      
+                    out.push_back( o2 );                            
+
+                    if ( !stack.empty() )     
+                        o2 = stack.top();      
+                    else    
+                        break;    
+                }         
+            }    
+
+            // push o1 onto the stack.     
+            stack.push( o1 );        
+        }        
+        // If the token is a left parenthesis, then push it onto the stack.    
+        else if ( token == "(" )        
+        {        
+            // Push token to top of the stack      
+            stack.push( token );        
+        }        
+        // If token is a right bracket ')'        
+        else if ( token == ")" )        
+        {      
+            // Until the token at the top of the stack is a left parenthesis,     
+            // pop operators off the stack onto the output queue.    
+            std::string topToken  = stack.top();  
+
+            while ( topToken != "(" )        
+            {                        
+                out.push_back(topToken );        
+                stack.pop();    
+
+                if ( stack.empty() ) break;  
+                topToken = stack.top();  
+            }                                        
+
+            // Pop the left parenthesis from the stack, but not onto the output queue.                              
+            if ( !stack.empty() ) stack.pop();                             
+
+            // If the stack runs out without finding a left parenthesis,     
+            // then there are mismatched parentheses.                
+            if ( topToken != "(" )    
+            {                        
+                return false;    
+            }                                          
+        }        
+        // If the token is a number, then add it to the output queue.      
+        else        
+        {        
+            out.push_back( token );        
+        }        
+    }      
+
+    // While there are still operator tokens in the stack:    
+    while ( !stack.empty() )        
+    {      
+        const std::string stackToken = stack.top();    
+
+        // If the operator token on the top of the stack is a parenthesis,     
+        // then there are mismatched parentheses.    
+        if ( isParenthesis( stackToken )   )  
+        {    
+            return false;    
+        }    
+
+        // Pop the operator onto the output queue./    
+        out.push_back( stackToken );                      
+        stack.pop();      
+    }        
+
+    strArray.assign( out.begin(), out.end() );  
+
+    return success;    
+}        
+
+
+double RPNtoDouble( std::vector&lt;std::string&gt; tokens )        
+{        
+    std::stack&lt;std::string&gt; st;       
+
+    // For each token        
+    for ( int i = 0; i &lt; (int) tokens.size(); ++i )        
+    {       
+        const std::string token = tokens[ i ];      
+
+        // If the token is a value push it onto the stack        
+        if ( !isOperator(token) )        
+        {        
+            st.push(token);        
+        }        
+        else        
+        {  
+            double result =  0.0;  
+
+            // Token is an operator: pop top two entries        
+            const std::string val2 = st.top();      
+            st.pop();      
+            const double d2 = strtod( val2.c_str(), NULL );        
+
+            if ( !st.empty() )  
+            {  
+                const std::string val1 = st.top();      
+                st.pop();      
+                const double d1 = strtod( val1.c_str(), NULL );     
+
+                //Get the result        
+                result = token == "+" ? d1 + d2 :        
+                         token == "-" ? d1 - d2 :        
+                         token == "*" ? d1 * d2 :        
+                                        d1 / d2;        
+            }  
+            else  
+            {  
+                if ( token == "-" )  
+                    result = d2 * -1;  
+                else   
+                    result = d2;  
+            }  
+
+
+            // Push result onto stack       
+            std::ostringstream s;      
+            s &lt;&lt; result;      
+            st.push( s.str() );        
+        }        
+    }                
+
+    return strtod( st.top().c_str(), NULL );      
+}        
+
+std::vector&lt;std::string&gt; getExpressionTokens( const std::string&amp; expression )  
+{  
+    std::vector&lt;std::string&gt; tokens;        
+    std::string str = "";    
+
+    for ( int i = 0; i &lt; (int) expression.length(); ++i )    
+    {    
+        const std::string token( 1, expression[ i ] );    
+
+        if ( isOperator( token ) || isParenthesis( token ) )    
+        {
+            if ( !str.empty() )
+            {
+               tokens.push_back( str ) ;
+            }
+            str = "";               
+            tokens.push_back( token );              
+        }    
+        else    
+        {       
+            // Append the numbers    
+            if ( !token.empty() &amp;&amp; token != " " )    
+            {                   
+                str.append( token );    
+            }    
+            else     
+            {    
+                if ( str != "" )    
+                {    
+                    tokens.push_back( str );        
+                    str = "";    
+                }    
+            }                           
+        }    
+    }        
+
+    return tokens;  
+}
+
+// Print iterators in a generic way
+template&lt;typename T, typename InputIterator&gt;
+void Print( const std::string&amp; message,
+             const InputIterator&amp; itbegin,   
+             const InputIterator&amp; itend,   
+             const std::string&amp; delimiter)  
+{  
+    std::cout &lt;&lt; message &lt;&lt; std::endl;
+
+    std::copy(itbegin,   
+              itend,   
+              std::ostream_iterator&lt;T&gt;(std::cout, delimiter.c_str()));  
+
+    std::cout &lt;&lt; std::endl;
+}  
+
+int main()        
+{       
+    std::string s = "( 1 + 2) * ( 3 / 4 )-(5+6)";          
+
+    Print&lt;char, s_iter&gt;( "Input expression:", s.begin(), s.end(), "" );                
+
+    // Tokenize input expression        
+    std::vector&lt;std::string&gt; tokens = getExpressionTokens( s );                           
+
+    // Evaluate feasible expressions  
+    std::vector&lt;std::string&gt; rpn;        
+    if ( infixToRPN( tokens, tokens.size(), rpn ) )      
+    {      
+        double d = RPNtoDouble( rpn );      
+        Print&lt;std::string, cv_iter&gt;( "RPN tokens:  ", rpn.begin(), rpn.end(), " " );
+
+        std::cout &lt;&lt; "Result = " &lt;&lt; d &lt;&lt; std::endl;      
+    }      
+    else      
+    {      
+        std::cout &lt;&lt; "Mis-match in parentheses" &lt;&lt; std::endl;      
+    }         
+
+    return 0;        
+}  
+</pre><p>So when running the above code as a simple Windows Console application using an example input expression of <code>( 1 + 2) * ( 3 / 4 )-(5+6)</code> we get the following RPN tokens and mathematical result:</p><p><a href="/wp-content/uploads/2011/11/ExpressionParserCpp1.jpg"><img fetchpriority="high" decoding="async" src="" alt="ExpressionParserCpp1" width="325" height="199" class="alignnone size-full wp-image-4331" data-layzr="/wp-content/uploads/2011/11/ExpressionParserCpp1.jpg"></a></p><p>If an inappropriate input expression is used, one with a mis-match in the number of left/right parentheses such as ( 1 + 2 * ( 3 / 4 )-(5+6), then we get an error:</p><p><a href="/wp-content/uploads/2011/11/ExpressionParserCpp2.jpg"><img decoding="async" src="" alt="ExpressionParserCpp2" width="333" height="199" class="alignnone size-full wp-image-4333" data-layzr="/wp-content/uploads/2011/11/ExpressionParserCpp2.jpg"></a></p><p>And if we insert an additional minus sign ‘-‘ so that the original expression used is now <code>-( 1 + 2) * ( 3 / 4 )-(5+6)</code>, the algorithm recognizes that this should get treated as a unary minus operator, resulting in the following output:</p><p><a href="/wp-content/uploads/2011/11/ExpressionParserCpp3.jpg"><img decoding="async" src="" alt="ExpressionParserCpp3" width="325" height="199" class="alignnone size-full wp-image-4335" data-layzr="/wp-content/uploads/2011/11/ExpressionParserCpp3.jpg"></a></p><p><strong>UPDATE: 13 April 2013</strong><br>
+<a name="DownloadUpdate"><strong>Extending the algorithm to handle further mathematical expressions</strong></a> </p><p>So far our implementation has been applied to handle basic expressions based on standard mathematical operators +, -, *, / etc.  The following downloadable C++ code makes a number of further improvements to handle additional mathematical operators sin, cos, tan, log, exp etc, as well as much more complicated subexpressions.  </p><p>Additional sanity checks are included to make sure there are no mismatched numbers of parentheses, as well as some additional work on the tokenization of RPM strings to handle unary minus operators occuring at positions where an expression is expected eg -8 + 5 = -3 or 11 ^ -7 = 5.13158e-08.   </p><p>All examples in this code have been verified using Google’s online calculator.  To use Google’s built-in calculator simply enter your mathematical expression into the search box.  For example:</p><p><a href="/wp-content/uploads/2011/11/GoogleCalculator1.jpg"><img decoding="async" src="" alt="GoogleCalculator" width="676" height="562" class="alignnone size-full wp-image-4534" data-layzr="/wp-content/uploads/2011/11/GoogleCalculator1.jpg"></a></p><p>Some examples are shown in the following table:</p><table border="1">
+<tr>
+<th>Expression (infix)</th>
+<th>RPN (postfix)</th>
+<th>Result</th>
+</tr>
+<tr>
+<td>exp( 1.11 )</td>
+<td>1.11 exp</td>
+<td>3.034358</td>
+</tr>
+<tr>
+<td>sin( cos( 90 * pi / 180  ) )</td>
+<td>90 pi * 180 / cos sin</td>
+<td>0.000001</td>
+</tr>
+<tr>
+<td>34.5*(23+1.5)/2</td>
+<td>34.5 23 1.5 + * 2 /</td>
+<td>422.625000</td>
+</tr>
+<tr>
+<td>5 + ((1 + 2) * 4) – 3</td>
+<td>5 1 2 + 4 * + 3 – </td>
+<td>14</td>
+</tr>
+<tr>
+<td>( 1 + 2 ) * ( 3 / 4 ) ^ ( 5 + 6 )</td>
+<td>1 2 + 3 4 / 5 6 + ^ * </td>
+<td>0.126705</td>
+</tr>
+<tr>
+<td>3/2 + 4*(12+3)</td>
+<td>3 2 / 4 12 3 + * + </td>
+<td>61.5</td>
+</tr>
+<tr>
+<td>PI*pow(9/2,2)</td>
+<td>PI 9 2 / 2 pow *</td>
+<td>63.617197</td>
+</tr>
+<tr>
+<td>((2*(6-1))/2)*4</td>
+<td>2 6 1 – * 2 / 4 *</td>
+<td>20</td>
+</tr>
+<tr>
+<td>ln(2)+3^5</td>
+<td>2 ln 3 5 ^ +</td>
+<td>243.693147</td>
+</tr>
+<tr>
+<td>11 ^ -7</td>
+<td>11 -7 ^</td>
+<td>5.13158e-08</td>
+</tr>
+<tr>
+<td>cos ( ( 1.3 + 1 ) ^ ( 1 / 3 ) ) – log ( -2 * 3 / -14 )</td>
+<td>1.3 1 + 1 3 / ^ cos -2 3 * -14 / log – </td>
+<td>0.616143</td>
+</tr>
+<tr>
+<td>1 * -sin( Pi / 2) </td>
+<td>1 Pi 2 / -sin * </td>
+<td>-1</td>
+</tr>
+<tr>
+<td>-8 + 5</td>
+<td>-8 5 +</td>
+<td>-3</td>
+</tr>
+<tr>
+<td>1 – (-2^2) – 1</td>
+<td>1 1 -2 2 ^ * – 1 –</td>
+<td>4</td>
+</tr>
+</table><p>The file <code>main.cpp</code> is an example usage of applying the <code>Tokenize</code> method of the <code>ExpressionParser</code> class to first prime the input expression string into a suitable format, which is subsequently converted to Reverse Polish Notation using the <code>InfixToRPN</code> method.  </p><p>If successful, the reverse Polish Notation is then evaluated to give the mathematical result.</p><p>Example usage shown here:</p><pre class="brush: cpp; title: ; notranslate" title="">
+#include "ExpressionParser.h"
+
+// Print iterators in a generic way  
+template&lt;typename T, typename InputIterator&gt;  
+void Print( const std::string&amp; message,  
+            const InputIterator&amp; itbegin,     
+            const InputIterator&amp; itend,     
+            const std::string&amp; delimiter)    
+{    
+    std::cout &lt;&lt; message &lt;&lt; std::endl;  
+  
+    std::copy(itbegin,     
+              itend,     
+              std::ostream_iterator&lt;T&gt;(std::cout, delimiter.c_str()));    
+  
+    std::cout &lt;&lt; std::endl;  
+}    
+
+int main(int argc, char** argv) 
+{ 
+    std::string result;
+  
+    //std::string originalInput = "-11 ^ -7";
+    //std::string originalInput = "-1*- sin( Pi / -2)";
+    //std::string originalInput = "-8 + 5";
+    //std::string originalInput = "5 + (-1 + 2 )";
+    //std::string originalInput = "cos ( ( -1.3 + -1 ) ^ ( 1 / -3 ) ) - log ( -2 * 3 / -14 )";
+    //std::string originalInput = "cos ( ( 1.3 + 1 ) ^ ( 1 / 3 ) )";
+    //std::string originalInput = "( 1.3 + -1 ) ^ ( 1 / 3 )";
+    //std::string originalInput = "cos(- 1.32001)";
+    //std::string originalInput = "-8+3";
+    //std::string originalInput = "ln(2)+3^5";
+    //std::string originalInput = "((2*(6-1))/2)*4";
+    //std::string originalInput = "PI*pow(9/2,2)";
+    //std::string originalInput = "PI*pow(9/-2,2)";
+    //std::string originalInput = "pow(2, 3)";
+    //std::string originalInput = "3/2 + 4*(12+3)";
+    //std::string originalInput = "( 1 + 2 ) * ( 3 / 4 ) ^ ( 5 + 6 )";
+    //std::string originalInput = "5 + ((1 + 2) * -4) - 3";
+    //std::string originalInput = "34.5*(23+1.5)/2";
+    //std::string originalInput = "sin( cos( 90 * pi / 180  ) )";
+    std::string originalInput = "exp( 1.11 )";
+    //std::string originalInput = "5 + ((1 + 2) * 4) - 3 ";
+    //std::string originalInput = "3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3";  
+    //std::string originalInput = "2.5^3";
+    //std::string originalInput = "-cos(1/-20)+sin(1/30)+cos(1/50)";
+	//std::string originalInput = "--cos(1/-20)+-sin(1/30)";
+	//std::string originalInput = "--cos(1/-20)--sin(1/30)";
+	//std::string originalInput = "--cos(1/--20)";
+    //std::string originalInput = "SQRT(4 )";    
+    //std::string originalInput = "5 + (-1 + 2 )";
+    //std::string originalInput = "-(2+3)*(4*-10-1)+100";
+    //std::string originalInput = "(2+3)*-(4*10-1)+100";
+	//std::string originalInput = "1 - (-2^2) - 1";
+	//std::string originalInput = "(4*-10-1)";
+	//std::string originalInput = "-(2+3)*(4*-10-1)";
+	//std::string originalInput = "-3/2 + 4*-( 12+3)";
+	//std::string originalInput = "-3/2 + 4*(-12-3)";
+	//std::string originalInput = "-3/2 + -4*(-12-3)";
+
+	Print&lt;char, std::string::iterator&gt;( "Input expression:", originalInput.begin(), originalInput.end(), "" );
+    
+    ExpressionParser parser( originalInput );
+   
+	if ( !parser.MatchingParetheses() )
+    {
+        std::cout &lt;&lt; "Error: mismatched parentheses or empty input" 
+			      &lt;&lt; std::endl;
+        return 1;
+    }
+
+    std::vector&lt;std::string&gt; RPN;
+	 
+    if ( parser.InfixToRPN( RPN ) )
+    { 
+	   Print&lt;std::string, std::vector&lt;std::string&gt;::const_iterator&gt;( "RPN tokens:  ", 
+		                                                             RPN.begin(), 
+																	 RPN.end(), 
+																	 " " );  
+       if ( parser.Evaluate( RPN, result ) )
+	   {
+		   std::cout &lt;&lt; std::endl;
+		   std::cout &lt;&lt; "Result = " &lt;&lt; result &lt;&lt; std::endl;
+	   }
+    }
+    else
+    {
+        std::cout &lt;&lt; "Error: mismatched parentheses" &lt;&lt; std::endl;
+    }                    
+
+    return 0;
+}
+</pre><p>Example outputs:</p><p><a href="/wp-content/uploads/2011/11/parser11.jpg"><img decoding="async" src="" alt="parser1" width="325" height="199" class="alignnone size-full wp-image-5057" data-layzr="/wp-content/uploads/2011/11/parser11.jpg"></a></p><p><a href="/wp-content/uploads/2011/11/parser2.jpg"><img decoding="async" src="" alt="parser2" width="525" height="163" class="alignnone size-full wp-image-5060" data-layzr="/wp-content/uploads/2011/11/parser2.jpg"></a></p><p>Download below.  Please contact me if you need any help in using the software.</p><p><script data-selz-t="_selz-btn-default" data-selz-a="modal" data-selz-b="http://selz.co/Nyu7BRN1M" data-text="Buy it now">
+if (typeof _$elz === "undefined") { var _$elz = {}; }
+if (typeof _$elz.b === "undefined") { 
+_$elz.b = { e: document.createElement("script") }; 
+_$elz.b.e.src = "https://selz.com/embed/button"; 
+document.body.appendChild(_$elz.b.e); }
+</script><br>
+<noscript><a href="http://selz.co/Nyu7BRN1M" target="_blank">Buy it now</a><a href="https://selz.com/info/sell-ebooks" target="_blank">Sell ebooks</a></noscript></p>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '1658'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2011/a-mathematical-expression-parser-in-java-and-cpp/&amp;media=&amp;description=Mathematical%20Expression%20Parsers%20in%20Java%20and%20C++" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2011/dynamically-created-mfc-controls-and-their-notifications/" title="Dynamically Created MFC Controls and their Notifications" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Dynamically Created MFC Controls and their Notifications"></div>
+                                                                        <h4 class="title front-view-title">Dynamically Created MFC Controls and their Notifications</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2014/reading-the-status-of-dvd-drives-in-c/" title="Reading the status of DVD drives in C++" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Reading the status of DVD drives in C++"></div>
+                                                                        <h4 class="title front-view-title">Reading the status of DVD drives in C++</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2012/kruskals-algorithm-in-c/" title="Kruskal’s Algorithm in C++" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Kruskal’s Algorithm in C++"></div>
+                                                                        <h4 class="title front-view-title">Kruskal’s Algorithm in C++</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-923">
+    		                    <div id="comment-923" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/9c1f32c6f1e61458b3525177eed2069ef875abe2d8e4e17b17f10c46f299724f?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/9c1f32c6f1e61458b3525177eed2069ef875abe2d8e4e17b17f10c46f299724f?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">vahid</span></span>                                                            <span class="ago">24 January 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>hi,<br>
+just want to say thanks, it was very useful and, u’ve made it easy.<br>
+P.S<br>
+i think, you should change this, like what u have in your java code :<br>
+<code><br>
+If (token is right bracket ')')<br>
+    {<br>
+            While (stack not empty AND<br>
+                   stack top element not a left bracket)<br>
+            {<br>
+                Pop the stack onto output queue<br>
+                Pop the stack<br>
+            }<br>
+     }<br>
+</code><br>
+to this:<br>
+<code><br>
+If (token is right bracket ')')<br>
+    {<br>
+            While (stack not empty AND<br>
+                   stack top element not a left bracket)<br>
+            {<br>
+                Pop the stack onto output queue<br>
+            }<br>
+            Pop the stack<br>
+         }<br>
+</code></p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=923#respond" data-commentid="923" data-postid="1658" data-belowelement="comment-923" data-respondelement="respond" data-replyto="Reply to vahid" aria-label="Reply to vahid">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    </ol><ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-924">
+    		                    <div id="comment-924" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">24 January 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi thanks for the feedback, glad you found it useful.  Post has been updated accordingly.</p>
+<p>Well spotted!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=924#respond" data-commentid="924" data-postid="1658" data-belowelement="comment-924" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-3" id="li-comment-5327">
+    		                    <div id="comment-5327" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/453fca745e3dba171f9f50b6689688fdc2c042318131d4d273a3f03a9bf10e0e?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/453fca745e3dba171f9f50b6689688fdc2c042318131d4d273a3f03a9bf10e0e?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Yasmin Fathy</span></span>                                                            <span class="ago">10 November 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hello,</p>
+<p>Thanks for your post . I have one thing..<br>
+In the updated version, If while loop is ended , then stack is empty which means , you can’t pop from… after while loop</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=5327#respond" data-commentid="5327" data-postid="1658" data-belowelement="comment-5327" data-respondelement="respond" data-replyto="Reply to Yasmin Fathy" aria-label="Reply to Yasmin Fathy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-4" id="li-comment-5332">
+    		                    <div id="comment-5332" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">10 November 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Yasmin</p>
+<p>I think I know what you mean.  But the stack is not quite empty, the while loop keeps popping until it reaches a left parenthesis:<br>
+<code><br>
+// Until the token at the top of the stack is a left parenthesis, pop operators<br>
+// off the stack onto the output queue.<br>
+while ( !stack.empty() &amp;&amp; stack.top() != "(" )<br>
+{<br>
+        // Add to end of list<br>
+    outputQueue.push( stack.top() );<br>
+    stack.pop();<br>
+}<br>
+</code><br>
+If it is not left with a remaining “(” then the expression is invalid and the program exits.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=5332#respond" data-commentid="5332" data-postid="1658" data-belowelement="comment-5332" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-5" id="li-comment-5333">
+    		                    <div id="comment-5333" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/453fca745e3dba171f9f50b6689688fdc2c042318131d4d273a3f03a9bf10e0e?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/453fca745e3dba171f9f50b6689688fdc2c042318131d4d273a3f03a9bf10e0e?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Yasmin Fathy</span></span>                                                            <span class="ago">10 November 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I know, but in your original post the second pop statement from the stack is out of while loop .so if there is no opening (  and everything is just pop from the stack, it will release exception, so it should be handled in case user miswritting the opening bracket…</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-5" id="li-comment-5337">
+    		                    <div id="comment-5337" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">10 November 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Ah, I see what you mean.  I think this improvement got put into the in the downloadable, but the one shown here still relies on a valid input expression.  I will update the code in due course.  Thanks for pointing that out.</p>
+                            </div>
+                            <div class="reply">
+                                                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-4" id="li-comment-5341">
+    		                    <div id="comment-5341" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">10 November 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi I have updated the C++ code listing on this page to reflect this.  You still need to enter each value separated by a whitespace though, the download has tokenizers etc to cope with these.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=5341#respond" data-commentid="5341" data-postid="1658" data-belowelement="comment-5341" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-932">
+    		                    <div id="comment-932" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/b34402d380b1bf6624086bc6bd072bffb1399896b56a11a7f65f3fa6fb51c476?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/b34402d380b1bf6624086bc6bd072bffb1399896b56a11a7f65f3fa6fb51c476?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">rakesh kumar</span></span>                                                            <span class="ago">23 February 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>hello sir, could u tell me the java coding to use one expression for calculation which has been passed as string from another java file?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=932#respond" data-commentid="932" data-postid="1658" data-belowelement="comment-932" data-respondelement="respond" data-replyto="Reply to rakesh kumar" aria-label="Reply to rakesh kumar">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-934">
+    		                    <div id="comment-934" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">23 February 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Rakesh.  I’m not sure I understand your question.  Could you be more specific?  It would help if you could express your problem in terms of what your current input is, and what your desired outcome would be.  What do you mean by “passed as string from another java file?”</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=934#respond" data-commentid="934" data-postid="1658" data-belowelement="comment-934" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-946">
+    		                    <div id="comment-946" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/3db77fbd21f1aac7465f95a27418ad8f7fd8be2cded17e09fa749106262239a0?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/3db77fbd21f1aac7465f95a27418ad8f7fd8be2cded17e09fa749106262239a0?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">rkrenn</span></span>                                                            <span class="ago">9 March 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>really cool, since easy to extract an abstract base class with generic token. thanx a lot!!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=946#respond" data-commentid="946" data-postid="1658" data-belowelement="comment-946" data-respondelement="respond" data-replyto="Reply to rkrenn" aria-label="Reply to rkrenn">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-947">
+    		                    <div id="comment-947" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">10 March 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks for your kind words.  The intention was to keep this as simple as possible, so that others can use it and/or modify it in ways they see fit.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=947#respond" data-commentid="947" data-postid="1658" data-belowelement="comment-947" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1775">
+    		                    <div id="comment-1775" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/af8153cf7ff0498857d29b7d979cdce3052df530d677e5e501c5ef45c24b2fb7?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/af8153cf7ff0498857d29b7d979cdce3052df530d677e5e501c5ef45c24b2fb7?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Kapil Yadav</span></span>                                                            <span class="ago">22 July 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi,</p>
+<p>the solution is really elegant…<br>
+Are there algorithms for inserting braces in a mathematical expression…..???</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=1775#respond" data-commentid="1775" data-postid="1658" data-belowelement="comment-1775" data-respondelement="respond" data-replyto="Reply to Kapil Yadav" aria-label="Reply to Kapil Yadav">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-1776">
+    		                    <div id="comment-1776" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">22 July 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>You mean braces in things like sin or log expressions?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=1776#respond" data-commentid="1776" data-postid="1658" data-belowelement="comment-1776" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-2079">
+    		                    <div id="comment-2079" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/8499210e6387bcd66cab93cdd5eb9d9a5cdae652247c73ce8baf18f13ab9f33f?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/8499210e6387bcd66cab93cdd5eb9d9a5cdae652247c73ce8baf18f13ab9f33f?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">30 August 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Can your parser solve this questions?</p>
+<p>Given a series of numbers as the input, the last one as the result. Use the rest numbers to calculate the result,only +, -, *, / are allowed. The order of the input cannot be changed. If there is an equation, print it; or print “no equation”. If more than one solution, any working equation is fine.</p>
+<p>example:<br>
+input: 2, 3, 1, 4<br>
+output: 2+3-1 = 4.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=2079#respond" data-commentid="2079" data-postid="1658" data-belowelement="comment-2079" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-2082">
+    		                    <div id="comment-2082" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">30 August 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Andy. No this parser as it stands would not be able to do what describe.  If I understand you correctly, would it not be a case of writing an additional routine to:</p>
+<p>1. parse your original input string of “2,3,1,4”, separating it into an input part (“2,3,1”) and an expected output part (“4”).<br>
+2. replace each of the the commas in your input string with the arithmetic operators you prefer so that “2,3,1” becomes “2+3-1”<br>
+3. feed this new string “2+3-1” into the infixToRPN() routine and then the RPNtoDouble() routine.<br>
+4. compare the answer returned with the desired answer.  If they are equal print the new string appended with the equals sign and the desired output string ie “2+3-1”   +  “=4” ; otherwise print “no equation”.</p>
+<p>Hope this helps.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=2082#respond" data-commentid="2082" data-postid="1658" data-belowelement="comment-2082" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-2130">
+    		                    <div id="comment-2130" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/9238578ad1723f5a4f72be5abb8c705aa1fc6d6343688699f1fbcc205d381c97?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/9238578ad1723f5a4f72be5abb8c705aa1fc6d6343688699f1fbcc205d381c97?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Shaine padilla</span></span>                                                            <span class="ago">12 September 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>can you help me with this problem pleas.<br>
+Write a program that will evaluate mathematical equation and print its result.</p>
+<p>ex. enter equation (3+4)/2*1<br>
+ result 3.5</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=2130#respond" data-commentid="2130" data-postid="1658" data-belowelement="comment-2130" data-respondelement="respond" data-replyto="Reply to Shaine padilla" aria-label="Reply to Shaine padilla">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-2131">
+    		                    <div id="comment-2131" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">12 September 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi have you tried using the expression “(3+4)/2*1” in the Java or C++ versions shown here?</p>
+<p>For the C++ code, go the line that says<br>
+istringstream iss( “( 1 + 2 ) * ( 3 / 4 ) – ( 5 + 6 )” );<br>
+and replace this with<br>
+istringstream iss( “( 3 + 4 ) / 2 * 1” ).   </p>
+<p>Ditto the For the Java version, just simply use:<br>
+String[] input = “( 3 + 4 ) / 2 * 1″.split(” “);</p>
+<p>Both yield the desired result of 3.5</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=2131#respond" data-commentid="2131" data-postid="1658" data-belowelement="comment-2131" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-2308">
+    		                    <div id="comment-2308" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/ea41a6614aff0cb1a9600d9d4b71be7484fa875d2d2fdf638f51347e07a2b271?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/ea41a6614aff0cb1a9600d9d4b71be7484fa875d2d2fdf638f51347e07a2b271?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">vinny</span></span>                                                            <span class="ago">10 October 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks for this great job!!!<br>
+I have a question how can i add a subexpression ???<br>
+example:<br>
+10 + 20 * sin ( 30+40 ) -cos ( 10*sin(10) )<br>
+Thanks</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=2308#respond" data-commentid="2308" data-postid="1658" data-belowelement="comment-2308" data-respondelement="respond" data-replyto="Reply to vinny" aria-label="Reply to vinny">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-2533">
+    		                    <div id="comment-2533" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">5 November 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Will look into it one day…</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=2533#respond" data-commentid="2533" data-postid="1658" data-belowelement="comment-2533" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-4000">
+    		                    <div id="comment-4000" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">14 April 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>The newest version is now able to evaluate expressions like this.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=4000#respond" data-commentid="4000" data-postid="1658" data-belowelement="comment-4000" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-2531">
+    		                    <div id="comment-2531" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/e7c893af2948a83a6aa95c68bb0291d5c6bbf02d5bdd49d7378ba33b4b9f08ce?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/e7c893af2948a83a6aa95c68bb0291d5c6bbf02d5bdd49d7378ba33b4b9f08ce?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="http://startsite.com/" class="url" rel="ugc external nofollow">Solo</a></span></span>                                                            <span class="ago">5 November 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thank you for sharing your code 🙂</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=2531#respond" data-commentid="2531" data-postid="1658" data-belowelement="comment-2531" data-respondelement="respond" data-replyto="Reply to Solo" aria-label="Reply to Solo">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-2534">
+    		                    <div id="comment-2534" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">5 November 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>You’re welcome.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=2534#respond" data-commentid="2534" data-postid="1658" data-belowelement="comment-2534" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-2540">
+    		                    <div id="comment-2540" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/41b950cf1caf785b488d9e1f7c958a2cd39ae9d84432158aae0ccc4b587d9a03?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/41b950cf1caf785b488d9e1f7c958a2cd39ae9d84432158aae0ccc4b587d9a03?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="http://unikstart.com/" class="url" rel="ugc external nofollow">entropyMD</a></span></span>                                                            <span class="ago">6 November 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>How can I add sin, cos, tan, pi, square root and square to the code? Should they be added to own OPERATORS?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=2540#respond" data-commentid="2540" data-postid="1658" data-belowelement="comment-2540" data-respondelement="respond" data-replyto="Reply to entropyMD" aria-label="Reply to entropyMD">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-4001">
+    		                    <div id="comment-4001" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">14 April 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Newset version can now handle functions like these.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=4001#respond" data-commentid="4001" data-postid="1658" data-belowelement="comment-4001" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-2541">
+    		                    <div id="comment-2541" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">6 November 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I think it may involve this.  When I get a moment I will look into it.  If you see any useful links please let me know.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=2541#respond" data-commentid="2541" data-postid="1658" data-belowelement="comment-2541" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-2605">
+    		                    <div id="comment-2605" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/e66d0d06bf7907c908f9e9326b9bece9e7fd9dbbfa27440f31334bd25beb87a7?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/e66d0d06bf7907c908f9e9326b9bece9e7fd9dbbfa27440f31334bd25beb87a7?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="http://internettskolen.com/" class="url" rel="ugc external nofollow">Dag</a></span></span>                                                            <span class="ago">13 November 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Cool that you are going to look into other operators! Looking foward to it!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=2605#respond" data-commentid="2605" data-postid="1658" data-belowelement="comment-2605" data-respondelement="respond" data-replyto="Reply to Dag" aria-label="Reply to Dag">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-4002">
+    		                    <div id="comment-4002" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">14 April 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Done!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=4002#respond" data-commentid="4002" data-postid="1658" data-belowelement="comment-4002" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-2812">
+    		                    <div id="comment-2812" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/b231323c1172baaf82ee394eed6a0940969b801ad6625e22517c2c17adffcf71?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/b231323c1172baaf82ee394eed6a0940969b801ad6625e22517c2c17adffcf71?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">shlomi</span></span>                                                            <span class="ago">31 December 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks,<br>
+But how can I tell the difference between subtraction(-) and negative (-) ?<br>
+such as 8-3 is subtraction but -8+3 is negative.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=2812#respond" data-commentid="2812" data-postid="1658" data-belowelement="comment-2812" data-respondelement="respond" data-replyto="Reply to shlomi" aria-label="Reply to shlomi">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-4003">
+    		                    <div id="comment-4003" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">14 April 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Now covered in newest version!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=4003#respond" data-commentid="4003" data-postid="1658" data-belowelement="comment-4003" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-5147">
+    		                    <div id="comment-5147" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/3d8e28af49e83821d7b37ef5f704f369f77448e593e6e52c3b37eae3c2df7f0a?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/3d8e28af49e83821d7b37ef5f704f369f77448e593e6e52c3b37eae3c2df7f0a?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><a href="http://www.cogitolearning.co.uk/" class="url" rel="ugc external nofollow">Mikail</a></span></span>                                                            <span class="ago">21 October 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Really nice introduction into the shunting yard algorithm. If you are interested in a versatile and extendable expression parser using an LL(1) grammar for Java follow this link.</p>
+<p><a href="http://cogitolearning.co.uk/?p=523" rel="nofollow ugc">http://cogitolearning.co.uk/?p=523</a></p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=5147#respond" data-commentid="5147" data-postid="1658" data-belowelement="comment-5147" data-respondelement="respond" data-replyto="Reply to Mikail" aria-label="Reply to Mikail">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-5158">
+    		                    <div id="comment-5158" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">23 October 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Very slick.  Nice one!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=5158#respond" data-commentid="5158" data-postid="1658" data-belowelement="comment-5158" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="pingback odd alt thread-odd thread-alt depth-1" id="li-comment-12451">
+    		                    <div id="comment-12451">
+                        <div class="comment-author vcard">
+                            Pingback: <a href="http://www.zescience.com/visual-studio-causing-problems-in-c-code-143487" class="url" rel="ugc external nofollow">Visual Studio causing problems in c++ code</a>                                                            <span class="ago">2 September 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                            </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-39990">
+    		                    <div id="comment-39990" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/80380b83b8f4cae1f5e693fc29509583e2b19339794bbd7fee885f8e3cfc76dc?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/80380b83b8f4cae1f5e693fc29509583e2b19339794bbd7fee885f8e3cfc76dc?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">STVG</span></span>                                                            <span class="ago">9 March 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi, Andy. Can I use this Java code for my own project?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=39990#respond" data-commentid="39990" data-postid="1658" data-belowelement="comment-39990" data-respondelement="respond" data-replyto="Reply to STVG" aria-label="Reply to STVG">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-40039">
+    		                    <div id="comment-40039" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">11 March 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Yes.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=40039#respond" data-commentid="40039" data-postid="1658" data-belowelement="comment-40039" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-41433">
+    		                    <div id="comment-41433" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/6f1ce3a3527fbdb59d5f65b2babfb6247c72584b4b0627497ca3674799926e0d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/6f1ce3a3527fbdb59d5f65b2babfb6247c72584b4b0627497ca3674799926e0d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Théophile</span></span>                                                            <span class="ago">12 June 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Andy,</p>
+<p>We are currently working on a RPN Calculator and your algorithm help us a lot.</p>
+<p>Thank you very much for sharing your code,</p>
+<p>Théophile</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=41433#respond" data-commentid="41433" data-postid="1658" data-belowelement="comment-41433" data-respondelement="respond" data-replyto="Reply to Théophile" aria-label="Reply to Théophile">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-42290">
+    		                    <div id="comment-42290" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/c2650c30e0353abd47ede4583678c0d99e97d04342663a1e732e4d80e1f297df?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/c2650c30e0353abd47ede4583678c0d99e97d04342663a1e732e4d80e1f297df?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Anthony Rivera</span></span>                                                            <span class="ago">19 August 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>No really sure why but this “5+6”<br>
+outputs-&gt;<br>
+Input expression:<br>
+5+6<br>
+RPN tokens:<br>
+5 +<br>
+Result = 5</p>
+<p>No really sure why but this with parentheses “(5+6)”<br>
+outputs-&gt;<br>
+Input expression:<br>
+(5+6)<br>
+RPN tokens:<br>
+5 6 +<br>
+Result = 11</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=42290#respond" data-commentid="42290" data-postid="1658" data-belowelement="comment-42290" data-respondelement="respond" data-replyto="Reply to Anthony Rivera" aria-label="Reply to Anthony Rivera">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-42297">
+    		                    <div id="comment-42297" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">20 August 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Anthony which language version are you using the C++ or Java?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=42297#respond" data-commentid="42297" data-postid="1658" data-belowelement="comment-42297" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt depth-2" id="li-comment-46732">
+    		                    <div id="comment-46732" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/cf2d85709a3b7f2a7d745b009d6598ce869236d58eda06a07db0b9641125340d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/cf2d85709a3b7f2a7d745b009d6598ce869236d58eda06a07db0b9641125340d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Will</span></span>                                                            <span class="ago">28 June 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I believe its a bug in the getExpressionTokens()</p>
+<p>If you put in the string “5 + 6 ” with the extra space character after the 6, it should correctly output 11.</p>
+<p>It’s because the free code (the c++ provided above, not the payed code) does not allow for the final character to get pushed to the token stack, if the final character is a number.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=46732#respond" data-commentid="46732" data-postid="1658" data-belowelement="comment-46732" data-respondelement="respond" data-replyto="Reply to Will" aria-label="Reply to Will">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-42383">
+    		                    <div id="comment-42383" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/ba111e52130050a704c89b54b385aac3f34b138c80c801db965ef9b0bda588fe?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/ba111e52130050a704c89b54b385aac3f34b138c80c801db965ef9b0bda588fe?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Petrika</span></span>                                                            <span class="ago">26 August 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi,</p>
+<p>Can I use abs function with your code ?? For example 2 + abs(-1), work with your code or not ??</p>
+<p>Regards</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=42383#respond" data-commentid="42383" data-postid="1658" data-belowelement="comment-42383" data-respondelement="respond" data-replyto="Reply to Petrika" aria-label="Reply to Petrika">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-42796">
+    		                    <div id="comment-42796" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/eaca7dc5837deac85150a68d36ea5614dbd1b1789c48060f982a8d3bb1ed59ac?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/eaca7dc5837deac85150a68d36ea5614dbd1b1789c48060f982a8d3bb1ed59ac?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Bartz</span></span>                                                            <span class="ago">18 September 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi :D, can you show me how to input from a file (Java code) method? Tks</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=42796#respond" data-commentid="42796" data-postid="1658" data-belowelement="comment-42796" data-respondelement="respond" data-replyto="Reply to Bartz" aria-label="Reply to Bartz">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-43582">
+    		                    <div id="comment-43582" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/f2a7aee5bbbb78e61b2af69c81dc84a37dd02d4ae5d7dbc315b627e832e3f02a?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/f2a7aee5bbbb78e61b2af69c81dc84a37dd02d4ae5d7dbc315b627e832e3f02a?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">John</span></span>                                                            <span class="ago">26 October 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi. I tried to run the zip file but it says in expressionparser.cpp in line 263 ‘prev’ is not a member of ‘std’. How do i fix this?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=43582#respond" data-commentid="43582" data-postid="1658" data-belowelement="comment-43582" data-respondelement="respond" data-replyto="Reply to John" aria-label="Reply to John">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-43593">
+    		                    <div id="comment-43593" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">26 October 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>std::prev is part of C++11.  If you don’t have this there is documentation online on how to write your own.<br>
+One possible implementation:</p>
+<p>// copy-pasted from cppreference<br>
+template<class bidirit><br>
+BidirIt prev(BidirIt it,<br>
+             typename std::iterator_traits<bidirit>::difference_type n = 1)<br>
+{<br>
+    std::advance(it, -n);<br>
+    return it;<br>
+}</bidirit></class></p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=43593#respond" data-commentid="43593" data-postid="1658" data-belowelement="comment-43593" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-43596">
+    		                    <div id="comment-43596" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/5901bc1a38670360839cf869a5358f4b26b8e3614a028d0f04c53f46deeafcf3?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/5901bc1a38670360839cf869a5358f4b26b8e3614a028d0f04c53f46deeafcf3?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Brennan</span></span>                                                            <span class="ago">27 October 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi, </p>
+<p>I’m trying to run this on my machine but am getting this error:</p>
+<p>“ExpressionParser::InfixToRPN(std::__1::vector&lt;std::__1::basic_string&lt;char, std::__1::char_traits, std::__1::allocator &gt;, std::__1::allocator&lt;std::__1::basic_string&lt;char, std::__1::char_traits, std::__1::allocator &gt; &gt; &gt;&amp;)”, referenced from:<br>
+      _main in main-1b71a2.o<br>
+  “ExpressionParser::MatchingParetheses()”, referenced from:<br>
+      _main in main-1b71a2.o<br>
+  “ExpressionParser::Evaluate(std::__1::vector&lt;std::__1::basic_string&lt;char, std::__1::char_traits, std::__1::allocator &gt;, std::__1::allocator&lt;std::__1::basic_string&lt;char, std::__1::char_traits, std::__1::allocator &gt; &gt; &gt; const&amp;, std::__1::basic_string&lt;char, std::__1::char_traits, std::__1::allocator &gt;&amp;)”, referenced from:<br>
+      _main in main-1b71a2.o<br>
+  “ExpressionParser::ExpressionParser(std::__1::basic_string&lt;char, std::__1::char_traits, std::__1::allocator &gt; const&amp;)”, referenced from:<br>
+      _main in main-1b71a2.o<br>
+ld: symbol(s) not found for architecture x86_64<br>
+clang: error: linker command failed with exit code 1 (use -v to see invocation)</p>
+<p>any ideas?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=43596#respond" data-commentid="43596" data-postid="1658" data-belowelement="comment-43596" data-respondelement="respond" data-replyto="Reply to Brennan" aria-label="Reply to Brennan">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-49731">
+    		                    <div id="comment-49731" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/ea41a6614aff0cb1a9600d9d4b71be7484fa875d2d2fdf638f51347e07a2b271?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/ea41a6614aff0cb1a9600d9d4b71be7484fa875d2d2fdf638f51347e07a2b271?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">vinny</span></span>                                                            <span class="ago">7 August 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>failed to aprse this expression : -( 1 + 2) * -( 3 / 4 )-(5+6)</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=49731#respond" data-commentid="49731" data-postid="1658" data-belowelement="comment-49731" data-respondelement="respond" data-replyto="Reply to vinny" aria-label="Reply to vinny">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-49732">
+    		                    <div id="comment-49732" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/ea41a6614aff0cb1a9600d9d4b71be7484fa875d2d2fdf638f51347e07a2b271?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/ea41a6614aff0cb1a9600d9d4b71be7484fa875d2d2fdf638f51347e07a2b271?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">vinny</span></span>                                                            <span class="ago">7 August 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>*parse</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/?replytocom=49732#respond" data-commentid="49732" data-postid="1658" data-belowelement="comment-49732" data-respondelement="respond" data-replyto="Reply to vinny" aria-label="Reply to vinny">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			
+		</div>
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2011/a-mathematical-expression-parser-in-java-and-cpp/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="1658" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-plain-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js"></script>
+<script id="syntaxhighlighter-brush-java-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJava.js"></script>
+<script id="syntaxhighlighter-brush-cpp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>

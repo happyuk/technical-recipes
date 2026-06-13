@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head itemscope itemtype="http://schema.org/WebSite"><meta charset="UTF-8">
+	
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!--[if IE ]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	
+                    <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
+        
+                    <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <meta itemprop="name" content="technical-recipes.com">
+        <meta itemprop="url" content="/">
+
+                                        	<link rel="pingback" href="/xmlrpc.php">
+	<title>A Recursive Algorithm to Find all Paths Between Two Given Nodes in C++ and C# – technical-recipes.com</title>
+<meta name="robots" content="max-image-preview:large">
+<script type="text/javascript">document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/,'js' );</script><link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="technical-recipes.com » A Recursive Algorithm to Find all Paths Between Two Given Nodes in C++ and C# Comments Feed" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2011%2Fa-recursive-algorithm-to-find-all-paths-between-two-given-nodes%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F2011%2Fa-recursive-algorithm-to-find-all-paths-between-two-given-nodes%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+
+
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<style id="truepixel-stylesheet-inline-css">
+
+        body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
+
+        .pace .pace-progress, #mobile-menu-wrapper ul li a:hover, .ball-pulse > div { background: #E03F00; }
+		.postauthor h5, .copyrights a, .single_post a:not(.wp-block-button__link):not(.wp-block-file__button), .textwidget a, #logo a, .pnavigation2 a, #sidebar a:hover, .copyrights a:hover, #site-footer .widget li a:hover, .related-posts a:hover, .reply a, .title a:hover, .post-info a:hover, .comm, #tabber .inside li a:hover, .readMore a, .readMore a:hover, .fn a, a, a:hover, .sidebar.c-4-12 #wp-calendar a, .latestPost .title a:hover, .owl-prev, .owl-next, .pagination a, .page-numbers { color:#E03F00; }
+        a#pull, #commentform input#submit, .contactform #submit, #move-to-top, #move-to-top:hover, #primary-navigation .navigation ul li:hover > a, #secondary-navigation .navigation ul li:hover > a, .pagination a:hover, .current.page-numbers, .currenttext, .pagination a:hover, .single .pagination a:hover .currenttext, .page-numbers.current, #tabber ul.tabs li a.selected, .pagination .nav-previous a, .pagination .nav-next a, .tagcloud a, .tagcloud a:hover, .widget .wpt_widget_content #tags-tab-content ul li a, .navigation ul .sfHover a, .wpt_widget_content .tab_title.selected a, .mts-subscribe input[type='submit'], #cancel-comment-reply-link, #load-posts a, .widget .wp_review_tab_widget_content .tab_title.selected a, .latestPost-review-wrapper, #wpmm-megamenu .review-total-only, .contact-form input[type='submit'], .widget .wpt_widget_content .tab_title.selected a, .latestPost .review-type-circle.review-total-only, .latestPost .review-type-circle.wp-review-show-total, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce nav.woocommerce-pagination ul li a, .woocommerce-page nav.woocommerce-pagination ul li a, .woocommerce #content nav.woocommerce-pagination ul li a, .woocommerce-page #content nav.woocommerce-pagination ul li a, .woocommerce .bypostauthor:after, #searchsubmit, .woocommerce nav.woocommerce-pagination ul li span.current, .woocommerce-page nav.woocommerce-pagination ul li span.current, .woocommerce #content nav.woocommerce-pagination ul li span.current, .woocommerce-page #content nav.woocommerce-pagination ul li span.current, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce-page nav.woocommerce-pagination ul li a:hover, .woocommerce #content nav.woocommerce-pagination ul li a:hover, .woocommerce-page #content nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce-page nav.woocommerce-pagination ul li a:focus, .woocommerce #content nav.woocommerce-pagination ul li a:focus, .woocommerce-page #content nav.woocommerce-pagination ul li a:focus, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-product-search button[type='submit'], .woocommerce .woocommerce-widget-layered-nav-dropdown__submit { background-color:#E03F00; color: #fff!important; }
+
+        #primary-navigation .navigation ul .current-menu-item > a, #secondary-navigation .navigation ul .current-menu-item > a { background-color:#E03F00 !important; color: #fff!important; }
+
+        #primary-navigation, #primary-navigation .navigation ul ul li{ background-color:#494951}
+        .copyrights { border-color:#E03F00; background-color: #494951}
+		
+		.shareit { top: 282px; left: auto; margin: 0 0 0 -134px; width: 90px; position: fixed; padding: 5px; border:none; border-right: 0;} .rtl .shareit { margin: 0 635px 0 0; }
+		.share-item {margin: 2px;}
+		
+		.bypostauthor { background: #FAFAFA; }
+		.bypostauthor:after { content: "Author"; position: absolute; right: -1px; top: -1px; padding: 1px 10px; background: #818181; color: #FFF; } .rtl .bypostauthor:after {right: auto; left: -1px;}
+		
+		
+			
+/*# sourceURL=truepixel-stylesheet-inline-css */
+</style>
+<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script id="customscript-js-extra">
+var mts_customscript = {"responsive":"1","nav_menu":"both"};
+//# sourceURL=customscript-js-extra
+</script>
+<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/1142"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0">
+<link rel="canonical" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/">
+<link rel="shortlink" href="/?p=1142">
+<meta name="generator" content="Site Kit by Google 1.177.0"><link href="//fonts.googleapis.com/css?family=Droid+Serif:normal%7COswald:normal&amp;subset=latin" rel="stylesheet" type="text/css">
+<style type="text/css">
+body { font-family: 'Droid Serif'; font-weight: normal; font-size: 14px; color: #777777; }
+.primary-navigation #navigation ul li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #ffffff; }
+#navigation .menu li a { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #777777; }
+#logo.text-logo a { font-family: 'Oswald'; font-weight: normal; font-size: 34px; color: #e03f00; }
+.latestPost .title a { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.single-title { font-family: 'Oswald'; font-weight: normal; font-size: 28px; color: #555555; }
+.widget .widget-title { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #555555; }
+h1 { font-family: 'Oswald'; font-weight: normal; font-size: 30px; color: #e03f00; }
+h2 { font-family: 'Oswald'; font-weight: normal; font-size: 26px; color: #e03f00; }
+h3 { font-family: 'Oswald'; font-weight: normal; font-size: 22px; color: #e03f00; }
+h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00; }
+h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
+h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
+</style>
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
+</head>
+<body id="blog" class="wp-singular post-template-default single single-post postid-1142 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
+	<header id="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+					
+					    <div id="primary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    		    	<div class="primary-menu-wrap primary-navigation clearfix">
+									<nav id="navigation" class="navigation clearfix">
+													<ul id="menu-menu-1" class="menu clearfix"><li id="menu-item-5830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-5830"><a href="/">Home</a></li>
+<li id="menu-item-5831" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5831"><a href="/about-this-blog/">About</a></li>
+<li id="menu-item-5833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5833"><a href="/contact/">Contact</a></li>
+<li id="menu-item-5835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5835"><a href="/donate/">Donate</a></li>
+<li id="menu-item-5836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5836"><a href="/downloads/">Downloads</a></li>
+</ul>											</nav>
+		        			        </div>
+			</div>
+				<div class="container">
+			<div id="header">
+				<div class="logo-wrap">
+																		<h2 id="logo" class="image-logo" itemprop="headline">
+								<a href="/"><img src="https://demo.mythemeshop.com/truepixel/files/2016/02/logo.png" alt="technical-recipes.com"></a>
+							</h2><!-- END #logo -->
+															</div>
+													<div id="secondary-navigation" class="secondary-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+													<nav id="navigation" class="navigation clearfix mobile-menu-wrapper">
+																	<ul class="menu clearfix">
+											<li class="cat-item cat-item-460"><a href="/category/algorithms/">Algorithms</a>
+</li>
+	<li class="cat-item cat-item-505"><a href="/category/aurelia/">Aurelia</a>
+</li>
+	<li class="cat-item cat-item-293"><a href="/category/c-net-2/">C# / .Net / WPF</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/c-mfc/">C++ / MFC / STL</a>
+</li>
+	<li class="cat-item cat-item-555"><a href="/category/cisco/">Cisco</a>
+</li>
+	<li class="cat-item cat-item-471"><a href="/category/databases/">Databases</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/design-patterns/">Design Patterns</a>
+</li>
+	<li class="cat-item cat-item-373"><a href="/category/devops/">DevOps</a>
+</li>
+	<li class="cat-item cat-item-486"><a href="/category/encryption-and-security/">Encryption and Security</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="/category/genetic-algorithms/">Genetic Algorithms</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="/category/opencv/">Image Detection</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="/category/installers/">Installers</a>
+</li>
+	<li class="cat-item cat-item-194"><a href="/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-500"><a href="/category/javascript/">JavaScript</a>
+</li>
+	<li class="cat-item cat-item-137"><a href="/category/linux/">Linux</a>
+</li>
+	<li class="cat-item cat-item-552"><a href="/category/networks/">Networks</a>
+</li>
+	<li class="cat-item cat-item-497"><a href="/category/nodejs/">NodeJs</a>
+</li>
+	<li class="cat-item cat-item-319"><a href="/category/opencv-2/">OpenCV</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="/category/optimization/">Optimization</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="/category/python/">Python</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="/category/version-control/">Version Control</a>
+</li>
+	<li class="cat-item cat-item-428"><a href="/category/web-development/">Web development</a>
+</li>
+	<li class="cat-item cat-item-63"><a href="/category/windows/">Windows</a>
+</li>
+									</ul>
+															</nav>
+											</div>
+				            
+			</div><!--#header-->
+		</div><!--.container-->
+	</header>      
+	<div class="main-container"><div id="page" class="single clearfix">
+
+		
+	<article class="ss-full-width">
+		<div id="content_box">
+							<div id="post-1142" class="g post post-1142 type-post status-publish format-standard hentry category-c-net-2 category-c-mfc tag-all-paths-algorithm tag-all-simple-paths tag-c-net-mfc tag-c-mfc tag-depth-first-search tag-nodes tag-recursion">
+					<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="root"><a href="/" itemprop="item"><span itemprop="name"><i class="fa fa-home"></i> Home</span><meta itemprop="position" content="1"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/category/c-net-2/" itemprop="item"><span itemprop="name">C# / .Net / WPF</span><meta itemprop="position" content="2"></a></div><div class="icon-font"><i class="fa fa-angle-double-right"></i></div><div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">A Recursive Algorithm to Find all Paths Between Two Given Nodes in C++ and C#</span><meta itemprop="position" content="3"></div></div>													<div class="single_post">
+									<header>
+										<h1 class="title single-title entry-title">A Recursive Algorithm to Find all Paths Between Two Given Nodes in C++ and C#</h1>
+													<div class="post-info">
+                                <span class="theauthor"><i class="fa fa-user"></i> <span><a href="/author/happyuk/" rel="author">Andy</a></span></span>
+                            <span class="thetime updated"><i class="fa fa-calendar"></i> <span>22 September 2011</span></span>
+                            <span class="thecategory"><i class="fa fa-tags"></i> <a href="/category/c-net-2/" title="View all posts in C# / .Net / WPF">C# / .Net / WPF</a>, <a href="/category/c-mfc/" title="View all posts in C++ / MFC / STL">C++ / MFC / STL</a></span>
+                            <span class="thecomment"><i class="fa fa-comments"></i> <a href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/#comments" itemprop="interactionCount">40 Comments</a></span>
+            			</div>
+											</header><!--.headline_area-->
+									<div class="post-single-content box mark-links entry-content">
+																														<div class="thecontent">
+											<p><strong>Problem Outline</strong></p><p>This I tackled previously when working on the design and implementation of routing optimization algorithms for telecommunications networks. Given that a wide area network with nodes and interconnecting links can be modelled as a graph with vertices and edges, the problem is to find all path combinations<span id="more-1142"></span>(containing no cycles) between selected pairs of communicating end nodes. Please note that this is not a problem of just finding the shortest paths between nodes, for which Dijkstra’s algorithm can be readily employed.</p><p>An additional factor in finding all paths is that the algorithm should be able to handle both directed graphs or graphs whose edges are assumed to be bi-directional.</p><p>Downloadable implementations of this algorithm are available in C++ and C#/.NET. See download link below.</p><p><strong>The graph searching algorithm</strong></p><p>The National Institute of Standards and Technology (NIST) online Dictionary of Algorithms and Data Structures describes this particular problem as <a href="http://xlinux.nist.gov/dads//HTML/allSimplePaths.html">“all simple paths”</a> and recommends a <a href="http://xlinux.nist.gov/dads//HTML/depthfirst.html">depth-first search</a> to find all non-cyclical paths between arbitrary pairs of nodes.</p><p><strong>Modelling Networks</strong></p><p>The network connectivity is modelled using the following <code>Network </code>class which uses a <a href="http://www.cs.princeton.edu/~rs/Algs3.cxx5/code.txt">Sedgewick’s implementation</a> of a <code>Graph</code> class as the means to uniquely identify individual links, as well as add new links and check for the presence of links. The <code>Network </code>class can also set the bi-directional status of the links that are added and store each path found by the graph searching algorithm:</p><pre class="brush: cpp; title: ; notranslate" title="">
+#pragma once
+
+#include "Graph.h"&gt;
+#include &lt;vector&gt;
+#include &lt;map&gt;
+#include &lt;string&gt;
+
+typedef std::pair&lt; int, int&gt; Link;
+typedef std::vector&lt; int&gt; Path;
+typedef std::vector&lt; Path&gt; PathSet;
+typedef std::vector&lt; Path&gt; ::const_iterator Paths;
+
+class Network
+{
+private:
+
+   DenseGRAPH&lt; Edge&gt; *graph;
+   PathSet pathset;
+
+public:
+
+   Network() {}
+   Network(const std::vector&lt; Link&gt; &amp; links,
+      const bool&amp; bi = false);
+   ~Network();
+
+   void AddPath(const Path&amp; p);
+   void ShowPaths() const;
+
+   std::vector&lt; int&gt; GetAdjNodeIDs(const int&amp; n) const;
+};
+</pre><p><strong>The depth-first algorithm</strong></p><p>As can be seen from the code sample, beginning from the start node, the algorithm examines all outgoing links and progresses by expanding the first child node of the search tree that appears, searching progressively deeper until a target node is found, or until it encounters a node that has no children. The search then backtracks, returning to the most recent node it hasn’t finished exploring.</p><p>The <code>max_hops</code> and <code>min_hops</code> arguments passed to <code>DepthFirst</code> method can be used to filter the sets of paths found by their maximum and minimum number of hops respectively; otherwise thse parameters are set to -1, then no such restrictions are imposed on the path searches, and all possible paths are found.</p><pre class="brush: cpp; title: ; notranslate" title="">
+// Algorithm to recursively search for all paths between
+// chosen source - destination nodes
+void Algorithm::DepthFirst(Network* network,
+   Path&amp; visited,
+   const int&amp; end,
+   const int&amp; max_hops,
+   const int&amp; min_hops)
+{
+   const int back = visited.back();
+
+   std::vector&lt; int &gt; adjNode = network - &gt; GetAdjNodeIDs(back);
+
+   // Examine adjacent nodes
+   for (std::vector&lt; int&gt; ::const_iterator node_it = adjNode.begin();
+      node_it != adjNode.end();
+      node_it++)
+   {
+      const int node = (*node_it);
+
+      bool startEqualTarget = ContainsNode(visited, node) &amp; &amp;
+      startNodeId == end &amp; &amp;
+      node == startNodeId;
+
+      if (ContainsNode(visited, node) &amp; &amp; !startEqualTarget) continue;
+
+      if (node == end)
+      {
+         visited.push_back(*node_it);
+
+         // Get hop count for this path
+         const int size = (int)visited.size();
+         const int hops = size - 1;
+
+         if ((max_hops &lt; 1 || hops &lt; = max_hops) &amp; &amp; hops &gt; = min_hops)
+         {
+            Path path(visited.begin(), visited.begin() + size);
+            network - &gt; AddPath(path);
+         }
+
+         visited.erase(visited.begin() + hops);
+
+         break;
+      }
+   }
+
+
+   // in depth-first, recursion needs to come after visiting adjacent nodes
+   for (std::vector&lt; int&gt; ::const_iterator node_it = adjNode.begin();
+      node_it != adjNode.end();
+      node_it++)
+   {
+      int node = (*node_it);
+
+      if (ContainsNode(visited, node) || node == end)
+         continue;
+
+      visited.push_back(node);
+
+      DepthFirst(network, visited, end, max_hops, min_hops);
+
+      int n = (int)visited.size() - 1;
+      visited.erase(visited.begin() + n);
+   }
+}
+</pre><p><strong>Example 1: network topology with uni-directional links</strong></p><p>Here is the graphical representation of a 5-node directed graph problem used in the example presented here:</p><p><img fetchpriority="high" decoding="async" class="alignnone size-medium wp-image-1167" title="paths1" src="" alt="" width="300" height="236" data-layzr="http://technical-recipes.com/wp-content/uploads/2011/09/paths1-300x236.jpg"></p><p>In the main main program loop, the network was set as having directed edges which are inserted using calls to the Network object’s AddLink method. For example a directed edge exists between nodes [1,3], but not nodes [3,1], hence the single arrow between the node [1,3] pair. Directed edges exist between nodes [1,2] and nodes [2,1], hence the bi-directional link between them.</p><p>To find all possible combinations of paths between nodes [2,5] for example, we simply set the start and target nodes and feed the <code>GetAllPaths</code> method with them. The -1 value passed to <code>GetAllPaths</code> signifies that we do not wish to filter any of the search results for maximum number of hops, but return all possible paths it finds.</p><p>Example <code>main.cpp</code> usage shown in the following code:</p><pre class="brush: cpp; title: ; notranslate" title="">
+#include "Algorithm.h"
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+const Link&lt; int&gt; linkset[] = { Link&lt; int&gt; (1, 2),
+Link&lt; int&gt; (1, 3),
+Link&lt; int&gt; (1, 4),
+Link&lt; int&gt; (2, 1),
+Link&lt; int&gt; (2, 4),
+Link&lt; int&gt; (2, 3),
+Link&lt; int&gt; (3, 5),
+Link&lt; int&gt; (4, 5),
+Link&lt; int&gt; (5, 3) };
+
+const size_t size = sizeof(linkset) / sizeof(linkset[0]);
+const std::vector&lt; Link&lt; int&gt; &gt; links(linkset, linkset + size);
+
+int main()
+{
+   // Create network from interconnections given    
+   Network nw(links, false);
+
+   // Create the algorithm object
+   Algorithm algorithm(&amp; nw);
+
+   // Get all paths between nodes 2 and 5
+   algorithm.GetAllPaths(&amp; nw, 2, 5, -1, -1);
+
+   // Output the set of paths found
+   nw.ShowPaths();
+
+   return 0;
+}
+</pre><p>Giving the following output for finding all paths between nodes 2 and 5:</p><p><a href="http://technical-recipes.com/wp-content/uploads/2011/09/paths2.jpg"><img decoding="async" class="alignnone size-full wp-image-1175" title="paths2" src="" alt="" width="293" height="179" data-layzr="http://technical-recipes.com/wp-content/uploads/2011/09/paths2.jpg"></a></p><p><strong>Example 2: network topology with bi-directional links</strong></p><p><a href="/wp-content/uploads/2011/09/topology21.jpg"><img decoding="async" class="alignnone size-medium wp-image-4290" src="" alt="topology2" width="300" height="160" data-layzr="/wp-content/uploads/2011/09/topology21-300x160.jpg"></a></p><p>Using a very simple tweak we can also construct network topologies with link interconnections that are are <em>bi-directional</em>; that is, a link between [1,2] is the same as the link between [2,1]. In other words, adding link [2,1] when link [1,2] already exists will make no difference.</p><p>Simply, set the bi-directional flag in the <code>Network</code> class constructor to <code>true</code>, and build the network in the same way, as shown in this next <code>main.cpp</code> example:</p><pre class="brush: cpp; title: ; notranslate" title="">
+#include "Algorithm.h"
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+const Link&lt; int&gt; linkset[] = { Link&lt; int&gt; (1, 2),
+Link&lt; int&gt; (2, 1),  // [1,2] = [2,1]  
+Link&lt; int&gt; (1, 4),
+Link&lt; int&gt; (1, 7),
+Link&lt; int&gt; (2, 4),
+Link&lt; int&gt; (2, 3),
+Link&lt; int&gt; (3, 5),
+Link&lt; int&gt; (3, 8),
+Link&lt; int&gt; (4, 5),
+Link&lt; int&gt; (4, 9),
+Link&lt; int&gt; (5, 6),
+Link&lt; int&gt; (5, 7),
+Link&lt; int&gt; (5, 9),
+Link&lt; int&gt; (6, 8),
+Link&lt; int&gt; (6, 10),
+Link&lt; int&gt; (7, 8),
+Link&lt; int&gt; (8, 10),
+Link&lt; int&gt; (9, 10) };
+
+const size_t size = sizeof(linkset) / sizeof(linkset[0]);
+const std::vector&lt; Link&lt; int&gt; &gt; links(linkset, linkset + size);
+
+int main()
+{
+   // Create network from interconnections given    
+   Network nw(links, true);
+
+   // Create the algorithm object
+   Algorithm algorithm(&amp; nw);
+
+   // Get all paths between nodes 2 and 5
+   algorithm.GetAllPaths(&amp; nw, 2, 5, -1, -1);
+
+   // Output the set of paths found
+   nw.ShowPaths();
+
+   return 0;
+}
+</pre><p>Giving the following output for finding all paths between nodes 2 and 5:</p><p><a href="/wp-content/uploads/2011/09/BidirectionalPaths1.jpg"><img decoding="async" class="alignnone size-full wp-image-4295" src="" alt="BidirectionalPaths" width="277" height="587" data-layzr="/wp-content/uploads/2011/09/BidirectionalPaths1.jpg"></a></p><p><strong>Example 3: filtering by the maximum number of hops</strong></p><p>We may wish to restrict paths found to those whose maximum hop count is no larger than a set maximum, say 4 hops.</p><p>By using another simple tweak we can achieve this. Simply set the <code>max_hops</code> argument that is passed to <code>Algorithm::GetAllPaths</code> to some value greater than zero. The <code>min_hops</code> argument is kept as default -1::</p><pre class="brush: cpp; title: ; notranslate" title="">
+algorithm.GetAllPaths( &amp;nw, 2, 5, 4, -1 );  
+</pre><p>Re-running the program with the same network as in example 2, gives the following paths, restricted to a maximum of 4 hops:</p><p><a href="/wp-content/uploads/2011/09/MaxHopPaths.jpg"><img decoding="async" class="alignnone size-full wp-image-4301" src="" alt="MaxHopPaths" width="221" height="215" data-layzr="/wp-content/uploads/2011/09/MaxHopPaths.jpg"></a></p><p><strong>Example 4: Labeling network nodes arbitrarily</strong></p><p>A recent improvement to the software has been to allow the user to label the nodes arbitrarily as standard strings, or as integers. Either way, it is no longer a requirement for the nodes to be labelled as an ascending order of integers of say 1-5 for a five node network. You can now call them what you like.</p><p>For example, Consider the following 9-node network representing towns and cities in the UK:</p><p><a href="/wp-content/uploads/2011/09/UKnetwork.jpg"><img decoding="async" class="alignnone size-full wp-image-4962" src="" alt="UKnetwork" width="609" height="894" data-layzr="/wp-content/uploads/2011/09/UKnetwork.jpg"></a></p><p>It is no longer necessary to label the nodes using integers, but can be done using strings to give a more meaningful description. There now exists a two-way mapping between the integer used to uniquely identify each node created and the string/integer label used to describe it.</p><p>Supposing we wish to construct the above network and find all possible paths between Bristol and Edinburgh for an undirected representation of the graph, then the usage is as follows:</p><pre class="brush: cpp; title: ; notranslate" title="">
+#include "Algorithm.h"  
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+const Link&lt;std::string&gt; linkset[] =
+{ 
+   Link&lt;std::string&gt;("Bristol", "London"),
+   Link&lt;std::string&gt;("Bristol", "Cardiff"),
+   Link&lt;std::string&gt;("Oxford", "Cardiff"),
+   Link&lt;std::string&gt;("Glasgow", "Manchester"),
+   Link&lt;std::string&gt;("Manchester", "Leeds"),
+   Link&lt;std::string&gt;("Manchester", "Cardiff"),
+   Link&lt;std::string&gt;("Glasgow", "Edinburgh"),
+   Link&lt;std::string&gt;("Edinburgh", "Newcastle"),
+   Link&lt;std::string&gt;("Leeds", "London"),
+   Link&lt;std::string&gt;("Newcastle", "Leeds") };
+
+const size_t size = sizeof(linkset) / sizeof(linkset[0]);
+const std::vector&lt;Link&lt;std::string&gt; links(linkset, linkset + size);
+
+int main()
+{
+   // Create network from interconnections given      
+   Network nw(links, true);
+
+   // Create the algorithm object  
+   Algorithm algorithm(&amp; nw);
+
+   // Get all paths between nodes Bristol and Bath  
+   algorithm.GetAllPaths(&amp; nw, "Bristol", "Edinburgh", -1, -1);
+
+   // Output the set of paths found  
+   nw.ShowPaths();
+
+   return 0;
+}
+</pre><p>Giving the following output:</p><p><a href="/wp-content/uploads/2011/09/AllPaths1.jpg"><img decoding="async" class="alignnone size-full wp-image-5043" src="" alt="AllPaths" width="517" height="199" data-layzr="/wp-content/uploads/2011/09/AllPaths1.jpg"></a><br>
+<strong><br>
+Example 5: Finding all paths between the same node</strong></p><p>You may wish to find all paths between the same node. Take the following network with bi-directional links:</p><p><a href="/wp-content/uploads/2011/09/FiveNodeNetwork.jpg"><img decoding="async" class="alignnone size-full wp-image-5027" src="" alt="FiveNodeNetwork" width="246" height="229" data-layzr="/wp-content/uploads/2011/09/FiveNodeNetwork.jpg"></a></p><p>You may wish to find all paths that start from the node 2 that return to node 2. Example usage is shown here:</p><pre class="brush: cpp; title: ; notranslate" title="">
+#include "Algorithm.h"  
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+const Link&lt; int&gt; linkset[] = { Link&lt; int&gt; (1, 2),
+Link&lt; int&gt; (1, 3),
+Link&lt; int&gt; (1, 4),
+Link&lt; int&gt; (2, 1),
+Link&lt; int&gt; (2, 4),
+Link&lt; int&gt; (2, 3),
+Link&lt; int&gt; (3, 5),
+Link&lt; int&gt; (4, 5),
+Link&lt; int&gt; (5, 3) };
+
+const size_t size = sizeof(linkset) / sizeof(linkset[0]);
+const std::vector&lt; Link&lt; int&gt; &gt; links(linkset, linkset + size);
+
+int main()
+{
+   // Create network from interconnections given      
+   Network nw(links, true);
+
+   // Create the algorithm object  
+   Algorithm algorithm(&amp;nw);
+
+   // Get all paths between nodes 2 and 5  
+   algorithm.GetAllPaths(&amp;nw, 2, 2, -1, -1);
+
+   // Output the set of paths found  
+   nw.ShowPaths();
+
+   return 0;
+}
+</pre><p>Giving the list of all found paths to and from node labelled 2:</p><p><a href="/wp-content/uploads/2011/09/SameStartEndNode1.jpg"><img decoding="async" class="alignnone size-full wp-image-5030" src="" alt="SameStartEndNode1" width="293" height="271" data-layzr="/wp-content/uploads/2011/09/SameStartEndNode1.jpg"></a></p><p>If you would rather not have paths such as 2 – 1 – 2 then just specify a minimum hop count of 3:</p><pre class="brush: cpp; title: ; notranslate" title="">
+algorithm.GetAllPaths( &amp;nw, 2, 2, -1, 3 );
+</pre><p>Which would give the following path list:</p><p><a href="/wp-content/uploads/2011/09/SameStartEndNode2.jpg"><img decoding="async" class="alignnone size-full wp-image-5031" src="" alt="SameStartEndNode2" width="293" height="271" data-layzr="/wp-content/uploads/2011/09/SameStartEndNode2.jpg"></a></p><p><strong>Download C++ (Visual Studio 2010 and Linux NetBeans) and C#/.NET implementations:</strong></p><p><script data-selz-t="_selz-btn-default" data-selz-a="modal" data-selz-b="http://bit.ly/1Mfljqi" data-text="Buy it now">
+if (typeof _$elz === "undefined") { var _$elz = {}; }
+if (typeof _$elz.b === "undefined") { 
+_$elz.b = { e: document.createElement("script") }; 
+_$elz.b.e.src = "https://selz.com/embed/button"; 
+document.body.appendChild(_$elz.b.e); }
+</script><br>
+<noscript><a href="http://bit.ly/1Mfljqi" target="_blank" rel="noopener">Buy it now</a><a href="https://selz.com/info/sell-ebooks" target="_blank" rel="noopener">Sell ebooks</a></noscript></p><p>Comments and feedback welcome. Some testimonials:</p><p><em>“Hi Andy,<br>
+The program ran beautifully with my file input today. It traced all possible paths for 11,169 source-destination pairs in well under a minute … I still have more to do on the project, but you saved me so much time, and I deeply appreciate that. Sincerely, Julia”</em><br>
+Julia L. Chariker<br>
+Professor of Psychology, University of Louisville, KY</p><p><em>“Thank you [Andrew]. It works perfectly …”</em><br>
+Jeandre Prinsloo</p><p><em>“Hi Andrew,<br>
+Sorry for the late reply, but I had a hard week of work and I forgot to reply…<br>
+I want to thank you for the code, it really is very efficient and easy to use, I’ve solved a big problem of searching nodes!<br>
+Thank you very much, your work is great and help me a lot!”</em><br>
+Michele Condò</p><p><script data-selz-t="_selz-btn-default" data-selz-a="modal" data-selz-b="http://bit.ly/1Mfljqi" data-text="Buy it now">
+if (typeof _$elz === "undefined") { var _$elz = {}; }
+if (typeof _$elz.b === "undefined") { 
+_$elz.b = { e: document.createElement("script") }; 
+_$elz.b.e.src = "https://selz.com/embed/button"; 
+document.body.appendChild(_$elz.b.e); }
+</script><br>
+<noscript><a href="http://bit.ly/1Mfljqi" target="_blank" rel="noopener">Buy it now</a><a href="https://selz.com/info/sell-ebooks" target="_blank" rel="noopener">Sell ebooks</a></noscript></p>
+
+                <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $.post('/wp-admin/admin-ajax.php', {action: 'mts_view_count', id: '1142'});
+                });
+                </script>										</div>
+																														    		<!-- Start Share Buttons -->
+    		<div class="shareit floating">
+                                <!-- Twitter -->
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span>
+                            <!-- GPlus -->
+                <span class="share-item gplusbtn">
+                    <plusone size="medium"></plusone>
+                </span>
+                            <!-- Facebook -->
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                            <!-- Pinterest -->
+                <span class="share-item pinbtn">
+                    <a href="http://pinterest.com/pin/create/button/?url=/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/&amp;media=&amp;description=A%20Recursive%20Algorithm%20to%20Find%20all%20Paths%20Between%20Two%20Given%20Nodes%20in%20C++%20and%20C#" class="pin-it-button" count-layout="horizontal">Pin It</a>
+                </span>
+                		</div>
+    		<!-- end Share Buttons -->
+    										</div><!--.post-single-content-->
+								</div><!--.single_post-->
+								    		<!-- Start Related Posts -->
+    		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
+					<a href="/2012/how-to-link-dll-files-to-c-projects/" title="How to link DLL files to C++ Projects" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="How to link DLL files to C++ Projects"></div>
+                                                                        <h4 class="title front-view-title">How to link DLL files to C++ Projects</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  ">
+					<a href="/2018/using-dependency-injection-in-web-api-applications-using-unity/" title="Using dependency injection in Web API applications using Unity" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using dependency injection in Web API applications using Unity"></div>
+                                                                        <h4 class="title front-view-title">Using dependency injection in Web API applications using Unity</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			    			<article class="latestPost excerpt  last">
+					<a href="/2011/simple-binary-tree-implementation/" title="A Simple Binary Tree Implementation in C++" id="featured-thumbnail">
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="A Simple Binary Tree Implementation in C++"></div>
+                                                                        <h4 class="title front-view-title">A Simple Binary Tree Implementation in C++</h4>
+					</a>
+                </article><!--.post.excerpt-->
+    			</div></div>    		<!-- .related-posts -->
+    									<div class="postauthor">
+									<h4>About The Author</h4>
+									<img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=80&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=160&amp;d=mm&amp;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" decoding="async">									<h5 class="vcard"><a href="/author/happyuk/" class="fn">Andy</a></h5>
+									<p></p>
+								</div>
+												</div><!--.g post-->
+				<!-- You can start editing here. -->
+	<div id="comments">
+		<h4 class="total-comments">Latest Comments</h4>
+			<ol class="commentlist">
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+				    	<li class="comment even thread-even depth-1" id="li-comment-2614">
+    		                    <div id="comment-2614" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/5ed969ec8d68acb9a57c3c482801a4d6b62fb14929bbd835faaa9fada374f1f4?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/5ed969ec8d68acb9a57c3c482801a4d6b62fb14929bbd835faaa9fada374f1f4?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Joshua</span></span>                                                            <span class="ago">16 November 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I really like this algoriithm but the problem is I’m working with java on my final year project and will appreciate it if I can get the java version or a general algorithm to implement for the depth first algorithm thanks very much.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=2614#respond" data-commentid="2614" data-postid="1142" data-belowelement="comment-2614" data-respondelement="respond" data-replyto="Reply to Joshua" aria-label="Reply to Joshua">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    </ol><ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-2729">
+    		                    <div id="comment-2729" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">16 December 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I’ve not yet tackled this in Java but if it helps, StackOverflow may contain one or two articles on this.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=2729#respond" data-commentid="2729" data-postid="1142" data-belowelement="comment-2729" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even depth-2" id="li-comment-5757">
+    		                    <div id="comment-5757" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/a1edb991b17836df875d393db378f10b7334746d926db02fb9f4cf66643ac805?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/a1edb991b17836df875d393db378f10b7334746d926db02fb9f4cf66643ac805?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">alireza</span></span>                                                            <span class="ago">14 January 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I really like this algoriithm but the problem is I’m working with C++  on my Thesis  and will appreciate it if I can get the C++ or  a general algorithm to implement for the depth first algorithm.<br>
+do you can send this C++ version of this algorithm for me?<br>
+thanke you so much</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=5757#respond" data-commentid="5757" data-postid="1142" data-belowelement="comment-5757" data-respondelement="respond" data-replyto="Reply to alireza" aria-label="Reply to alireza">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-24853">
+    		                    <div id="comment-24853" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">7 April 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>C# download is now available.  Not Java but should not be too dissimilar.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=24853#respond" data-commentid="24853" data-postid="1142" data-belowelement="comment-24853" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-3" id="li-comment-41290">
+    		                    <div id="comment-41290" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/20b893550274e0aee729d452a813c33d08340bdc58341ae85c4f8f4540b09e19?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/20b893550274e0aee729d452a813c33d08340bdc58341ae85c4f8f4540b09e19?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">d0m4</span></span>                                                            <span class="ago">31 May 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Where can i download code in C#?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=41290#respond" data-commentid="41290" data-postid="1142" data-belowelement="comment-41290" data-respondelement="respond" data-replyto="Reply to d0m4" aria-label="Reply to d0m4">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-4" id="li-comment-41309">
+    		                    <div id="comment-41309" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">1 June 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi the C++ and C# projects are contained in the same download.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=41309#respond" data-commentid="41309" data-postid="1142" data-belowelement="comment-41309" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-2717">
+    		                    <div id="comment-2717" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/e8d1d796302ea16fb33fc5d6e8943c979eb1b9963013a39475d758c896182036?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/e8d1d796302ea16fb33fc5d6e8943c979eb1b9963013a39475d758c896182036?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Moses</span></span>                                                            <span class="ago">11 December 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I love your code, but I don’t understand something there. what is containsNode and there is no such function of containsNode in the declaration functions. could you explain me why?</p>
+<p>Thanks A lot..!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=2717#respond" data-commentid="2717" data-postid="1142" data-belowelement="comment-2717" data-respondelement="respond" data-replyto="Reply to Moses" aria-label="Reply to Moses">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment odd alt depth-2" id="li-comment-2728">
+    		                    <div id="comment-2728" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">16 December 2012</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Moses, ContainsNode I think is a simple test to test for the presence or absence of a specific node.  It is to be found in the downloadable code, this article contains only selected aspects.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=2728#respond" data-commentid="2728" data-postid="1142" data-belowelement="comment-2728" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-3645">
+    		                    <div id="comment-3645" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/2a78339b849316c39efa948705774e8fcac3eea7ea73ed139dc7a4ea62c0db10?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/2a78339b849316c39efa948705774e8fcac3eea7ea73ed139dc7a4ea62c0db10?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">nilay</span></span>                                                            <span class="ago">30 January 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Very nice code. Easy to understand.<br>
+How is the stability of this algorithm, say for graphs with more than thousand nodes?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=3645#respond" data-commentid="3645" data-postid="1142" data-belowelement="comment-3645" data-respondelement="respond" data-replyto="Reply to nilay" aria-label="Reply to nilay">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-3714">
+    		                    <div id="comment-3714" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4b50b22b3d722e256ab13d0566f467ade304d9290ed4146de09dadacbd2aeeb1?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4b50b22b3d722e256ab13d0566f467ade304d9290ed4146de09dadacbd2aeeb1?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">janey</span></span>                                                            <span class="ago">8 February 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Will it work for undirected graphs…currently m doing project on undirected graphs/networks in telecommunication networks area…thats why…kindly can u give a solution for finding all combination of paths between source and sink node.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=3714#respond" data-commentid="3714" data-postid="1142" data-belowelement="comment-3714" data-respondelement="respond" data-replyto="Reply to janey" aria-label="Reply to janey">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-2" id="li-comment-3716">
+    		                    <div id="comment-3716" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">8 February 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Yes it will, directed or undirected graphs.  You simply set the bi_direction flag to true or false depending on what your needs are, done via the Network class.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=3716#respond" data-commentid="3716" data-postid="1142" data-belowelement="comment-3716" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-3788">
+    		                    <div id="comment-3788" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/aeda1ba18d16794afd1b0d7a2df96182e7ec841f065a7480d713d8afcdc5235b?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/aeda1ba18d16794afd1b0d7a2df96182e7ec841f065a7480d713d8afcdc5235b?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Himanshu Ranjan</span></span>                                                            <span class="ago">4 March 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Sir<br>
+Can I get this code for matrix representation of graph. Please.</p>
+<p>Thank You in anticipation.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=3788#respond" data-commentid="3788" data-postid="1142" data-belowelement="comment-3788" data-respondelement="respond" data-replyto="Reply to Himanshu Ranjan" aria-label="Reply to Himanshu Ranjan">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-5834">
+    		                    <div id="comment-5834" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">22 January 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Himanshu<br>
+Yes, you probably can.  This algorithm uses Sedgewick’s implementation of a Graph class, which can either be implemented using an adjacency matrix, or an adjacency list.<br>
+Andy</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=5834#respond" data-commentid="5834" data-postid="1142" data-belowelement="comment-5834" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-4010">
+    		                    <div id="comment-4010" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/267d6e29df4ca254eb70d094389e8e69d60dcb6d5fbe3684e4af1c3b5931612d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/267d6e29df4ca254eb70d094389e8e69d60dcb6d5fbe3684e4af1c3b5931612d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Thao</span></span>                                                            <span class="ago">14 April 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi there, I’m just wondering if there are any iterative ways to achieve the same thing since recursion may be time-expensive when the graph is big. Thank you!</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=4010#respond" data-commentid="4010" data-postid="1142" data-belowelement="comment-4010" data-respondelement="respond" data-replyto="Reply to Thao" aria-label="Reply to Thao">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor even depth-2" id="li-comment-4011">
+    		                    <div id="comment-4011" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">14 April 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Thao, the recursive approach is really the only approach that I know of, although it must be possible to come up with an iterative approach?  Have you tried searching the online forums or StackOverflow for example?  I’d be interested to find out.<br>
+An alternative may be to just consider a subset of the total possible paths as in k-shortest paths?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=4011#respond" data-commentid="4011" data-postid="1142" data-belowelement="comment-4011" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment odd alt depth-3" id="li-comment-4012">
+    		                    <div id="comment-4012" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/267d6e29df4ca254eb70d094389e8e69d60dcb6d5fbe3684e4af1c3b5931612d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/267d6e29df4ca254eb70d094389e8e69d60dcb6d5fbe3684e4af1c3b5931612d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Thao</span></span>                                                            <span class="ago">14 April 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I’ve tried searching but seems like this is the only way to do it. Thanks anyway</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=4012#respond" data-commentid="4012" data-postid="1142" data-belowelement="comment-4012" data-respondelement="respond" data-replyto="Reply to Thao" aria-label="Reply to Thao">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-4635">
+    		                    <div id="comment-4635" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/8de80dc8efa138600f28d55a4c00db7ae5cf602ed683152517c9b5358483e06d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/8de80dc8efa138600f28d55a4c00db7ae5cf602ed683152517c9b5358483e06d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Hoda</span></span>                                                            <span class="ago">7 July 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>I’m looking for an Algorithm to Find all Paths Between Two Given Nodes<br>
+in a directd acyclic graph in matlab,but it seems there is nobody in all over the world, who can help me:(((((((((((((((<br>
+I need it ASAP.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=4635#respond" data-commentid="4635" data-postid="1142" data-belowelement="comment-4635" data-respondelement="respond" data-replyto="Reply to Hoda" aria-label="Reply to Hoda">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-4636">
+    		                    <div id="comment-4636" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">7 July 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>How about this:</p>
+<p><a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/315198" rel="nofollow ugc">http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/315198</a></p>
+<p>Finding all possible paths using Yen’s algorithm in Matlab</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=4636#respond" data-commentid="4636" data-postid="1142" data-belowelement="comment-4636" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-3" id="li-comment-4640">
+    		                    <div id="comment-4640" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/8de80dc8efa138600f28d55a4c00db7ae5cf602ed683152517c9b5358483e06d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/8de80dc8efa138600f28d55a4c00db7ae5cf602ed683152517c9b5358483e06d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Hoda</span></span>                                                            <span class="ago">8 July 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Thanks u verrrrrrrrrry much,Finally I did it with some modification in the function that u commented,u don’t know how much I am thankful,God bless u and wishing the best for u.<br>
+BIG TNX</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=4640#respond" data-commentid="4640" data-postid="1142" data-belowelement="comment-4640" data-respondelement="respond" data-replyto="Reply to Hoda" aria-label="Reply to Hoda">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-4" id="li-comment-4747">
+    		                    <div id="comment-4747" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">27 July 2013</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>You’re welcome.  Hope it goes well.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=4747#respond" data-commentid="4747" data-postid="1142" data-belowelement="comment-4747" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even depth-4" id="li-comment-15169">
+    		                    <div id="comment-15169" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/3cbdfdb76f1b3487d6707e954c0e1c30ac2e5ef728e35261c1051029501656f5?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/3cbdfdb76f1b3487d6707e954c0e1c30ac2e5ef728e35261c1051029501656f5?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">hamidreza</span></span>                                                            <span class="ago">11 October 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Hoda<br>
+I have your problem too.plz help me<br>
+I want this code in MATLAB.<br>
+Thanks and Best regards.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=15169#respond" data-commentid="15169" data-postid="1142" data-belowelement="comment-15169" data-respondelement="respond" data-replyto="Reply to hamidreza" aria-label="Reply to hamidreza">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt depth-4" id="li-comment-15170">
+    		                    <div id="comment-15170" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/3cbdfdb76f1b3487d6707e954c0e1c30ac2e5ef728e35261c1051029501656f5?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/3cbdfdb76f1b3487d6707e954c0e1c30ac2e5ef728e35261c1051029501656f5?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">hamidreza</span></span>                                                            <span class="ago">11 October 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>my Email: <a href="mailto:v.hamidreza66@gmail.com">v.hamidreza66@gmail.com</a></p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=15170#respond" data-commentid="15170" data-postid="1142" data-belowelement="comment-15170" data-respondelement="respond" data-replyto="Reply to hamidreza" aria-label="Reply to hamidreza">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-13135">
+    		                    <div id="comment-13135" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/66b7edb35f667c1dbcbb46ad03d4c45fb9b7bdd1ce9d4bc01509b7361f678063?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/66b7edb35f667c1dbcbb46ad03d4c45fb9b7bdd1ce9d4bc01509b7361f678063?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Adrian</span></span>                                                            <span class="ago">16 September 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi !</p>
+<p>Listed in the downloads sections, there’s a link titled “Implementing Dijkstra’s Algorithm using Sedgewick’s C++ Code”, which I presume was the basis of this algorithm. I’ve tried adding the Network.h class and Algorithm.h class using the code listed above, and changing the Main.cpp with the code in “Example 5: Finding all paths between the same node”, however, when compiling with Code::Blocks or Dev-C++, I get a load of errors (I have to mention that my coding skills are equal to zero; but I really need the algorithm on a personal project) . Is the code supposed to run only on Visual Studio or is it something that I’m missing ?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=13135#respond" data-commentid="13135" data-postid="1142" data-belowelement="comment-13135" data-respondelement="respond" data-replyto="Reply to Adrian" aria-label="Reply to Adrian">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-13413">
+    		                    <div id="comment-13413" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">21 September 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Adrian<br>
+There is an implementation of Dijkstra that comes with this, but this is not the same as the all paths problem.  So far I have only provided this in Visual Studio 2010 and as a Linux-based NetBeans project.  I will investigate looking at other IDEs like Code:Blocks and Eclipse when I get the chance.<br>
+Andy</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=13413#respond" data-commentid="13413" data-postid="1142" data-belowelement="comment-13413" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-19442">
+    		                    <div id="comment-19442" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/946cef5fa3557f97b37f27cd64569330bb22210f615334ede351a5ba65b5e8a0?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/946cef5fa3557f97b37f27cd64569330bb22210f615334ede351a5ba65b5e8a0?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">shruthi</span></span>                                                            <span class="ago">9 December 2014</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>hi,<br>
+This algorithm looks great. Can you provide the map reduce map-reduce implementation of this algorithm in java.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=19442#respond" data-commentid="19442" data-postid="1142" data-belowelement="comment-19442" data-respondelement="respond" data-replyto="Reply to shruthi" aria-label="Reply to shruthi">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-24846">
+    		                    <div id="comment-24846" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/4324b6e5c75b610164a239a0b6c85d53c83cad0327ec8f7c6b66c2958050bc8d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">happyuk</span></span>                                                            <span class="ago">7 April 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi the downloadable implementation of this is now available in C#.  Andy.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=24846#respond" data-commentid="24846" data-postid="1142" data-belowelement="comment-24846" data-respondelement="respond" data-replyto="Reply to happyuk" aria-label="Reply to happyuk">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-25405">
+    		                    <div id="comment-25405" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/9bfc3777b14343e15be611d02c2927d901eebdc00307ae994bbe71e440d4218d?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/9bfc3777b14343e15be611d02c2927d901eebdc00307ae994bbe71e440d4218d?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">abd</span></span>                                                            <span class="ago">24 April 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>For example i have lots of paths in one file like<br>
+file 1<br>
+1,2,4<br>
+4,5,6<br>
+And in 2nd file i have string like<br>
+file2<br>
+1,2,6<br>
+How can i find this string of file 2 in file 1<br>
+which is a path in file 1 when two strings are combined<br>
+1,2,4,4,5,6—–&gt;1,2,6 is present in this string<br>
+How can i do this in python?? Kindly help me through this. I am stuck at this point</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=25405#respond" data-commentid="25405" data-postid="1142" data-belowelement="comment-25405" data-respondelement="respond" data-replyto="Reply to abd" aria-label="Reply to abd">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-32555">
+    		                    <div id="comment-32555" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/8824a17aea55e0fc7e093bf823bd3632c26e006d10af3c55be829b5a048fffe4?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/8824a17aea55e0fc7e093bf823bd3632c26e006d10af3c55be829b5a048fffe4?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">lee</span></span>                                                            <span class="ago">16 November 2015</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>good job!I have been looking for it for a long time.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=32555#respond" data-commentid="32555" data-postid="1142" data-belowelement="comment-32555" data-respondelement="respond" data-replyto="Reply to lee" aria-label="Reply to lee">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-41619">
+    		                    <div id="comment-41619" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/d141c086ecd0b42135808eef2c16dd89945703bdb5e9922c7cf52d2b967f26b2?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/d141c086ecd0b42135808eef2c16dd89945703bdb5e9922c7cf52d2b967f26b2?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">AJAYI O</span></span>                                                            <span class="ago">26 June 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Sir,<br>
+Have been finding it difficult to write a code in C# to develop a grid network illustrating the road network consisting of 100vertices and 360edges for an agent which has a start and goal location. please sir, can you help me out.<br>
+Thanks</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=41619#respond" data-commentid="41619" data-postid="1142" data-belowelement="comment-41619" data-respondelement="respond" data-replyto="Reply to AJAYI O" aria-label="Reply to AJAYI O">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-41649">
+    		                    <div id="comment-41649" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">29 June 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi the download contains the C# project in addition to the C++ versions, but please remember that this problem is NP hard – ie cannot be solved in polynomial time, and you will find that time taken to solve the problem increases exponentially with the number of nodes – this might be an issue with the size of the problem you have in mind – unless it is a directed acyclic graphs in which case it can be solved in linear time.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=41649#respond" data-commentid="41649" data-postid="1142" data-belowelement="comment-41649" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment even depth-3" id="li-comment-43602">
+    		                    <div id="comment-43602" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/60ab95e7f0ac06da387e9b969decae86038017e0aca95e710272ff1bd8736f1f?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/60ab95e7f0ac06da387e9b969decae86038017e0aca95e710272ff1bd8736f1f?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Yogesh</span></span>                                                            <span class="ago">27 October 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi,<br>
+    I want the source code. How to make payment to buy this code? I can not pay in USD. Will it be secured payment through the link provided?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=43602#respond" data-commentid="43602" data-postid="1142" data-belowelement="comment-43602" data-respondelement="respond" data-replyto="Reply to Yogesh" aria-label="Reply to Yogesh">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-41993">
+    		                    <div id="comment-41993" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/e3955edb8dd215c73e56e58cf6dda8d25c18282cd2990678b808d9d198963036?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/e3955edb8dd215c73e56e58cf6dda8d25c18282cd2990678b808d9d198963036?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Akhil Reddy</span></span>                                                            <span class="ago">30 July 2016</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Heyy,<br>
+I would like to know more about this …</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=41993#respond" data-commentid="41993" data-postid="1142" data-belowelement="comment-41993" data-respondelement="respond" data-replyto="Reply to Akhil Reddy" aria-label="Reply to Akhil Reddy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-45420">
+    		                    <div id="comment-45420" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/ca82b46340a91776c27807c14f67af48586150f1aa104bb3542002e772d68eb5?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/ca82b46340a91776c27807c14f67af48586150f1aa104bb3542002e772d68eb5?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">milad</span></span>                                                            <span class="ago">11 February 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>hi,<br>
+is it possible to have the output paths in specific order for example number of hops in increasing order, or they should be sorted later?<br>
+and also if the graph is weighted, dose the code return the weight of each path? (needed for sorting)</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=45420#respond" data-commentid="45420" data-postid="1142" data-belowelement="comment-45420" data-respondelement="respond" data-replyto="Reply to milad" aria-label="Reply to milad">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-45421">
+    		                    <div id="comment-45421" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">11 February 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi yes it should be possible to do the things you state. The way I would do it would be to modify the data structures to add on the weight metric for each path and sort them after all paths have been found either by weight value or the number of hops.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=45421#respond" data-commentid="45421" data-postid="1142" data-belowelement="comment-45421" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-even depth-1" id="li-comment-45814">
+    		                    <div id="comment-45814" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/424e8504f3c54de726443a3dcbf3c225851b30116ba81d273bf2f9571db217ed?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/424e8504f3c54de726443a3dcbf3c225851b30116ba81d273bf2f9571db217ed?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Alex A.</span></span>                                                            <span class="ago">29 March 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hello, Andy! It seems like a very useful program. I have a question, though. Is this the best way from the performance point of view to generate all the paths?</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=45814#respond" data-commentid="45814" data-postid="1142" data-belowelement="comment-45814" data-respondelement="respond" data-replyto="Reply to Alex A." aria-label="Reply to Alex A.">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <ul class="children">
+    	<li class="comment byuser comment-author-happyuk bypostauthor odd alt depth-2" id="li-comment-45817">
+    		                    <div id="comment-45817" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/10b3265d6b00414344397f5f04e9354ed578fee7888cea0d4b82a772620a6793?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Andy</span></span>                                                            <span class="ago">29 March 2017</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Alex, the recursive way is the only proper way I know of for tackling the all-paths problem.</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=45817#respond" data-commentid="45817" data-postid="1142" data-belowelement="comment-45817" data-respondelement="respond" data-replyto="Reply to Andy" aria-label="Reply to Andy">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+</ul><!-- .children -->
+<!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-49026">
+    		                    <div id="comment-49026" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/33ebec8212cdcd3bbf5bf9191346a03f60fc2e86e3d570e82f291036a2dc75e1?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/33ebec8212cdcd3bbf5bf9191346a03f60fc2e86e3d570e82f291036a2dc75e1?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Maryam</span></span>                                                            <span class="ago">6 May 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Andy.<br>
+This code is very important for me. I wrote it in Python and it works for small graphs (or sparse medium graphs) very good but for complete graphs or large graphs with 21 nodes this in not good and give me a memory error.<br>
+I am from Iran and I don’t have international card for pay the money. There are some limitation in my country due to sanction. I need this code to finish my work. Please guide me about the way of payment.<br>
+Best Regards<br>
+maryam</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=49026#respond" data-commentid="49026" data-postid="1142" data-belowelement="comment-49026" data-respondelement="respond" data-replyto="Reply to Maryam" aria-label="Reply to Maryam">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-49047">
+    		                    <div id="comment-49047" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/a86d5c2ed0d60fd9fdb1345ae7b313181f03ffa56a4b62808257d0054e74cf32?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/a86d5c2ed0d60fd9fdb1345ae7b313181f03ffa56a4b62808257d0054e74cf32?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">will</span></span>                                                            <span class="ago">9 May 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Andy. It seems the download link isn’t available right now. Could you reactivate it or send the codes to my email(cowill@outlook.com) please? Thanks</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=49047#respond" data-commentid="49047" data-postid="1142" data-belowelement="comment-49047" data-respondelement="respond" data-replyto="Reply to will" aria-label="Reply to will">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-49632">
+    		                    <div id="comment-49632" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/ba89628f78a074e28a3117996e0eb9967a8d73b1dc95c76bbe6705e46d59b11e?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/ba89628f78a074e28a3117996e0eb9967a8d73b1dc95c76bbe6705e46d59b11e?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Projeman</span></span>                                                            <span class="ago">28 July 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Andy. It seems the download link isn’t available right now. Could you reactivate it or send the codes to my email(projeman.ir@gmail.com) please? Thanks</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=49632#respond" data-commentid="49632" data-postid="1142" data-belowelement="comment-49632" data-respondelement="respond" data-replyto="Reply to Projeman" aria-label="Reply to Projeman">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+    	<li class="comment odd alt thread-even depth-1" id="li-comment-49673">
+    		                    <div id="comment-49673" itemscope itemtype="http://schema.org/UserComments">
+                        <div class="comment-author vcard">
+                            <img alt="" src="https://secure.gravatar.com/avatar/ba89628f78a074e28a3117996e0eb9967a8d73b1dc95c76bbe6705e46d59b11e?s=44&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/ba89628f78a074e28a3117996e0eb9967a8d73b1dc95c76bbe6705e46d59b11e?s=88&amp;d=mm&amp;r=g 2x" class="avatar avatar-44 photo" height="44" width="44" decoding="async">                            <span class="fn" itemprop="creator" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Projeman</span></span>                                                            <span class="ago">3 August 2018</span>
+                                                        <span class="comment-meta">
+                                                            </span>
+                        </div>
+                                                <div class="commentmetadata">
+                            <div class="commenttext" itemprop="commentText">
+                                <p>Hi Andy. It seems the download link isn’t available right now. Could you reactivate it or send the codes to my please? Thanks</p>
+                            </div>
+                            <div class="reply">
+                                <a rel="nofollow" class="comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/?replytocom=49673#respond" data-commentid="49673" data-postid="1142" data-belowelement="comment-49673" data-respondelement="respond" data-replyto="Reply to Projeman" aria-label="Reply to Projeman">Reply</a>                            </div>
+                        </div>
+                    </div>
+                    </li>
+    	<!-- WP adds </li> -->
+    <!-- #comment-## -->
+				<div class="navigation">
+					<div class="alignleft"></div>
+					<div class="alignright"></div>
+				</div>
+			
+		</div>
+
+	<div id="commentsAdd">
+		<div id="respond" class="box m-t-6">
+				<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"><h4><span>Leave a Reply</span></h4> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/#respond" style="display:none;">Cancel reply</a></small></h3><form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label>Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="Comment Text*"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" placeholder="Name*" value="" size="30"></p>
+<p class="comment-form-email"><input id="email" name="email" type="text" placeholder="Email*" value="" size="30"></p>
+<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="Website" value="" size="30"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="1142" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p></form>	</div><!-- #respond -->
+			</div>
+	</div>
+					</div>
+	</article>
+		</div><!--#page-->
+</div><!--.main-container-->
+<footer id="site-footer" role="contentinfo">
+        <div class="footerTop">
+        <div class="container">
+            <div class="footer-widgets first-footer-widgets widgets-num-3">
+                            <div class="f-widget f-widget-1">
+                                    </div>
+                                <div class="f-widget f-widget-2">
+                                    </div>
+                                <div class="f-widget last f-widget-3">
+                                    </div>
+                            </div><!--.first-footer-widgets-->
+        </div><!--.container-->
+    </div><!--.footerTop-->
+    
+    <div class="copyrights">
+        <div class="container">
+			<!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="/" title=" Software and IT Recipes">technical-recipes.com</a> Copyright © 2026.</span>
+<div class="to-top">Theme by <a href="http://mythemeshop.com/" rel="nofollow">MyThemeShop</a></div>
+</div>
+<!--end copyrights-->
+        </div><!--.container-->
+	</div> 
+</footer><!--#site-footer-->
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-cpp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script id="owl-carousel-js-extra">
+var slideropts = {"rtl_support":"0"};
+//# sourceURL=owl-carousel-js-extra
+</script>
+<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>
