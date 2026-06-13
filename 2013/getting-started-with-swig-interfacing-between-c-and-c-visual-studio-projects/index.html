@@ -11,7 +11,7 @@
                     <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
         
                     <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
-                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png">        
                     <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="apple-mobile-web-app-capable" content="yes">
             <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -50,7 +50,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 
 
-<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/technical-recipes/wp-content/themes/mts_truepixel/style.css" media="all">
 <style id="truepixel-stylesheet-inline-css">
 
         body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
@@ -74,16 +74,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			
 /*# sourceURL=truepixel-stylesheet-inline-css */
 </style>
-<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
-<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
-<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
-<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
-<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<link rel="stylesheet" id="owl-carousel-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/technical-recipes/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/technical-recipes/wp-includes/js/jquery/jquery-migrate.min.js"></script>
 <script id="customscript-js-extra">
 var mts_customscript = {"responsive":"1","nav_menu":"both"};
 //# sourceURL=customscript-js-extra
 </script>
-<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<script id="customscript-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/customscript.js"></script>
 <link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/3608"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
 <meta name="generator" content="WordPress 7.0">
 <link rel="canonical" href="/2013/getting-started-with-swig-interfacing-between-c-and-c-visual-studio-projects/">
@@ -104,9 +104,9 @@ h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00
 h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
 h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
 </style>
-<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
-<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
-<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<link rel="icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png">
 <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
 </head>
 <body id="blog" class="wp-singular post-template-default single single-post postid-3608 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
@@ -253,7 +253,7 @@ int cpp_file::times2(int arg)
 %include &lt;windows.i&gt;
 %include "cpp_file.h"
 </pre><p><strong><br>
-6. Set interface file build properties</strong></p><p>i. Click on the the <code>cpp_file.i</code> and select Properties &gt; General &gt; Item Type as Custom Build Tool. Select Apply to create the Custom Build Tool property group.</p><p>ii. In Custom Build Tool &gt; General &gt; Command Line enter the command needed for SWiG generation:</p><p><code>swig -csharp -c++ -outdir &lt;MyGenerateFolderLocation&gt; cpp_file.i</code></p><p>In my example, this particular setting is:</p><p><code>c:\swigwin-2.0.9\swigwin-2.0.9\swig -csharp -c++ -outdir C:\dump\swig\swig\Generated cpp_file.i</code></p><p>iii. In the Outputs setting enter ‘cpp_file_wrap.cxx’.</p><p><a href="/wp-content/uploads/2013/02/swig51.jpg"><img decoding="async" src="" alt="swig5" width="851" height="604" class="alignnone size-full wp-image-3662" data-layzr="/wp-content/uploads/2013/02/swig51.jpg"></a></p><p><em>Please note:</em> I had previously experienced problems in performing step 7 described below, with what I think were output directory names that SWiG did not seem to like. For example, using the swig command with an output directory with whitespaces in, such as in this example:</p><p><code>c:\swigwin-2.0.9\swigwin-2.0.9\swig.exe -csharp -c++ -outdir “C:\Users\andy\Documents\visual studio 2010\Projects\swig\swig\Generated” cpp_file.i</code></p><p>Caused output errors similar to the following:</p><p><code>swig error : Unrecognized option studio<br>
+6. Set interface file build properties</strong></p><p>i. Click on the the <code>cpp_file.i</code> and select Properties &gt; General &gt; Item Type as Custom Build Tool. Select Apply to create the Custom Build Tool property group.</p><p>ii. In Custom Build Tool &gt; General &gt; Command Line enter the command needed for SWiG generation:</p><p><code>swig -csharp -c++ -outdir &lt;MyGenerateFolderLocation&gt; cpp_file.i</code></p><p>In my example, this particular setting is:</p><p><code>c:\swigwin-2.0.9\swigwin-2.0.9\swig -csharp -c++ -outdir C:\dump\swig\swig\Generated cpp_file.i</code></p><p>iii. In the Outputs setting enter ‘cpp_file_wrap.cxx’.</p><p><a href="/technical-recipes/wp-content/uploads/2013/02/swig51.jpg"><img decoding="async" src="" alt="swig5" width="851" height="604" class="alignnone size-full wp-image-3662" data-layzr="/wp-content/uploads/2013/02/swig51.jpg"></a></p><p><em>Please note:</em> I had previously experienced problems in performing step 7 described below, with what I think were output directory names that SWiG did not seem to like. For example, using the swig command with an output directory with whitespaces in, such as in this example:</p><p><code>c:\swigwin-2.0.9\swigwin-2.0.9\swig.exe -csharp -c++ -outdir “C:\Users\andy\Documents\visual studio 2010\Projects\swig\swig\Generated” cpp_file.i</code></p><p>Caused output errors similar to the following:</p><p><code>swig error : Unrecognized option studio<br>
 swig error : Unrecognized option 2010\Projects\swig\swig\Generated"<br>
 Use 'swig -help' for available options.</code></p><p>Using the simpler directory structure, with no whitespaces, fixed this particular problem.  Also sometimes it did not seem to know where the swig executable was located, so specifying this explicitly, as in “c:\swigwin-2.0.9\swigwin-2.0.9\swig.exe” instead of just “swig” also cured this particular problem.  Feel free to comment with your own experiences.</p><p><strong>7. Compile the interface file</strong></p><p>Right-click cpp_file.i and select ‘Compile’. </p><p>This should create four files, which will probably not yet be visible in your Visual Studio project.  </p><p>Three in the C# ‘Generated folder’:</p><pre class="brush: plain; title: ; notranslate" title="">
 cpp.cs 
@@ -281,7 +281,7 @@ namespace swig3
         }
     }
 }
-</pre><p>Do a clean and rebuild of the entire solution.  Click ‘Yes’ if prompted to reload any files:</p><p><img decoding="async" src="" alt="swig10" width="576" height="197" class="alignnone size-full wp-image-3640" data-layzr="/wp-content/uploads/2013/02/swig10.jpg"></p><p>If you get a compiler error similar to this one:</p><p><code>error CS0246: The type or namespace name 'cpp_file' could not be found (are you missing a using directive or an assembly reference?)</code></p><p>Make sure you have actually added the three SWiG-generated C# files to the ‘Generated’ folder, as described in step 8.</p><p><strong>11. Try it out</strong></p><p>To verify that the interface in place, try stepping through the code with the debugger, perhaps using F11 to step inside the code <code>cpp.times2(5)</code> to verify that the C++ portions of the code are getting executed as well.</p><p>Example console output testing the C++ “times2” API:</p><p><a href="/wp-content/uploads/2013/02/swigTest-1.jpg" rel="attachment wp-att-6750"><img decoding="async" src="" alt="swigTest" width="405" height="211" class="alignnone size-full wp-image-6750" data-layzr="/wp-content/uploads/2013/02/swigTest-1.jpg"></a></p><p><strong>Download available</strong></p><p>Why not download a fully self-contained Visual Studio 2010 project to interface your C# console application with APIs written in C++, as described in this post? Available for 99 cents, to help cover costs of running this site.</p><p>This Visual Studio project contains the necessary SWiG executable and libraries (version 3.0.8) and uses relative paths to access them so that no further configuration is necessary – just build and execute in Release or Debug modes.  </p><p><script data-selz-t="_selz-btn-default" data-selz-a="modal" data-selz-b="http://bit.ly/1QmrCZz" data-text="Buy it now">
+</pre><p>Do a clean and rebuild of the entire solution.  Click ‘Yes’ if prompted to reload any files:</p><p><img decoding="async" src="" alt="swig10" width="576" height="197" class="alignnone size-full wp-image-3640" data-layzr="/wp-content/uploads/2013/02/swig10.jpg"></p><p>If you get a compiler error similar to this one:</p><p><code>error CS0246: The type or namespace name 'cpp_file' could not be found (are you missing a using directive or an assembly reference?)</code></p><p>Make sure you have actually added the three SWiG-generated C# files to the ‘Generated’ folder, as described in step 8.</p><p><strong>11. Try it out</strong></p><p>To verify that the interface in place, try stepping through the code with the debugger, perhaps using F11 to step inside the code <code>cpp.times2(5)</code> to verify that the C++ portions of the code are getting executed as well.</p><p>Example console output testing the C++ “times2” API:</p><p><a href="/technical-recipes/wp-content/uploads/2013/02/swigTest-1.jpg" rel="attachment wp-att-6750"><img decoding="async" src="" alt="swigTest" width="405" height="211" class="alignnone size-full wp-image-6750" data-layzr="/wp-content/uploads/2013/02/swigTest-1.jpg"></a></p><p><strong>Download available</strong></p><p>Why not download a fully self-contained Visual Studio 2010 project to interface your C# console application with APIs written in C++, as described in this post? Available for 99 cents, to help cover costs of running this site.</p><p>This Visual Studio project contains the necessary SWiG executable and libraries (version 3.0.8) and uses relative paths to access them so that no further configuration is necessary – just build and execute in Release or Debug modes.  </p><p><script data-selz-t="_selz-btn-default" data-selz-a="modal" data-selz-b="http://bit.ly/1QmrCZz" data-text="Buy it now">
 if (typeof _$elz === "undefined") { var _$elz = {}; }
 if (typeof _$elz.b === "undefined") { 
 _$elz.b = { e: document.createElement("script") }; 
@@ -321,19 +321,19 @@ document.body.appendChild(_$elz.b.e); }
 								    		<!-- Start Related Posts -->
     		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
 					<a href="/2017/using-the-html-agility-package-to-modify-web-pages/" title="Using the HTML Agility Package to modify web pages" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using the HTML Agility Package to modify web pages"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using the HTML Agility Package to modify web pages"></div>
                                                                         <h4 class="title front-view-title">Using the HTML Agility Package to modify web pages</h4>
 					</a>
                 </article><!--.post.excerpt-->
     			    			<article class="latestPost excerpt  ">
 					<a href="/2013/using-win32-static-libraries-in-visual-studio-projects/" title="Using Win32 static libraries in Visual Studio projects" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using Win32 static libraries in Visual Studio projects"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using Win32 static libraries in Visual Studio projects"></div>
                                                                         <h4 class="title front-view-title">Using Win32 static libraries in Visual Studio projects</h4>
 					</a>
                 </article><!--.post.excerpt-->
     			    			<article class="latestPost excerpt  last">
 					<a href="/2014/obtaining-media-file-information-in-visual-c-using-ffprobe/" title="Obtaining Media File Information in Visual C++ Using FFPROBE" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Obtaining Media File Information in Visual C++ Using FFPROBE"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Obtaining Media File Information in Visual C++ Using FFPROBE"></div>
                                                                         <h4 class="title front-view-title">Obtaining Media File Information in Visual C++ Using FFPROBE</h4>
 					</a>
                 </article><!--.post.excerpt-->
@@ -698,10 +698,10 @@ I think the code is correctly generated, the Generated folder has the files adde
     <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
-<script id="syntaxhighlighter-brush-cpp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
-<script id="syntaxhighlighter-brush-plain-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js"></script>
-<script id="syntaxhighlighter-brush-csharp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js"></script>
+<script id="syntaxhighlighter-core-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-cpp-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
+<script id="syntaxhighlighter-brush-plain-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js"></script>
+<script id="syntaxhighlighter-brush-csharp-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js"></script>
 <script type='text/javascript'>
 	(function(){
 		var corecss = document.createElement('link');
@@ -745,13 +745,13 @@ I think the code is correctly generated, the Generated folder has the files adde
 		} );
 	}
 </script>
-<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/technical-recipes/wp-includes/js/comment-reply.min.js"></script>
 <script id="owl-carousel-js-extra">
 var slideropts = {"rtl_support":"0"};
 //# sourceURL=owl-carousel-js-extra
 </script>
-<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
-<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="owl-carousel-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
 <script id="wp-emoji-settings" type="application/json">
 {"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
 </script>

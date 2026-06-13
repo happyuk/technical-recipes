@@ -11,7 +11,7 @@
                     <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
         
                     <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
-                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png">        
                     <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="apple-mobile-web-app-capable" content="yes">
             <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -50,7 +50,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 
 
-<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/technical-recipes/wp-content/themes/mts_truepixel/style.css" media="all">
 <style id="truepixel-stylesheet-inline-css">
 
         body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
@@ -74,16 +74,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			
 /*# sourceURL=truepixel-stylesheet-inline-css */
 </style>
-<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
-<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
-<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
-<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
-<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<link rel="stylesheet" id="owl-carousel-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/technical-recipes/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/technical-recipes/wp-includes/js/jquery/jquery-migrate.min.js"></script>
 <script id="customscript-js-extra">
 var mts_customscript = {"responsive":"1","nav_menu":"both"};
 //# sourceURL=customscript-js-extra
 </script>
-<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<script id="customscript-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/customscript.js"></script>
 <link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/7837"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
 <meta name="generator" content="WordPress 7.0">
 <link rel="canonical" href="/2017/applying-the-2-opt-algorithm-to-travelling-salesman-problems-in-java/">
@@ -104,9 +104,9 @@ h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00
 h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
 h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
 </style>
-<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
-<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
-<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<link rel="icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png">
 <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
 </head>
 <body id="blog" class="wp-singular post-template-default single single-post postid-7837 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
@@ -315,30 +315,30 @@ private int CalcPseudoEuclidDistance( int x1, int x2, int y1, int y2 )
 	return dij;
 }
 </pre><p><strong>Loading the test problem</strong></p><p>To open standard test problem, click Open and locate where you have saved the test problem.<br>
-For example the <a href="http://elib.zib.de/pub/mp-testdata/tsp/tsplib/tsp/att48.tsp">att48.tsp</a> file:</p><p><a href="/wp-content/uploads/2017/06/tsp1.jpg"><img fetchpriority="high" decoding="async" class="alignnone size-full wp-image-7838" src="" alt="" width="618" height="652" data-layzr="/wp-content/uploads/2017/06/tsp1.jpg"></a></p><p>Once opened, the geographical locations of cities will get plotted as a series of black nodes:</p><p><a href="/wp-content/uploads/2017/06/tsp2.jpg"><img decoding="async" class="alignnone size-full wp-image-7839" src="" alt="" width="616" height="650" data-layzr="/wp-content/uploads/2017/06/tsp2.jpg"></a></p><p><strong>Example usage: generating an aribtrary tour</strong></p><p>In the Run() loop, use the APIs contained in the Tour class to generate the initial ordering of cities visited. In this case we will just use CreateRandomTour() without using the 2-opt heuristic, to demonstrate:</p><pre class="brush: java; title: ; notranslate" title="">
+For example the <a href="http://elib.zib.de/pub/mp-testdata/tsp/tsplib/tsp/att48.tsp">att48.tsp</a> file:</p><p><a href="/technical-recipes/wp-content/uploads/2017/06/tsp1.jpg"><img fetchpriority="high" decoding="async" class="alignnone size-full wp-image-7838" src="" alt="" width="618" height="652" data-layzr="/wp-content/uploads/2017/06/tsp1.jpg"></a></p><p>Once opened, the geographical locations of cities will get plotted as a series of black nodes:</p><p><a href="/technical-recipes/wp-content/uploads/2017/06/tsp2.jpg"><img decoding="async" class="alignnone size-full wp-image-7839" src="" alt="" width="616" height="650" data-layzr="/wp-content/uploads/2017/06/tsp2.jpg"></a></p><p><strong>Example usage: generating an aribtrary tour</strong></p><p>In the Run() loop, use the APIs contained in the Tour class to generate the initial ordering of cities visited. In this case we will just use CreateRandomTour() without using the 2-opt heuristic, to demonstrate:</p><pre class="brush: java; title: ; notranslate" title="">
 // Run the optimization algorithm
 void Run()
 {					
    _tour.CreateRandomTour();
    NotifyTourUpdate(_tour, Double.toString(_tour.TourDistance()), "1"); 
 }
-</pre><p>Upon using the Run() API in this way, loading the Att48.tsp problem and pressing Run, we get the following initial arbitrary tour of length 43900:</p><p><a href="/wp-content/uploads/2017/06/tsp3.jpg"><img decoding="async" class="alignnone size-full wp-image-7840" src="" alt="" width="602" height="635" data-layzr="/wp-content/uploads/2017/06/tsp3.jpg"></a></p><p>A very inefficient solution but one that is readily improvable.</p><p><strong>Example usage: using the 2-opt heuristic</strong></p><p>The 2-opt heuristic is a simple operation to delete two of the edges in the tour path, and re-connect them in the remaining possible way. If the modified tour is an improvement over the previous one, it becomes the best solution, otherwise it is discarded.</p><p>So in addition to creating an initial arbitrary tour, we apply the TwoOpt() routine to process all of the two-edge combinations and discover the shortest-distance solution:</p><pre class="brush: java; title: ; notranslate" title="">
+</pre><p>Upon using the Run() API in this way, loading the Att48.tsp problem and pressing Run, we get the following initial arbitrary tour of length 43900:</p><p><a href="/technical-recipes/wp-content/uploads/2017/06/tsp3.jpg"><img decoding="async" class="alignnone size-full wp-image-7840" src="" alt="" width="602" height="635" data-layzr="/wp-content/uploads/2017/06/tsp3.jpg"></a></p><p>A very inefficient solution but one that is readily improvable.</p><p><strong>Example usage: using the 2-opt heuristic</strong></p><p>The 2-opt heuristic is a simple operation to delete two of the edges in the tour path, and re-connect them in the remaining possible way. If the modified tour is an improvement over the previous one, it becomes the best solution, otherwise it is discarded.</p><p>So in addition to creating an initial arbitrary tour, we apply the TwoOpt() routine to process all of the two-edge combinations and discover the shortest-distance solution:</p><pre class="brush: java; title: ; notranslate" title="">
 void TSPalgorithm::Run()
 {   
     tour.CreateRandomTour();
     TwoOpt();                       
 }
 </pre><p>Giving a total tour length of 10894, a significant improvement:</p><p>
-</p><div id="attachment_7841" style="width: 612px" class="wp-caption alignnone"><a href="/wp-content/uploads/2017/06/tsp4.jpg"><img decoding="async" aria-describedby="caption-attachment-7841" class="wp-image-7841 size-full" src="" alt="travelling salesman problems in Java" width="602" height="635" data-layzr="/wp-content/uploads/2017/06/tsp4.jpg"></a><p id="caption-attachment-7841" class="wp-caption-text">travelling salesman problems in Java</p></div>
+</p><div id="attachment_7841" style="width: 612px" class="wp-caption alignnone"><a href="/technical-recipes/wp-content/uploads/2017/06/tsp4.jpg"><img decoding="async" aria-describedby="caption-attachment-7841" class="wp-image-7841 size-full" src="" alt="travelling salesman problems in Java" width="602" height="635" data-layzr="/wp-content/uploads/2017/06/tsp4.jpg"></a><p id="caption-attachment-7841" class="wp-caption-text">travelling salesman problems in Java</p></div>
 <p><strong>Improving the efficiency 2-opt heuristic using a nearest neighbour search on the pcb442.tsp test problem</strong></p><p>On bigger test problems, a further improvement in performance was observed to be possible by employing the use of a nearest neighbour search before employing the 2-opt heuristic. In other words, instead of starting tour being an arbitrary random tour, we generate a tour that should be an improvement by utilising a nearest neighbour heuristic before applying the 2-opt algorithm.<br>
-The nearest neighbour algorithm was one of the first algorithms applied to the travelling salesman problem. The algorithm usually starts at an arbitrary city and repeatedly looks for the next nearest city until all cities have been visited. It can quickly generate a short but sub-optimal tour.</p><p>For this example we use the test problem <a href="http://elib.zib.de/pub/mp-testdata/tsp/tsplib/tsp/pcb442.tsp">pcb442.tsp.</a></p><p><a href="/wp-content/uploads/2017/06/tsp5.jpg"><img decoding="async" class="alignnone size-full wp-image-7843" src="" alt="" width="602" height="635" data-layzr="/wp-content/uploads/2017/06/tsp5.jpg"></a></p><p>We first test on a tour that has first been created randomly before applying 2-opt:</p><pre class="brush: java; title: ; notranslate" title="">
+The nearest neighbour algorithm was one of the first algorithms applied to the travelling salesman problem. The algorithm usually starts at an arbitrary city and repeatedly looks for the next nearest city until all cities have been visited. It can quickly generate a short but sub-optimal tour.</p><p>For this example we use the test problem <a href="http://elib.zib.de/pub/mp-testdata/tsp/tsplib/tsp/pcb442.tsp">pcb442.tsp.</a></p><p><a href="/technical-recipes/wp-content/uploads/2017/06/tsp5.jpg"><img decoding="async" class="alignnone size-full wp-image-7843" src="" alt="" width="602" height="635" data-layzr="/wp-content/uploads/2017/06/tsp5.jpg"></a></p><p>We first test on a tour that has first been created randomly before applying 2-opt:</p><pre class="brush: java; title: ; notranslate" title="">
 // Run the optimization algorithm
 void Run()
 {                   
    _tour.CreateRandomTour();     
    TwoOpt();
 }
-</pre><p>This generated the following tour within the given maximum number of iterations, tour length 57747.</p><p><a href="/wp-content/uploads/2017/06/tsp10.jpg"><img decoding="async" class="alignnone size-full wp-image-7855" src="" alt="" width="616" height="650" data-layzr="/wp-content/uploads/2017/06/tsp10.jpg"></a></p><p>The the same test problem was tested by first using the nearest neighbour algorithm instead of the random tour:</p><pre class="brush: java; title: ; notranslate" title="">
+</pre><p>This generated the following tour within the given maximum number of iterations, tour length 57747.</p><p><a href="/technical-recipes/wp-content/uploads/2017/06/tsp10.jpg"><img decoding="async" class="alignnone size-full wp-image-7855" src="" alt="" width="616" height="650" data-layzr="/wp-content/uploads/2017/06/tsp10.jpg"></a></p><p>The the same test problem was tested by first using the nearest neighbour algorithm instead of the random tour:</p><pre class="brush: java; title: ; notranslate" title="">
 // Run the optimization algorithm
 void Run()
 {                   
@@ -346,9 +346,9 @@ void Run()
    TwoOpt();
 }
 </pre><p>Giving an improved overall tour distance of 54637:</p><p>
-</p><div id="attachment_7856" style="width: 626px" class="wp-caption alignnone"><a href="/wp-content/uploads/2017/06/tsp11.jpg"><img decoding="async" aria-describedby="caption-attachment-7856" class="wp-image-7856 size-full" src="" alt="travelling salesman problems in Java" width="616" height="650" data-layzr="/wp-content/uploads/2017/06/tsp11.jpg"></a><p id="caption-attachment-7856" class="wp-caption-text">travelling salesman problems in Java</p></div>
+</p><div id="attachment_7856" style="width: 626px" class="wp-caption alignnone"><a href="/technical-recipes/wp-content/uploads/2017/06/tsp11.jpg"><img decoding="async" aria-describedby="caption-attachment-7856" class="wp-image-7856 size-full" src="" alt="travelling salesman problems in Java" width="616" height="650" data-layzr="/wp-content/uploads/2017/06/tsp11.jpg"></a><p id="caption-attachment-7856" class="wp-caption-text">travelling salesman problems in Java</p></div>
 <p><strong>One more test problem</strong></p><p>Just to prove the efficacy the deceptively simple 2-opt algorithm I finally tested on a 1000+ node problem, pr1002.tsp, which managed to obtain a solution of distance 277460 with in the given time span:</p><p>
-</p><div id="attachment_7858" style="width: 626px" class="wp-caption alignnone"><a href="/wp-content/uploads/2017/06/tsp12.jpg"><img decoding="async" aria-describedby="caption-attachment-7858" class="wp-image-7858 size-full" src="" alt="travelling salesman problems in Java" width="616" height="650" data-layzr="/wp-content/uploads/2017/06/tsp12.jpg"></a><p id="caption-attachment-7858" class="wp-caption-text">travelling salesman problems in Java</p></div>
+</p><div id="attachment_7858" style="width: 626px" class="wp-caption alignnone"><a href="/technical-recipes/wp-content/uploads/2017/06/tsp12.jpg"><img decoding="async" aria-describedby="caption-attachment-7858" class="wp-image-7858 size-full" src="" alt="travelling salesman problems in Java" width="616" height="650" data-layzr="/wp-content/uploads/2017/06/tsp12.jpg"></a><p id="caption-attachment-7858" class="wp-caption-text">travelling salesman problems in Java</p></div>
 <p>A zip file of the importable Eclipse project (plus sample tsp test problem files) is obtainable from the following link. Any questions or suggestion please contact me.</p><p><script data-selz-t="_selz-btn-default" data-selz-b="http://selz.co/VJA$D6nG7" data-text="Buy it now" data-selz-a="modal" data-selz-cb="6d48cc" data-selz-ct="ffffff" data-selz-chbg="6d48cc" data-selz-chtx="ffffff">if (typeof _$elz === "undefined") { var _$elz = {}; } if (typeof _$elz.b === "undefined") { _$elz.b = { e: document.createElement("script") }; _$elz.b.e.src = "https://selz.com/embed/button"; document.body.appendChild(_$elz.b.e); }</script><br>
 <noscript><a href="http://selz.co/VJA%24D6nG7" target="_blank" rel="noopener">Buy it now</a></noscript></p>
 
@@ -383,19 +383,19 @@ void Run()
 								    		<!-- Start Related Posts -->
     		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
 					<a href="/2011/java-strings-the-basics/" title="Java Strings: The Basics" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Java Strings: The Basics"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Java Strings: The Basics"></div>
                                                                         <h4 class="title front-view-title">Java Strings: The Basics</h4>
 					</a>
                 </article><!--.post.excerpt-->
     			    			<article class="latestPost excerpt  ">
 					<a href="/2011/getting-started-with-java-in-eclipse/" title="Getting Started with Java in Eclipse" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Getting Started with Java in Eclipse"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Getting Started with Java in Eclipse"></div>
                                                                         <h4 class="title front-view-title">Getting Started with Java in Eclipse</h4>
 					</a>
                 </article><!--.post.excerpt-->
     			    			<article class="latestPost excerpt  last">
 					<a href="/2017/using-fullpage-js-to-implement-html-page-scrolling/" title="Using fullpage.js to implement HTML page scrolling" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using fullpage.js to implement HTML page scrolling"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using fullpage.js to implement HTML page scrolling"></div>
                                                                         <h4 class="title front-view-title">Using fullpage.js to implement HTML page scrolling</h4>
 					</a>
                 </article><!--.post.excerpt-->
@@ -451,9 +451,9 @@ void Run()
     <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
-<script id="syntaxhighlighter-brush-xml-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushXml.js"></script>
-<script id="syntaxhighlighter-brush-java-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJava.js"></script>
+<script id="syntaxhighlighter-core-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-xml-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushXml.js"></script>
+<script id="syntaxhighlighter-brush-java-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJava.js"></script>
 <script type='text/javascript'>
 	(function(){
 		var corecss = document.createElement('link');
@@ -497,13 +497,13 @@ void Run()
 		} );
 	}
 </script>
-<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/technical-recipes/wp-includes/js/comment-reply.min.js"></script>
 <script id="owl-carousel-js-extra">
 var slideropts = {"rtl_support":"0"};
 //# sourceURL=owl-carousel-js-extra
 </script>
-<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
-<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="owl-carousel-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
 <script id="wp-emoji-settings" type="application/json">
 {"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
 </script>

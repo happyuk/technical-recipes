@@ -11,7 +11,7 @@
                     <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
         
                     <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
-                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png">        
                     <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="apple-mobile-web-app-capable" content="yes">
             <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -49,7 +49,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 
 
-<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/technical-recipes/wp-content/themes/mts_truepixel/style.css" media="all">
 <style id="truepixel-stylesheet-inline-css">
 
         body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
@@ -73,16 +73,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			
 /*# sourceURL=truepixel-stylesheet-inline-css */
 </style>
-<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
-<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
-<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
-<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
-<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<link rel="stylesheet" id="owl-carousel-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/technical-recipes/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/technical-recipes/wp-includes/js/jquery/jquery-migrate.min.js"></script>
 <script id="customscript-js-extra">
 var mts_customscript = {"responsive":"1","nav_menu":"both"};
 //# sourceURL=customscript-js-extra
 </script>
-<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<script id="customscript-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/customscript.js"></script>
 <link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/10070"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
 <meta name="generator" content="WordPress 7.0">
 <link rel="canonical" href="/2022/using-cisco-webex-teams-api-to-enable-chatops/">
@@ -103,9 +103,9 @@ h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00
 h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
 h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
 </style>
-<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
-<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
-<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<link rel="icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png">
 <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
 </head>
 <body id="blog" class="wp-singular post-template-default single single-post postid-10070 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
@@ -208,9 +208,9 @@ h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00
 You need an active WebEx Teams account if you have not already set one up:<br>
 <a href="https://web.webex.com/">https://web.webex.com/</a></p><p>Here is a useful link on getting started with this topic if you find the Cisco documentation / training somewhat confusing, as I did:<br>
 <a href="https://blog.wimwauters.com/networkprogrammability/2020-10-06_chatbot_python_local/">https://blog.wimwauters.com/networkprogrammability/2020-10-06_chatbot_python_local/</a></p><p>Basically this example shows you how to create a python application to listen for incoming messages coming from WebEx chat bot, and on receiving a message, create a new POST REST API to send a reply to the Chat Op.</p><p><strong>1. Create a bot</strong><br>
-In the dashboard select visit help centre.</p><p><a href="/wp-content/uploads/2022/08/webex1.jpg"><img fetchpriority="high" decoding="async" src="" alt="" width="1309" height="657" class="alignnone size-full wp-image-10072" data-layzr="/wp-content/uploads/2022/08/webex1.jpg"></a></p><p>Sign in, then go to https://developer.webex.com/<br>
-Click on Start building Apps:</p><p><a href="/wp-content/uploads/2022/08/webex2.jpg"><img decoding="async" src="" alt="" width="300" height="251" class="alignnone size-full wp-image-10073" data-layzr="/wp-content/uploads/2022/08/webex2-300x251.jpg"></a></p><p>And select Create a Bot</p><p><a href="/wp-content/uploads/2022/08/webex3.jpg"><img decoding="async" src="" alt="" width="752" height="335" class="alignnone size-full wp-image-10074" data-layzr="/wp-content/uploads/2022/08/webex3.jpg"></a></p><p>Create the bot:</p><p><a href="/wp-content/uploads/2022/08/webex4.jpg"><img decoding="async" src="" alt="" width="752" height="668" class="alignnone size-full wp-image-10076" data-layzr="/wp-content/uploads/2022/08/webex4.jpg"></a></p><p>Copy the bot access token and store it somewhere.</p><p><a href="/wp-content/uploads/2022/08/webex5.jpg"><img decoding="async" src="" alt="" width="752" height="313" class="alignnone size-full wp-image-10077" data-layzr="/wp-content/uploads/2022/08/webex5.jpg"></a></p><p>Save it somewhere given that this will be lost on closing the browser (though you can always generate and use a new one.)<br>
-Go back into teams.webex.com and create a new Space using the username you just created.</p><p><strong>2. Create a Space</strong></p><p><a href="/wp-content/uploads/2022/08/webex6.jpg"><img decoding="async" src="" alt="" width="442" height="178" class="alignnone size-full wp-image-10078" data-layzr="/wp-content/uploads/2022/08/webex6.jpg"></a></p><p>Then click on Create:</p><p><a href="/wp-content/uploads/2022/08/webex7.jpg"><img decoding="async" src="" alt="" width="624" height="308" class="alignnone size-full wp-image-10079" data-layzr="/wp-content/uploads/2022/08/webex7.jpg"></a></p><p>You can now send messages to the bot (but because we have not yet set up our code it will not yet respond.)</p><p><a href="/wp-content/uploads/2022/08/webex8.jpg"><img decoding="async" src="" alt="" width="403" height="259" class="alignnone size-full wp-image-10080" data-layzr="/wp-content/uploads/2022/08/webex8.jpg"></a></p><p><strong>3. Create application to listen for http requests received from a bot</strong></p><p>We wish to write an app than can receive and handle notifications received from WebEx Teams.</p><p>Open Visual Studio Code and create the Python code for a service to listen for http requests that are received from a bot</p><p><strong>chatbot.py</strong></p><p>The chatbot.py application is a http server used to listen for http GET/POST requests received from a WebEx bot.  For this we use Flask, a web framework module written in Python that lets you develop web applications easily.</p><pre class="brush: python; title: ; notranslate" title="">
+In the dashboard select visit help centre.</p><p><a href="/technical-recipes/wp-content/uploads/2022/08/webex1.jpg"><img fetchpriority="high" decoding="async" src="" alt="" width="1309" height="657" class="alignnone size-full wp-image-10072" data-layzr="/wp-content/uploads/2022/08/webex1.jpg"></a></p><p>Sign in, then go to https://developer.webex.com/<br>
+Click on Start building Apps:</p><p><a href="/technical-recipes/wp-content/uploads/2022/08/webex2.jpg"><img decoding="async" src="" alt="" width="300" height="251" class="alignnone size-full wp-image-10073" data-layzr="/wp-content/uploads/2022/08/webex2-300x251.jpg"></a></p><p>And select Create a Bot</p><p><a href="/technical-recipes/wp-content/uploads/2022/08/webex3.jpg"><img decoding="async" src="" alt="" width="752" height="335" class="alignnone size-full wp-image-10074" data-layzr="/wp-content/uploads/2022/08/webex3.jpg"></a></p><p>Create the bot:</p><p><a href="/technical-recipes/wp-content/uploads/2022/08/webex4.jpg"><img decoding="async" src="" alt="" width="752" height="668" class="alignnone size-full wp-image-10076" data-layzr="/wp-content/uploads/2022/08/webex4.jpg"></a></p><p>Copy the bot access token and store it somewhere.</p><p><a href="/technical-recipes/wp-content/uploads/2022/08/webex5.jpg"><img decoding="async" src="" alt="" width="752" height="313" class="alignnone size-full wp-image-10077" data-layzr="/wp-content/uploads/2022/08/webex5.jpg"></a></p><p>Save it somewhere given that this will be lost on closing the browser (though you can always generate and use a new one.)<br>
+Go back into teams.webex.com and create a new Space using the username you just created.</p><p><strong>2. Create a Space</strong></p><p><a href="/technical-recipes/wp-content/uploads/2022/08/webex6.jpg"><img decoding="async" src="" alt="" width="442" height="178" class="alignnone size-full wp-image-10078" data-layzr="/wp-content/uploads/2022/08/webex6.jpg"></a></p><p>Then click on Create:</p><p><a href="/technical-recipes/wp-content/uploads/2022/08/webex7.jpg"><img decoding="async" src="" alt="" width="624" height="308" class="alignnone size-full wp-image-10079" data-layzr="/wp-content/uploads/2022/08/webex7.jpg"></a></p><p>You can now send messages to the bot (but because we have not yet set up our code it will not yet respond.)</p><p><a href="/technical-recipes/wp-content/uploads/2022/08/webex8.jpg"><img decoding="async" src="" alt="" width="403" height="259" class="alignnone size-full wp-image-10080" data-layzr="/wp-content/uploads/2022/08/webex8.jpg"></a></p><p><strong>3. Create application to listen for http requests received from a bot</strong></p><p>We wish to write an app than can receive and handle notifications received from WebEx Teams.</p><p>Open Visual Studio Code and create the Python code for a service to listen for http requests that are received from a bot</p><p><strong>chatbot.py</strong></p><p>The chatbot.py application is a http server used to listen for http GET/POST requests received from a WebEx bot.  For this we use Flask, a web framework module written in Python that lets you develop web applications easily.</p><pre class="brush: python; title: ; notranslate" title="">
 from flask import Flask, request, json
 import requests
 from messenger import Messenger
@@ -285,7 +285,7 @@ class Messenger():
         post_message = requests.post(post_message_url,headers=self.headers,data=json.dumps(data))
         print(post_message)
 </pre><p><strong>4. Create and expose tunneling</strong></p><p>You need an application to listen for requests from a bot and to do this you need to expose your application to the internet. To do this, use the ngrok tool.</p><p>ngrok exposes the local port of an application with a public URL with the use of tunnelling.</p><p>From the terminal, type ngrok http 5005 to publically expose local port 5005.<br>
-Install from here if VS Code doesn’t recognise it, and add its path to your User environment variables:</p><p><a href="https://ngrok.com/download">https://ngrok.com/download</a></p><p>This will then expose the url you need to access port 5005 on your local machine.  </p><p><a href="/wp-content/uploads/2022/08/webex9.jpg"><img decoding="async" src="" alt="" width="752" height="252" class="alignnone size-full wp-image-10081" data-layzr="/wp-content/uploads/2022/08/webex9.jpg"></a></p><p>Copy the URL.</p><p><strong>5. Create a webhook</strong></p><p>Instruct Webex Teams to send notifications to a publicly available application each time your chatbot receives a message. Do this by registering the bot with WebEx Teams via a webhook by using a tool such as cURL  or Postman.<br>
+Install from here if VS Code doesn’t recognise it, and add its path to your User environment variables:</p><p><a href="https://ngrok.com/download">https://ngrok.com/download</a></p><p>This will then expose the url you need to access port 5005 on your local machine.  </p><p><a href="/technical-recipes/wp-content/uploads/2022/08/webex9.jpg"><img decoding="async" src="" alt="" width="752" height="252" class="alignnone size-full wp-image-10081" data-layzr="/wp-content/uploads/2022/08/webex9.jpg"></a></p><p>Copy the URL.</p><p><strong>5. Create a webhook</strong></p><p>Instruct Webex Teams to send notifications to a publicly available application each time your chatbot receives a message. Do this by registering the bot with WebEx Teams via a webhook by using a tool such as cURL  or Postman.<br>
 When using cURL from the command line to register your URL to WebEx Teams, use your bot access token and the URL generated by ngrok to fill in the required POST request headers.</p><pre class="brush: xml; title: ; notranslate" title="">
 curl -X POST \
   https://webexapis.com/v1/webhooks \
@@ -321,8 +321,8 @@ Any changes to target URL and/or name simply make in the request body json:
 Now that the environment is set up, you can develop your application.<br>
 Refer to the WebEx Teams API documentation for the correct syntax.<br>
 For example, to see the documentation for Teams messages, expand API Reference and choose API Call in Messages section.</p><p>You are now ready to test your code. First, start your application by running python chatbot.py.<br>
-You may also need to do a pip install flask to run the python code, if flask has not been installed.</p><p>Start your application by running ‘python ./chatbot.py’ or run it via the debugger:</p><p><a href="/wp-content/uploads/2022/08/webex11.jpg"><img decoding="async" src="" alt="" width="751" height="270" class="alignnone size-full wp-image-10082" data-layzr="/wp-content/uploads/2022/08/webex11.jpg"></a></p><p>Go to the Webex Teams web client.  Click on the bot you created.t<br>
-(Make sure you’ve navigated to the ‘Direct’ tab: </p><p><a href="/wp-content/uploads/2022/08/webex12.jpg"><img decoding="async" src="" alt="" width="459" height="161" class="alignnone size-full wp-image-10083" data-layzr="/wp-content/uploads/2022/08/webex12.jpg"></a></p><p>Type “Hello, bot” in the chat message.  You should see that the bot has responded/acknowledged your message:</p><p><a href="/wp-content/uploads/2022/08/webex13.jpg"><img decoding="async" src="" alt="" width="491" height="230" class="alignnone size-full wp-image-10084" data-layzr="/wp-content/uploads/2022/08/webex13.jpg"></a></p><p>On digging further into the use of libraries to implement ngrok and other REST API commands, it is possible to automate the steps to create the tunnelling via ngrok and hence create the webhook via a few extra commands.  Import pyngrok via ‘pip install pyngrok’ and use the ngrok object to open the tunnel via the ‘connect’ method and add an extra method to the Message class to do the POST command to create the webhook.</p><p>Updated code as follows:</p><p><strong>chatbot.py</strong></p><pre class="brush: python; title: ; notranslate" title="">
+You may also need to do a pip install flask to run the python code, if flask has not been installed.</p><p>Start your application by running ‘python ./chatbot.py’ or run it via the debugger:</p><p><a href="/technical-recipes/wp-content/uploads/2022/08/webex11.jpg"><img decoding="async" src="" alt="" width="751" height="270" class="alignnone size-full wp-image-10082" data-layzr="/wp-content/uploads/2022/08/webex11.jpg"></a></p><p>Go to the Webex Teams web client.  Click on the bot you created.t<br>
+(Make sure you’ve navigated to the ‘Direct’ tab: </p><p><a href="/technical-recipes/wp-content/uploads/2022/08/webex12.jpg"><img decoding="async" src="" alt="" width="459" height="161" class="alignnone size-full wp-image-10083" data-layzr="/wp-content/uploads/2022/08/webex12.jpg"></a></p><p>Type “Hello, bot” in the chat message.  You should see that the bot has responded/acknowledged your message:</p><p><a href="/technical-recipes/wp-content/uploads/2022/08/webex13.jpg"><img decoding="async" src="" alt="" width="491" height="230" class="alignnone size-full wp-image-10084" data-layzr="/wp-content/uploads/2022/08/webex13.jpg"></a></p><p>On digging further into the use of libraries to implement ngrok and other REST API commands, it is possible to automate the steps to create the tunnelling via ngrok and hence create the webhook via a few extra commands.  Import pyngrok via ‘pip install pyngrok’ and use the ngrok object to open the tunnel via the ‘connect’ method and add an extra method to the Message class to do the POST command to create the webhook.</p><p>Updated code as follows:</p><p><strong>chatbot.py</strong></p><pre class="brush: python; title: ; notranslate" title="">
 import requests
 from flask import Flask, json, request
 from pyngrok import ngrok
@@ -448,7 +448,7 @@ class Messenger():
 								    		<!-- Start Related Posts -->
     		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
 					<a href="/2022/using-ansible-to-create-delete-and-list-tenants/" title="Using Ansible to Create, Delete and List Tenants" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using Ansible to Create, Delete and List Tenants"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using Ansible to Create, Delete and List Tenants"></div>
                                                                         <h4 class="title front-view-title">Using Ansible to Create, Delete and List Tenants</h4>
 					</a>
                 </article><!--.post.excerpt-->
@@ -493,9 +493,9 @@ class Messenger():
     <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
-<script id="syntaxhighlighter-brush-python-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPython.js"></script>
-<script id="syntaxhighlighter-brush-xml-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushXml.js"></script>
+<script id="syntaxhighlighter-core-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-python-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPython.js"></script>
+<script id="syntaxhighlighter-brush-xml-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushXml.js"></script>
 <script type='text/javascript'>
 	(function(){
 		var corecss = document.createElement('link');
@@ -543,8 +543,8 @@ class Messenger():
 var slideropts = {"rtl_support":"0"};
 //# sourceURL=owl-carousel-js-extra
 </script>
-<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
-<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="owl-carousel-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
 <script id="wp-emoji-settings" type="application/json">
 {"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
 </script>

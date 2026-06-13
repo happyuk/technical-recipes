@@ -11,7 +11,7 @@
                     <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
         
                     <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
-                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png">        
                     <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="apple-mobile-web-app-capable" content="yes">
             <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -50,7 +50,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 
 
-<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/technical-recipes/wp-content/themes/mts_truepixel/style.css" media="all">
 <style id="truepixel-stylesheet-inline-css">
 
         body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
@@ -74,16 +74,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			
 /*# sourceURL=truepixel-stylesheet-inline-css */
 </style>
-<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
-<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
-<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
-<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
-<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<link rel="stylesheet" id="owl-carousel-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/technical-recipes/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/technical-recipes/wp-includes/js/jquery/jquery-migrate.min.js"></script>
 <script id="customscript-js-extra">
 var mts_customscript = {"responsive":"1","nav_menu":"both"};
 //# sourceURL=customscript-js-extra
 </script>
-<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<script id="customscript-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/customscript.js"></script>
 <link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/6681"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
 <meta name="generator" content="WordPress 7.0">
 <link rel="canonical" href="/2016/using-a-genetic-algorithm-to-solve-the-n-queens-problem/">
@@ -104,9 +104,9 @@ h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00
 h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
 h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
 </style>
-<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
-<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
-<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<link rel="icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png">
 <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
 </head>
 <body id="blog" class="wp-singular post-template-default single single-post postid-6681 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
@@ -323,10 +323,10 @@ void GeneticAlgorithm::Select()
 }
 </pre><p>Keep repeating these steps (crossover/mutation/evaluation/selection) until no further improvement is found.</p><p><strong>Experimental results</strong></p><p>Some experimental results obtained on various problem sizes.  To set the problem size I tweak the ‘nQueens’ parameter in nQueensDlg.cpp:</p><pre class="brush: cpp; title: ; notranslate" title="">
 const int nQueens = 8;
-</pre><p><strong>8 Queens</strong></p><p>Observe how a solution with fitness = 1.0 contains no threatened queens, diagonally, horizontally or vertically:</p><p><a href="/wp-content/uploads/2016/01/8-queens-1.jpg" rel="attachment wp-att-6724"><img fetchpriority="high" decoding="async" src="" alt="8-queens" width="543" height="570" class="alignnone size-full wp-image-6724" data-layzr="/wp-content/uploads/2016/01/8-queens-1.jpg"></a></p><p><strong>15 Queens</strong></p><p><a href="/wp-content/uploads/2016/01/15-Queens-1.jpg" rel="attachment wp-att-6725"><img decoding="async" src="" alt="15-Queens" width="543" height="570" class="alignnone size-full wp-image-6725" data-layzr="/wp-content/uploads/2016/01/15-Queens-1.jpg"></a></p><p><strong>40 Queens</strong></p><p><a href="/wp-content/uploads/2016/01/40-Queens-1.jpg" rel="attachment wp-att-6726"><img decoding="async" src="" alt="40-Queens" width="543" height="570" class="alignnone size-full wp-image-6726" data-layzr="/wp-content/uploads/2016/01/40-Queens-1.jpg"></a></p><p><strong>60 Queens</strong></p><p>In this experiment, an optimal solution was obtainable using the following parameters:</p><p>crossover rate  = 70;<br>
+</pre><p><strong>8 Queens</strong></p><p>Observe how a solution with fitness = 1.0 contains no threatened queens, diagonally, horizontally or vertically:</p><p><a href="/technical-recipes/wp-content/uploads/2016/01/8-queens-1.jpg" rel="attachment wp-att-6724"><img fetchpriority="high" decoding="async" src="" alt="8-queens" width="543" height="570" class="alignnone size-full wp-image-6724" data-layzr="/wp-content/uploads/2016/01/8-queens-1.jpg"></a></p><p><strong>15 Queens</strong></p><p><a href="/technical-recipes/wp-content/uploads/2016/01/15-Queens-1.jpg" rel="attachment wp-att-6725"><img decoding="async" src="" alt="15-Queens" width="543" height="570" class="alignnone size-full wp-image-6725" data-layzr="/wp-content/uploads/2016/01/15-Queens-1.jpg"></a></p><p><strong>40 Queens</strong></p><p><a href="/technical-recipes/wp-content/uploads/2016/01/40-Queens-1.jpg" rel="attachment wp-att-6726"><img decoding="async" src="" alt="40-Queens" width="543" height="570" class="alignnone size-full wp-image-6726" data-layzr="/wp-content/uploads/2016/01/40-Queens-1.jpg"></a></p><p><strong>60 Queens</strong></p><p>In this experiment, an optimal solution was obtainable using the following parameters:</p><p>crossover rate  = 70;<br>
 mutation rate   = 0.5;<br>
 population size = 650;<br>
-tournament size = population_size / 5;</p><p>I also removed the painting of the black squares in the code for this particular run so that we may see the positions of the queens more clearly:</p><p><a href="/wp-content/uploads/2016/01/60-Queens.jpg" rel="attachment wp-att-6699"><img decoding="async" src="" alt="60-Queens" width="489" height="570" class="alignnone size-full wp-image-6699" data-layzr="/wp-content/uploads/2016/01/60-Queens.jpg"></a></p><p><strong>Download Visual Studio C++ project</strong></p><p>Download the following Visual Studio 2010 project from the following Selz link.  Very easy to use:</p><p><script data-selz-t="_selz-btn-default" data-selz-a="modal" data-selz-b="http://bit.ly/1lfOsHl" data-text="Buy it now">
+tournament size = population_size / 5;</p><p>I also removed the painting of the black squares in the code for this particular run so that we may see the positions of the queens more clearly:</p><p><a href="/technical-recipes/wp-content/uploads/2016/01/60-Queens.jpg" rel="attachment wp-att-6699"><img decoding="async" src="" alt="60-Queens" width="489" height="570" class="alignnone size-full wp-image-6699" data-layzr="/wp-content/uploads/2016/01/60-Queens.jpg"></a></p><p><strong>Download Visual Studio C++ project</strong></p><p>Download the following Visual Studio 2010 project from the following Selz link.  Very easy to use:</p><p><script data-selz-t="_selz-btn-default" data-selz-a="modal" data-selz-b="http://bit.ly/1lfOsHl" data-text="Buy it now">
 if (typeof _$elz === "undefined") { var _$elz = {}; }
 if (typeof _$elz.b === "undefined") { 
 _$elz.b = { e: document.createElement("script") }; 
@@ -366,19 +366,19 @@ document.body.appendChild(_$elz.b.e); }
 								    		<!-- Start Related Posts -->
     		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
 					<a href="/2011/avoiding-circular-dependencies-using-observer-patterns/" title="Avoiding Circular Dependencies using Observer Patterns in C++" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Avoiding Circular Dependencies using Observer Patterns in C++"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Avoiding Circular Dependencies using Observer Patterns in C++"></div>
                                                                         <h4 class="title front-view-title">Avoiding Circular Dependencies using Observer Patterns in C++</h4>
 					</a>
                 </article><!--.post.excerpt-->
     			    			<article class="latestPost excerpt  ">
 					<a href="/2012/converting-between-binary-and-decimal-representations-of-ieee-754-floating-point-numbers-in-c/" title="Converting between binary and decimal representations of IEEE 754 floating-point numbers in C++, Java and Python" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Converting between binary and decimal representations of IEEE 754 floating-point numbers in C++, Java and Python"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Converting between binary and decimal representations of IEEE 754 floating-point numbers in C++, Java and Python"></div>
                                                                         <h4 class="title front-view-title">Converting between binary and decimal representations of IEEE 754 floating-point numbers in C++, Java and Python</h4>
 					</a>
                 </article><!--.post.excerpt-->
     			    			<article class="latestPost excerpt  last">
 					<a href="/2014/using-openssl-sha-256-in-visual-c/" title="Installing and using OpenSSL SHA-256 in Visual C++" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Installing and using OpenSSL SHA-256 in Visual C++"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Installing and using OpenSSL SHA-256 in Visual C++"></div>
                                                                         <h4 class="title front-view-title">Installing and using OpenSSL SHA-256 in Visual C++</h4>
 					</a>
                 </article><!--.post.excerpt-->
@@ -524,8 +524,8 @@ What’s the world coming too, eh?</p>
     <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
-<script id="syntaxhighlighter-brush-cpp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
+<script id="syntaxhighlighter-core-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-cpp-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
 <script type='text/javascript'>
 	(function(){
 		var corecss = document.createElement('link');
@@ -569,13 +569,13 @@ What’s the world coming too, eh?</p>
 		} );
 	}
 </script>
-<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/technical-recipes/wp-includes/js/comment-reply.min.js"></script>
 <script id="owl-carousel-js-extra">
 var slideropts = {"rtl_support":"0"};
 //# sourceURL=owl-carousel-js-extra
 </script>
-<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
-<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="owl-carousel-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
 <script id="wp-emoji-settings" type="application/json">
 {"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
 </script>

@@ -11,7 +11,7 @@
                     <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
         
                     <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
-                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png">        
                     <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="apple-mobile-web-app-capable" content="yes">
             <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -50,7 +50,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 
 
-<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/technical-recipes/wp-content/themes/mts_truepixel/style.css" media="all">
 <style id="truepixel-stylesheet-inline-css">
 
         body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
@@ -74,16 +74,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			
 /*# sourceURL=truepixel-stylesheet-inline-css */
 </style>
-<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
-<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
-<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
-<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
-<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<link rel="stylesheet" id="owl-carousel-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/technical-recipes/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/technical-recipes/wp-includes/js/jquery/jquery-migrate.min.js"></script>
 <script id="customscript-js-extra">
 var mts_customscript = {"responsive":"1","nav_menu":"both"};
 //# sourceURL=customscript-js-extra
 </script>
-<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<script id="customscript-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/customscript.js"></script>
 <link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/4848"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
 <meta name="generator" content="WordPress 7.0">
 <link rel="canonical" href="/2014/using-boostfilesystem/">
@@ -104,9 +104,9 @@ h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00
 h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
 h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
 </style>
-<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
-<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
-<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<link rel="icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png">
 <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
 </head>
 <body id="blog" class="wp-singular post-template-default single single-post postid-4848 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
@@ -214,7 +214,7 @@ h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00
 <a href="#Remove">7. To remove a file or directory</a><br>
 <a href="#CreateDirectory">8. To create a directory</a><br>
 <a href="#RelativePaths">9. Obtaining relative paths</a><br>
-<a href="#RecursiveFind">10. Recursively find/delete all files in a directory</a></p><p><a name="CopyingDirectory"><strong>1. Copying a directory</strong></a></p><p>This recursively uses boost::filesystem::create_directory to create a copy of a directory including its contents, sub-directories etc.</p><p>For example the MyStuff folder:</p><p><a href="/wp-content/uploads/2014/05/BoostCreateDirectory1.jpg"><img fetchpriority="high" decoding="async" src="" alt="BoostCreateDirectory1" width="520" height="326" class="alignnone size-full wp-image-4850" data-layzr="/wp-content/uploads/2014/05/BoostCreateDirectory1.jpg"></a></p><p>Use the following code snippet to re-create a copy of the MyStuff folder, and rename it MyStuff2:<br>
+<a href="#RecursiveFind">10. Recursively find/delete all files in a directory</a></p><p><a name="CopyingDirectory"><strong>1. Copying a directory</strong></a></p><p>This recursively uses boost::filesystem::create_directory to create a copy of a directory including its contents, sub-directories etc.</p><p>For example the MyStuff folder:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostCreateDirectory1.jpg"><img fetchpriority="high" decoding="async" src="" alt="BoostCreateDirectory1" width="520" height="326" class="alignnone size-full wp-image-4850" data-layzr="/wp-content/uploads/2014/05/BoostCreateDirectory1.jpg"></a></p><p>Use the following code snippet to re-create a copy of the MyStuff folder, and rename it MyStuff2:<br>
 <span id="more-4848"></span></p><pre class="brush: cpp; title: ; notranslate" title="">
 #include &lt;boost/filesystem.hpp&gt;
 
@@ -297,7 +297,7 @@ int main()
 
 	return 0;
 }
-</pre><p>Which gives the copied directory <code>MyStuff2</code> like so:</p><p><a href="/wp-content/uploads/2014/05/BoostCreateDirectory2.jpg"><img decoding="async" src="" alt="BoostCreateDirectory2" width="520" height="326" class="alignnone size-full wp-image-4852" data-layzr="/wp-content/uploads/2014/05/BoostCreateDirectory2.jpg"></a></p><p><a name="Iterating"><strong>2. Iterating over files in a directory</strong></a></p><p>Say you wish to examine what files are contained in a directory:</p><p><a href="/wp-content/uploads/2014/05/BoostIterateFiles11.jpg"><img decoding="async" src="" alt="BoostIterateFiles1" width="520" height="326" class="alignnone size-full wp-image-4857" data-layzr="/wp-content/uploads/2014/05/BoostIterateFiles11.jpg"></a></p><p>Use <code>BOOST_FOREACH</code> to iterate over the files:</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>Which gives the copied directory <code>MyStuff2</code> like so:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostCreateDirectory2.jpg"><img decoding="async" src="" alt="BoostCreateDirectory2" width="520" height="326" class="alignnone size-full wp-image-4852" data-layzr="/wp-content/uploads/2014/05/BoostCreateDirectory2.jpg"></a></p><p><a name="Iterating"><strong>2. Iterating over files in a directory</strong></a></p><p>Say you wish to examine what files are contained in a directory:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostIterateFiles11.jpg"><img decoding="async" src="" alt="BoostIterateFiles1" width="520" height="326" class="alignnone size-full wp-image-4857" data-layzr="/wp-content/uploads/2014/05/BoostIterateFiles11.jpg"></a></p><p>Use <code>BOOST_FOREACH</code> to iterate over the files:</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include &lt;boost/filesystem.hpp&gt;
 #include &lt;boost/foreach.hpp&gt;
 
@@ -318,7 +318,7 @@ int main()
 
 	return 0;
 }
-</pre><p>Giving the following output:</p><p><a href="/wp-content/uploads/2014/05/BoostIterateFiles2.jpg"><img decoding="async" src="" alt="BoostIterateFiles2" width="341" height="175" class="alignnone size-full wp-image-4858" data-layzr="/wp-content/uploads/2014/05/BoostIterateFiles2.jpg"></a></p><p><a name="RecursiveSearch"><strong>3. Recursively search for a file within a directory and its subdirectories</strong></a></p><p>Use <code>std::find_if</code> and <code>boost::filesystem::recursive_directory_iterator</code>.  </p><p>The file you are looking for (“<code>myfile.txt</code>” ) may be nested deep within some directory structure:</p><p><a href="/wp-content/uploads/2014/05/BoostDirectoryFind1.jpg"><img decoding="async" src="" alt="BoostDirectoryFind1" width="482" height="367" class="alignnone size-full wp-image-4863" data-layzr="/wp-content/uploads/2014/05/BoostDirectoryFind1.jpg"></a></p><p>Example C++11 code that makes use of <code>auto</code> and <code>lambda</code> shown here:</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>Giving the following output:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostIterateFiles2.jpg"><img decoding="async" src="" alt="BoostIterateFiles2" width="341" height="175" class="alignnone size-full wp-image-4858" data-layzr="/wp-content/uploads/2014/05/BoostIterateFiles2.jpg"></a></p><p><a name="RecursiveSearch"><strong>3. Recursively search for a file within a directory and its subdirectories</strong></a></p><p>Use <code>std::find_if</code> and <code>boost::filesystem::recursive_directory_iterator</code>.  </p><p>The file you are looking for (“<code>myfile.txt</code>” ) may be nested deep within some directory structure:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostDirectoryFind1.jpg"><img decoding="async" src="" alt="BoostDirectoryFind1" width="482" height="367" class="alignnone size-full wp-image-4863" data-layzr="/wp-content/uploads/2014/05/BoostDirectoryFind1.jpg"></a></p><p>Example C++11 code that makes use of <code>auto</code> and <code>lambda</code> shown here:</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include &lt;iostream&gt;
 #include &lt;algorithm&gt;
 #include &lt;functional&gt;
@@ -364,7 +364,7 @@ int main()
 
 	return 0;
 }
-</pre><p>Which prints out the file name plus the full path if successful:</p><p><a href="/wp-content/uploads/2014/05/BoostDirectoryFind2.jpg"><img decoding="async" src="" alt="BoostDirectoryFind2" width="485" height="163" class="alignnone size-full wp-image-4864" data-layzr="/wp-content/uploads/2014/05/BoostDirectoryFind2.jpg"></a></p><p>If your compiler does not have access to the C++11 features just replace the <code>lambda</code> by a predicate object and the <code>auto</code> by an explicit type specifier.</p><p>Alternative C++ code as shown:</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>Which prints out the file name plus the full path if successful:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostDirectoryFind2.jpg"><img decoding="async" src="" alt="BoostDirectoryFind2" width="485" height="163" class="alignnone size-full wp-image-4864" data-layzr="/wp-content/uploads/2014/05/BoostDirectoryFind2.jpg"></a></p><p>If your compiler does not have access to the C++11 features just replace the <code>lambda</code> by a predicate object and the <code>auto</code> by an explicit type specifier.</p><p>Alternative C++ code as shown:</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include &lt;iostream&gt;
 #include &lt;algorithm&gt;
 #include &lt;functional&gt;
@@ -423,7 +423,7 @@ int main()
 
 	return 0;
 }
-</pre><p>That gives exactly the same result as that using the C++11 features:</p><p><a href="/wp-content/uploads/2014/05/BoostDirectoryFind3.jpg"><img decoding="async" src="" alt="BoostDirectoryFind3" width="485" height="151" class="alignnone size-full wp-image-4867" data-layzr="/wp-content/uploads/2014/05/BoostDirectoryFind3.jpg"></a></p><p><a name="FileCount"><strong>4. Counting the number of files in a directory</strong></a></p><p>Getting the number of files in the directory pointed to by the given path:</p><p><a href="/wp-content/uploads/2014/05/BoostCountFiles1.jpg"><img decoding="async" src="" alt="BoostCountFiles1" width="482" height="264" class="alignnone size-full wp-image-4876" data-layzr="/wp-content/uploads/2014/05/BoostCountFiles1.jpg"></a></p><p>Code as follows:</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>That gives exactly the same result as that using the C++11 features:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostDirectoryFind3.jpg"><img decoding="async" src="" alt="BoostDirectoryFind3" width="485" height="151" class="alignnone size-full wp-image-4867" data-layzr="/wp-content/uploads/2014/05/BoostDirectoryFind3.jpg"></a></p><p><a name="FileCount"><strong>4. Counting the number of files in a directory</strong></a></p><p>Getting the number of files in the directory pointed to by the given path:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostCountFiles1.jpg"><img decoding="async" src="" alt="BoostCountFiles1" width="482" height="264" class="alignnone size-full wp-image-4876" data-layzr="/wp-content/uploads/2014/05/BoostCountFiles1.jpg"></a></p><p>Code as follows:</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include &lt;iostream&gt;
 #include &lt;boost/filesystem.hpp&gt;
 #include &lt;boost/lambda/bind.hpp&gt;
@@ -448,7 +448,7 @@ int main()
 
     return 0;
 }
-</pre><p>Which gives the output of 4 files found as expected:</p><p><a href="/wp-content/uploads/2014/05/BoostCountFiles2.jpg"><img decoding="async" src="" alt="BoostCountFiles2" width="429" height="175" class="alignnone size-full wp-image-4878" data-layzr="/wp-content/uploads/2014/05/BoostCountFiles2.jpg"></a></p><p><a name="Modified"><strong>5. Find out when a file was last modified</strong></a></p><p>For this we use <code>boost::filesystem::last_write_time</code>:</p><p><a href="/wp-content/uploads/2014/05/BoostLastWriteTime1.jpg"><img decoding="async" src="" alt="BoostLastWriteTime1" width="482" height="264" class="alignnone size-full wp-image-4883" data-layzr="/wp-content/uploads/2014/05/BoostLastWriteTime1.jpg"></a></p><p>The following code outputs the date and time of when “<code>example.txt</code>” was last modified:</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>Which gives the output of 4 files found as expected:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostCountFiles2.jpg"><img decoding="async" src="" alt="BoostCountFiles2" width="429" height="175" class="alignnone size-full wp-image-4878" data-layzr="/wp-content/uploads/2014/05/BoostCountFiles2.jpg"></a></p><p><a name="Modified"><strong>5. Find out when a file was last modified</strong></a></p><p>For this we use <code>boost::filesystem::last_write_time</code>:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostLastWriteTime1.jpg"><img decoding="async" src="" alt="BoostLastWriteTime1" width="482" height="264" class="alignnone size-full wp-image-4883" data-layzr="/wp-content/uploads/2014/05/BoostLastWriteTime1.jpg"></a></p><p>The following code outputs the date and time of when “<code>example.txt</code>” was last modified:</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include &lt;iostream&gt; 
 #include &lt;ctime&gt;
 #include &lt;boost/filesystem.hpp&gt;
@@ -468,7 +468,7 @@ int main()
 				  &lt;&lt; std::endl;
 	}
 }
-</pre><p>As shown:</p><p><a href="/wp-content/uploads/2014/05/BoostLastWriteTime2.jpg"><img decoding="async" src="" alt="BoostLastWriteTime2" width="557" height="139" class="alignnone size-full wp-image-4885" data-layzr="/wp-content/uploads/2014/05/BoostLastWriteTime2.jpg"></a></p><p><a name="Rename"><strong>6. Rename a file</strong></a></p><p>Suppose we have a file “thisfile.txt”:</p><p><a href="/wp-content/uploads/2014/05/BoostRenameFile1.jpg"><img decoding="async" src="" alt="BoostRenameFile1" width="463" height="316" class="alignnone size-full wp-image-4888" data-layzr="/wp-content/uploads/2014/05/BoostRenameFile1.jpg"></a></p><p>For example, we wish to rename “thisfile.txt” to “thatfile.txt”:</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>As shown:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostLastWriteTime2.jpg"><img decoding="async" src="" alt="BoostLastWriteTime2" width="557" height="139" class="alignnone size-full wp-image-4885" data-layzr="/wp-content/uploads/2014/05/BoostLastWriteTime2.jpg"></a></p><p><a name="Rename"><strong>6. Rename a file</strong></a></p><p>Suppose we have a file “thisfile.txt”:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostRenameFile1.jpg"><img decoding="async" src="" alt="BoostRenameFile1" width="463" height="316" class="alignnone size-full wp-image-4888" data-layzr="/wp-content/uploads/2014/05/BoostRenameFile1.jpg"></a></p><p>For example, we wish to rename “thisfile.txt” to “thatfile.txt”:</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include &lt;boost/filesystem.hpp&gt;
 
 int main() 
@@ -481,7 +481,7 @@ int main()
 		boost::filesystem::rename( path, new_path );
 	}
 } 
-</pre><p>So that the “thisfile.txt” is renamed to “thatfile.txt” as shown:</p><p><a href="/wp-content/uploads/2014/05/BoostRenameFile2.jpg"><img decoding="async" src="" alt="BoostRenameFile2" width="463" height="316" class="alignnone size-full wp-image-4890" data-layzr="/wp-content/uploads/2014/05/BoostRenameFile2.jpg"></a></p><p><a name="Remove"><strong>7. To remove a file or directory</strong></a></p><p>For example, remove “thatfile.txt”:</p><p><a href="/wp-content/uploads/2014/05/BoostRenameFile1.jpg"><img decoding="async" src="" alt="BoostRenameFile1" width="463" height="316" class="alignnone size-full wp-image-4888" data-layzr="/wp-content/uploads/2014/05/BoostRenameFile1.jpg"></a></p><p>Simply use <code>boost::filesystem::remove_all</code> as shown:</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>So that the “thisfile.txt” is renamed to “thatfile.txt” as shown:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostRenameFile2.jpg"><img decoding="async" src="" alt="BoostRenameFile2" width="463" height="316" class="alignnone size-full wp-image-4890" data-layzr="/wp-content/uploads/2014/05/BoostRenameFile2.jpg"></a></p><p><a name="Remove"><strong>7. To remove a file or directory</strong></a></p><p>For example, remove “thatfile.txt”:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostRenameFile1.jpg"><img decoding="async" src="" alt="BoostRenameFile1" width="463" height="316" class="alignnone size-full wp-image-4888" data-layzr="/wp-content/uploads/2014/05/BoostRenameFile1.jpg"></a></p><p>Simply use <code>boost::filesystem::remove_all</code> as shown:</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include &lt;boost/filesystem.hpp&gt;
 
 int main() 
@@ -493,7 +493,7 @@ int main()
 		boost::filesystem::remove_all( path );
 	}
 } 
-</pre><p>So that “thatfile.txt” has now disappeared:</p><p><a href="/wp-content/uploads/2014/05/BoostRemoveFile1.jpg"><img decoding="async" src="" alt="BoostRemoveFile1" width="463" height="316" class="alignnone size-full wp-image-4894" data-layzr="/wp-content/uploads/2014/05/BoostRemoveFile1.jpg"></a></p><p>We can also use boost::filesystem::remove_all to remove an entire directory plus its file contents, subdirectories etc:</p><p><a href="/wp-content/uploads/2014/05/BoostRemoveFile2.jpg"><img decoding="async" src="" alt="BoostRemoveFile2" width="463" height="316" class="alignnone size-full wp-image-4896" data-layzr="/wp-content/uploads/2014/05/BoostRemoveFile2.jpg"></a></p><p>Just specify the directory you wish to delete:</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>So that “thatfile.txt” has now disappeared:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostRemoveFile1.jpg"><img decoding="async" src="" alt="BoostRemoveFile1" width="463" height="316" class="alignnone size-full wp-image-4894" data-layzr="/wp-content/uploads/2014/05/BoostRemoveFile1.jpg"></a></p><p>We can also use boost::filesystem::remove_all to remove an entire directory plus its file contents, subdirectories etc:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostRemoveFile2.jpg"><img decoding="async" src="" alt="BoostRemoveFile2" width="463" height="316" class="alignnone size-full wp-image-4896" data-layzr="/wp-content/uploads/2014/05/BoostRemoveFile2.jpg"></a></p><p>Just specify the directory you wish to delete:</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include &lt;boost/filesystem.hpp&gt;
 
 int main() 
@@ -505,7 +505,7 @@ int main()
 		boost::filesystem::remove_all( path );
 	}
 } 
-</pre><p>So that the entire MyStuff directory disappears:</p><p><a href="/wp-content/uploads/2014/05/BoostRemoveFile3.jpg"><img decoding="async" src="" alt="BoostRemoveFile3" width="463" height="316" class="alignnone size-full wp-image-4897" data-layzr="/wp-content/uploads/2014/05/BoostRemoveFile3.jpg"></a></p><p><a name="CreateDirectory"><strong>8. To create a directory</strong></a></p><p>Again this is simple.  Just use <code>boost::filesystem::create_directories</code>.</p><p>Example code to create the directory “<code>C:\MyStuff</code>“:</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>So that the entire MyStuff directory disappears:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostRemoveFile3.jpg"><img decoding="async" src="" alt="BoostRemoveFile3" width="463" height="316" class="alignnone size-full wp-image-4897" data-layzr="/wp-content/uploads/2014/05/BoostRemoveFile3.jpg"></a></p><p><a name="CreateDirectory"><strong>8. To create a directory</strong></a></p><p>Again this is simple.  Just use <code>boost::filesystem::create_directories</code>.</p><p>Example code to create the directory “<code>C:\MyStuff</code>“:</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include &lt;boost/filesystem.hpp&gt;
 
 int main() 
@@ -514,7 +514,7 @@ int main()
 	
 	boost::filesystem::create_directories( path );
 } 
-</pre><p>Creating the directory as shown:</p><p><a href="/wp-content/uploads/2014/05/BoostRemoveFile4.jpg"><img decoding="async" src="" alt="BoostRemoveFile4" width="463" height="316" class="alignnone size-full wp-image-4901" data-layzr="/wp-content/uploads/2014/05/BoostRemoveFile4.jpg"></a></p><p><a name="RelativePaths"><strong>9. Obtaining relative paths</strong></a></p><p>Lifted from another excellent posting at StackOverflow:</p><p><a href="http://stackoverflow.com/questions/10167382/boostfilesystem-get-relative-path">http://stackoverflow.com/questions/10167382/boostfilesystem-get-relative-path</a></p><p>Supposing we wish to obtain the relative path between the folders ‘HerFolder’ and ‘ThatFolder’ as shown below:</p><p><a href="/wp-content/uploads/2014/05/boostfilesystem11.jpg"><img decoding="async" src="" alt="boostfilesystem1" width="445" height="341" class="alignnone size-full wp-image-6470" data-layzr="/wp-content/uploads/2014/05/boostfilesystem11.jpg"></a></p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>Creating the directory as shown:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/BoostRemoveFile4.jpg"><img decoding="async" src="" alt="BoostRemoveFile4" width="463" height="316" class="alignnone size-full wp-image-4901" data-layzr="/wp-content/uploads/2014/05/BoostRemoveFile4.jpg"></a></p><p><a name="RelativePaths"><strong>9. Obtaining relative paths</strong></a></p><p>Lifted from another excellent posting at StackOverflow:</p><p><a href="http://stackoverflow.com/questions/10167382/boostfilesystem-get-relative-path">http://stackoverflow.com/questions/10167382/boostfilesystem-get-relative-path</a></p><p>Supposing we wish to obtain the relative path between the folders ‘HerFolder’ and ‘ThatFolder’ as shown below:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/boostfilesystem11.jpg"><img decoding="async" src="" alt="boostfilesystem1" width="445" height="341" class="alignnone size-full wp-image-6470" data-layzr="/wp-content/uploads/2014/05/boostfilesystem11.jpg"></a></p><pre class="brush: cpp; title: ; notranslate" title="">
 #include &lt;boost/filesystem.hpp&gt;
  
 static boost::filesystem::path relativeTo(boost::filesystem::path from, boost::filesystem::path to)
@@ -561,7 +561,7 @@ int main()
 
 	return 0;
 } 
-</pre><p>Giving the relative path as shown:</p><p><a href="/wp-content/uploads/2014/05/boostfilesystem21.jpg"><img decoding="async" src="" alt="boostfilesystem2" width="549" height="187" class="alignnone size-full wp-image-6472" data-layzr="/wp-content/uploads/2014/05/boostfilesystem21.jpg"></a></p><p><a name="RecursiveFind"><strong>10. Recursively find all files in a directory</strong></a></p><p>In this example I want to search and output for all files matching a particular extension. </p><p>This is lifted from the stackoverflow site:</p><p><a href="http://stackoverflow.com/questions/15182980/list-directory-files-recursively-with-boostfilesystem">http://stackoverflow.com/questions/15182980/list-directory-files-recursively-with-boostfilesystem</a></p><p> If you want to display all files within a chosen directory and all its subdirectories, then just take out the comparison bit.  Code listing as follows:</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>Giving the relative path as shown:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/boostfilesystem21.jpg"><img decoding="async" src="" alt="boostfilesystem2" width="549" height="187" class="alignnone size-full wp-image-6472" data-layzr="/wp-content/uploads/2014/05/boostfilesystem21.jpg"></a></p><p><a name="RecursiveFind"><strong>10. Recursively find all files in a directory</strong></a></p><p>In this example I want to search and output for all files matching a particular extension. </p><p>This is lifted from the stackoverflow site:</p><p><a href="http://stackoverflow.com/questions/15182980/list-directory-files-recursively-with-boostfilesystem">http://stackoverflow.com/questions/15182980/list-directory-files-recursively-with-boostfilesystem</a></p><p> If you want to display all files within a chosen directory and all its subdirectories, then just take out the comparison bit.  Code listing as follows:</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include &lt;boost/filesystem.hpp&gt; 
 #include &lt;vector&gt;
 #include &lt;iostream&gt;
@@ -587,7 +587,7 @@ int main()
 {	
 	ListFilesRecursively("C:\\Documents and Settings\\User\\My Documents\\My Pictures\\Photos", ".THM" );
 }
-</pre><p>Example console output below:</p><p><a href="/wp-content/uploads/2014/05/boostfilesystem12.jpg"><img decoding="async" src="" alt="boostfilesystem1" width="613" height="295" class="alignnone size-full wp-image-6551" data-layzr="/wp-content/uploads/2014/05/boostfilesystem12.jpg"></a></p><p>As a further extension, I wished to not only discover all the files with extension “.THM” but delete them as well.  This is easily accomplished by making calls to boost::filesystem::remove.  Code listing below.</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>Example console output below:</p><p><a href="/technical-recipes/wp-content/uploads/2014/05/boostfilesystem12.jpg"><img decoding="async" src="" alt="boostfilesystem1" width="613" height="295" class="alignnone size-full wp-image-6551" data-layzr="/wp-content/uploads/2014/05/boostfilesystem12.jpg"></a></p><p>As a further extension, I wished to not only discover all the files with extension “.THM” but delete them as well.  This is easily accomplished by making calls to boost::filesystem::remove.  Code listing below.</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include &lt;boost/filesystem.hpp&gt; 
 #include &lt;vector&gt;
 #include &lt;iostream&gt;
@@ -656,19 +656,19 @@ int main()
 								    		<!-- Start Related Posts -->
     		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
 					<a href="/2011/implementing-dijkstras-algorithm/" title="Implementing Dijkstra’s Algorithm using Sedgewick’s C++ Code" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Implementing Dijkstra’s Algorithm using Sedgewick’s C++ Code"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Implementing Dijkstra’s Algorithm using Sedgewick’s C++ Code"></div>
                                                                         <h4 class="title front-view-title">Implementing Dijkstra’s Algorithm using Sedgewick’s C++ Code</h4>
 					</a>
                 </article><!--.post.excerpt-->
     			    			<article class="latestPost excerpt  ">
 					<a href="/2016/getting-started-with-gurobi-in-microsoft-visual-studio/" title="Getting started with Gurobi in Microsoft Visual Studio" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Getting started with Gurobi in Microsoft Visual Studio"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Getting started with Gurobi in Microsoft Visual Studio"></div>
                                                                         <h4 class="title front-view-title">Getting started with Gurobi in Microsoft Visual Studio</h4>
 					</a>
                 </article><!--.post.excerpt-->
     			    			<article class="latestPost excerpt  last">
 					<a href="/2014/getting-started-with-client-server-applications-in-c/" title="Getting started with client-server applications in C++" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Getting started with client-server applications in C++"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Getting started with client-server applications in C++"></div>
                                                                         <h4 class="title front-view-title">Getting started with client-server applications in C++</h4>
 					</a>
                 </article><!--.post.excerpt-->
@@ -952,8 +952,8 @@ return 0;<br>
     <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
-<script id="syntaxhighlighter-brush-cpp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
+<script id="syntaxhighlighter-core-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-cpp-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
 <script type='text/javascript'>
 	(function(){
 		var corecss = document.createElement('link');
@@ -997,13 +997,13 @@ return 0;<br>
 		} );
 	}
 </script>
-<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/technical-recipes/wp-includes/js/comment-reply.min.js"></script>
 <script id="owl-carousel-js-extra">
 var slideropts = {"rtl_support":"0"};
 //# sourceURL=owl-carousel-js-extra
 </script>
-<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
-<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="owl-carousel-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
 <script id="wp-emoji-settings" type="application/json">
 {"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
 </script>

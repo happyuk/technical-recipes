@@ -11,7 +11,7 @@
                     <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
         
                     <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
-                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png">        
                     <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="apple-mobile-web-app-capable" content="yes">
             <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -50,7 +50,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 
 
-<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/technical-recipes/wp-content/themes/mts_truepixel/style.css" media="all">
 <style id="truepixel-stylesheet-inline-css">
 
         body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
@@ -74,16 +74,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			
 /*# sourceURL=truepixel-stylesheet-inline-css */
 </style>
-<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
-<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
-<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
-<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
-<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<link rel="stylesheet" id="owl-carousel-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/technical-recipes/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/technical-recipes/wp-includes/js/jquery/jquery-migrate.min.js"></script>
 <script id="customscript-js-extra">
 var mts_customscript = {"responsive":"1","nav_menu":"both"};
 //# sourceURL=customscript-js-extra
 </script>
-<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<script id="customscript-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/customscript.js"></script>
 <link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/1142"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
 <meta name="generator" content="WordPress 7.0">
 <link rel="canonical" href="/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/">
@@ -104,9 +104,9 @@ h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00
 h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
 h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
 </style>
-<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
-<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
-<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<link rel="icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png">
 <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
 </head>
 <body id="blog" class="wp-singular post-template-default single single-post postid-1142 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
@@ -336,7 +336,7 @@ int main()
 
    return 0;
 }
-</pre><p>Giving the following output for finding all paths between nodes 2 and 5:</p><p><a href="http://technical-recipes.com/wp-content/uploads/2011/09/paths2.jpg"><img decoding="async" class="alignnone size-full wp-image-1175" title="paths2" src="" alt="" width="293" height="179" data-layzr="http://technical-recipes.com/wp-content/uploads/2011/09/paths2.jpg"></a></p><p><strong>Example 2: network topology with bi-directional links</strong></p><p><a href="/wp-content/uploads/2011/09/topology21.jpg"><img decoding="async" class="alignnone size-medium wp-image-4290" src="" alt="topology2" width="300" height="160" data-layzr="/wp-content/uploads/2011/09/topology21-300x160.jpg"></a></p><p>Using a very simple tweak we can also construct network topologies with link interconnections that are are <em>bi-directional</em>; that is, a link between [1,2] is the same as the link between [2,1]. In other words, adding link [2,1] when link [1,2] already exists will make no difference.</p><p>Simply, set the bi-directional flag in the <code>Network</code> class constructor to <code>true</code>, and build the network in the same way, as shown in this next <code>main.cpp</code> example:</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>Giving the following output for finding all paths between nodes 2 and 5:</p><p><a href="http://technical-recipes.com/wp-content/uploads/2011/09/paths2.jpg"><img decoding="async" class="alignnone size-full wp-image-1175" title="paths2" src="" alt="" width="293" height="179" data-layzr="http://technical-recipes.com/wp-content/uploads/2011/09/paths2.jpg"></a></p><p><strong>Example 2: network topology with bi-directional links</strong></p><p><a href="/technical-recipes/wp-content/uploads/2011/09/topology21.jpg"><img decoding="async" class="alignnone size-medium wp-image-4290" src="" alt="topology2" width="300" height="160" data-layzr="/wp-content/uploads/2011/09/topology21-300x160.jpg"></a></p><p>Using a very simple tweak we can also construct network topologies with link interconnections that are are <em>bi-directional</em>; that is, a link between [1,2] is the same as the link between [2,1]. In other words, adding link [2,1] when link [1,2] already exists will make no difference.</p><p>Simply, set the bi-directional flag in the <code>Network</code> class constructor to <code>true</code>, and build the network in the same way, as shown in this next <code>main.cpp</code> example:</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include "Algorithm.h"
 #include &lt;iostream&gt;
 #include &lt;vector&gt;
@@ -379,9 +379,9 @@ int main()
 
    return 0;
 }
-</pre><p>Giving the following output for finding all paths between nodes 2 and 5:</p><p><a href="/wp-content/uploads/2011/09/BidirectionalPaths1.jpg"><img decoding="async" class="alignnone size-full wp-image-4295" src="" alt="BidirectionalPaths" width="277" height="587" data-layzr="/wp-content/uploads/2011/09/BidirectionalPaths1.jpg"></a></p><p><strong>Example 3: filtering by the maximum number of hops</strong></p><p>We may wish to restrict paths found to those whose maximum hop count is no larger than a set maximum, say 4 hops.</p><p>By using another simple tweak we can achieve this. Simply set the <code>max_hops</code> argument that is passed to <code>Algorithm::GetAllPaths</code> to some value greater than zero. The <code>min_hops</code> argument is kept as default -1::</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>Giving the following output for finding all paths between nodes 2 and 5:</p><p><a href="/technical-recipes/wp-content/uploads/2011/09/BidirectionalPaths1.jpg"><img decoding="async" class="alignnone size-full wp-image-4295" src="" alt="BidirectionalPaths" width="277" height="587" data-layzr="/wp-content/uploads/2011/09/BidirectionalPaths1.jpg"></a></p><p><strong>Example 3: filtering by the maximum number of hops</strong></p><p>We may wish to restrict paths found to those whose maximum hop count is no larger than a set maximum, say 4 hops.</p><p>By using another simple tweak we can achieve this. Simply set the <code>max_hops</code> argument that is passed to <code>Algorithm::GetAllPaths</code> to some value greater than zero. The <code>min_hops</code> argument is kept as default -1::</p><pre class="brush: cpp; title: ; notranslate" title="">
 algorithm.GetAllPaths( &amp;nw, 2, 5, 4, -1 );  
-</pre><p>Re-running the program with the same network as in example 2, gives the following paths, restricted to a maximum of 4 hops:</p><p><a href="/wp-content/uploads/2011/09/MaxHopPaths.jpg"><img decoding="async" class="alignnone size-full wp-image-4301" src="" alt="MaxHopPaths" width="221" height="215" data-layzr="/wp-content/uploads/2011/09/MaxHopPaths.jpg"></a></p><p><strong>Example 4: Labeling network nodes arbitrarily</strong></p><p>A recent improvement to the software has been to allow the user to label the nodes arbitrarily as standard strings, or as integers. Either way, it is no longer a requirement for the nodes to be labelled as an ascending order of integers of say 1-5 for a five node network. You can now call them what you like.</p><p>For example, Consider the following 9-node network representing towns and cities in the UK:</p><p><a href="/wp-content/uploads/2011/09/UKnetwork.jpg"><img decoding="async" class="alignnone size-full wp-image-4962" src="" alt="UKnetwork" width="609" height="894" data-layzr="/wp-content/uploads/2011/09/UKnetwork.jpg"></a></p><p>It is no longer necessary to label the nodes using integers, but can be done using strings to give a more meaningful description. There now exists a two-way mapping between the integer used to uniquely identify each node created and the string/integer label used to describe it.</p><p>Supposing we wish to construct the above network and find all possible paths between Bristol and Edinburgh for an undirected representation of the graph, then the usage is as follows:</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>Re-running the program with the same network as in example 2, gives the following paths, restricted to a maximum of 4 hops:</p><p><a href="/technical-recipes/wp-content/uploads/2011/09/MaxHopPaths.jpg"><img decoding="async" class="alignnone size-full wp-image-4301" src="" alt="MaxHopPaths" width="221" height="215" data-layzr="/wp-content/uploads/2011/09/MaxHopPaths.jpg"></a></p><p><strong>Example 4: Labeling network nodes arbitrarily</strong></p><p>A recent improvement to the software has been to allow the user to label the nodes arbitrarily as standard strings, or as integers. Either way, it is no longer a requirement for the nodes to be labelled as an ascending order of integers of say 1-5 for a five node network. You can now call them what you like.</p><p>For example, Consider the following 9-node network representing towns and cities in the UK:</p><p><a href="/technical-recipes/wp-content/uploads/2011/09/UKnetwork.jpg"><img decoding="async" class="alignnone size-full wp-image-4962" src="" alt="UKnetwork" width="609" height="894" data-layzr="/wp-content/uploads/2011/09/UKnetwork.jpg"></a></p><p>It is no longer necessary to label the nodes using integers, but can be done using strings to give a more meaningful description. There now exists a two-way mapping between the integer used to uniquely identify each node created and the string/integer label used to describe it.</p><p>Supposing we wish to construct the above network and find all possible paths between Bristol and Edinburgh for an undirected representation of the graph, then the usage is as follows:</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include "Algorithm.h"  
 #include &lt;iostream&gt;
 #include &lt;vector&gt;
@@ -418,9 +418,9 @@ int main()
 
    return 0;
 }
-</pre><p>Giving the following output:</p><p><a href="/wp-content/uploads/2011/09/AllPaths1.jpg"><img decoding="async" class="alignnone size-full wp-image-5043" src="" alt="AllPaths" width="517" height="199" data-layzr="/wp-content/uploads/2011/09/AllPaths1.jpg"></a><br>
+</pre><p>Giving the following output:</p><p><a href="/technical-recipes/wp-content/uploads/2011/09/AllPaths1.jpg"><img decoding="async" class="alignnone size-full wp-image-5043" src="" alt="AllPaths" width="517" height="199" data-layzr="/wp-content/uploads/2011/09/AllPaths1.jpg"></a><br>
 <strong><br>
-Example 5: Finding all paths between the same node</strong></p><p>You may wish to find all paths between the same node. Take the following network with bi-directional links:</p><p><a href="/wp-content/uploads/2011/09/FiveNodeNetwork.jpg"><img decoding="async" class="alignnone size-full wp-image-5027" src="" alt="FiveNodeNetwork" width="246" height="229" data-layzr="/wp-content/uploads/2011/09/FiveNodeNetwork.jpg"></a></p><p>You may wish to find all paths that start from the node 2 that return to node 2. Example usage is shown here:</p><pre class="brush: cpp; title: ; notranslate" title="">
+Example 5: Finding all paths between the same node</strong></p><p>You may wish to find all paths between the same node. Take the following network with bi-directional links:</p><p><a href="/technical-recipes/wp-content/uploads/2011/09/FiveNodeNetwork.jpg"><img decoding="async" class="alignnone size-full wp-image-5027" src="" alt="FiveNodeNetwork" width="246" height="229" data-layzr="/wp-content/uploads/2011/09/FiveNodeNetwork.jpg"></a></p><p>You may wish to find all paths that start from the node 2 that return to node 2. Example usage is shown here:</p><pre class="brush: cpp; title: ; notranslate" title="">
 #include "Algorithm.h"  
 #include &lt;iostream&gt;
 #include &lt;vector&gt;
@@ -454,9 +454,9 @@ int main()
 
    return 0;
 }
-</pre><p>Giving the list of all found paths to and from node labelled 2:</p><p><a href="/wp-content/uploads/2011/09/SameStartEndNode1.jpg"><img decoding="async" class="alignnone size-full wp-image-5030" src="" alt="SameStartEndNode1" width="293" height="271" data-layzr="/wp-content/uploads/2011/09/SameStartEndNode1.jpg"></a></p><p>If you would rather not have paths such as 2 – 1 – 2 then just specify a minimum hop count of 3:</p><pre class="brush: cpp; title: ; notranslate" title="">
+</pre><p>Giving the list of all found paths to and from node labelled 2:</p><p><a href="/technical-recipes/wp-content/uploads/2011/09/SameStartEndNode1.jpg"><img decoding="async" class="alignnone size-full wp-image-5030" src="" alt="SameStartEndNode1" width="293" height="271" data-layzr="/wp-content/uploads/2011/09/SameStartEndNode1.jpg"></a></p><p>If you would rather not have paths such as 2 – 1 – 2 then just specify a minimum hop count of 3:</p><pre class="brush: cpp; title: ; notranslate" title="">
 algorithm.GetAllPaths( &amp;nw, 2, 2, -1, 3 );
-</pre><p>Which would give the following path list:</p><p><a href="/wp-content/uploads/2011/09/SameStartEndNode2.jpg"><img decoding="async" class="alignnone size-full wp-image-5031" src="" alt="SameStartEndNode2" width="293" height="271" data-layzr="/wp-content/uploads/2011/09/SameStartEndNode2.jpg"></a></p><p><strong>Download C++ (Visual Studio 2010 and Linux NetBeans) and C#/.NET implementations:</strong></p><p><script data-selz-t="_selz-btn-default" data-selz-a="modal" data-selz-b="http://bit.ly/1Mfljqi" data-text="Buy it now">
+</pre><p>Which would give the following path list:</p><p><a href="/technical-recipes/wp-content/uploads/2011/09/SameStartEndNode2.jpg"><img decoding="async" class="alignnone size-full wp-image-5031" src="" alt="SameStartEndNode2" width="293" height="271" data-layzr="/wp-content/uploads/2011/09/SameStartEndNode2.jpg"></a></p><p><strong>Download C++ (Visual Studio 2010 and Linux NetBeans) and C#/.NET implementations:</strong></p><p><script data-selz-t="_selz-btn-default" data-selz-a="modal" data-selz-b="http://bit.ly/1Mfljqi" data-text="Buy it now">
 if (typeof _$elz === "undefined") { var _$elz = {}; }
 if (typeof _$elz.b === "undefined") { 
 _$elz.b = { e: document.createElement("script") }; 
@@ -511,19 +511,19 @@ document.body.appendChild(_$elz.b.e); }
 								    		<!-- Start Related Posts -->
     		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
 					<a href="/2012/how-to-link-dll-files-to-c-projects/" title="How to link DLL files to C++ Projects" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="How to link DLL files to C++ Projects"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="How to link DLL files to C++ Projects"></div>
                                                                         <h4 class="title front-view-title">How to link DLL files to C++ Projects</h4>
 					</a>
                 </article><!--.post.excerpt-->
     			    			<article class="latestPost excerpt  ">
 					<a href="/2018/using-dependency-injection-in-web-api-applications-using-unity/" title="Using dependency injection in Web API applications using Unity" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using dependency injection in Web API applications using Unity"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Using dependency injection in Web API applications using Unity"></div>
                                                                         <h4 class="title front-view-title">Using dependency injection in Web API applications using Unity</h4>
 					</a>
                 </article><!--.post.excerpt-->
     			    			<article class="latestPost excerpt  last">
 					<a href="/2011/simple-binary-tree-implementation/" title="A Simple Binary Tree Implementation in C++" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="A Simple Binary Tree Implementation in C++"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="A Simple Binary Tree Implementation in C++"></div>
                                                                         <h4 class="title front-view-title">A Simple Binary Tree Implementation in C++</h4>
 					</a>
                 </article><!--.post.excerpt-->
@@ -1387,8 +1387,8 @@ maryam</p>
     <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
-<script id="syntaxhighlighter-brush-cpp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
+<script id="syntaxhighlighter-core-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-cpp-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js"></script>
 <script type='text/javascript'>
 	(function(){
 		var corecss = document.createElement('link');
@@ -1432,13 +1432,13 @@ maryam</p>
 		} );
 	}
 </script>
-<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/technical-recipes/wp-includes/js/comment-reply.min.js"></script>
 <script id="owl-carousel-js-extra">
 var slideropts = {"rtl_support":"0"};
 //# sourceURL=owl-carousel-js-extra
 </script>
-<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
-<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="owl-carousel-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
 <script id="wp-emoji-settings" type="application/json">
 {"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
 </script>

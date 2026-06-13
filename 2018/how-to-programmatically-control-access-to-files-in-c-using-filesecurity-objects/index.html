@@ -11,7 +11,7 @@
                     <link rel="icon" href="https://demo.mythemeshop.com/truepixel/files/2016/02/favicon.png" type="image/x-icon">
         
                     <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">        
-                    <link rel="apple-touch-icon-precomposed" href="/wp-content/uploads/2023/02/solution-icon-1.png">        
+                    <link rel="apple-touch-icon-precomposed" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png">        
                     <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="apple-mobile-web-app-capable" content="yes">
             <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -50,7 +50,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 
 
-<link rel="stylesheet" id="truepixel-stylesheet-css" href="/wp-content/themes/mts_truepixel/style.css" media="all">
+<link rel="stylesheet" id="truepixel-stylesheet-css" href="/technical-recipes/wp-content/themes/mts_truepixel/style.css" media="all">
 <style id="truepixel-stylesheet-inline-css">
 
         body {background-color:#F0F2F3;background-image:url(/wp-content/themes/mts_truepixel/images/pattern3.png);}
@@ -74,16 +74,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			
 /*# sourceURL=truepixel-stylesheet-inline-css */
 </style>
-<link rel="stylesheet" id="owl-carousel-css" href="/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
-<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
-<link rel="stylesheet" id="responsive-css" href="/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
-<script id="jquery-core-js" src="/wp-includes/js/jquery/jquery.min.js"></script>
-<script id="jquery-migrate-js" src="/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<link rel="stylesheet" id="owl-carousel-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/owl.carousel.css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" id="responsive-css" href="/technical-recipes/wp-content/themes/mts_truepixel/css/responsive.css" media="all">
+<script id="jquery-core-js" src="/technical-recipes/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="/technical-recipes/wp-includes/js/jquery/jquery-migrate.min.js"></script>
 <script id="customscript-js-extra">
 var mts_customscript = {"responsive":"1","nav_menu":"both"};
 //# sourceURL=customscript-js-extra
 </script>
-<script id="customscript-js" async="async" src="/wp-content/themes/mts_truepixel/js/customscript.js"></script>
+<script id="customscript-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/customscript.js"></script>
 <link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/8585"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
 <meta name="generator" content="WordPress 7.0">
 <link rel="canonical" href="/2018/how-to-programmatically-control-access-to-files-in-c-using-filesecurity-objects/">
@@ -104,9 +104,9 @@ h4 { font-family: 'Oswald'; font-weight: normal; font-size: 20px; color: #e03f00
 h5 { font-family: 'Oswald'; font-weight: normal; font-size: 18px; color: #e03f00; }
 h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00; }
 </style>
-<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
-<link rel="icon" href="/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
-<link rel="apple-touch-icon" href="/wp-content/uploads/2023/02/solution-icon-1.png">
+<link rel="icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1-66x66.png" sizes="32x32">
+<link rel="icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/technical-recipes/wp-content/uploads/2023/02/solution-icon-1.png">
 <meta name="msapplication-TileImage" content="/wp-content/uploads/2023/02/solution-icon-1.png">
 </head>
 <body id="blog" class="wp-singular post-template-default single single-post postid-8585 single-format-standard wp-theme-mts_truepixel main" itemscope itemtype="http://schema.org/WebPage"> 
@@ -205,7 +205,7 @@ h6 { font-family: 'Oswald'; font-weight: normal; font-size: 16px; color: #e03f00
 											</header><!--.headline_area-->
 									<div class="post-single-content box mark-links entry-content">
 																														<div class="thecontent">
-											<p>A quick demonstration on how to control access to files in real-time.</p><p>As described in the <a href="https://docs.microsoft.com/en-us/dotnet/standard/io/how-to-add-or-remove-access-control-list-entries">Microsoft documentation</a>, the control access to a file can be added or removed by obtaining the FileSecurity object from that file, then modified, and then applied back to the file.</p><p>In this example I choose to change the file access properties of a simple icon file “icon.ico”:</p><p><a href="/wp-content/uploads/2018/10/FileControlAccess2.png"><img fetchpriority="high" decoding="async" class="alignnone size-full wp-image-8586" src="" alt="" width="556" height="364" data-layzr="/wp-content/uploads/2018/10/FileControlAccess2.png"></a></p><p>So that before modifying the properties it can be opened straightforwardly as follows:</p><p><a href="/wp-content/uploads/2018/10/FileControlAccess1.png"><img decoding="async" class="alignnone size-full wp-image-8587" src="" alt="" width="424" height="370" data-layzr="/wp-content/uploads/2018/10/FileControlAccess1.png"></a></p><p>To demonstrate how we can alter the access properties in real-time, create a C# console application in Visual Studio and add the following code. Note the use of WindowsIdentity.GetCurrent() api used to obtain the necessary username/domain details of the current Windows user:</p><pre class="brush: csharp; title: ; notranslate" title="">
+											<p>A quick demonstration on how to control access to files in real-time.</p><p>As described in the <a href="https://docs.microsoft.com/en-us/dotnet/standard/io/how-to-add-or-remove-access-control-list-entries">Microsoft documentation</a>, the control access to a file can be added or removed by obtaining the FileSecurity object from that file, then modified, and then applied back to the file.</p><p>In this example I choose to change the file access properties of a simple icon file “icon.ico”:</p><p><a href="/technical-recipes/wp-content/uploads/2018/10/FileControlAccess2.png"><img fetchpriority="high" decoding="async" class="alignnone size-full wp-image-8586" src="" alt="" width="556" height="364" data-layzr="/wp-content/uploads/2018/10/FileControlAccess2.png"></a></p><p>So that before modifying the properties it can be opened straightforwardly as follows:</p><p><a href="/technical-recipes/wp-content/uploads/2018/10/FileControlAccess1.png"><img decoding="async" class="alignnone size-full wp-image-8587" src="" alt="" width="424" height="370" data-layzr="/wp-content/uploads/2018/10/FileControlAccess1.png"></a></p><p>To demonstrate how we can alter the access properties in real-time, create a C# console application in Visual Studio and add the following code. Note the use of WindowsIdentity.GetCurrent() api used to obtain the necessary username/domain details of the current Windows user:</p><pre class="brush: csharp; title: ; notranslate" title="">
 using System;
 using System.IO;
 using System.Security.AccessControl;
@@ -265,7 +265,7 @@ namespace FileControlAccess
       }
    }
 }
-</pre><p>On stepping through the code, we first add an access control entry to DENY the users ‘Read’ access to the ‘icon.ico’ file:</p><p><a href="/wp-content/uploads/2018/10/FileControlAccess3.png"><img decoding="async" class="alignnone size-full wp-image-8588" src="" alt="" width="469" height="155" data-layzr="/wp-content/uploads/2018/10/FileControlAccess3.png"></a></p><p>On inspecting the file’s Security properties we observe that this Deny access property has indeed been added:</p><p><a href="/wp-content/uploads/2018/10/FileControlAccess4.png"><img decoding="async" class="alignnone size-full wp-image-8590" src="" alt="" width="636" height="482" data-layzr="/wp-content/uploads/2018/10/FileControlAccess4.png"></a></p><p>And when we try to open the file we observe that we can’t:</p><p><a href="/wp-content/uploads/2018/10/FileControlAccess5.png"><img decoding="async" class="alignnone size-full wp-image-8591" src="" alt="" width="424" height="370" data-layzr="/wp-content/uploads/2018/10/FileControlAccess5.png"></a></p><p>We then step further through the code and remove the access control property we just added:</p><p><a href="/wp-content/uploads/2018/10/FileControlAccess6.png"><img decoding="async" class="alignnone size-full wp-image-8592" src="" alt="" width="485" height="191" data-layzr="/wp-content/uploads/2018/10/FileControlAccess6.png"></a></p><p>This is also observed in the file’s security properties as shown:</p><p><a href="/wp-content/uploads/2018/10/FileControlAccess8.png"><img decoding="async" class="alignnone size-full wp-image-8593" src="" alt="" width="636" height="482" data-layzr="/wp-content/uploads/2018/10/FileControlAccess8.png"></a></p><p>So that we can now open the file unopposed as before:</p><p><a href="/wp-content/uploads/2018/10/FileControlAccess7.png"><img decoding="async" class="alignnone size-full wp-image-8594" src="" alt="" width="424" height="370" data-layzr="/wp-content/uploads/2018/10/FileControlAccess7.png"></a></p>
+</pre><p>On stepping through the code, we first add an access control entry to DENY the users ‘Read’ access to the ‘icon.ico’ file:</p><p><a href="/technical-recipes/wp-content/uploads/2018/10/FileControlAccess3.png"><img decoding="async" class="alignnone size-full wp-image-8588" src="" alt="" width="469" height="155" data-layzr="/wp-content/uploads/2018/10/FileControlAccess3.png"></a></p><p>On inspecting the file’s Security properties we observe that this Deny access property has indeed been added:</p><p><a href="/technical-recipes/wp-content/uploads/2018/10/FileControlAccess4.png"><img decoding="async" class="alignnone size-full wp-image-8590" src="" alt="" width="636" height="482" data-layzr="/wp-content/uploads/2018/10/FileControlAccess4.png"></a></p><p>And when we try to open the file we observe that we can’t:</p><p><a href="/technical-recipes/wp-content/uploads/2018/10/FileControlAccess5.png"><img decoding="async" class="alignnone size-full wp-image-8591" src="" alt="" width="424" height="370" data-layzr="/wp-content/uploads/2018/10/FileControlAccess5.png"></a></p><p>We then step further through the code and remove the access control property we just added:</p><p><a href="/technical-recipes/wp-content/uploads/2018/10/FileControlAccess6.png"><img decoding="async" class="alignnone size-full wp-image-8592" src="" alt="" width="485" height="191" data-layzr="/wp-content/uploads/2018/10/FileControlAccess6.png"></a></p><p>This is also observed in the file’s security properties as shown:</p><p><a href="/technical-recipes/wp-content/uploads/2018/10/FileControlAccess8.png"><img decoding="async" class="alignnone size-full wp-image-8593" src="" alt="" width="636" height="482" data-layzr="/wp-content/uploads/2018/10/FileControlAccess8.png"></a></p><p>So that we can now open the file unopposed as before:</p><p><a href="/technical-recipes/wp-content/uploads/2018/10/FileControlAccess7.png"><img decoding="async" class="alignnone size-full wp-image-8594" src="" alt="" width="424" height="370" data-layzr="/wp-content/uploads/2018/10/FileControlAccess7.png"></a></p>
 
                 <script type="text/javascript">
                 jQuery(document).ready(function($) {
@@ -298,19 +298,19 @@ namespace FileControlAccess
 								    		<!-- Start Related Posts -->
     		<div class="related-posts"><h4>Related Posts</h4><div class="clear">    			<article class="latestPost excerpt  ">
 					<a href="/2018/dynamically-resize-wpf-tab-item-fit-available-width/" title="How to dynamically resize WPF tab items to fit available width" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="How to dynamically resize WPF tab items to fit available width"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="How to dynamically resize WPF tab items to fit available width"></div>
                                                                         <h4 class="title front-view-title">How to dynamically resize WPF tab items to fit available width</h4>
 					</a>
                 </article><!--.post.excerpt-->
     			    			<article class="latestPost excerpt  ">
 					<a href="/2017/how-to-orient-wrappanel-items-within-itemscontrol-lists-vertically-and-horizontally/" title="How to orient WrapPanel items within ItemsControl lists vertically and horizontally" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="How to orient WrapPanel items within ItemsControl lists vertically and horizontally"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="How to orient WrapPanel items within ItemsControl lists vertically and horizontally"></div>
                                                                         <h4 class="title front-view-title">How to orient WrapPanel items within ItemsControl lists vertically and horizontally</h4>
 					</a>
                 </article><!--.post.excerpt-->
     			    			<article class="latestPost excerpt  last">
 					<a href="/2017/controlling-documentviewer-methods-and-properties-using-mvvm/" title="Controlling DocumentViewer methods and properties using MVVM" id="featured-thumbnail">
-                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Controlling DocumentViewer methods and properties using MVVM"></div>
+                                                    <div class="featured-thumbnail"><img class="wp-post-image" src="/technical-recipes/wp-content/themes/mts_truepixel/images/nothumb-truepixel-related.png" alt="Controlling DocumentViewer methods and properties using MVVM"></div>
                                                                         <h4 class="title front-view-title">Controlling DocumentViewer methods and properties using MVVM</h4>
 					</a>
                 </article><!--.post.excerpt-->
@@ -366,8 +366,8 @@ namespace FileControlAccess
     <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/mts_truepixel/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-<script id="syntaxhighlighter-core-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
-<script id="syntaxhighlighter-brush-csharp-js" src="/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js"></script>
+<script id="syntaxhighlighter-core-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js"></script>
+<script id="syntaxhighlighter-brush-csharp-js" src="/technical-recipes/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js"></script>
 <script type='text/javascript'>
 	(function(){
 		var corecss = document.createElement('link');
@@ -411,13 +411,13 @@ namespace FileControlAccess
 		} );
 	}
 </script>
-<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/wp-includes/js/comment-reply.min.js"></script>
+<script async data-wp-strategy="async" fetchpriority="low" id="comment-reply-js" src="/technical-recipes/wp-includes/js/comment-reply.min.js"></script>
 <script id="owl-carousel-js-extra">
 var slideropts = {"rtl_support":"0"};
 //# sourceURL=owl-carousel-js-extra
 </script>
-<script id="owl-carousel-js" async="async" src="/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
-<script id="layzr-js" async="async" src="/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
+<script id="owl-carousel-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/owl.carousel.min.js"></script>
+<script id="layzr-js" async="async" src="/technical-recipes/wp-content/themes/mts_truepixel/js/layzr.min.js"></script>
 <script id="wp-emoji-settings" type="application/json">
 {"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js"}}
 </script>
