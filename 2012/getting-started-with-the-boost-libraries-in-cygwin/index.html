@@ -226,7 +226,7 @@ int main()
             % arr[4]
          &lt;&lt; endl;
 }
-</pre><p>Inside your test project folder create a makefile:</p><p><code>$ cat &gt; makefile &amp;</code></p><p>And using the text editor of your choice copy this text into it.  Alternatively, download it from <a href="/Downloads/makefile">here</a>.</p><p>CPP = g++<br>
+</pre><p>Inside your test project folder create a makefile:</p><p><code>$ cat &gt; makefile &amp;</code></p><p>And using the text editor of your choice copy this text into it.  Alternatively, download it from <a href="/technical-recipes/downloads-files/makefile">here</a>.</p><p>CPP = g++<br>
 OFLAG = -Wall -o<br>
 LFLAG = -l<br>
 IFLAG = -I<br>
@@ -239,7 +239,7 @@ DEBUG = no</p><p>.SUFFIXES: .exe .cpp<br>
 	$(CPP) $(OFLAG) $@ $&lt;<br>
     $@</p><p>main.exe: main.cpp<br>
 	$(CPP) $(IFLAG) $(INCLUDEDIR) $(OFLAG) boost.exe main.cpp $(LIBFLAG)$(LIBDIR) $(LFLAG)libboost_regex</p><p><code>cd</code> into your test project directory and build it:</p><p><code>$ make</code></p><p>and then run it:</p><p><code>$ ./main</code></p><p>Giving the following output:</p><p><code>05-04-AA-0F-0D</code></p><p><strong>Problems with makefiles</strong></p><p>Sometimes when attempting to run the <code>make</code> command, you may get an error message similar to the following:</p><p><code>makefile:13: *** missing separator (did you mean TAB instead of 8 spaces?).  Stop.</code></p><p>If this is the case, then open and edit the makefile in your text editor, and go to the line number it is complaining about, in this case line number 13 which is<br>
-<code>$(CPP) $(OFLAG) $@ $</code></p><p>Make sure the beginning of that particular line is separated by a proper TAB, and not just 8 whitespaces.  Save the makefile and try running the <code>make </code>command again, and it should then work.</p><p>Download the sample project from <a href="/Downloads/boost.zip">here</a>.</p><p><strong>Related posts</strong></p><p><a href="/technical-recipes/2012/getting-started-with-the-boost-libraries-in-ubuntu-linux/">Getting started with the Boost libraries in Ubuntu Linux</a><br>
+<code>$(CPP) $(OFLAG) $@ $</code></p><p>Make sure the beginning of that particular line is separated by a proper TAB, and not just 8 whitespaces.  Save the makefile and try running the <code>make </code>command again, and it should then work.</p><p>Download the sample project from <a href="/technical-recipes/downloads-files/boost.zip">here</a>.</p><p><strong>Related posts</strong></p><p><a href="/technical-recipes/2012/getting-started-with-the-boost-libraries-in-ubuntu-linux/">Getting started with the Boost libraries in Ubuntu Linux</a><br>
 <a href="/technical-recipes/2011/how-to-install-the-boost-libraries-in-visual-studio/">How to Install the Boost Libraries in Visual Studio</a></p>
 
                 <script type="text/javascript">
